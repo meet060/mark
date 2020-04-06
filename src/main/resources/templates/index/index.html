@@ -604,7 +604,7 @@ var bannerCallback = function(){
 
 var prevBannerTextIndex
 function bannerText(index){
-  if(prevBannerTextIndex === index) {
+  if(prevBannerTextIndex === index1) {
     return false;
   }
 
@@ -639,19 +639,19 @@ function bannerText(index){
       left: -100,
       opacity: 0
     })
-    .to(logo.eq(index), .8, {
+    .to(logo.eq(index1), .8, {
       left: 0,
       opacity: 1
     })
-    .to(slo.eq(index), .8, {
+    .to(slo.eq(index1), .8, {
       left: 0,
       opacity: 1
     }, "-=0.6")
-    .to(name.eq(index), .8, {
+    .to(name.eq(index1), .8, {
       left: 0,
       opacity: 1
     }, "-=0.6")
-  prevBannerTextIndex = index
+  prevBannerTextIndex = index1
 }
 
 $(window).load(function () {
@@ -672,7 +672,7 @@ var productChange = new TabChange({
 productChange.showPage(0)
 productBtn.on('click', function(){
   var index = $(this).index()
-  productChange.showPage(index)
+  productChange.showPage(index1)
 })
 
 // 视频播放
@@ -703,7 +703,7 @@ var item = $('._alert-container .item');
 for(var i = 0; i < item.length; i++) {
   (function(index){
     setTimeout(function(){
-      item.eq(index).fadeOut();
+      item.eq(index1).fadeOut();
     }, 10000);
   })(i);
 }
