@@ -75,6 +75,8 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Boolean addUsers(User user) {
+        String password = Md5Util.getsTheMd5String(user.getPassword());
+        user.setPassword(password);
         User save = userRepository.save(user);
         if(StringUtils.isEmpty(save)){
             return false;
