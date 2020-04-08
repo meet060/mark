@@ -62,10 +62,10 @@ public class Md5Util {
         return finalStr;
     }
 
-    // 测试
-    public static void main(String args[]) {
-        String s1 = "admin";
-        System.out.println("使用工具类进行加密的为 " + getsTheMd5String(s1));
-    }
+//    // 测试
+//    public static void main(String args[]) {
+//        String s1 = "admin";
+//        System.out.println("使用工具类进行加密的为 " + getsTheMd5String(s1));
+//    }
 
 }
