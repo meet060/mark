@@ -18,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.xingyue.utils.MvcUtils;
 
+import io.swagger.annotations.ApiOperation;
+
 @Controller
 @RequestMapping("/")
 public class IndexController {
@@ -41,13 +43,24 @@ public class IndexController {
 		return MvcUtils.ok(list);
 	}
 
+	/**
+	 * 上传图片
+	 * 
+	 * @param file
+	 * @param session
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	@ApiOperation("上传图片")
 	@RequestMapping(value = "/savefile", method = RequestMethod.POST)
-	public ResponseEntity<?> upload(MultipartFile file, HttpSession session, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	public ResponseEntity<?> upload(MultipartFile file, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
 		if (file.getSize() > 0) {
 			// 判断文件夹是否存在,不存在则创建
 			File f = new File(storagePath);
-			if(!f.exists()){
+			if (!f.exists()) {
 				f.mkdirs();
 			}
 			String fileName = file.getOriginalFilename();
@@ -59,4 +72,5 @@ public class IndexController {
 		}
 		return MvcUtils.ok(false);
 	}
+
 }
