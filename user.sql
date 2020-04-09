@@ -43,6 +43,7 @@ CREATE TABLE if not exists `resource` (
   `module` varchar(10) DEFAULT '' COMMENT '模块',
   `url` varchar(100) DEFAULT NULL COMMENT '路径',
   `description` varchar(100) DEFAULT NULL COMMENT '描述',
+  `number` int(100) unsigned zerofill DEFAULT NULL COMMENT '图片编号',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

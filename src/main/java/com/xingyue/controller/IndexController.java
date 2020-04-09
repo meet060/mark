@@ -51,7 +51,7 @@ public class IndexController {
 	 * @param request
 	 * @param response
 	 * @return
-	 * @throws Exception
+	 * @throws Exceptionn
 	 */
 	@ApiOperation("上传图片")
 	@RequestMapping(value = "/create/file", method = RequestMethod.POST)

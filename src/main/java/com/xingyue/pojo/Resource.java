@@ -33,6 +33,12 @@ public class Resource {
 	@Column
 	private String description;
 
+	/**
+	 * 图片编号
+	 */
+	@Column
+	private Integer number;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -63,6 +69,14 @@ public class Resource {
 
 	public void setModule(String module) {
 		this.module = module;
+	}
+
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
 	}
 
 }
