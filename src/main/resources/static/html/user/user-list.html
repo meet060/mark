@@ -7,9 +7,9 @@
 		<!-- 所有的 css & js 资源 -->
 		<link rel="stylesheet" href="https://unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css">
 		<link rel="stylesheet" href="../../css/sa.css">
-		<script src="https://unpkg.com/vue@2.6.10/dist/vue.min.js"></script>
+		<script src="../../js/vue.min.js"></script>
 		<script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
-		<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
+		<script src="../../js/jquery.min.js"></script>
 		<script src="https://www.layuicdn.com/layer-v3.1.1/layer.js"></script>
 		<script src="../../js/sa.js"></script>
 	</head>
@@ -113,10 +113,13 @@
 				methods: {
 					// 数据刷新
 					f5: function() {
-						sa.ajax2('/user/getList', this.p, function(res){
-							this.dataList = res.data;	// 数据
-							this.dataCount = res.dataCount;		// 分页
-						}.bind(this), {res: mockData});
+						sa.ajax('/api/user/queryTheUser', this.p, function(res){
+							this.dataList = res.data;
+
+
+							// 数据
+							this.dataCount = 10;		// 分页
+						}.bind(this), {res: this.dataList});
 					},
 					// 删除
 					del: function(data) {
@@ -146,11 +149,5 @@
 			})
 
 		</script>
-
-
-
-
-
-
 	</body>
 </html>

@@ -6,6 +6,7 @@ import com.xingyue.pojo.User;
 import com.xingyue.service.UserService;
 import com.xingyue.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -37,12 +38,11 @@ public class UserServiceImpl implements UserService {
 	/**
      * 用户登录
      *
-     * @param str
+     * @param user
      * @return
      */
     @Override
-    public Boolean login(String str, HttpServletRequest request) {
-        User user = JSONObject.parseObject(str, User.class);
+    public Boolean login(User user, HttpServletRequest request) {
         //根据用户名称查询密码
         User u = userRepository.queryByUsername(user.getUsername());
         //用户名称为空

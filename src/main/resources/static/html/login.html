@@ -75,7 +75,7 @@
 
 <div id="particles-js">
     <div class="login-box">
-        <div class="login" >
+        <div class="login">
             <div class="login-top">
                 <img src="" class="logo-img" alt="">
                 <span class="page-title">登录</span>
@@ -94,7 +94,7 @@
                     <div class="login-center-input-text">密码</div>
                 </div>
             </div>
-            <div class="login-button" onclick="login()">登陆</div>
+            <div class="login-button">登陆</div>
         </div>
     </div>
     <div class="sk-rotating-plane"></div>
@@ -103,70 +103,44 @@
 <!-- scripts -->
 <script src="/js/login/particles.min.js"></script>
 <script src="/js/login/app.js"></script>
-<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <script src="https://www.layuicdn.com/layer-v3.1.1/layer.js"></script>
 <script src="/js/sa.js"></script>
 <script type="text/javascript">
-    function login() {
-        var username = $('[name=key]').val();
-        var password = $('[name=password]').val();
-        var str = "";
-        str += '{';
-        str += "'username':'" + username + "',";
-        str += "'password':'" + password + "'";
-        str += '}';
-        $.ajax({
-            url: "/api/user/login",
-            type: "post",
-            data: {"str": str},
-            dataType: "json",
-            success: function (msg) {
-                if (msg == true) {
-                    location.href = "index.html";
-                } else {
-                    alert("测试");
-                }
-            }
-        })
-
-    }
-
-    // 你所有要改的代码全在这里   ↓↓↓↓↓
-
     // 所有参考属性
     var page_title = '后台管理';		// 页面标题
     var key = 'admin';						// 默认的key
-    var password = 'admin';					// 默认的password
+    var password = '';					// 默认的password
     var logo_url = '/img/admin-logo.png';	// logo地址，为空字符串则不显示
 
     // 点击登录按钮
-    // document.querySelector(".login-button").onclick = function() {
-    // 	// 1、取值
-    // 	var p = {
-    // 		username: $('[name=key]').val(),
-    // 		password: $('[name=password]').val()
-    // 	}
-    // 	// 2、判断
-    // 	if(p.key == '' || p.password == ''){
-    // 		return layer.msg('请输入任意内容即可');
-    // 	}
-    // 	// 3、请求后台
-    // 	sa.ajax2('/api/user/login', p, function(res) {
-    // 		sa.msg('登录成功，欢迎你：' + p.username);
-    //
-    // 		console.log(res);
-    // 		setTimeout(function () {
-    // 			if(parent == window){
-    // 				location.href = "/api/user/index.html";
-    // 			}else{
-    // 				sa.closeCurrIframe();
-    // 				parent.location.reload();
-    // 			}
-    // 		}, 500);
-    // 	})
-    // }
-    // 你所有要改的代码全在这里   ↑↑↑↑↑
-
+    document.querySelector(".login-button").onclick = function () {
+        // 1、取值
+        var p = {
+            username: $('[name=key]').val(),
+            password: $('[name=password]').val()
+        }
+        // 2、判断
+        if (p.key == '' || p.password == '') {
+            return layer.msg('请输入任意内容即可');
+        }
+        // 3、请求后台
+        sa.ajax('/api/user/login', p, function (res) {
+            sa.msg('登录成功，欢迎你：' + p.username);
+            if (res.msg == "true") {
+                setTimeout(function () {
+                    if (parent == window) {
+                        location.href = "index.html";
+                    } else {
+                        sa.closeCurrIframe();
+                        parent.location.reload();
+                    }
+                }, 500);
+            } else {
+                layer.msg('账户或密码错误')
+            }
+        })
+    }
 </script>
 <script type="text/javascript">
     // 替换属性
@@ -185,9 +159,9 @@
         }
     });
     // // 去掉透明
-    setTimeout(function() {
-    	// document.querySelector('.login').style.backgroundColor = 'rgba(256,256,256,1)';
-    	document.querySelector('.login').style.opacity = '1';
+    setTimeout(function () {
+        // document.querySelector('.login').style.backgroundColor = 'rgba(256,256,256,1)';
+        document.querySelector('.login').style.opacity = '1';
     }, 0)
 </script>
 </body>

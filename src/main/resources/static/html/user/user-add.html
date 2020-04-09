@@ -6,12 +6,12 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<!-- 所有的 css & js 资源 -->
 		<link rel="stylesheet" href="https://unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css">
-		<link rel="stylesheet" href="../../static/sa.css"> 
-		<script src="https://unpkg.com/vue@2.6.10/dist/vue.min.js"></script>
+		<link rel="stylesheet" href="../../css/sa.css">
+		<script src="../../js/vue.min.js"></script>
 		<script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
-		<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
+		<script src="../../js/jquery.min.js"></script>
 		<script src="https://www.layuicdn.com/layer-v3.1.1/layer.js"></script>
-		<script src="../../static/sa.js"></script>
+		<script src="../../js/sa.js"></script>
 	</head>
 	<body>
 		<!-- 防止margin向下击穿 -->
@@ -27,22 +27,22 @@
 					<el-form-item label="密码：">
 						<el-input v-model="m.password"></el-input>
 					</el-form-item>
-					<el-form-item label="手机：">
-						<el-input v-model="m.phone"></el-input>
-					</el-form-item>
-					<el-form-item label="角色：">
-						<el-select v-model="m.role_id">
-							<el-option label="管理员" :value="1"></el-option>
-							<el-option label="公告管理员" :value="2"></el-option>
-							<el-option label="普通用户" :value="3"></el-option>
-						</el-select>
-					</el-form-item>
-					<el-form-item label="性别：">
-						<el-radio-group v-model="m.sex" size="mini">
-							<el-radio :label="1">男</el-radio>
-							<el-radio :label="2">女</el-radio>
-						</el-radio-group>
-					</el-form-item>
+					<!--<el-form-item label="手机：">-->
+						<!--<el-input v-model="m.phone"></el-input>-->
+					<!--</el-form-item>-->
+					<!--<el-form-item label="角色：">-->
+						<!--<el-select v-model="m.role_id">-->
+							<!--<el-option label="管理员" :value="1"></el-option>-->
+							<!--<el-option label="公告管理员" :value="2"></el-option>-->
+							<!--<el-option label="普通用户" :value="3"></el-option>-->
+						<!--</el-select>-->
+					<!--</el-form-item>-->
+					<!--<el-form-item label="性别：">-->
+						<!--<el-radio-group v-model="m.sex" size="mini">-->
+							<!--<el-radio :label="1">男</el-radio>-->
+							<!--<el-radio :label="2">女</el-radio>-->
+						<!--</el-radio-group>-->
+					<!--</el-form-item>-->
 					<el-form-item label="&emsp;">
 						<el-button type="primary" icon="el-icon-plus" size="mini" @click="ok">确定</el-button>
 					</el-form-item>
@@ -56,14 +56,14 @@
 					m: {	// 查询参数 
 						username: '',
 						password: '',
-						phone: '',
-						sex: 1,
+						// phone: '',
+						// sex: 1,
 					}
 				},
 				methods: {
 					// ok
 					ok: function() {
-						sa.ajax2('/user/add', function(res) {
+						sa.ajax('/api/user/addUsers', this.m ,function(res) {
 							sa.alert('数据添加, 参数为：' + JSON.stringify(this.m));
 						}.bind(this))
 					}
