@@ -6,6 +6,6 @@ import com.xingyue.pojo.Resource;
 
 public interface ResourceService {
 
-	Resource createFile(MultipartFile file) throws Exception;
+	Resource createFile(MultipartFile file, Resource resource) throws Exception;
 
 }

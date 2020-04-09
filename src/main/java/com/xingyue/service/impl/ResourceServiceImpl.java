@@ -21,7 +21,7 @@ public class ResourceServiceImpl implements ResourceService {
 	private ResourceRepository resourceRepository;
 
 	@Override
-	public Resource createFile(MultipartFile file) throws Exception {
+	public Resource createFile(MultipartFile file, Resource res) throws Exception {
 		if (file.getSize() > 0) {
 			// 判断文件夹是否存在,不存在则创建
 			File f = new File(storagePath);
@@ -34,8 +34,9 @@ public class ResourceServiceImpl implements ResourceService {
 				file.transferTo(newFile);
 				Resource resource = new Resource();
 				resource.setUrl(newFile.getPath());
-				resource.setDescription("测试");
-				resource.setModule("测试模块");
+				resource.setDescription(res.getDescription());
+				resource.setModule(res.getModule());
+				resource.setNumber(res.getNumber());
 				return resourceRepository.save(resource);
 			}
 		}

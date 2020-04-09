@@ -55,9 +55,9 @@ public class IndexController {
 	 */
 	@ApiOperation("上传图片")
 	@RequestMapping(value = "/create/file", method = RequestMethod.POST)
-	public ResponseEntity<?> upload(MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
+	public ResponseEntity<?> upload(Resource resource, MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
 		try {
-			Resource createFile = resourceService.createFile(file);
+			Resource createFile = resourceService.createFile(file, resource);
 			return MvcUtils.ok(createFile);
 		} catch (Exception e) {
 			e.printStackTrace();
