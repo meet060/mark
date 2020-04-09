@@ -6,12 +6,10 @@ import com.xingyue.service.UserService;
 import com.xingyue.utils.MvcUtils;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Map;
 
