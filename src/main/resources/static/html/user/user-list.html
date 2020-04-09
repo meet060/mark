@@ -6,12 +6,12 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<!-- 所有的 css & js 资源 -->
 		<link rel="stylesheet" href="https://unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css">
-		<link rel="stylesheet" href="../../static/sa.css"> 
+		<link rel="stylesheet" href="../../css/sa.css">
 		<script src="https://unpkg.com/vue@2.6.10/dist/vue.min.js"></script>
 		<script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
 		<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
 		<script src="https://www.layuicdn.com/layer-v3.1.1/layer.js"></script>
-		<script src="../../static/sa.js"></script>
+		<script src="../../js/sa.js"></script>
 	</head>
 	<body>
 		<!-- 防止margin向下击穿 -->
@@ -81,24 +81,19 @@
 				<!-- 分页 -->
 				<div class="page-box">
 					<el-pagination background
-						layout="total, prev, pager, next, sizes, jumper" 
-						:current-page.sync="p.pageNo" 
-						:page-size.sync="p.pageSize" 
-						:total="dataCount" 
-						:page-sizes="[1, 10, 20, 30, 40, 50, 100]" 
-						@current-change="f5(true)" 
+						layout="total, prev, pager, next, sizes, jumper"
+						:current-page.sync="p.pageNo"
+						:page-size.sync="p.pageSize"
+						:total="dataCount"
+						:page-sizes="[1, 10, 20, 30, 40, 50, 100]"
+						@current-change="f5(true)"
 						@size-change="f5(true)">
 					</el-pagination>
 				</div>
 			</div>
-			<!-- 给layer打一波广告 -->
-			<div class="c-panel" style="background-color: rgba(0,0,0,0);">
-				layer：<el-link type="primary" href="http://layer.layui.com/" target="_blank">
-					一个可以让你想到即可做到的JavaScript弹窗（层）解决方案
-				</el-link>
 			</div>
 		</div>
-		<script src="data-list.js"></script>
+		<script src="../../js/user/data-list.js"></script>
 		<script type="text/javascript">
 			var app = new Vue({
 				el: '.vue-box',
@@ -119,8 +114,8 @@
 					// 数据刷新
 					f5: function() {
 						sa.ajax2('/user/getList', this.p, function(res){
-							this.dataList = res.data;	// 数据  
-							this.dataCount = res.dataCount;		// 分页  
+							this.dataList = res.data;	// 数据
+							this.dataCount = res.dataCount;		// 分页
 						}.bind(this), {res: mockData});
 					},
 					// 删除
@@ -149,13 +144,13 @@
 					this.f5()
 				}
 			})
-			
+
 		</script>
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
 	</body>
 </html>

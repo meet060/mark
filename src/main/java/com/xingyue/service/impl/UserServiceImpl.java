@@ -1,5 +1,6 @@
 package com.xingyue.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.xingyue.dao.UserRepository;
 import com.xingyue.pojo.User;
 import com.xingyue.service.UserService;
@@ -38,11 +39,12 @@ public class UserServiceImpl implements UserService {
     /**
      * 用户登录
      *
-     * @param user
+     * @param str
      * @return
      */
     @Override
-    public Boolean login(User user, HttpServletRequest request) {
+    public Boolean login(String str, HttpServletRequest request) {
+        User user = JSONObject.parseObject(str, User.class);
         //根据用户名称查询密码
         User u = userRepository.queryByUsername(user.getUsername());
         //用户名称为空
@@ -57,9 +59,9 @@ public class UserServiceImpl implements UserService {
         //判断密码是否正确
         if(storePassword.equals(enterPassword)){
             //写入session
-            request.getSession().setAttribute("xueyue",u.getUsername() + storePassword);
-            //设置过期时间秒
-            request.getSession().setMaxInactiveInterval(10);
+            request.getSession().setAttribute("xingyue",u);
+            //设置非活跃间隔时间
+            request.getSession().setMaxInactiveInterval(1800);
             return true;
         }else{
             System.out.println("账户或者密码错误");
@@ -118,7 +120,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Boolean logoutUser(HttpServletRequest request){
-        request.getSession().removeAttribute("xinyue");
+        request.getSession().removeAttribute("xingyue");
         return true;
     }
 }
