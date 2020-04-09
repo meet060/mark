@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,8 +34,8 @@ public class UserContreller {
 
 	@ApiOperation("用户登录")
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public Boolean login(@RequestBody User user, HttpServletRequest request) {
-		Boolean login = userService.login(user, request);
+	public Boolean login(@RequestParam(value = "str") String str, HttpServletRequest request) {
+		Boolean login = userService.login(str, request);
 		return login;
 	}
 
@@ -68,7 +69,7 @@ public class UserContreller {
 	@RequestMapping(value = "/logoutUser", method = RequestMethod.POST)
 	public String logoutUser(HttpServletRequest request) {
 		Boolean aBoolean = userService.logoutUser(request);
-		return true == aBoolean ? "登出用户成功（写跳转页面）" : "登出用户失败";
+		return true == aBoolean ? "yes" : "no";
 	}
 
 }

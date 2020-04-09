@@ -6,7 +6,7 @@
 // ================================= 示例：一些基本信息 ================================= 
 
 // 设置模板标题 
-sa_admin.title = "SA-后台模板";
+sa_admin.title = "后台模板";
 sa_admin.logo_url = '../../img/admin-logo.png';    // 设置logo图标地址   默认值：sa-resources/admin-logo.png
 sa_admin.icon_url = '../../img/admin-logo.png';    // 设置icon图标地址   默认值：sa-resources/admin-logo.png
 
@@ -45,7 +45,7 @@ sa_admin.setMenuList(myMenuList);	// 写入菜单
 // ================================= 示例：设置user信息 =================================
 // 用户登录后，右上角可直接显示用户的头像和昵称
 sa_admin.user = {
-	username: 'root',	// 昵称 
+	username: 'root',	// 昵称
 	avatar: '../../img/admin-logo.png'	// 头像地址
 }
 
@@ -69,7 +69,7 @@ sa_admin.dropList = [		// 头像点击处可操作的选项
 				shade: 0.8,
 				area: ['70%', '80%'],
 				resize: false,
-				content: 'login.html'
+				content: 'static.html.login.html'
 			});
 		}
 	},
@@ -79,11 +79,18 @@ sa_admin.dropList = [		// 头像点击处可操作的选项
 			// sa_admin.$message('点击了退出登录，你可以参照文档重写此函数');
 			// location="login.html";
 			sa.confirm('退出登录？', function(res) {
-				sa.ajax2('/acc/exit', function(res) {
-					sa.alert('注销成功', function() {
-						location.href = "login.html";
-					})
-				}, {msg: '正在注销'})
+				$.ajax({
+                    url: "/api/user/logoutUser",
+                    type: "post",
+                    dataType: "text",
+                    success: function (msg) {
+                        if (msg == "yes") {
+                            sa.alert('注销成功', function() {
+                                location.href = "/html/login.html";
+                            })
+                        }
+                    }
+				})
 			});
 		}
 	}

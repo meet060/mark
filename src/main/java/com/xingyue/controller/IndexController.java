@@ -1,6 +1,5 @@
 package com.xingyue.controller;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

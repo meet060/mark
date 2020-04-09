@@ -20,10 +20,10 @@ public interface UserService {
 	/**
 	 * 用户登录
 	 *
-	 * @param user
+	 * @param str
 	 * @return
 	 */
-	Boolean login(User user, HttpServletRequest request);
+	Boolean login(String str, HttpServletRequest request);
 
 	/**
 	 * 添加用户
