@@ -6,8 +6,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.xingyue.pojo.Resource;
+import com.xingyue.service.ResourceService;
 import com.xingyue.utils.MvcUtils;
 
 import io.swagger.annotations.ApiOperation;
@@ -24,8 +26,8 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/")
 public class IndexController {
 
-	@Value("${package.storage}")
-	private String storagePath;
+	@Autowired
+	private ResourceService resourceService;
 
 	@GetMapping("/")
 	public String login() {
@@ -54,23 +56,15 @@ public class IndexController {
 	 * @throws Exception
 	 */
 	@ApiOperation("上传图片")
-	@RequestMapping(value = "/savefile", method = RequestMethod.POST)
-	public ResponseEntity<?> upload(MultipartFile file, HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		if (file.getSize() > 0) {
-			// 判断文件夹是否存在,不存在则创建
-			File f = new File(storagePath);
-			if (!f.exists()) {
-				f.mkdirs();
-			}
-			String fileName = file.getOriginalFilename();
-			if (fileName.endsWith("jpg") || fileName.endsWith("png") || fileName.endsWith("txt")) {
-				File newFile = new File(storagePath, fileName);
-				file.transferTo(newFile);
-				return MvcUtils.ok(newFile.getPath());
-			}
+	@RequestMapping(value = "/create/file", method = RequestMethod.POST)
+	public ResponseEntity<?> upload(MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
+		try {
+			Resource createFile = resourceService.createFile(file);
+			return MvcUtils.ok(createFile);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return MvcUtils.ok(false);
+		return MvcUtils.notFound();
 	}
 
 }

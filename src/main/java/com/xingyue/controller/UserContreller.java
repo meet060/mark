@@ -4,7 +4,6 @@ import com.xingyue.pojo.User;
 import com.xingyue.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.SQLOutput;
 import java.util.List;
 
 /**
@@ -22,6 +20,7 @@ import java.util.List;
 @RequestMapping(value = "/api/user")
 @EnableSwagger2
 public class UserContreller {
+
 	@Autowired
 	private UserService userService;
 

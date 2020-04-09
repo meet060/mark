@@ -37,3 +37,13 @@ INSERT INTO `user` VALUES (7, '测试', '测试');
 INSERT INTO `user` VALUES (8, 'string', 'string');
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+CREATE TABLE if not exists `resource` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `module` varchar(10) DEFAULT '' COMMENT '模块',
+  `url` varchar(100) DEFAULT NULL COMMENT '路径',
+  `description` varchar(100) DEFAULT NULL COMMENT '描述',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+

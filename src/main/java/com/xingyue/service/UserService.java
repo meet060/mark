@@ -10,50 +10,50 @@ import java.util.List;
  */
 public interface UserService {
 
-    /**
-     * 查询用户
-     *
-     * @return
-     */
-    List<User> queryTheUser();
+	/**
+	 * 查询用户
+	 *
+	 * @return
+	 */
+	List<User> queryTheUser();
 
-    /**
-     * 用户登录
-     *
-     * @param user
-     * @return
-     */
-    Boolean login(User user, HttpServletRequest request);
+	/**
+	 * 用户登录
+	 *
+	 * @param user
+	 * @return
+	 */
+	Boolean login(User user, HttpServletRequest request);
 
-    /**
-     * 添加用户
-     *
-     * @param user
-     * @return
-     */
-    Boolean addUsers(User user);
+	/**
+	 * 添加用户
+	 *
+	 * @param user
+	 * @return
+	 */
+	Boolean addUsers(User user);
 
-    /**
-     * 修改用户
-     *
-     * @param user
-     * @return
-     */
-    Boolean ModifyTheUser(User user);
+	/**
+	 * 修改用户
+	 *
+	 * @param user
+	 * @return
+	 */
+	Boolean ModifyTheUser(User user);
 
-    /**
-     * 删除用户
-     *
-     * @param user
-     * @return
-     */
-    Boolean deleteUser(User user);
+	/**
+	 * 删除用户
+	 *
+	 * @param user
+	 * @return
+	 */
+	Boolean deleteUser(User user);
 
-    /**
-     * 登出用户
-     *
-     * @return
-     */
-    public Boolean logoutUser(HttpServletRequest request);
+	/**
+	 * 登出用户
+	 *
+	 * @return
+	 */
+	public Boolean logoutUser(HttpServletRequest request);
 
 }
