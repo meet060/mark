@@ -4,7 +4,7 @@
 // 	name: '用户中心',		// 菜单名称, 同时也是tab选项卡上显示的名称
 // 	icon: 'el-icon-user',	// 菜单图标, 参考地址:  https://element.eleme.cn/#/zh-CN/component/icon
 //	info: '管理所有用户',	// 菜单介绍, 在菜单预览和分配权限时会有显示 
-// 	url: 'sa-html/user/user-list.html',	// 菜单指向地址
+// 	url: 'sa-html/user/AboutZR-list.html',	// 菜单指向地址
 // 	parent_id: 1,			// 所属父菜单id, 如果指定了一个值, sa-admin在初始化时会将此菜单转移到指定菜单上
 // 	is_show: true,			// 是否显示, 默认true
 // 	is_blank: false,		// 是否属于外部链接, 如果为true, 则点击菜单时从新窗口打开 
@@ -60,13 +60,17 @@ var menuList =	[
     // },
 	{
 		id: '1',
-		name: '用户管理',
+		name: '图片管理',
 		icon: 'el-icon-user',
 		info: '对用户列表、添加、统计等等...',
 		childList: [
-			{id: '1-1', name: '用户列表', url: '../html/user/user-list.html'},
-			{id: '1-2', name: '用户添加', url: '../html/user/user-add.html'},
-			{
+			{id: '1-1', name: '关于中润', url: '../html/management-img/AboutZR-list.html'},
+			{id: '1-2', name: '产品实力', url: '../html/management-img/AboutZR-list2.html'},
+			{id: '1-3', name: '技术支持', url: '../html/user/user-add.html'},
+			{id: '1-4', name: '新闻活动', url: '../html/user/user-add.html'},
+			{id: '1-5', name: '联系我们', url: '../html/user/user-add.html'},
+			{id: '1-6', name: '邮箱', url: '../html/user/user-add.html'},
+			/*{
 				id: '1-3',
 				name: '用户统计',
 				childList: [
@@ -76,10 +80,10 @@ var menuList =	[
 						url: '../html/user/user-chart.html'
 					}
 				]
-			}
+			}*/
 		]
 	},
-	{
+	/*{
 		id: '2',
 		name: '文章管理',
 		icon: 'el-icon-document-copy',
@@ -88,8 +92,8 @@ var menuList =	[
 			{id: '2-1', name: '文章列表', url: '../html/article/art-list.html'},
 			{id: '2-2', name: '文章发表', url: '../html/article/art-add.html'}
 		]
-	},
-	{
+	},*/
+	/*{
 		id: '3',
 		name: '系统设置',
 		icon: 'el-icon-setting',
@@ -101,7 +105,7 @@ var menuList =	[
 			{id: '3-11', name: '服务器设置', url: '../html/cfg/system-cfg.html', info: '对服务器参数的设置'},
 			{id: '3-12', name: '函数菜单', click: function(){sa.alert('点击菜单执行一个函数')}}
 		]
-	}
+	}*/
 	//  ========= 示例 外部链接 点击从新窗口打开 ================
 	// {
 	// 	id: '8',

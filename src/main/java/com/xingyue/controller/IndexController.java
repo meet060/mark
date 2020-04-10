@@ -39,7 +39,7 @@ public class IndexController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/test",method = RequestMethod.POST)
+	@RequestMapping(value = "/test",method = RequestMethod.GET)
 	public ResponseEntity<?> test() {
 		List<String> list = Arrays.asList("111", "222", "3333", "4444");
 		return MvcUtils.ok(list);

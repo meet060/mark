@@ -110,9 +110,9 @@ var sa_admin = new Vue({
 			this.is_reme_open = (option.is_reme_open === undefined ? this.is_reme_open : option.is_reme_open);	// 是否记住上一次最后打开的窗口 
 			
 			// 打印版本等信息
-			if(option.printVesion !== false) {
-				this.printVesion();
-			}
+			// if(option.printVesion !== false) {
+			// 	this.printVesion();
+			// }
 			
 			// 开始一些初始化动作
 			this.showTabByHash();	// 打开上次最后的一个窗口 
@@ -809,8 +809,8 @@ var sa_admin = new Vue({
 		},
 		// 打印版本
 		printVesion: function() {
-			console.log('欢迎使用sa-admin，当前版本：' + this.version + "，更新于：" + this.update_time + "，GitHub地址：" + this.github_url);
-			console.log('如在使用中发现任何bug或者疑问，请加入QQ群交流：782974737，点击加入：' + 'https://jq.qq.com/?_wv=1027&k=5DHN5Ib');
+			// console.log('欢迎使用sa-admin，当前版本：' + this.version + "，更新于：" + this.update_time + "，GitHub地址：" + this.github_url);
+			// console.log('如在使用中发现任何bug或者疑问，请加入QQ群交流：782974737，点击加入：' + 'https://jq.qq.com/?_wv=1027&k=5DHN5Ib');
 		},
 		// 获取指定tab栏的window对象, 用于多窗口通信 
 		getTabWindow: function(tab_id) {
