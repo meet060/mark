@@ -2,6 +2,7 @@ package com.xingyue.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,7 +39,7 @@ public class IndexController {
 		return "index";
 	}
 
-	@RequestMapping("/test")
+	@RequestMapping(value = "/test",method = RequestMethod.POST)
 	public ResponseEntity<?> test() {
 		List<String> list = Arrays.asList("111", "222", "3333", "4444");
 		return MvcUtils.ok(list);
@@ -47,11 +49,9 @@ public class IndexController {
 	 * 上传图片
 	 * 
 	 * @param file
-	 * @param session
 	 * @param request
 	 * @param response
 	 * @return
-	 * @throws Exceptionn
 	 */
 	@ApiOperation("上传图片")
 	@RequestMapping(value = "/create/file", method = RequestMethod.POST)
@@ -63,6 +63,18 @@ public class IndexController {
 			e.printStackTrace();
 		}
 		return MvcUtils.notFound();
+	}
+
+	/**
+	 * 根据模块查询资源
+	 * @param resource
+	 * @return
+	 */
+	@ApiOperation("根据模块查询资源")
+	@RequestMapping(value = "/api/resource/queryResourcesByModule", method = RequestMethod.POST)
+	public ResponseEntity<?> queryResourcesByModule(@RequestBody Resource resource) {
+		List<Resource> list = resourceService.queryResourcesByModule(resource);
+		return MvcUtils.ok(list);
 	}
 
 }

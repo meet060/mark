@@ -1,9 +1,15 @@
 package com.xingyue.service.impl;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -41,6 +47,19 @@ public class ResourceServiceImpl implements ResourceService {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * 根据模块查询资源
+	 *
+	 * @param resource
+	 * @return
+	 */
+	@Override
+	public List<Resource> queryResourcesByModule(Resource resource) {
+		Sort sort =JpaSort.unsafe(Sort.Direction.ASC, "number");
+		List<Resource> resources = resourceRepository.queryByModule(resource.getModule(),sort);
+		return resources;
 	}
 
 }
