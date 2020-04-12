@@ -1,13 +1,13 @@
 package com.xingyue.controller;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.xingyue.utils.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -65,16 +65,18 @@ public class IndexController {
 		return MvcUtils.notFound();
 	}
 
+
 	/**
 	 * 根据模块查询资源
-	 * @param resource
+	 *
+	 * @param pageUtils
 	 * @return
 	 */
 	@ApiOperation("根据模块查询资源")
 	@RequestMapping(value = "/api/resource/queryResourcesByModule", method = RequestMethod.POST)
-	public ResponseEntity<?> queryResourcesByModule(@RequestBody Resource resource) {
-		List<Resource> list = resourceService.queryResourcesByModule(resource);
-		return MvcUtils.ok(list);
+	public ResponseEntity<?> queryResourcesByModule(@RequestBody PageUtils<Resource> pageUtils) {
+		Map<String,Object> map = resourceService.queryResourcesByModule(pageUtils);
+		return MvcUtils.ok(map);
 	}
 
 }

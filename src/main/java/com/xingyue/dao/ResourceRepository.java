@@ -1,5 +1,7 @@
 package com.xingyue.dao;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -18,8 +20,8 @@ public interface ResourceRepository extends JpaRepository<Resource, Integer> {
     /**
      *根据模块查询资源
      * @param module 模块
-     * @param sort 排序
+     * @param pageable 分页/排序
      * @return
      */
-    List<Resource> queryByModule(String module, Sort sort);
+    Page<Resource> queryByModule(String module, Pageable pageable);
 }
