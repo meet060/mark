@@ -7,8 +7,8 @@
 
 // 设置模板标题 
 sa_admin.title = "后台模板";
-sa_admin.logo_url = '../../img/admin-logo.png';    // 设置logo图标地址   默认值：sa-resources/admin-logo.png
-sa_admin.icon_url = '../../img/admin-logo.png';    // 设置icon图标地址   默认值：sa-resources/admin-logo.png
+sa_admin.logo_url = '../../images/admin-logo.png';    // 设置logo图标地址   默认值：sa-resources/admin-logo.png
+sa_admin.icon_url = '../../images/admin-logo.png';    // 设置icon图标地址   默认值：sa-resources/admin-logo.png
 
 
 // ================================= 示例：自定义菜单 =================================
@@ -46,7 +46,7 @@ sa_admin.setMenuList(myMenuList);	// 写入菜单
 // 用户登录后，右上角可直接显示用户的头像和昵称
 sa_admin.user = {
 	username: 'root',	// 昵称
-	avatar: '../../img/admin-logo.png'	// 头像地址
+	avatar: '../../images/admin-logo.png'	// 头像地址
 }
 
 

@@ -7,13 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.xingyue.utils.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.xingyue.pojo.Resource;
@@ -29,15 +25,15 @@ public class IndexController {
 	@Autowired
 	private ResourceService resourceService;
 
-	@GetMapping("/")
+	/*@GetMapping(value = "/")
 	public String login() {
-		return "login";
-	}
-
-	@GetMapping("/index")
-	public String index() {
 		return "index";
 	}
+*/
+	/*@GetMapping("/index")
+	public String index() {
+		return "index";
+	}*/
 
 	@RequestMapping(value = "/test",method = RequestMethod.GET)
 	public ResponseEntity<?> test() {
@@ -65,14 +61,13 @@ public class IndexController {
 		return MvcUtils.notFound();
 	}
 
-
 	/**
 	 * 根据模块查询资源
 	 *
 	 * @param pageUtils
 	 * @return
 	 */
-	@ApiOperation("根据模块查询资源")
+	@ApiOperation(value = "根据模块查询资源")
 	@RequestMapping(value = "/api/resource/queryResourcesByModule", method = RequestMethod.POST)
 	public ResponseEntity<?> queryResourcesByModule(@RequestBody PageUtils<Resource> pageUtils) {
 		Map<String,Object> map = resourceService.queryResourcesByModule(pageUtils);

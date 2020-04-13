@@ -7,13 +7,13 @@
     <meta name="author" content="Vincent Garreau"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" media="screen" href="/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
-    <link rel="stylesheet" href="/css/sa.css">
+    <link rel="stylesheet" media="screen" href="/css/admin/admin-style.css">
+    <link rel="stylesheet" type="text/css" href="/css/admin/reset.css"/>
+    <link rel="stylesheet" href="/css/admin/sa.css">
     <style type="text/css">
         /* 背景图片 */
         #particles-js {
-            background-image: url(../img/bg.jpg);
+            background-image: url(../images/bg.jpg);
         }
 
         /* 样式调整 */
@@ -81,14 +81,14 @@
                 <span class="page-title">登录</span>
             </div>
             <div class="login-center clearfix">
-                <div class="login-center-img"><img src="/img/name.png"/></div>
+                <div class="login-center-img"><img src="/images/name.png"/></div>
                 <div class="login-center-input">
                     <input type="text" name="key" value="" placeholder="请输入账号"/>
                     <div class="login-center-input-text">账号</div>
                 </div>
             </div>
             <div class="login-center clearfix">
-                <div class="login-center-img"><img src="/img/password.png"/></div>
+                <div class="login-center-img"><img src="/images/password.png"/></div>
                 <div class="login-center-input">
                     <input type="password" name="password" value="" placeholder="请输入密码"/>
                     <div class="login-center-input-text">密码</div>
@@ -102,7 +102,7 @@
 
 <!-- scripts -->
 <!--<script src="/js/login/particles.min.js"></script>-->
-<script src="/js/login/app.js"></script>
+<!--<script src="/js/login/app.js"></script>-->
 <script src="/js/jquery.min.js"></script>
 <script src="https://www.layuicdn.com/layer-v3.1.1/layer.js"></script>
 <script src="/js/sa.js"></script>
@@ -111,7 +111,7 @@
     var page_title = '后台管理';		// 页面标题
     var key = 'admin';						// 默认的key
     var password = '';					// 默认的password
-    var logo_url = '/img/admin-logo.png';	// logo地址，为空字符串则不显示
+    var logo_url = '/images/admin-logo.png';	// logo地址，为空字符串则不显示
 
     // 点击登录按钮
     document.querySelector(".login-button").onclick = function () {
