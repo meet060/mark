@@ -45,7 +45,7 @@ sa_admin.setMenuList(myMenuList);	// 写入菜单
 // ================================= 示例：设置user信息 =================================
 // 用户登录后，右上角可直接显示用户的头像和昵称
 sa_admin.user = {
-	username: 'root',	// 昵称
+	username: "admin",	// 昵称
 	avatar: '../../images/admin-logo.png'	// 头像地址
 }
 
@@ -53,26 +53,26 @@ sa_admin.user = {
 
 // ================================= 示例：设置登录后的头像处，下拉可以出现的选项  =================================
 sa_admin.dropList = [		// 头像点击处可操作的选项
-	{
-		name: '我的资料',
-		click: function() {
-			sa_admin.$message('点击了我的资料，你可以参照文档重写此函数');
-		}
-	},
-	{
-		name: '切换账号',
-		click: function() {
-			layer.open({
-				type: 2,
-				title: '登录',
-				shadeClose: true,
-				shade: 0.8,
-				area: ['70%', '80%'],
-				resize: false,
-				content: 'static.html.login.html'
-			});
-		}
-	},
+	// {
+	// 	name: '我的资料',
+	// 	click: function() {
+	// 		sa_admin.$message('点击了我的资料，你可以参照文档重写此函数');
+	// 	}
+	// },
+	// {
+	// 	name: '切换账号',
+	// 	click: function() {
+	// 		layer.open({
+	// 			type: 2,
+	// 			title: '登录',
+	// 			shadeClose: true,
+	// 			shade: 0.8,
+	// 			area: ['70%', '80%'],
+	// 			resize: false,
+	// 			content: '/html.login.html'
+	// 		});
+	// 	}
+	// },
 	{
 		name: '退出登录',
 		click: function() {

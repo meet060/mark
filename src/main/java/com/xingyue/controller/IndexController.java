@@ -19,7 +19,7 @@ import com.xingyue.utils.MvcUtils;
 import io.swagger.annotations.ApiOperation;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/api/resource")
 public class IndexController {
 
 	@Autowired
@@ -68,7 +68,7 @@ public class IndexController {
 	 * @return
 	 */
 	@ApiOperation(value = "根据模块查询资源")
-	@RequestMapping(value = "/api/resource/queryResourcesByModule", method = RequestMethod.POST)
+	@RequestMapping(value = "/queryResourcesByModule", method = RequestMethod.POST)
 	public ResponseEntity<?> queryResourcesByModule(@RequestBody PageUtils<Resource> pageUtils) {
 		Map<String,Object> map = resourceService.queryResourcesByModule(pageUtils);
 		return MvcUtils.ok(map);
