@@ -25,7 +25,7 @@
 						<el-input v-model="p.username" placeholder="模糊查询"></el-input>
 					</el-form-item>
 					<el-form-item label="注册日期：">
-						<el-date-picker v-model="p.start_time" type="date" value-format="yyyy-MM-dd" placeholder="开始日期"></el-date-picker> - 
+						<el-date-picker v-model="p.start_time" type="date" value-format="yyyy-MM-dd" placeholder="开始日期"></el-date-picker> -
 						<el-date-picker v-model="p.end_time" type="date" value-format="yyyy-MM-dd" placeholder="结束日期"></el-date-picker>
 					</el-form-item>
 					<el-form-item style="min-width: 0px;">
@@ -98,12 +98,12 @@
 			var app = new Vue({
 				el: '.vue-box',
 				data: {
-					p: {	// 查询参数 
+					p: {	// 查询参数
 						username: '',
 						create_type: 0,
 						sort_type: 1,
-						start_time: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-1',	// 本月一号 
-						end_time: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),	// 本月当日 
+						start_time: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-1',	// 本月一号
+						end_time: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),	// 本月当日
 						pageNo: 1,
 						pageSize: 10,
 					},

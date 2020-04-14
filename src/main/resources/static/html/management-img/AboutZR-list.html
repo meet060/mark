@@ -1,39 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>关于中润图片列表</title>
+	<title>用户列表</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<!-- 所有的 css & js 资源 -->
 	<link rel="stylesheet" href="https://unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css">
 	<link rel="stylesheet" href="../../css/sa.css">
 	<script src="../../js/vue.min.js"></script>
+<!--	<script src="../../js/list.js"></script>-->
 	<script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
 	<script src="../../js/jquery.min.js"></script>
 	<script src="https://www.layuicdn.com/layer-v3.1.1/layer.js"></script>
 	<script src="../../js/sa.js"></script>
 </head>
 <body>
-<!--防止margin向下击穿-->
+<!-- 防止margin向下击穿 -->
 <div style="margin-top: -1em;"><br></div>
-<div class="vue-box" style="display: none;" :style="'display: block;'">
+<div class="vue-box" style="display: none;" :style="'display: block;'" id="test">
 	<div class="c-panel">
-		<b>{{info}}</b>
 		<!-- 参数栏 -->
-		<div class="c-title">图片列表</div>
-		<!--<el-table :data="msg" size="mini">
+		<div class="c-title">用户列表</div>
+		<el-form :inline="true" size="mini">
+			<el-form-item label="用户昵称：">
+				<el-input placeholder="模糊查询"></el-input>
+			</el-form-item>
+			<el-form-item label="注册日期：">
+				<el-date-picker v-model="p.start_time" type="date" value-format="yyyy-MM-dd" placeholder="开始日期"></el-date-picker> -
+				<el-date-picker v-model="p.end_time" type="date" value-format="yyyy-MM-dd" placeholder="结束日期"></el-date-picker>
+			</el-form-item>
+			<el-form-item style="min-width: 0px;">
+				<el-button type="primary" icon="el-icon-search">查询</el-button><!-- @click="p.pageNo = 1; f5()"-->
+			</el-form-item>
+			<br />
+			<el-form-item label="综合排序：" class="s-radio-text">
+				<el-radio-group v-model="p.sort_type">
+					<el-radio :label="1">注册时间</el-radio>
+					<el-radio :label="2">最近登录</el-radio>
+					<el-radio :label="3">登陆次数</el-radio>
+					<el-radio :label="4">最近签到</el-radio>
+					<el-radio :label="5">签到次数</el-radio>
+				</el-radio-group>
+			</el-form-item>
+		</el-form>
+		<!-- <div class="c-title">数据列表</div> -->
+		<el-table :data="dataList" size="mini">
 			<el-table-column label="编号" prop="id" width="70px" > </el-table-column>
 			<el-table-column label="昵称" prop="username" width="200px">
 				<template slot-scope="s">
 					<img :src="s.row.avatar" @click="sa.showImage(s.row.avatar, '400px', '400px')"
 						 style="width: 3em; height: 3em; float: left; margin-right: 1em; border-radius: 50%; cursor: pointer;" >
 					<div style="float: left; width: 130px; line-height: 20px;">
-						<b>{{msg.id}}</b>
-						<p>{{msg.module}}</p>
+						<b>{{s.row.username}}</b>
+						<p>{{s.row.tell}}</p>
 					</div>
 				</template>
-			</el-table-column>-->
-			<!--<el-table-column label="个人相册">
+			</el-table-column>
+			<el-table-column label="个人相册">
 				<template slot-scope="s">
 					<img :src="s.row.photo_list[0]" style="width: 40px; height: 40px; cursor: pointer;" @click="sa.showImageList(s.row.photo_list)" >
 					共{{s.row.photo_list.length}}张, 点击预览
@@ -46,7 +69,7 @@
 				<template slot-scope="s">
 					<el-switch v-model="s.row.status" :active-value="1" :inactive-value="2" inactive-color="#ff4949"></el-switch>
 					<b style="color: green;" v-if="s.row.status == 1">正常</b>
-					<b style="color: red;" v-if="s.row.status == 2">禁用</b>
+					<b style="color: #ff0000;" v-if="s.row.status == 2">禁用</b>
 				</template>
 			</el-table-column>
 			<el-table-column prop="address" label="操作">
@@ -55,9 +78,9 @@
 					<el-button class="c-btn" type="danger" icon="el-icon-delete" @click="del(s.row)">删除</el-button>
 				</template>
 			</el-table-column>
-		</el-table>-->
+		</el-table>
 		<!-- 分页 -->
-		<!--<div class="page-box">
+		<div class="page-box">
 			<el-pagination background
 						   layout="total, prev, pager, next, sizes, jumper"
 						   :current-page.sync="p.pageNo"
@@ -67,52 +90,49 @@
 						   @current-change="f5(true)"
 						   @size-change="f5(true)">
 			</el-pagination>
-		</div>-->
+		</div>
 	</div>
 </div>
 </div>
 <script src="../../js/user/data-list.js"></script>
 <script type="text/javascript">
-	$(function(){
-		//定义一个可变路径的变量去接收接口，以便后期更改
-		var AbUrl = "127.0.0.1:9000";
-		var vm = new Vue({
-			el: '.c-panel',
-			data () {
-				return {
-					info: null
-				}
+	var app = new Vue({
+		el: '.vue-box',
+		data: {
+			p: {	// 查询参数
+				username: '',
+				create_type: 0,
+				sort_type: 1,
+				start_time: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-1',	// 本月一号
+				end_time: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),	// 本月当日
+				pageNo: 1,
+				pageSize: 10,
 			},
-			methods() {
-				axios
-				.get(AbUrl+'/test')
-				.then(response => (this.info = response))
-				.catch(function (error) { // 请求失败处理
-					console.log(error);
-				});
+			dataCount: 1422,
+			dataList: []
+		},
+		methods: {
+			// 数据刷新
+			f5: function () {
+
+			},
+			// 删除
+			del: function (data) {
+				sa.confirm('是否删除，此操作不可撤销', function () {
+					sa.ajax2('/user/delete?id=' + data.id, function (res) {
+						sa.arrayDelete(this.dataList, data);
+						sa.ok('删除成功');
+					}.bind(this))
+				}.bind(this));
 			}
-		/*	methods: {
-				get: function() {
-					let param = new FormData() // 创建form对象
-					param.append('module', "AboutZR") // 通过append向form对象添加数据
-					//console.log(ids)
-					this.$http.get(AbUrl+"/test",{
-					// this.$http.get(AbUrl+"/api/resource/queryResourcesByModule", param,{ //index/recsupply
-						emulateJSON: true
-					}).then(function(res) {
-						alert(res);
-						var data = res.data;
-						//console.log(data)
-						var List =data.data;
-						this.msg = List;
-						console.log(List);
-					}, function() {
-						console.log('请求失败处理');
-					});
-				}
-			}*/
-		});
+		},
+		created: function () {
+			this.$http.get("127.0.0.1:9000/test").then((data)=>{
+				console.log(data);
+			})
+		}
 	})
+
 </script>
 </body>
 </html>
