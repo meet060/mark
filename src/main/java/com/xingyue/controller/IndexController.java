@@ -25,16 +25,6 @@ public class IndexController {
 	@Autowired
 	private ResourceService resourceService;
 
-	/*@GetMapping(value = "/")
-	public String login() {
-		return "index";
-	}
-*/
-	/*@GetMapping("/index")
-	public String index() {
-		return "index";
-	}*/
-
 	@RequestMapping(value = "/test",method = RequestMethod.GET)
 	public ResponseEntity<?> test() {
 		List<String> list = Arrays.asList("111", "222", "3333", "4444");
@@ -74,4 +64,16 @@ public class IndexController {
 		return MvcUtils.ok(map);
 	}
 
+	/**
+	 * 根据模块查询资源
+	 *
+	 * @param pageUtils
+	 * @return
+	 */
+	@ApiOperation(value = "根据模块查询资源")
+	@RequestMapping(value = "/queryResourcesByModule2", method = RequestMethod.POST)
+	public ResponseEntity<?> queryResourcesByModule2(Resource resource) {
+		Map<String,Object> map = resourceService.queryResourcesByModule(resource);
+		return MvcUtils.ok(map);
+	}
 }

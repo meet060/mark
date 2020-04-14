@@ -24,4 +24,6 @@ public interface ResourceRepository extends JpaRepository<Resource, Integer> {
      * @return
      */
     Page<Resource> queryByModule(String module, Pageable pageable);
+
+	List<Resource> queryByModule(String module);
 }

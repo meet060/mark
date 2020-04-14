@@ -2,9 +2,12 @@ package com.xingyue.service.impl;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import com.xingyue.utils.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,16 +42,14 @@ public class ResourceServiceImpl implements ResourceService {
                 f.mkdirs();
             }
             String fileName = file.getOriginalFilename();
-            if (fileName.endsWith("jpg") || fileName.endsWith("png") || fileName.endsWith("txt")) {
-                File newFile = new File(storagePath, fileName);
-                file.transferTo(newFile);
-                Resource resource = new Resource();
-                resource.setUrl(newFile.getPath());
-                resource.setDescription(res.getDescription());
-                resource.setModule(res.getModule());
-                resource.setNumber(res.getNumber());
-                return resourceRepository.save(resource);
-            }
+            File newFile = new File(storagePath, fileName);
+            file.transferTo(newFile);
+            Resource resource = new Resource();
+            resource.setUrl(newFile.getPath());
+            resource.setDescription(res.getDescription());
+            resource.setModule(res.getModule());
+            resource.setNumber(res.getNumber());
+            return resourceRepository.save(resource);
         }
         return null;
     }
@@ -77,4 +78,31 @@ public class ResourceServiceImpl implements ResourceService {
         return map;
     }
 
+	@Override
+	public Map<String, Object> queryResourcesByModule(Resource resource) {
+		Map<String, Object> map = new HashMap<>();
+		List<Resource> resources = resourceRepository.queryByModule(resource.getModule());
+		//轮播图 3条数据按照最新发布信息(图片静态的)
+		map.put("banner", filterResource(resources, "banner", 3));
+		//产品：按照产品最新  4条数据
+		map.put("product", filterResource(resources, "product", 4));
+		//关于我们：
+		map.put("about", filterResource(resources, "about", 1));
+		//改善创新
+		map.put("innovation", filterResource(resources, "innovation", 4));
+		//解决方案
+		map.put("program", filterResource(resources, "program", 4));
+		//友情链接
+		map.put("link", filterResource(resources, "link", 1));
+		return map;
+	}
+
+	public List<Resource> filterResource(List<Resource> resources, String position, int limit) {
+		List<Resource> res = resources.stream()
+				.filter(r -> position.equals(r.getPosition()))
+				.sorted(Comparator.comparing(Resource :: getCreatTime).reversed())
+				.limit(limit)
+				.collect(Collectors.toList());
+		return res;
+	}
 }

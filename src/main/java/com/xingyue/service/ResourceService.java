@@ -32,5 +32,7 @@ public interface ResourceService {
      */
     Map<String, Object> queryResourcesByModule(PageUtils<Resource> pageUtils);
 
+	Map<String, Object> queryResourcesByModule(Resource resource);
+
 
 }

@@ -1,5 +1,7 @@
 package com.xingyue.pojo;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +28,26 @@ public class Resource {
 	 */
 	@Column
 	private String url;
-
+	
+	/**
+	 * 位置
+	 * 轮播。
+	 */
+	@Column
+	private String position;
+	
+	/**
+	 * 创建时间
+	 */
+	@Column
+	private Date creatTime;
+	
+	/**
+	 * title
+	 */
+	@Column
+	private String title;
+	
 	/**
 	 * 描述
 	 */
@@ -77,6 +98,30 @@ public class Resource {
 
 	public void setNumber(Integer number) {
 		this.number = number;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public Date getCreatTime() {
+		return creatTime;
+	}
+
+	public void setCreatTime(Date creatTime) {
+		this.creatTime = creatTime;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 }
