@@ -1,5 +1,7 @@
 package com.xingyue.service;
 
+import com.xingyue.utils.PageUtils;
+import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.xingyue.pojo.Resource;
@@ -15,7 +17,7 @@ public interface ResourceService {
     /**
      * 上传图片
      *
-     * @param file 图片地址
+     * @param file     图片地址
      * @param resource 对象
      * @return
      * @throws Exception
@@ -25,10 +27,10 @@ public interface ResourceService {
     /**
      * 根据模块查询资源
      *
-     * @param resource 资源信息
+     * @param pageUtils
      * @return
      */
-    List<Resource> queryResourcesByModule(Resource resource);
+    Map<String, Object> queryResourcesByModule(PageUtils<Resource> pageUtils);
 
 
 }

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>用户列表</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <!-- 所有的 css & js 资源 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="../../css/admin/sa.css">
+    <script src="../../js/vue.min.js"></script>
+    <script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="https://www.layuicdn.com/layer-v3.1.1/layer.js"></script>
+    <script src="../../js/sa.js"></script>
+</head>
+<body>
+<!-- 防止margin向下击穿 -->
+<div style="margin-top: -1em;"><br></div>
+<div class="vue-box" style="display: none;" :style="'display: block;'">
+    <div class="c-panel">
+        <div class="c-title">数据列表</div>
+        <el-table :data="dataList" size="mini">
+            <el-table-column label="序号" prop="id" width="70px"></el-table-column>
+            <el-table-column label="图片" prop="url" width="200px">
+                <template slot-scope="s">
+                <img :src="s.row.avatar" @click="sa.showImage(s.row.avatar, '400px', '400px')"
+                <!--style="width: 3em; height: 3em; float: left; margin-right: 1em; border-radius: 50%; cursor: pointer;" >-->
+                <!--<div style="float: left; width: 130px; line-height: 20px;">-->
+                <!--<b>{{s.row.username}}</b>-->
+                <!--<p>{{s.row.tell}}</p>-->
+                <!--</div>-->
+                </template>
+            </el-table-column>
+            <el-table-column label="描述" prop="description">
+                <!--<template slot-scope="s">-->
+                    <!--<images :src="s.row.photo_list[0]" style="width: 40px; height: 40px; cursor: pointer;"-->
+                         <!--@click="sa.showImageList(s.row.photo_list)">-->
+                    <!--共{{s.row.photo_list.length}}张, 点击预览-->
+                <!--</template>-->
+            </el-table-column>
+            <el-table-column label="编号" prop="number"></el-table-column>
+            </el-table-column>
+            <el-table-column prop="address" label="操作">
+                <template slot-scope="s">
+                    <el-button class="c-btn" type="success" icon="el-icon-view" @click="get(s.row)">详情</el-button>
+                    <el-button class="c-btn" type="danger" icon="el-icon-delete" @click="del(s.row)">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+        <!-- 分页 -->
+        <div class="page-box">
+            <el-pagination background
+                           layout="total, prev, pager, next, sizes, jumper"
+                           :current-page.sync="p.pageNo"
+                           :page-size.sync="p.pageSize"
+                           :total="dataCount"
+                           :page-sizes="[1, 10, 20, 30, 40, 50, 100]"
+                           @current-change="f5(true)"
+                           @size-change="f5(true)">
+            </el-pagination>
+        </div>
+    </div>
+</div>
+</div>
+<script src="../../js/user/data-list.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '.vue-box',
+        data: {
+            p: {	// 查询参数
+                id: '1',
+                url: '图片',
+                description: '测试一下好不好用',
+                number: 1,
+                // pageNo: 1,
+                pageSize: 10,
+            },
+            dataCount: 1422,
+            dataList: []
+        },
+        methods: {
+            // 数据刷新
+            f5: function () {
+                sa.ajax('/api/user/queryTheUser', this.p, function (res) {
+                    this.dataList = res.data;
+
+
+                    // 数据
+                    this.dataCount = 10;		// 分页
+                }.bind(this), {res: this.dataList});
+            },
+            // 删除
+            del: function (data) {
+                sa.confirm('是否删除，此操作不可撤销', function () {
+                    sa.ajax2('/user/delete?id=' + data.id, function (res) {
+                        sa.arrayDelete(this.dataList, data);
+                        sa.ok('删除成功');
+                    }.bind(this))
+                }.bind(this));
+            },
+            // 查看
+            get: function (data) {
+                var str = '<div>';
+                str += '<p>编号：' + data.id + '</p>';
+                str += '<p>昵称：' + data.username + '</p>';
+                str += '<p>性别：' + data.sex + '</p>';
+                str += '<p>当前状态：<b>' + (data.status == 1 ? '正常' : '禁用') + '</b></p>';
+                str += '<p>注册方式：' + data.create_type + '</p>';
+                str += '<p>注册时间：' + data.create_time + '</p>';
+                str += '</div>';
+                sa.alert(str);
+            }
+        },
+        created: function () {
+            this.f5()
+        }
+    })
+
+</script>
+</body>
+</html>

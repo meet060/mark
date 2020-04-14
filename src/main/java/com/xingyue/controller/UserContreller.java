@@ -72,4 +72,16 @@ public class UserContreller {
         return true == aBoolean?"yes":"no";
     }
 
+    /**
+     * 查询用户
+     *
+     * @return
+     */
+    @ApiOperation("查询用户")
+    @RequestMapping(value = "/queryUsername", method = RequestMethod.POST)
+    public String queryUsername(HttpServletRequest request){
+        String s = userService.queryUsername(request);
+        return s;
+    }
+
 }

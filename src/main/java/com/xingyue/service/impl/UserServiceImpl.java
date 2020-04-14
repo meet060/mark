@@ -118,7 +118,20 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public Boolean logoutUser(HttpServletRequest request) {
-		request.getSession().removeAttribute("xinyue");
+		request.getSession().removeAttribute("xingyue");
 		return true;
+	}
+
+	/**
+	 * 查询用户
+	 *
+	 * @return
+	 */
+	@Override
+	public String queryUsername(HttpServletRequest request) {
+        User user  =(User) request.getSession().getAttribute("xingyue");
+        String username = user.getUsername();
+
+        return username;
 	}
 }

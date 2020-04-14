@@ -54,6 +54,14 @@ public interface UserService {
      *
      * @return
      */
-    public Boolean logoutUser(HttpServletRequest request);
+    Boolean logoutUser(HttpServletRequest request);
+
+    /**
+     * 查询用户
+     *
+     * @param request
+     * @return
+     */
+    String queryUsername(HttpServletRequest request);
 
 }
