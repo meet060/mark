@@ -10,15 +10,11 @@ import java.io.Serializable;
  * 功能：用户实体类
  * 时间：2020年4月6日10:15:24
  */
-/**
- * @author mark
- *
- */
 @Entity
+@Data
 public class User implements Serializable {
 
-	private static final long serialVersionUID = -3472580922493502746L;
-
+	private static final long serialVersionUID = 1389595359728316903L;
 	/**
 	 * 用户id
 	 */
