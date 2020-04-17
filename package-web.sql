@@ -1,18 +1,3 @@
-/*
- Navicat Premium Data Transfer
-
- Source Server         : mysql
- Source Server Type    : MySQL
- Source Server Version : 50562
- Source Host           : localhost:33006
- Source Schema         : hgl
-
- Target Server Type    : MySQL
- Target Server Version : 50562
- File Encoding         : 65001
-
- Date: 07/04/2020 01:20:44
-*/
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -52,3 +37,21 @@ INSERT INTO `resource` VALUES (2, 'AboutZR', 'D:\\upload\\package\\file\\banner1
 INSERT INTO `resource` VALUES (3, 'AboutZR', 'D:\\upload\\package\\file\\banner2.png', '关于中润模页面，轮播图2', 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002);
 INSERT INTO `resource` VALUES (4, 'AboutZR', 'D:\\upload\\package\\file\\banner2.png', '关于中润模页面，轮播图3', 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000013);
 
+-- ----------------------------
+-- Table structure for after_sale
+-- ----------------------------
+DROP TABLE IF EXISTS `after_sale`;
+CREATE TABLE `after_sale`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '售后id',
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '姓名',
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电话',
+  `mailbox` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '地址',
+  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内容',
+  `status` int(11) NULL DEFAULT NULL COMMENT '状态(0:处理、1待处理)',
+  `creation_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `modification_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+SET FOREIGN_KEY_CHECKS = 1;
