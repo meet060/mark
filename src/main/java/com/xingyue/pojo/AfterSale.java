@@ -16,6 +16,7 @@ import java.util.Date;
 public class AfterSale implements Serializable {
 
     private static final long serialVersionUID = 578605264202422295L;
+
     /**
      * 售后id
      */

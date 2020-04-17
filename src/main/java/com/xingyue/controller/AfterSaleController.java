@@ -40,7 +40,7 @@ public class AfterSaleController {
      */
     @ApiOperation(value = "在线咨询查询列表")
     @RequestMapping(value = "/queryAfterSale", method = RequestMethod.POST)
-    public ResponseEntity<Map<String, Object>> queryAfterSale(@RequestBody PageUtils<AfterSale> pageUtils) {
+    public ResponseEntity<Map<String, Object>> queryAfterSale(PageUtils<AfterSale> pageUtils) {
         Map<String, Object> map = afterSaleService.queryAfterSale(pageUtils);
         return MvcUtils.ok(map);
     }
@@ -52,7 +52,7 @@ public class AfterSaleController {
      * @return
      */
     @ApiOperation("在线咨询添加")
-    @RequestMapping(value = "/addAfterSale",method = RequestMethod.POST)
+    @RequestMapping(value = "/addAfterSale", method = RequestMethod.POST)
     public ResponseEntity<Boolean> addAfterSale(@RequestBody AfterSale afterSale) {
         afterSaleService.addAfterSale(afterSale);
         return MvcUtils.ok(true);
@@ -66,9 +66,9 @@ public class AfterSaleController {
      */
     @ApiOperation("在线咨询修改")
     @RequestMapping(value = "/modificationAfterSale", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> modificationAfterSale(@RequestBody AfterSale afterSale) {
-        afterSaleService.addAfterSale(afterSale);
-        return MvcUtils.ok(true);
+    public ResponseEntity<Boolean> modificationAfterSale(AfterSale afterSale) {
+        Boolean aBoolean = afterSaleService.modificationAfterSale(afterSale);
+        return MvcUtils.ok(aBoolean);
     }
 
     /**

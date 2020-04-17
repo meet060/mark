@@ -3,6 +3,7 @@ package com.xingyue.service.impl;
 import com.xingyue.dao.AfterSaleRepository;
 import com.xingyue.pojo.AfterSale;
 import com.xingyue.service.AfterSaleService;
+import com.xingyue.utils.DateUtils;
 import com.xingyue.utils.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,10 +41,8 @@ public class AfterSaleServiceImpl implements AfterSaleService {
     public Map<String, Object> queryAfterSale(PageUtils<AfterSale> pageUtils) {
         Map<String, Object> map = new HashMap<>(4);
         Sort sort = JpaSort.unsafe(Sort.Direction.ASC, "creationTime");
-        Pageable pageable = PageRequest.of(pageUtils.getPage(), pageUtils.getSize(), sort);
-        AfterSale object = pageUtils.getObject();
-        Example<AfterSale> example = Example.of(object);
-        Page<AfterSale> afterSales = afterSaleRepository.findAll(example,pageable);
+        Pageable pageable = PageRequest.of(pageUtils.getPage()-1, pageUtils.getSize(), sort);
+        Page<AfterSale> afterSales = afterSaleRepository.findAll(pageable);
         //有多少页
         int totalPages = afterSales.getTotalPages();
         //总条数
@@ -61,8 +62,9 @@ public class AfterSaleServiceImpl implements AfterSaleService {
      */
     @Override
     public Boolean addAfterSale(AfterSale afterSale) {
+        afterSale.setCreationTime(new Date());
         AfterSale save = afterSaleRepository.save(afterSale);
-        return StringUtils.isEmpty(save);
+        return !StringUtils.isEmpty(save);
     }
 
     /**
@@ -73,8 +75,13 @@ public class AfterSaleServiceImpl implements AfterSaleService {
      */
     @Override
     public Boolean modificationAfterSale(AfterSale afterSale) {
+        afterSale.setModificationTime(new Date());
+        Integer status = afterSale.getStatus();
+        if(1 == status){
+            afterSale.setStatus(0);
+        }
         AfterSale save = afterSaleRepository.save(afterSale);
-        return StringUtils.isEmpty(save);
+        return !StringUtils.isEmpty(save);
     }
 
     /**
