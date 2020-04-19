@@ -20,56 +20,22 @@
 <div class="vue-box" style="display: none;" :style="'display: block;'" id="test">
 	<div class="c-panel">
 		<!-- 参数栏 -->
-		<div class="c-title">用户列表</div>
-		<el-form :inline="true" size="mini">
-			<el-form-item label="用户昵称：">
-				<el-input placeholder="模糊查询"></el-input>
-			</el-form-item>
-			<el-form-item label="注册日期：">
-				<el-date-picker v-model="p.start_time" type="date" value-format="yyyy-MM-dd" placeholder="开始日期"></el-date-picker> -
-				<el-date-picker v-model="p.end_time" type="date" value-format="yyyy-MM-dd" placeholder="结束日期"></el-date-picker>
-			</el-form-item>
-			<el-form-item style="min-width: 0px;">
-				<el-button type="primary" icon="el-icon-search">查询</el-button><!-- @click="p.pageNo = 1; f5()"-->
-			</el-form-item>
-			<br />
-			<el-form-item label="综合排序：" class="s-radio-text">
-				<el-radio-group v-model="p.sort_type">
-					<el-radio :label="1">注册时间</el-radio>
-					<el-radio :label="2">最近登录</el-radio>
-					<el-radio :label="3">登陆次数</el-radio>
-					<el-radio :label="4">最近签到</el-radio>
-					<el-radio :label="5">签到次数</el-radio>
-				</el-radio-group>
-			</el-form-item>
-		</el-form>
-		<!-- <div class="c-title">数据列表</div> -->
+		<div class="c-title">数据列表</div>
 		<el-table :data="dataList" size="mini">
 			<el-table-column label="编号" prop="id" width="70px" > </el-table-column>
-			<el-table-column label="昵称" prop="username" width="200px">
+			<el-table-column label="标题">
 				<template slot-scope="s">
-					<images :src="s.row.avatar" @click="sa.showImage(s.row.avatar, '400px', '400px')"
-						 style="width: 3em; height: 3em; float: left; margin-right: 1em; border-radius: 50%; cursor: pointer;" >
-					<div style="float: left; width: 130px; line-height: 20px;">
-						<b>{{s.row.username}}</b>
-						<p>{{s.row.tell}}</p>
-					</div>
+					{{s.row.title}}
 				</template>
 			</el-table-column>
-			<el-table-column label="个人相册">
+			<el-table-column label="描述"> 
 				<template slot-scope="s">
-					<images :src="s.row.photo_list[0]" style="width: 40px; height: 40px; cursor: pointer;" @click="sa.showImageList(s.row.photo_list)" >
-					共{{s.row.photo_list.length}}张, 点击预览
+					{{s.row.description}}
 				</template>
 			</el-table-column>
-			<el-table-column label="性别" prop="sex"> </el-table-column>
-			<el-table-column label="注册方式" prop="create_type"></el-table-column>
-			<el-table-column label="注册于" prop="create_time"></el-table-column>
-			<el-table-column label="状态">
+			<el-table-column label="图片" prop="module" width="200px">
 				<template slot-scope="s">
-					<el-switch v-model="s.row.status" :active-value="1" :inactive-value="2" inactive-color="#ff4949"></el-switch>
-					<b style="color: green;" v-if="s.row.status == 1">正常</b>
-					<b style="color: #ff0000;" v-if="s.row.status == 2">禁用</b>
+					{{s.row.url}}
 				</template>
 			</el-table-column>
 			<el-table-column prop="address" label="操作">
@@ -82,24 +48,90 @@
 		<!-- 分页 -->
 		<div class="page-box">
 			<el-pagination background
-						   layout="total, prev, pager, next, sizes, jumper"
-						   :current-page.sync="p.pageNo"
-						   :page-size.sync="p.pageSize"
-						   :total="dataCount"
-						   :page-sizes="[1, 10, 20, 30, 40, 50, 100]"
-						   @current-change="f5(true)"
-						   @size-change="f5(true)">
+				layout="total, prev, pager, next, sizes, jumper"
+				:current-page.sync="p.pageNo"
+				:page-size.sync="p.pageSize"
+				:total="dataCount"
+				:page-sizes="[1, 10, 20, 30, 40, 50, 100]"
+				@current-change="f5(true)"
+				@size-change="f5(true)">
 			</el-pagination>
 		</div>
 	</div>
 </div>
 </div>
 <script src="../../js/user/data-list.js"></script>
-<script type="text/javascript">
+		<script type="text/javascript">
+		var data = null;
+			var app = new Vue({
+				el: '.vue-box',
+				data: {
+					p: {// 查询参数
+						username: '',
+						create_type: 0,
+						sort_type: 1,
+						start_time: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-1',	// 本月一号
+						end_time: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),	// 本月当日
+						pageNo: 1,
+						pageSize: 10,
+					},
+					dataCount: 1,
+					dataList: []
+				},
+				methods: {
+					// 数据刷新
+					f5: function() {
+						var that = this;
+						$.ajax({
+							type: "GET",
+							url: "/api/resource/queryResourcesByModule",
+							data : {"module":"AboutZR","page":this.p.pageNo,"size": this.p.pageSize},
+							dataType:"json",
+							async : false,
+							success: function(res){
+								that.dataList = res.content;
+								that.dataCount = res.totalElements;
+								console.log(res)
+							}
+						})
+					},
+					// 删除
+					del: function(data) {
+						sa.confirm('是否删除，此操作不可撤销', function() {
+							sa.ajax2('/user/delete?id=' + data.id, function(res) {
+								sa.arrayDelete(this.dataList, data);
+								sa.ok('删除成功');
+							}.bind(this))
+						}.bind(this));
+					},
+					// 查看
+					get: function(data) {
+						var str = '<div>';
+						str += '<p>编号：' + data.id + '</p>';
+						str += '<p>昵称：' + data.username + '</p>';
+						str += '<p>性别：' + data.sex + '</p>';
+						str += '<p>当前状态：<b>' + (data.status == 1 ? '正常' : '禁用') + '</b></p>';
+						str += '<p>注册方式：' + data.create_type + '</p>';
+						str += '<p>注册时间：' + data.create_time + '</p>';
+						str += '</div>';
+						sa.alert(str);
+					}
+				},
+				created: function(){
+					this.f5();
+				}
+			})
+
+		</script>
+<!-- <script type="text/javascript">
+	$(function () {
+		
+	});
 	var app = new Vue({
 		el: '.vue-box',
 		data: {
 			p: {	// 查询参数
+			
 				username: '',
 				create_type: 0,
 				sort_type: 1,
@@ -127,12 +159,10 @@
 			}
 		},
 		created: function () {
-			this.$http.get("127.0.0.1:9000/test").then((data)=>{
-				console.log(data);
-			})
+			
 		}
 	})
 
-</script>
+</script> -->
 </body>
 </html>

@@ -60,11 +60,11 @@ public class ResourceServiceImpl implements ResourceService {
      * @return
      */
     @Override
-    public Map<String, Object> queryResourcesByModule(PageUtils<Resource> pageUtils) {
+    public Map<String, Object> queryResourcesByModule(String module, Integer page, Integer size) {
         Map<String, Object> map = new HashMap<>(4);
         Sort sort = JpaSort.unsafe(Sort.Direction.ASC, "number");
-        Pageable pageable = PageRequest.of(pageUtils.getPage(), pageUtils.getSize(), sort);
-        Page<Resource> resources = resourceRepository.queryByModule(pageUtils.getObject().getModule(), pageable);
+        Pageable pageable = PageRequest.of(page, size, sort);
+        Page<Resource> resources = resourceRepository.queryByModule(module, pageable);
         //有多少页
         int totalPages = resources.getTotalPages();
         //总条数

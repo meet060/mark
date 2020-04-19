@@ -58,9 +58,12 @@ public class IndexController {
 	 * @return
 	 */
 	@ApiOperation(value = "根据模块查询资源")
-	@RequestMapping(value = "/queryResourcesByModule", method = RequestMethod.POST)
-	public ResponseEntity<?> queryResourcesByModule(@RequestBody PageUtils<Resource> pageUtils) {
-		Map<String,Object> map = resourceService.queryResourcesByModule(pageUtils);
+	@GetMapping(value = "/queryResourcesByModule")
+	public ResponseEntity<?> queryResourcesByModule(
+			@RequestParam("module") String module,
+			@RequestParam(name = "page", defaultValue ="1") int page,
+			@RequestParam(name = "size", defaultValue = "10") int size) {
+		Map<String,Object> map = resourceService.queryResourcesByModule(module, page, size);
 		return MvcUtils.ok(map);
 	}
 
@@ -71,7 +74,7 @@ public class IndexController {
 	 * @return
 	 */
 	@ApiOperation(value = "根据模块查询资源")
-	@RequestMapping(value = "/queryResourcesByModule2", method = RequestMethod.POST)
+	@GetMapping(value = "/queryResourcesByModule2")
 	public ResponseEntity<?> queryResourcesByModule2(Resource resource) {
 		Map<String,Object> map = resourceService.queryResourcesByModule(resource);
 		return MvcUtils.ok(map);

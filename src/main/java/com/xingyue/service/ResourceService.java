@@ -30,9 +30,8 @@ public interface ResourceService {
      * @param pageUtils
      * @return
      */
-    Map<String, Object> queryResourcesByModule(PageUtils<Resource> pageUtils);
+    Map<String, Object> queryResourcesByModule(String module, Integer page, Integer size);
 
 	Map<String, Object> queryResourcesByModule(Resource resource);
-
 
 }
