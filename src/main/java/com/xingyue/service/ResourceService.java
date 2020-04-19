@@ -34,4 +34,11 @@ public interface ResourceService {
 
 	Map<String, Object> queryResourcesByModule(Resource resource);
 
+    /**
+     *获取关于中润信息
+     *
+     * @return
+     */
+	Map<String, Object> obtainInformationAboutZhongrun();
+
 }

@@ -18,12 +18,22 @@ import java.util.List;
 public interface ResourceRepository extends JpaRepository<Resource, Integer> {
 
     /**
-     *根据模块查询资源
-     * @param module 模块
+     * 根据模块查询资源
+     *
+     * @param module   模块
      * @param pageable 分页/排序
      * @return
      */
     Page<Resource> queryByModule(String module, Pageable pageable);
 
-	List<Resource> queryByModule(String module);
+    List<Resource> queryByModule(String module);
+
+    /**
+     * 根据模块获取模块下面的位置信息
+     *
+     * @param module   模块
+     * @param position 位置
+     * @return
+     */
+    List<Resource> queryByModuleAndAndPosition(String module, String position);
 }

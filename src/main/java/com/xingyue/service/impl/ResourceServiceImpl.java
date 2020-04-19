@@ -21,7 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.xingyue.dao.ResourceRepository;
 import com.xingyue.pojo.Resource;
 import com.xingyue.service.ResourceService;
-import com.xingyue.utils.PageUtils;
 
 @Service
 public class ResourceServiceImpl implements ResourceService {
@@ -53,17 +52,19 @@ public class ResourceServiceImpl implements ResourceService {
         return null;
     }
 
-    /**
-     * 根据模块查询资源
-     *
-     * @param pageUtils
-     * @return
-     */
+	/**
+	 * 根据模块查询资源
+	 *
+	 * @param module
+	 * @param page
+	 * @param size
+	 * @return
+	 */
     @Override
     public Map<String, Object> queryResourcesByModule(String module, Integer page, Integer size) {
         Map<String, Object> map = new HashMap<>(4);
         Sort sort = JpaSort.unsafe(Sort.Direction.ASC, "number");
-        Pageable pageable = PageRequest.of(page, size, sort);
+        Pageable pageable = PageRequest.of(page-1, size, sort);
         Page<Resource> resources = resourceRepository.queryByModule(module, pageable);
         //有多少页
         int totalPages = resources.getTotalPages();
@@ -145,6 +146,34 @@ public class ResourceServiceImpl implements ResourceService {
 		m4.put("titleurl", link.getUrl());
 		map.put("link", m4);
 		return map;
+	}
+
+	/**
+	 * 获取关于中润信息
+	 *
+	 * @return
+	 */
+	@Override
+	public Map<String, Object> obtainInformationAboutZhongrun() {
+		Map<String, Object> m = new HashMap<>(16);
+		Map<String, Object> map = new HashMap<>(16);
+		//查询banner
+		List<Resource> resources = resourceRepository.queryByModuleAndAndPosition("AboutZR", "company_banner");
+		//查询公司信息
+		List<Resource> resources2 = resourceRepository.queryByModuleAndAndPosition("AboutZR", "companyIntroduction");
+
+		m.put("title",resources.get(0).getTitle());
+		m.put("description",resources.get(0).getDescription());
+		m.put("titlepic",resources.get(0).getUrl());
+
+		for(int i = 1;i<= resources2.size(); i++){
+            Resource r = resources2.get(i - 1);
+            map.put("introtitle"+i,r.getTitle());
+			map.put("introduce"+i,r.getDescription());
+			map.put("introduce"+i,r.getUrl());
+		}
+		m.put("info",map);
+		return m;
 	}
 
 	public List<Resource> filterResource(List<Resource> resources, String position, int limit) {
