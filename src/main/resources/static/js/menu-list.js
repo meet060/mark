@@ -83,16 +83,15 @@ var menuList =	[
 			}*/
 		]
 	},
-	/*{
+	{
 		id: '2',
-		name: '文章管理',
+		name: '在线咨询',
 		icon: 'el-icon-document-copy',
-		info: '对文章的增删改查、维护',
+		info: '处理客户咨询的问题',
 		childList: [
-			{id: '2-1', name: '文章列表', url: '../html/article/art-list.html'},
-			{id: '2-2', name: '文章发表', url: '../html/article/art-add.html'}
+			{id: '2-1', name: '咨询列表', url: '../html/afterSale/afterSale-list.html'}
 		]
-	},*/
+	},
 	/*{
 		id: '3',
 		name: '系统设置',
