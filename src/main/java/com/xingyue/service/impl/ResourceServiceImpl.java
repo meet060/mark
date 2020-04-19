@@ -44,7 +44,7 @@ public class ResourceServiceImpl implements ResourceService {
             File newFile = new File(storagePath, fileName);
             file.transferTo(newFile);
             Resource resource = new Resource();
-            resource.setUrl(newFile.getPath());
+            resource.setUrl(storagePath+newFile.getName());
             resource.setDescription(res.getDescription());
             resource.setModule(res.getModule());
             resource.setNumber(res.getNumber());

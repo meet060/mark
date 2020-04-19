@@ -10,9 +10,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 	@Value("${package.storage}")
 	private String storagePath;
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		//  /home/file/**为前端URL访问路径  后面 file:xxxx为本地磁盘映射
-		registry.addResourceHandler(storagePath+"**").addResourceLocations("file:" + storagePath);
+		// /home/file/**为前端URL访问路径 后面 file:xxxx为本地磁盘映射
+		registry.addResourceHandler(storagePath + "**").addResourceLocations("file:" + storagePath);
 	}
 }
