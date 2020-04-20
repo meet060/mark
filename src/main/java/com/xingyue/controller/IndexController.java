@@ -5,6 +5,7 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,8 +18,13 @@ import com.xingyue.utils.MvcUtils;
 
 import io.swagger.annotations.ApiOperation;
 
+/**
+ * @author
+ * 资源接口
+ */
 @Controller
 @RequestMapping("/api/resource")
+@Api(tags = "资源接口")
 public class IndexController {
 
     @Autowired
@@ -38,7 +44,7 @@ public class IndexController {
      * @param response
      * @return
      */
-    @ApiOperation(value = "上传图片")
+    @ApiOperation("上传图片")
     @RequestMapping(value = "/create/file", method = RequestMethod.POST)
     public ResponseEntity<?> upload(Resource resource, MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
         try {

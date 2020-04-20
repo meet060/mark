@@ -4,6 +4,7 @@ package com.xingyue.controller;
 import com.xingyue.pojo.User;
 import com.xingyue.service.UserService;
 import com.xingyue.utils.MvcUtils;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping(value = "/api/user")
-@EnableSwagger2
+@Api(tags = "用户接口")
 public class UserContreller {
     @Autowired
     private UserService userService;
