@@ -32,13 +32,40 @@ public interface ResourceService {
      */
     Map<String, Object> queryResourcesByModule(String module, Integer page, Integer size);
 
-	Map<String, Object> queryResourcesByModule(Resource resource);
+    Map<String, Object> queryResourcesByModule(Resource resource);
 
     /**
-     *获取关于中润信息
+     * 获取关于中润信息
      *
      * @return
      */
-	Map<String, Object> obtainInformationAboutZhongrun();
+    Map<String, Object> obtainInformationAboutZhongrun();
 
+    /**
+     * 查询行业认可图片
+     *
+     * @return
+     */
+    Map<String, Object> checkIndustryApprovedPictures();
+
+    /**
+     * 产品中心数据查询
+     *
+     * @return
+     */
+    Map<String, Object> productCenterDataQuery();
+
+    /**
+     * 查询技术支持信息
+     *
+     * @return
+     */
+    Map<String, Object> queryTechnicalSupportInformation();
+
+    /**
+     * 获取新闻中心数据
+     *
+     * @return
+     */
+    Map<String, Object> getTheNewsCenterData(int page, int size);
 }

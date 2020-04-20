@@ -5,7 +5,6 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -39,7 +38,7 @@ public class IndexController {
      * @param response
      * @return
      */
-    @ApiOperation("上传图片")
+    @ApiOperation(value = "上传图片")
     @RequestMapping(value = "/create/file", method = RequestMethod.POST)
     public ResponseEntity<?> upload(Resource resource, MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -93,4 +92,54 @@ public class IndexController {
         Map<String, Object> map = resourceService.obtainInformationAboutZhongrun();
         return MvcUtils.ok(map);
     }
+
+    /**
+     * 查询行业认可图片
+     *
+     * @return
+     */
+    @ApiOperation("查询行业认可图片")
+    @RequestMapping(value = "/checkIndustryApprovedPictures", method = RequestMethod.POST)
+    public ResponseEntity<?> checkIndustryApprovedPictures() {
+        Map<String, Object> map = resourceService.checkIndustryApprovedPictures();
+        return MvcUtils.ok(map);
+    }
+
+    /**
+     * 产品中心数据查询
+     *
+     * @return
+     */
+    @ApiOperation(value = "产品中心数据查询")
+    @RequestMapping(value = "/productCenterDataQuery", method = RequestMethod.POST)
+    public ResponseEntity<?> productCenterDataQuery() {
+        Map<String, Object> map = resourceService.productCenterDataQuery();
+        return MvcUtils.ok(map);
+    }
+
+    /**
+     * 查询技术支持信息
+     *
+     * @return
+     */
+    @ApiOperation(value = "查询技术支持信息")
+    @RequestMapping(value = "/queryTechnicalSupportInformation", method = RequestMethod.POST)
+    public ResponseEntity<?> queryTechnicalSupportInformation() {
+        Map<String, Object> map = resourceService.queryTechnicalSupportInformation();
+        return MvcUtils.ok(map);
+    }
+
+    /**
+     * 获取新闻中心数据
+     *
+     * @return
+     */
+    @ApiOperation(value = "获取新闻中心数据")
+    @RequestMapping(value = "/getTheNewsCenterData", method = RequestMethod.POST)
+    public ResponseEntity<?> getTheNewsCenterData(@RequestParam(name = "page", defaultValue = "1") int page,
+                                                  @RequestParam(name = "size", defaultValue = "10") int size) {
+        Map<String, Object> map = resourceService.getTheNewsCenterData(page,size);
+        return MvcUtils.ok(map);
+    }
+
 }

@@ -36,4 +36,14 @@ public interface ResourceRepository extends JpaRepository<Resource, Integer> {
      * @return
      */
     List<Resource> queryByModuleAndAndPosition(String module, String position);
+
+    /**
+     * 根据模块获取模块下面的位置信息带分页
+     *
+     * @param pageable 分页信息
+     * @param module   模块
+     * @param position 位置
+     * @return
+     */
+    Page<Resource> queryByModuleAndAndPosition(String module, String position, Pageable pageable);
 }
