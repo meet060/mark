@@ -68,4 +68,11 @@ public interface ResourceService {
      * @return
      */
     Map<String, Object> getTheNewsCenterData(int page, int size);
+
+    /**
+     * 获取联系我们信息
+     *
+     * @return
+     */
+    Map<String, Object> getTheContactInformation();
 }

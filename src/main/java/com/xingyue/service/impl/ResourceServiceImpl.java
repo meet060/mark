@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 import java.util.stream.Collectors;
+
+import com.xingyue.dao.ContactUsRepository;
+import com.xingyue.pojo.ContactUs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +21,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.xingyue.dao.ResourceRepository;
 import com.xingyue.pojo.Resource;
 import com.xingyue.service.ResourceService;
 
+/**
+ * @author
+ */
 @Service
 public class ResourceServiceImpl implements ResourceService {
 
@@ -34,6 +41,9 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Autowired
     private ResourceRepository resourceRepository;
+
+    @Autowired
+    private ContactUsRepository contactUsRepository;
 
     @Override
     public Resource createFile(MultipartFile file, Resource res) throws Exception {
@@ -379,6 +389,44 @@ public class ResourceServiceImpl implements ResourceService {
         m.put("pagenum", resourcePage.getTotalElements());
         //新闻
         m.put("news", resourceList);
+        return m;
+    }
+
+    /**
+     * 获取联系我们信息
+     *
+     * @return
+     */
+    @Override
+    public Map<String, Object> getTheContactInformation() {
+        Map<String, Object> m = new HashMap<>(16);
+        Map<String, Object> bottomMap = new HashMap<>(4);
+        Map<String, Object> contancUsMap = new HashMap<>(4);
+        List<Resource> resourceList = resourceRepository.queryByModule("contactUs");
+        List<ContactUs> contactUsList = contactUsRepository.findAll();
+        for(Resource r : resourceList){
+            switch (r.getPosition()){
+                case "banner" :
+                    m.put("title",r.getTitle());
+                    m.put("description",r.getDescription());
+                    m.put("titlepic",r.getUrl());
+                    break;
+                case "bottom" :
+                    bottomMap.put("title",r.getTitle());
+                    bottomMap.put("description",r.getDescription());
+                    bottomMap.put("titlepic",r.getUrl());
+            }
+        }
+        m.put("bottom",bottomMap);
+        if(!CollectionUtils.isEmpty(contactUsList)){
+            contancUsMap.put("company",contactUsList.get(0).getCompanyEn());
+            contancUsMap.put("address",contactUsList.get(0).getAddressEn());
+            contancUsMap.put("phone",contactUsList.get(0).getPhone());
+            contancUsMap.put("cellPhone",contactUsList.get(0).getCellPhone());
+            contancUsMap.put("fax",contactUsList.get(0).getFax());
+            contancUsMap.put("mailbox",contactUsList.get(0).getMailbox());
+        }
+        m.put("contact",contancUsMap);
         return m;
     }
 

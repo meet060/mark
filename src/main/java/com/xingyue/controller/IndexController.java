@@ -148,4 +148,16 @@ public class IndexController {
         return MvcUtils.ok(map);
     }
 
+    /**
+     *获取联系我们信息
+     *
+     * @return
+     */
+    @ApiOperation(value = "获取联系我们信息")
+    @RequestMapping(value = "/getTheContactInformation", method = RequestMethod.POST)
+    public ResponseEntity<?> getTheContactInformation() {
+        Map<String, Object> map = resourceService.getTheContactInformation();
+        return MvcUtils.ok(map);
+    }
+
 }
