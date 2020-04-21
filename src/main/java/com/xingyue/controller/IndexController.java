@@ -1,5 +1,6 @@
 package com.xingyue.controller;
 
+import java.io.IOException;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -78,5 +79,20 @@ public class IndexController {
 	public ResponseEntity<?> queryResourcesByModule2(Resource resource) {
 		Map<String,Object> map = resourceService.queryResourcesByModule(resource);
 		return MvcUtils.ok(map);
+	}
+	
+	/**
+	 * 修改图片
+	 * @param id
+	 * @param file
+	 * @return
+	 * @throws IOException 
+	 * @throws IllegalStateException 
+	 */
+	@PostMapping(value = "/update/img/{id}", headers = "content-type=multipart/*")
+	public ResponseEntity<?> updateImg(@PathVariable("id") Integer id, @RequestParam MultipartFile file) 
+			throws IllegalStateException, IOException {
+		Boolean flag = resourceService.updateFileById(file, id);
+		return MvcUtils.ok(flag);
 	}
 }

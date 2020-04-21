@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.xingyue.pojo.Resource;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -40,5 +41,7 @@ public interface ResourceService {
      * @return
      */
 	Map<String, Object> obtainInformationAboutZhongrun();
+
+	Boolean updateFileById(MultipartFile file, Integer id) throws IllegalStateException, IOException;
 
 }

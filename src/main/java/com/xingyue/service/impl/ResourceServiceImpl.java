@@ -1,11 +1,13 @@
 package com.xingyue.service.impl;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,32 +28,32 @@ import com.xingyue.utils.PageUtils;
 @Service
 public class ResourceServiceImpl implements ResourceService {
 
-    @Value("${package.storage}")
-    private String storagePath;
+	@Value("${package.storage}")
+	private String storagePath;
 
-    @Autowired
-    private ResourceRepository resourceRepository;
+	@Autowired
+	private ResourceRepository resourceRepository;
 
-    @Override
-    public Resource createFile(MultipartFile file, Resource res) throws Exception {
-        if (file.getSize() > 0) {
-            // 判断文件夹是否存在,不存在则创建
-            File f = new File(storagePath);
-            if (!f.exists()) {
-                f.mkdirs();
-            }
-            String fileName = file.getOriginalFilename();
-            File newFile = new File(storagePath, fileName);
-            file.transferTo(newFile);
-            Resource resource = new Resource();
-            resource.setUrl(storagePath+newFile.getName());
-            resource.setDescription(res.getDescription());
-            resource.setModule(res.getModule());
-            resource.setNumber(res.getNumber());
-            return resourceRepository.save(resource);
-        }
-        return null;
-    }
+	@Override
+	public Resource createFile(MultipartFile file, Resource res) throws Exception {
+		if (file.getSize() > 0) {
+			// 判断文件夹是否存在,不存在则创建
+			File f = new File(storagePath);
+			if (!f.exists()) {
+				f.mkdirs();
+			}
+			String fileName = file.getOriginalFilename();
+			File newFile = new File(storagePath, fileName);
+			file.transferTo(newFile);
+			Resource resource = new Resource();
+			resource.setUrl(storagePath + newFile.getName());
+			resource.setDescription(res.getDescription());
+			resource.setModule(res.getModule());
+			resource.setNumber(res.getNumber());
+			return resourceRepository.save(resource);
+		}
+		return null;
+	}
 
 	/**
 	 * 根据模块查询资源
@@ -61,23 +63,23 @@ public class ResourceServiceImpl implements ResourceService {
 	 * @param size
 	 * @return
 	 */
-    @Override
-    public Map<String, Object> queryResourcesByModule(String module, Integer page, Integer size) {
-        Map<String, Object> map = new HashMap<>(4);
-        Sort sort = JpaSort.unsafe(Sort.Direction.ASC, "number");
-        Pageable pageable = PageRequest.of(page-1, size, sort);
-        Page<Resource> resources = resourceRepository.queryByModule(module, pageable);
-        //有多少页
-        int totalPages = resources.getTotalPages();
-        //总条数
-        long totalElements = resources.getTotalElements();
-        //返回数据
-        List<Resource> content = resources.getContent();
-        map.put("content", content);
-        map.put("totalPages", totalPages);
-        map.put("totalElements", totalElements);
-        return map;
-    }
+	@Override
+	public Map<String, Object> queryResourcesByModule(String module, Integer page, Integer size) {
+		Map<String, Object> map = new HashMap<>(4);
+		Sort sort = JpaSort.unsafe(Sort.Direction.ASC, "number");
+		Pageable pageable = PageRequest.of(page - 1, size, sort);
+		Page<Resource> resources = resourceRepository.queryByModule(module, pageable);
+		// 有多少页
+		int totalPages = resources.getTotalPages();
+		// 总条数
+		long totalElements = resources.getTotalElements();
+		// 返回数据
+		List<Resource> content = resources.getContent();
+		map.put("content", content);
+		map.put("totalPages", totalPages);
+		map.put("totalElements", totalElements);
+		return map;
+	}
 
 	@Override
 	public Map<String, Object> queryResourcesByModule(Resource resource) {
@@ -158,22 +160,22 @@ public class ResourceServiceImpl implements ResourceService {
 	public Map<String, Object> obtainInformationAboutZhongrun() {
 		Map<String, Object> m = new HashMap<>(16);
 		Map<String, Object> map = new HashMap<>(16);
-		//查询banner
+		// 查询banner
 		List<Resource> resources = resourceRepository.queryByModuleAndAndPosition("AboutZR", "company_banner");
-		//查询公司信息
+		// 查询公司信息
 		List<Resource> resources2 = resourceRepository.queryByModuleAndAndPosition("AboutZR", "companyIntroduction");
 
-		m.put("title",resources.get(0).getTitle());
-		m.put("description",resources.get(0).getDescription());
-		m.put("titlepic",resources.get(0).getUrl());
+		m.put("title", resources.get(0).getTitle());
+		m.put("description", resources.get(0).getDescription());
+		m.put("titlepic", resources.get(0).getUrl());
 
-		for(int i = 1;i<= resources2.size(); i++){
-            Resource r = resources2.get(i - 1);
-            map.put("introtitle"+i,r.getTitle());
-			map.put("introduce"+i,r.getDescription());
-			map.put("introduce"+i,r.getUrl());
+		for (int i = 1; i <= resources2.size(); i++) {
+			Resource r = resources2.get(i - 1);
+			map.put("introtitle" + i, r.getTitle());
+			map.put("introduce" + i, r.getDescription());
+			map.put("introduce" + i, r.getUrl());
 		}
-		m.put("info",map);
+		m.put("info", map);
 		return m;
 	}
 
@@ -182,5 +184,24 @@ public class ResourceServiceImpl implements ResourceService {
 				.sorted(Comparator.comparing(Resource::getCreatTime).reversed()).limit(limit)
 				.collect(Collectors.toList());
 		return res;
+	}
+
+	@Override
+	public Boolean updateFileById(MultipartFile file, Integer id) throws IllegalStateException, IOException {
+		Optional<Resource> Resource = resourceRepository.findById(id);
+		if (Resource.isPresent() && file.getSize() > 0) {
+			// 判断文件夹是否存在,不存在则创建
+			File f = new File(storagePath);
+			if (!f.exists()) {
+				f.mkdirs();
+			}
+			String fileName = file.getOriginalFilename();
+			File newFile = new File(storagePath, fileName);
+			file.transferTo(newFile);
+			Resource.get().setUrl(storagePath + newFile.getName());
+			resourceRepository.save(Resource.get());
+			return true;
+		}
+		return false;
 	}
 }
