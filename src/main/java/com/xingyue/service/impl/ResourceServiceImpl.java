@@ -419,8 +419,10 @@ public class ResourceServiceImpl implements ResourceService {
         }
         m.put("bottom",bottomMap);
         if(!CollectionUtils.isEmpty(contactUsList)){
-            contancUsMap.put("company",contactUsList.get(0).getCompanyEn());
-            contancUsMap.put("address",contactUsList.get(0).getAddressEn());
+            contancUsMap.put("company",contactUsList.get(0).getCompanyCn());
+            contancUsMap.put("enCompany",contactUsList.get(0).getCompanyEn());
+            contancUsMap.put("address",contactUsList.get(0).getAddressCn());
+            contancUsMap.put("enAddress",contactUsList.get(0).getAddressEn());
             contancUsMap.put("phone",contactUsList.get(0).getPhone());
             contancUsMap.put("cellPhone",contactUsList.get(0).getCellPhone());
             contancUsMap.put("fax",contactUsList.get(0).getFax());
