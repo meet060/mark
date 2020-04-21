@@ -37,7 +37,9 @@
             <el-table-column label="处理时间" prop="modificationTime" :formatter="dateFormat"></el-table-column>
             <el-table-column prop="" label="操作">
                 <template slot-scope="s">
-                    <el-button class="c-btn" type="success" icon="el-icon-view" @click="update(s.row)">处理</el-button>
+                    <el-button class="c-btn" v-if="s.row.status===0" type="success" icon="el-icon-view" style="cursor: not-allowed;
+ color: #746767;">处理</el-button>
+                    <el-button class="c-btn" v-if="s.row.status===1" type="success" icon="el-icon-view" @click="update(s.row)">处理</el-button>
                     <!--<el-button class="c-btn" type="danger" icon="el-icon-delete" @click="del(s.row)">删除</el-button>-->
                 </template>
             </el-table-column>
@@ -84,12 +86,16 @@
                 })
             },
             update(data){
+                 var date = data.creationTime.substring(0,23)+"Z";
+                console.log(date)
                 var object = {"id":data.id,"name":data.name,"phone":data.phone,"mailbox":data.mailbox,
-                    "address":data.address,"content":data.content,"status":data.status}
+                    "address":data.address,"content":data.content,
+                    "status":data.status,"creationTime":date}
                 $.ajax({
                     url: "/api/afterSale/modificationAfterSale",
                     type: "post",
-                    data: object,
+                    data: JSON.stringify(object),
+                    contentType: "application/json;charset=UTF-8",//指定消息请求类型
                     dataType: 'json',
                     success: (msg) => {
                         console.log(msg);

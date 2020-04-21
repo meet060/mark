@@ -66,7 +66,7 @@ public class AfterSaleController {
      */
     @ApiOperation("在线咨询修改")
     @RequestMapping(value = "/modificationAfterSale", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> modificationAfterSale(AfterSale afterSale) {
+    public ResponseEntity<Boolean> modificationAfterSale(@RequestBody AfterSale afterSale) {
         Boolean aBoolean = afterSaleService.modificationAfterSale(afterSale);
         return MvcUtils.ok(aBoolean);
     }

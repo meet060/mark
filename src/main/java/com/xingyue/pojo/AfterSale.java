@@ -64,4 +64,80 @@ public class AfterSale implements Serializable {
      */
     @Column
     private Date modificationTime;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getMailbox() {
+        return mailbox;
+    }
+
+    public void setMailbox(String mailbox) {
+        this.mailbox = mailbox;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Date getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(Date creationTime) {
+        this.creationTime = creationTime;
+    }
+
+    public Date getModificationTime() {
+        return modificationTime;
+    }
+
+    public void setModificationTime(Date modificationTime) {
+        this.modificationTime = modificationTime;
+    }
 }
