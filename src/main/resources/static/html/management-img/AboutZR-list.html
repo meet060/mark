@@ -63,9 +63,9 @@
 				icon="el-icon-view" @click="get(s.row)">详情</el-button> <el-button
 				class="c-btn" type="danger" icon="el-icon-delete"
 				@click="put(s.row)">修改图片 </el-button> </template>
-			</form>
-			<!-- 分页 -->
-			<div class="page-box">
+			</div>
+		<!-- 分页 -->
+		<div class="page-box">
 				<el-pagination background
 					layout="total, prev, pager, next, sizes, jumper"
 					:current-page.sync="p.pageNo" :page-size.sync="p.pageSize"
@@ -73,8 +73,6 @@
 					@current-change="f5(true)" @size-change="f5(true)">
 				</el-pagination>
 			</div>
-		</div>
-	</div>
 	</div>
 	<script src="../../js/user/data-list.js"></script>
 	<script type="text/javascript">

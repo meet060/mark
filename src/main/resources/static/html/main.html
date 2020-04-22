@@ -28,10 +28,91 @@
 			/* 多个ul时，切换那个啥 */
 			.md-contetn h4{margin-left: -0.5em;}
 			.md-contetn ul,.md-contetn ol{padding-left: 1em;}
+			
+			
+			#app {
+				background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1587579467339&di=0d8a8ea706734a3a8a86c041d0a2b058&imgtype=0&src=http%3A%2F%2Fimg3.iqilu.com%2Fdata%2Fattachment%2Fforum%2F201308%2F22%2F092740uozf111w9z1ovf71.jpg");
+				max-width: 100%;
+				max-height: 100%;
+				background-size:100%;
+				width: 1700px;
+				height: 880px;
+			}
 		</style>
+		<style type="text/css">
+		p{
+			color:#fff;
+			font-family: MAILR___;
+			font-size: 70px;
+		}
+		.blur {	
+    			filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+    			-webkit-filter: blur(5px); /* Chrome, Opera */
+       			-moz-filter: blur(5px);
+       			-ms-filter: blur(5px);    
+            		filter: blur(5px);
+    			filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=5, MakeShadow=false); /* IE6~IE9 */
+		}
+		.hvcenter{
+			position: absolute;
+			top: 15%;
+			left: 10%;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=CurrentTime;
+		function CurrentTime(){ 
+	        	var now = new Date();
+		        var year = now.getFullYear();       //年
+		        var month = now.getMonth() + 1;     //月
+		        var day = now.getDate();            //日
+		        var hh = now.getHours();            //时
+		        var mm = now.getMinutes();          //分
+		       
+		        var clock = year + " - ";
+		        if(month < 10)
+		        	clock += "0";
+		        clock += month + " - ";
+		        if(day < 10)
+		            	clock += "0";
+		        clock += day + "&nbsp;&nbsp;&nbsp;";
+		        if(hh < 10)
+		            	clock += "0";
+		        clock += hh + " : ";
+		        if (mm < 10) 
+		        	clock += '0'; 
+		        clock += mm; 
+		        document.getElementById("time").innerHTML=clock;
+		        if(hh>=6&&hh<=12){
+		        	document.getElementById("sayhi").innerHTML="Good morning, Wsine";
+		        	document.getElementById("myimg").src="morning.jpg";
+		        }
+		        else if(hh>=13&&hh<=16){
+		        	document.getElementById("sayhi").innerHTML="Good noon, Wsine";
+		        	document.getElementById("myimg").src="noon.jpg";
+		        }
+		        else if(hh>=17&&hh<=18){
+		        	document.getElementById("sayhi").innerHTML="Good afternoon, Wsine";
+		        	document.getElementById("myimg").src="afternoon.jpeg";
+		        }
+		        else{
+		        	document.getElementById("sayhi").innerHTML="Good evening, Wsine";
+		        	document.getElementById("myimg").src="night.jpg";
+		        }
+		} 
+	</script>
 	</head>
 	<body>
-		<div class="app">
+	<div class="app" id="app">
+	</div>
+	<div id="bg_pic" style="position:absolute; width:100%; height:100%; z-index:-1">
+		<img id="myimg" src="morning.jpg" alt="backgroundpicture"  class="blur" width="100%" height="100%">
+	</div>
+	<div id="" style="width:1000px; height:500px;  text-align:center" class="hvcenter" >
+			<p id="sayhi"></p>
+			<p id="time"></p>
+	</div>
+		<!-- <div class="app">
 			<div class="content-box">
 				<div style="padding: 1em; border-left: 5px #2D8CF0 solid; background-color: #EEE;">
 					<big><big>Welcome to sa-admin (iframe版)</big></big>
@@ -52,10 +133,10 @@
 					<el-divider content-position="left">
 						<big><big>sa-admin (iframe版)</big></big>
 					</el-divider>
-					<!-- <ul style="margin-bottom: 1em;">
+					<ul style="margin-bottom: 1em;">
 						<li>上手简单：提供完整彻底的封装，不用修改一行源代码即可轻松集成</li>
 						<li>示例全面：提供大量常见增删改查示例，提高你的生产力</li>
-					</ul> -->
+					</ul>
 					<div>
 						<p>
 							虽然已经用过不少优秀的后台模板，但是一直都感觉不尽完美，于是在经过激烈的思想斗争后，我决定牺牲五一假期，亲自做一个尝试一下，
@@ -107,7 +188,7 @@
 			
 			
 
-			<!-- 功能介绍 -->
+			功能介绍
 			<div class="content-box">
 				<el-divider content-position="left">
 					<big><big>功能介绍</big></big>
@@ -140,7 +221,7 @@
 				<br>
 			</div>
 			
-			<!-- 疑问 -->
+			疑问
 			<div class="content-box">
 				<el-divider content-position="left">
 					<big><big>疑问</big></big>
@@ -175,7 +256,7 @@
 			</div>
 			
 			
-			<!-- 疑问 -->
+			疑问
 			<div class="content-box">
 				<el-divider content-position="left">
 					<big><big>添砖加瓦</big></big>
@@ -200,7 +281,7 @@
 			</div>
 			
 			
-			<!-- 更新日志 -->
+			更新日志
 			<div class="content-box">
 				<el-divider content-position="left">
 					<big><big>更新日志</big></big>
@@ -208,7 +289,7 @@
 				<div class="kapian">
 					<ul style="padding-left: 2em; padding-top: 1em; line-height: 1.5em;">
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.3.4</el-tag></b>
 							&nbsp;&nbsp;2020-03-05
@@ -216,7 +297,7 @@
 						<li>去除：tab双击刷新</li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.3.3</el-tag></b>
 							&nbsp;&nbsp;2020-03-02
@@ -224,7 +305,7 @@
 						<li>新增：tab双击刷新</li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.3.2</el-tag></b>
 							&nbsp;&nbsp;2020-3-1
@@ -234,7 +315,7 @@
 						<li>更新：my-code.js重命名为sa-code.js</li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.3.1</el-tag></b>
 							&nbsp;&nbsp;2020-2-29
@@ -243,7 +324,7 @@
 						<li>上线：vue单页版上线，传送门：<el-link type="primary" href="http://sa-vue-admin.dev33.cn/" target="_blank">http://sa-vue-admin.dev33.cn/</el-link></li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.3.0</el-tag></b>
 							&nbsp;&nbsp;2020-2-25
@@ -251,7 +332,7 @@
 						<li>优化：改变部分文件夹结构</li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.2.6</el-tag></b>
 							&nbsp;&nbsp;2020-2-17
@@ -259,7 +340,7 @@
 						<li>新增：新增主题：简约式灰蓝</li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.2.5</el-tag></b>
 							&nbsp;&nbsp;2020-2-14
@@ -267,7 +348,7 @@
 						<li>新增：新增在线论坛：<el-link type="primary" href="javascript:parent.sa_admin.showMenuById('1-11');">点击打开，在线提交意见反馈(新)</el-link></li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.2.4</el-tag></b>
 							&nbsp;&nbsp;2020-2-13
@@ -277,7 +358,7 @@
 						<li>增加：tab悬浮打开的z-index自动切换功能</li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.2.3</el-tag></b>
 							&nbsp;&nbsp;2020-2-9
@@ -285,7 +366,7 @@
 						<li>增加：增加底部按钮式的弹窗示例</li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.2.2</el-tag></b>
 							&nbsp;&nbsp;2020-2-7
@@ -295,7 +376,7 @@
 						<li>完善：完善readme.md</li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.2.1</el-tag></b>
 							&nbsp;&nbsp;2020-1-31  
@@ -303,7 +384,7 @@
 						<li>修复：替换掉所有bootcss的cdn，因为它太不稳定了，三天一小瘫，五天一大瘫</li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.2.0</el-tag></b>
 							&nbsp;&nbsp;2020-1-20  
@@ -315,7 +396,7 @@
 						<li>优化：将element-ui版本更换至了 2.13.0 </li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.1.2</el-tag></b>
 							&nbsp;&nbsp;2020-1-18   
@@ -324,7 +405,7 @@
 						<li>优化：右键关闭其它和关闭全部时，首先滑到做左边，动画更直观 </li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.1.0</el-tag></b>
 							&nbsp;&nbsp;2020-1-17
@@ -341,7 +422,7 @@
 						<li>注意：原调用方式sa.$util.getUrlArgs('id') 现改为：sa.p('id')</li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.0.2</el-tag></b>
 							&nbsp;&nbsp;2020-1-15
@@ -349,7 +430,7 @@
 						<li>修复bug：tab卡文字向上偏移了1px的问题</li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.0.1</el-tag></b>
 							&nbsp;&nbsp;2020-1-14
@@ -358,7 +439,7 @@
 						<li>修复bug：iframe的url发生改变后，刷新按钮刷新为旧地址的bug</li>
 						<div><br></div>
 						
-						<!-- ====================== 一个版本 ===================== -->
+						====================== 一个版本 =====================
 						<li>
 							<b> <el-tag size="mini">版本 v2.0.0</el-tag></b>
 							&nbsp;&nbsp;2020-1-13
@@ -505,7 +586,7 @@
 			
 			<br><br>
 
-		</div>
+		</div> -->
 
 
 		<script src="https://unpkg.com/vue@2.6.10/dist/vue.min.js"></script>

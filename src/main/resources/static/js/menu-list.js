@@ -66,10 +66,10 @@ var menuList =	[
 		childList: [
 			{id: '1-1', name: '关于中润', url: '../html/management-img/AboutZR-list.html'},
 			{id: '1-2', name: '产品实力', url: '../html/management-img/AboutZR-list2.html'},
-			{id: '1-3', name: '技术支持', url: '../html/user/user-add.html'},
-			{id: '1-4', name: '新闻活动', url: '../html/user/user-add.html'},
-			{id: '1-5', name: '联系我们', url: '../html/user/user-add.html'},
-			{id: '1-6', name: '邮箱', url: '../html/user/user-add.html'},
+			{id: '1-3', name: '技术支持', url: '../html/management-img/AboutZR-list2.html'},
+			{id: '1-4', name: '新闻活动', url: '../html/management-img/AboutZR-list2.html'},
+			{id: '1-5', name: '联系我们', url: '../html/management-img/AboutZR-list2.html'},
+			{id: '1-6', name: '邮箱', url: '../html/management-img/AboutZR-list2.html'},
 			/*{
 				id: '1-3',
 				name: '用户统计',
