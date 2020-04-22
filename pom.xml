@@ -82,6 +82,18 @@
 			<optional>true</optional>
 			<scope>true</scope>
 		</dependency>
+		<!--引入commons-lang工具-->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.5</version>
+		</dependency>
+		<!-- 解决前后端接口交互跨域问题 -->
+		<dependency>
+			<groupId>com.thetransactioncompany</groupId>
+			<artifactId>cors-filter</artifactId>
+			<version>1.7</version>
+		</dependency>
 	</dependencies>
 
 	<build>
