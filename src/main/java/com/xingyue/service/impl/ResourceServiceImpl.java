@@ -201,10 +201,12 @@ public class ResourceServiceImpl implements ResourceService {
 		m.put("titlepic", resources.get(0).getUrl());
 
 		for (int i = 1; i <= resources2.size(); i++) {
+			Map<String, Object> map1 = new HashMap<>(2);
 			Resource r = resources2.get(i - 1);
-			map.put("introtitle" + i, r.getTitle());
-			map.put("introduce" + i, r.getDescription());
-			map.put("introduce" + i, r.getUrl());
+			map1.put("introtitle" + i, r.getTitle());
+			map1.put("introduce" + i, r.getDescription());
+			map1.put("introduce" + i, r.getUrl());
+			map.put("info"+i,map1);
 		}
 		m.put("info", map);
 		return m;
