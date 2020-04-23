@@ -210,7 +210,7 @@
 					</div>
 				</div>
 				<!-- 面包屑导航栏 -->
-				<div 
+				<!-- <div 
 					class="nav-right-bre" 
 					@dblclick="atOpen($event)" 
 					@contextmenu.prevent="right_showMenu(nativeTab, $event);"
@@ -222,10 +222,10 @@
 						<el-breadcrumb-item>
 							<i class="el-icon-menu" @click="showHome()"></i>
 						</el-breadcrumb-item>
-						<!-- <el-breadcrumb-item v-if="bre_is_show_title">{{title}}</el-breadcrumb-item> -->
+						<el-breadcrumb-item v-if="bre_is_show_title">{{title}}</el-breadcrumb-item>
 						<el-breadcrumb-item v-for="(menu, index) in breMenuList" :key="menu.id">{{menu.name}}</el-breadcrumb-item>
 					</el-breadcrumb>
-				</div>
+				</div> -->
 				<!-- 右边，第三行 -->
 				<!-- swiper滑动 （弃用v-for，因为用v-for实现会非常卡顿） -->
 				<div class="nav-right-3">
@@ -247,7 +247,7 @@
 			</div>
 			<!-- 鼠标右键弹出的盒子 -->
 			<!-- 【向下展开动画，坐标平移动画】二者只可得其一 -->
-			<div class="right-box" :style="rightStyle" v-show="rightShow" tabindex="-1" @blur="right_closeMenu2()">
+			<!-- <div class="right-box" :style="rightStyle" v-show="rightShow" tabindex="-1" @blur="right_closeMenu2()">
 				<div class="right-box-2">
 					<div @click="right_closeMenu(); right_f5()"><i class="el-icon-caret-right"></i>刷新</div>
 					<div @click="right_closeMenu(); right_copy()"><i class="el-icon-caret-right"></i>复制</div>
@@ -258,7 +258,7 @@
 					<div @click="right_closeMenu(); right_window_open()"><i class="el-icon-caret-right"></i>新窗口打开</div>
 					<div @click="right_closeMenu2();"><i class="el-icon-caret-right"></i>取消</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		
 		<script src="../../js/vue.min.js"></script>

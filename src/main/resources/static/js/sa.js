@@ -14,7 +14,7 @@ var sa = {
 	}
 	// 服务器测试环境
 	var cfg_test = {
-		api_url: 'http://www.baidu.com',
+		api_url: 'http://120.53.18.245:9000',
 		web_url: 'http://www.baidu.com'
 	}
 	// 服务器测试环境
@@ -22,7 +22,7 @@ var sa = {
 		api_url: 'http://www.baidu.com',
 		web_url: 'http://www.baidu.com'
 	}
-	sa.cfg = cfg_dev; // 最终环境 , 上线前请选择正确的环境 
+	sa.cfg = cfg_dev; // 最终环境 , 上线前请选择正确的环境
 })();
 
 
