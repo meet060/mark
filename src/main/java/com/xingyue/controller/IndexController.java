@@ -75,15 +75,15 @@ public class IndexController {
     }
 
     /**
-     * 根据模块查询资源
+     *查询首页资源
      *
-     * @param resource
+     * @param modeule
      * @return
      */
-    @ApiOperation(value = "根据模块查询资源")
-    @GetMapping(value = "/queryResourcesByModule2")
-    public ResponseEntity<?> queryResourcesByModule2(Resource resource) {
-        Map<String, Object> map = resourceService.queryResourcesByModule(resource);
+    @ApiOperation(value = "查询首页资源")
+    @RequestMapping(value = "/queryResourcesByModule2", method = RequestMethod.POST)
+    public ResponseEntity<?> queryResourcesByModule2(@RequestBody String modeule) {
+        Map<String, Object> map = resourceService.queryResourcesByModule(modeule);
         return MvcUtils.ok(map);
     }
 

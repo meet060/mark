@@ -32,7 +32,7 @@ public interface ResourceService {
      */
     Map<String, Object> queryResourcesByModule(String module, Integer page, Integer size);
 
-    Map<String, Object> queryResourcesByModule(Resource resource);
+    Map<String, Object> queryResourcesByModule(String modeule);
 
     /**
      * 获取关于中润信息

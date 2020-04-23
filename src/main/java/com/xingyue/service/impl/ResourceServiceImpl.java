@@ -93,9 +93,9 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     @Override
-    public Map<String, Object> queryResourcesByModule(Resource resource) {
+    public Map<String, Object> queryResourcesByModule(String modeule) {
         Map<String, Object> map = new HashMap<>();
-        List<Resource> resources = resourceRepository.queryByModule(resource.getModule());
+        List<Resource> resources = resourceRepository.queryByModule(modeule);
         /**************************** 我是分割线 **********************************/
         // 轮播图 3条数据按照最新发布信息(图片静态的)
         List<Resource> banners = filterResource(resources, "banner", 3);
