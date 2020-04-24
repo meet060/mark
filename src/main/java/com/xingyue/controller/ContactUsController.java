@@ -56,7 +56,7 @@ public class ContactUsController {
      *
      * @return
      */
-    @ApiOperation("查询联系我们信息")
+    @ApiOperation("修改联系我们信息")
     @RequestMapping(value = "/modifyContactUsForInformation", method = RequestMethod.POST)
     public ResponseEntity<?> modifyContactUsForInformation(@RequestBody ContactUs contactUs) {
         Boolean aBoolean = contactUsService.modifyContactUsForInformation(contactUs);
