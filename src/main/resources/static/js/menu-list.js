@@ -61,15 +61,14 @@ var menuList =	[
 	{
 		id: '1',
 		name: '图片管理',
-		icon: 'el-icon-user',
+		icon: 'el-icon-s-data',
 		info: '对用户列表、添加、统计等等...',
 		childList: [
-			{id: '1-1', name: '关于中润', url: '../html/management-img/AboutZR-list.html'},
-			{id: '1-2', name: '产品实力', url: '../html/management-img/AboutZR-list2.html'},
-			{id: '1-3', name: '技术支持', url: '../html/management-img/AboutZR-list2.html'},
-			{id: '1-4', name: '新闻活动', url: '../html/management-img/AboutZR-list2.html'},
-			{id: '1-5', name: '联系我们', url: '../html/management-img/AboutZR-list2.html'},
-			{id: '1-6', name: '邮箱', url: '../html/management-img/AboutZR-list2.html'},
+			{id: '1-1', name: '关于中润', url: '../html/management/about.html'},
+			{id: '1-2', name: '产品实力', url: '../html/management/product.html'},
+			{id: '1-3', name: '技术支持', url: '../html/management/technology.html'},
+			{id: '1-4', name: '新闻活动', url: '../html/management/news.html'},
+			{id: '1-5', name: '联系我们', url: '../html/management/contact.html'},
 			/*{
 				id: '1-3',
 				name: '用户统计',
@@ -86,11 +85,20 @@ var menuList =	[
 	{
 		id: '2',
 		name: '在线咨询',
-		icon: 'el-icon-document-copy',
+		icon: 'el-icon-s-custom',
 		info: '处理客户咨询的问题',
 		childList: [
 			{id: '2-1', name: '咨询列表', url: '../html/afterSale/afterSale-list.html'}
 		]
+	},
+	{
+		id: '3',
+		name: '修改地址',
+		icon: 'el-icon-setting',
+		info: '修改公司地址',
+		childList: [
+			{id: '3-1', name: '修改公司地址', url: '../html/management/update_Ltd_address.html'}
+			]
 	},
 	/*{
 		id: '3',

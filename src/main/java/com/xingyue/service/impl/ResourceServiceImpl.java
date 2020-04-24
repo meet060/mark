@@ -44,7 +44,7 @@ public class ResourceServiceImpl implements ResourceService {
 	private ResourceRepository resourceRepository;
 
 	@Override
-	public Boolean updateFileById(MultipartFile file, Integer id) throws IllegalStateException, IOException {
+	public Boolean updateFileById(MultipartFile file, Integer id) {
 		Optional<Resource> Resource = resourceRepository.findById(id);
 		if (Resource.isPresent() && file.getSize() > 0) {
 			// 判断文件夹是否存在,不存在则创建
@@ -54,7 +54,11 @@ public class ResourceServiceImpl implements ResourceService {
 			}
 			String fileName = file.getOriginalFilename();
 			File newFile = new File(storagePath, fileName);
-			file.transferTo(newFile);
+			try {
+				file.transferTo(newFile);
+			} catch (Exception e) {
+				return false;
+			}
 			Resource.get().setUrl(storagePath + newFile.getName());
 			resourceRepository.save(Resource.get());
 			return true;

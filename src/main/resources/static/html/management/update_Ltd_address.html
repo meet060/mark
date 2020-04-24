@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>修改公司地址</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<!-- 所有的 css & js 资源 -->
+<link rel="stylesheet"
+	href="https://unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="../../css/admin/sa.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script src="../../js/vue.min.js"></script>
+<!--	<script src="../../js/list.js"></script>-->
+<script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
+<script src="../../js/jquery.min.js"></script>
+<script src="https://www.layuicdn.com/layer-v3.1.1/layer.js"></script>
+<script src="../../js/sa.js"></script>
+<script src="../../js/layer.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<meta http-equiv="Content-Type"
+	content="multipart/form-data; charset=utf-8" />
+<style>
+.update {
+	height: 200px;
+	width: 200px;
+	background: red;
+}
+</style>
+</head>
+
+<body>
+	<!-- 防止margin向下击穿 -->
+	<div style="margin-top: -1em;">
+		<br>
+	</div>
+	<div class="vue-box" style="display: none;" :style="'display: block;'"id="test">
+		<div class="c-panel">
+			<div class="c-title">数据列表</div>
+			<el-form :label-position="labelPosition" label-width="120px" :model="formLabelAlign" id ="form">
+					<el-input type="hidden" v-model="formLabelAlign.id"></el-input>
+				<el-form-item label="中文公司名称" >
+					<el-input v-model="formLabelAlign.companyCn" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item label="英文公司名称">
+					<el-input v-model="formLabelAlign.companyEn" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item label="中文公司地址">
+					<el-input v-model="formLabelAlign.addressCn" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item label="英文公司地址">
+					<el-input v-model="formLabelAlign.addressEn" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item label="公司电话">
+					<el-input v-model="formLabelAlign.phone" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item label="公司手机">
+					<el-input v-model="formLabelAlign.cellPhone" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item label="公司传真">
+					<el-input v-model="formLabelAlign.fax" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item label="公司邮箱">
+					<el-input v-model="formLabelAlign.mailbox" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item>
+					<el-button type="primary" @click="put()">立即修改</el-button>
+				</el-form-item>
+			</el-form>
+		</div>
+	</div>
+	<script src="../../js/user/data-list.js"></script>
+	<script type="text/javascript">
+		var data = null;
+		var app = new Vue(
+				{
+					el : '.vue-box',
+					data : {
+						formLabelAlign: {
+							id:'',
+							companyEn:'',
+							companyCn:'',
+							addressEn:'',
+							addressCn:'',
+							phone:'',
+							cellPhone: '',
+							fax: '',
+							mailbox: ''
+						},
+						//表单右对齐
+						labelPosition: 'right'
+					},
+					methods : {
+						// 数据刷新
+						f5 : function() {
+							var that = this;
+							$.ajax({
+								type : "POST",
+								url : "/api/contactUs/enquiriesContactUsForInformation",
+								dataType : "json",
+								async : false,
+								success : function(res) {
+									that.formLabelAlign.id = res[0].id;
+									that.formLabelAlign.companyEn = res[0].companyEn;
+									that.formLabelAlign.companyCn = res[0].companyCn;
+									that.formLabelAlign.addressEn = res[0].addressEn;
+									that.formLabelAlign.addressCn = res[0].addressCn;
+									that.formLabelAlign.phone = res[0].phone;
+									that.formLabelAlign.cellPhone = res[0].cellPhone;
+									that.formLabelAlign.fax = res[0].fax;
+									that.formLabelAlign.mailbox = res[0].mailbox;
+								}
+							})
+						},
+						put : function(data) {
+							var than = this;
+							layer.msg('确定要修改吗？', {
+								time : 0, //不自动关闭
+								btn : [ '确定', '我在想想。' ],
+								yes : function(index) {
+									layer.close(index);
+									var formdata = new FormData();
+									formdata.append("id",than.formLabelAlign.id);
+									formdata.append("companyCn",than.formLabelAlign.companyCn);
+									formdata.append("companyEn",than.formLabelAlign.companyEn);
+									formdata.append("addressCn",than.formLabelAlign.addressCn);
+									formdata.append("addressEn",than.formLabelAlign.addressEn);
+									formdata.append("phone",than.formLabelAlign.phone);
+									formdata.append("cellPhone",than.formLabelAlign.cellPhone);
+									formdata.append("fax",than.formLabelAlign.fax);
+									formdata.append("mailbox",than.formLabelAlign.mailbox); 
+									$.ajax({
+										type : "POST",
+										url : "/api/contactUs/modifyContactUsForInformation",
+										processData : false,
+										contentType : false,
+										data : formdata,
+										success : function(data) {
+											if (data) {
+												sa.ok('修改成功!');
+											} else {
+												sa.error("修改失败,请稍后重试！")
+												//window.location.reload()
+												
+											}
+										}
+									}).done(function() {
+		
+									});
+								}
+							});
+						}
+					},
+					created : function() {
+						this.f5();
+					}
+				})
+	</script>
+</body>
+</html>
