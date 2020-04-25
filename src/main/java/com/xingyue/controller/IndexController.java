@@ -97,10 +97,10 @@ public class IndexController {
      * @param modeule
      * @return
      */
-    @ApiOperation(value = "查询首页资源")
-    @RequestMapping(value = "/queryResourcesByModule2", method = RequestMethod.POST)
-    public ResponseEntity<?> queryResourcesByModule2(@RequestBody String modeule) {
-        Map<String, Object> map = resourceService.queryResourcesByModule(modeule);
+	@ApiOperation(value = "查询首页资源")
+    @RequestMapping(value = "/queryIndexResources", method = RequestMethod.POST)
+    public ResponseEntity<?> queryResourcesByModule2() {
+        Map<String, Object> map = resourceService.queryResourcesByModule();
         return MvcUtils.ok(map);
     }
 
@@ -170,7 +170,7 @@ public class IndexController {
 	 *
 	 * @return
 	 */
-	@ApiOperation(value = "获取新闻中心数据")
+	@ApiOperation(value = "添加新闻中心数据")
 	@RequestMapping(value = "/save/news", method = RequestMethod.POST)
 	public ResponseEntity<?> saveNews(
 			@RequestParam(value="file", required = false) MultipartFile file,
