@@ -85,19 +85,19 @@
 		        document.getElementById("time").innerHTML=clock;
 		        if(hh>=6&&hh<=12){
 		        	document.getElementById("sayhi").innerHTML="Good morning, Wsine";
-		        	document.getElementById("myimg").src="morning.jpg";
+		        	//document.getElementById("myimg").src="morning.jpg";
 		        }
 		        else if(hh>=13&&hh<=16){
 		        	document.getElementById("sayhi").innerHTML="Good noon, Wsine";
-		        	document.getElementById("myimg").src="noon.jpg";
+		        	/* document.getElementById("myimg").src="noon.jpg"; */
 		        }
 		        else if(hh>=17&&hh<=18){
 		        	document.getElementById("sayhi").innerHTML="Good afternoon, Wsine";
-		        	document.getElementById("myimg").src="afternoon.jpeg";
+		        	//document.getElementById("myimg").src="afternoon.jpeg";
 		        }
 		        else{
 		        	document.getElementById("sayhi").innerHTML="Good evening, Wsine";
-		        	document.getElementById("myimg").src="night.jpg";
+		        	//document.getElementById("myimg").src="night.jpg";
 		        }
 		} 
 	</script>
@@ -106,7 +106,7 @@
 	<div class="app" >
 	</div>
 	<div id="bg_pic" style="position:absolute; width:100%; height:100%; z-index:-1">
-		<img id="myimg" src="morning.jpg" alt="backgroundpicture"  class="blur" width="100%" height="100%">
+		<!-- <img id="myimg" src="morning.jpg" alt="backgroundpicture"  class="blur" width="100%" height="100%"> -->
 	</div>
 	<div id="" style="width:1000px; height:500px;  text-align:center" class="hvcenter" >
 			<p id="sayhi"></p>
@@ -598,7 +598,7 @@
 			new Vue({
 				el: '.app',
 				data: {
-					
+					mrc :''
 				},
 				methods: {
 					// 没了

@@ -75,4 +75,12 @@ public interface ResourceService {
 	 * @return
 	 */
 	Map<String, Object> getTheContactInformation();
+
+	/**
+	 * 新增新闻
+	 * 
+	 * @param resource
+	 * @return
+	 */
+	Boolean saveNews(Resource resource);
 }

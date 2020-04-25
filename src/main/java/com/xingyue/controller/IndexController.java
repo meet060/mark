@@ -166,6 +166,29 @@ public class IndexController {
 	}
 
 	/**
+	 * 添加新闻中心数据
+	 *
+	 * @return
+	 */
+	@ApiOperation(value = "获取新闻中心数据")
+	@RequestMapping(value = "/save/news", method = RequestMethod.POST)
+	public ResponseEntity<?> saveNews(
+			@RequestParam(value="file", required = false) MultipartFile file,
+			@RequestParam(value="title", required = false)String title,
+			@RequestParam(value="description", required = false)String description,
+			@RequestParam(value="creatTime", required = false) Date creatTime) {
+		Resource resource = new Resource();
+//	TODO 时间	resource.setCreatTime(creatTime);
+		resource.setFile(file);
+		resource.setTitle(title);
+		resource.setDescription(description);
+		resource.setModule("pressCenter");
+		resource.setPosition("news");
+		Boolean flag = resourceService.saveNews(resource);
+		return MvcUtils.ok(flag);
+	}
+	
+	/**
 	 * 获取联系我们信息
 	 *
 	 * @return

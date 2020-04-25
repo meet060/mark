@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>修改公司地址</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<!-- 所有的 css & js 资源 -->
+<link rel="stylesheet"
+	href="https://unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="../../css/admin/sa.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script src="../../js/vue.min.js"></script>
+<!--	<script src="../../js/list.js"></script>-->
+<script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
+<script src="../../js/jquery.min.js"></script>
+<script src="https://www.layuicdn.com/layer-v3.1.1/layer.js"></script>
+<script src="../../js/sa.js"></script>
+<script src="../../js/layer.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<meta http-equiv="Content-Type"
+	content="multipart/form-data; charset=utf-8" />
+</head>
+
+<body>
+	<!-- 防止margin向下击穿 -->
+	<div style="margin-top: -1em;">
+		<br>
+	</div>
+	<div class="vue-box" style="display: none;" :style="'display: block;'"id="test">
+		<div class="c-panel">
+			<div class="c-title">添加新闻</div>
+			<el-form :label-position="labelPosition" label-width="120px" :model="newsData" id ="form">
+				<el-form-item label="新闻标题" >
+					<el-input v-model="newsData.title" width="200px"></el-input>
+				</el-form-item>
+				<el-form-item label="召开时间">
+					<el-date-picker
+					v-model="newsData.creatTime"
+					type="datetime"
+					placeholder="选择日期时间"
+					default-time="12:00:00">
+					</el-date-picker>
+				</el-form-item>
+				<el-form-item label="主要内容">
+					<el-input v-model="newsData.description" type="textarea" rows="5"></el-input>
+				</el-form-item>
+				<el-form-item label="添加图片">
+					<input type="file" v-model="newsData.img" id="img" name="file">
+				<el-form-item>
+			</el-form>
+				<el-button type="primary" @click="put()">立即添加</el-button>
+				</el-form-item>
+				
+		</div>
+	</div>
+	<script src="../../js/user/data-list.js"></script>
+	<script type="text/javascript">
+		var data = null;
+		var app = new Vue(
+				{
+					el : '.vue-box',
+					data : {
+						newsData: {
+							title:'',
+							description:'',
+							creatTime:'',
+							img:''
+						},
+						//表单右对齐
+						labelPosition: 'right'
+					},
+					methods : {
+						// 数据刷新
+						f5 : function() {
+							
+						},
+						put : function(data) {
+							var that = this;
+							layer.msg('确定要修改吗？', {
+								time : 0, //不自动关闭
+								btn : [ '确定', '我在想想。' ],
+								yes : function(index) {
+									var fileObj = document.getElementById("img").files[0]; // js 获取文件对象
+									if (that.newsData.title == ''){
+										sa.error("新闻标题不可为空！");
+										return false;
+									}
+									if (that.newsData.creatTime == ''){
+										sa.error("召开时间不可为空！");
+										return false;
+									}
+									if (that.newsData.description == ''){
+										sa.error("新闻内容不可为空！");
+										return false;
+									}
+									if (typeof (fileObj) == "undefined" || fileObj.size <= 0) {
+											sa.error("请选择图片");
+											return false;
+									}
+									var formdata = new FormData();
+									formdata.append("title",that.newsData.title);
+									formdata.append("description",that.newsData.description);
+									formdata.append("creatTime",that.newsData.creatTime);
+									formdata.append("file",fileObj);
+									$.ajax({
+										type : "POST",
+										url : "/api/resource/save/news",
+										dataType:"json",
+										processData : false,
+										contentType : false,
+										data : formdata,
+										success : function(data) {
+											if (data) {
+												sa.ok('修改成功!');
+											} else {
+												sa.error("修改失败,请稍后重试！")
+												//window.location.reload()
+												
+											}
+										}
+									}).done(function() {
+		
+									});
+								}
+							});
+						}
+					},
+					created : function() {
+						//this.f5();
+					}
+				})
+	</script>
+</body>
+</html>

@@ -100,6 +100,15 @@ var menuList =	[
 			{id: '3-1', name: '修改公司地址', url: '../html/management/update_Ltd_address.html'}
 			]
 	},
+	{
+		id: '4',
+		name: '新闻管理',
+		icon: 'el-icon-setting',
+		info: '添加新闻',
+		childList: [
+			{id: '4-1', name: '添加新闻', url: '../html/management/add_news.html'}
+			]
+	},
 	/*{
 		id: '3',
 		name: '系统设置',

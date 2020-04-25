@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "resource")
@@ -59,6 +62,9 @@ public class Resource {
 	 */
 	@Column
 	private Integer number;
+	
+	@Transient
+	private MultipartFile file;
 	
 	public Integer getId() {
 		return id;
@@ -122,6 +128,14 @@ public class Resource {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 
 }

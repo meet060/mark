@@ -1,7 +1,6 @@
 package com.xingyue.service.impl;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -461,5 +460,24 @@ public class ResourceServiceImpl implements ResourceService {
 				.sorted(Comparator.comparing(Resource::getCreatTime).reversed()).limit(limit)
 				.collect(Collectors.toList());
 		return res;
+	}
+
+	@Override
+	public Boolean saveNews(Resource resource) {
+		try {
+			File f = new File(storagePath);
+			if (!f.exists()) {
+				f.mkdirs();
+			}
+			String fileName = resource.getFile().getOriginalFilename();
+			File newFile = new File(storagePath, fileName);
+			resource.getFile().transferTo(newFile);
+			resource.setUrl(storagePath + newFile.getName());
+			resourceRepository.save(resource);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
 	}
 }

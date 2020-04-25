@@ -44,7 +44,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public Boolean login(User user, HttpServletRequest request) {
         //根据用户名称查询密码
-        User u = userRepository.queryByUsername(user.getUsername());
+    	User u = null;
+    	try {
+    		u = userRepository.queryByUsername(user.getUsername());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
         //用户名称为空
         if(StringUtils.isEmpty(u)){
             System.out.println("账户或者密码错误");
