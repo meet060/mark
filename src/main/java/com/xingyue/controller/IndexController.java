@@ -178,7 +178,7 @@ public class IndexController {
 			@RequestParam(value="description", required = false)String description,
 			@RequestParam(value="creatTime", required = false) Date creatTime) {
 		Resource resource = new Resource();
-//	TODO 时间	resource.setCreatTime(creatTime);
+		resource.setCreatTime(creatTime);
 		resource.setFile(file);
 		resource.setTitle(title);
 		resource.setDescription(description);

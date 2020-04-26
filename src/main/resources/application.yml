@@ -17,12 +17,9 @@ Srping:
 Spring:
   datasource:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:33006/hgl?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
+      url: jdbc:mysql://120.53.18.245:3306/package?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
       username: root
-      password: Hgl2019@#$
-#      url: jdbc:mysql://172.21.0.7:3306/package?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
-#      username: root
-#      password: Xy#$%2020
+      password: Xy#$%2020
   jpa:
     show-sql: true
 ---
@@ -33,14 +30,9 @@ info:
 ---
 server:
   port: 9000
+#  session:
 # session失效时间，单位秒
-  servlet:
-    session:
-      timeout: 30m #配置会话失效时间。30m表示30分钟，如果不写单位则默认单位是秒（注意：由于Tomcat的中配置会话过期时间是以分钟为单位，如果我们这里设置是秒的话，那么会自动转换为一个不超过所配置秒数的最大分钟数。等等配置了119秒，那么实际会话过期时间是1分钟）
----
-spring:
- thymeleaf:
-   cache: false
----
-package:
-  storage: D:/upload/package/file/ #D:\upload\package\file
+#    timeout: 180
+
+package: ####### 修改文件地址一定要把Resource实体中常量修改
+  storage: D:/upload/package/file/

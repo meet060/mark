@@ -3,10 +3,12 @@ package com.xingyue.service.impl;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import com.xingyue.dao.ContactUsRepository;
@@ -52,13 +54,17 @@ public class ResourceServiceImpl implements ResourceService {
 				f.mkdirs();
 			}
 			String fileName = file.getOriginalFilename();
-			File newFile = new File(storagePath, fileName);
+			UUID uid = UUID.randomUUID();
+			String uuid = uid.toString().substring(1,16);
+			String prefix =fileName.substring(fileName.lastIndexOf(".")+1);
+			String newfilename = uuid +"." +prefix;
+			File newFile = new File(storagePath, newfilename);
 			try {
 				file.transferTo(newFile);
 			} catch (Exception e) {
 				return false;
 			}
-			Resource.get().setUrl(storagePath + newFile.getName());
+			Resource.get().setUrl(newfilename);
 			resourceRepository.save(Resource.get());
 			return true;
 		}
@@ -77,13 +83,20 @@ public class ResourceServiceImpl implements ResourceService {
 				f.mkdirs();
 			}
 			String fileName = file.getOriginalFilename();
-			File newFile = new File(storagePath, fileName);
+			UUID uid = UUID.randomUUID();
+			String uuid = uid.toString().substring(1,16);
+			String prefix =fileName.substring(fileName.lastIndexOf(".")+1);
+			String newfilename = uuid +"." +prefix;
+			File newFile = new File(storagePath, newfilename);
 			file.transferTo(newFile);
 			Resource resource = new Resource();
-			resource.setUrl(storagePath + newFile.getName());
+			resource.setUrl(newfilename);
 			resource.setDescription(res.getDescription());
 			resource.setModule(res.getModule());
 			resource.setNumber(res.getNumber());
+			resource.setPosition(res.getPosition());
+			resource.setCreatTime(new Date());
+			resource.setTitle(res.getTitle());
 			return resourceRepository.save(resource);
 		}
 		return null;
@@ -127,16 +140,26 @@ public class ResourceServiceImpl implements ResourceService {
         map.put("banner", bannermap);
         /**************************** 我是分割线 **********************************/
         // 产品：按照产品最新 4条数据
-        List<Resource> products = filterResource(resources, "product", 4);
+        List<Resource> neidais = filterResource(resources, "neidai", 4);
         List<Object> r = new ArrayList<>();
-        for (Resource p : products) {
+        for (Resource p : neidais) {
             HashMap<String, Object> m = new HashMap<>();
             m.put("titleurl", p.getUrl());
             m.put("title", p.getTitle());
             m.put("description", p.getDescription());
             r.add(m);
         }
-        map.put("product", r);
+        map.put("neidai", r);
+        List<Resource> waidais = filterResource(resources, "waidai", 4);
+        List<Object> waidai = new ArrayList<>();
+        for (Resource p : waidais) {
+            HashMap<String, Object> m = new HashMap<>();
+            m.put("titleurl", p.getUrl());
+            m.put("title", p.getTitle());
+            m.put("description", p.getDescription());
+            waidai.add(m);
+        }
+        map.put("waidai", waidai);
         /**************************** 我是分割线 **********************************/
         // 关于我们：
         Resource abouts = filterResource(resources, "about", 1).get(0);
@@ -469,10 +492,16 @@ public class ResourceServiceImpl implements ResourceService {
 			if (!f.exists()) {
 				f.mkdirs();
 			}
+			
 			String fileName = resource.getFile().getOriginalFilename();
-			File newFile = new File(storagePath, fileName);
+			UUID uid = UUID.randomUUID();
+			String uuid = uid.toString().substring(1,16);
+			String prefix =fileName.substring(fileName.lastIndexOf(".")+1);
+			String newfilename = uuid +"." +prefix;
+			File newFile = new File(storagePath, newfilename);
+			
 			resource.getFile().transferTo(newFile);
-			resource.setUrl(storagePath + newFile.getName());
+			resource.setUrl(newfilename);
 			resourceRepository.save(resource);
 			return true;
 		} catch (Exception e) {

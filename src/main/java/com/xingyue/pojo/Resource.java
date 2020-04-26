@@ -1,6 +1,6 @@
 package com.xingyue.pojo;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,11 +10,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+@Component
+@PropertySource("classpath:application.yml")//加载配置文件
+@ConfigurationProperties(prefix = "package")
 @Entity
 @Table(name = "resource")
 public class Resource {
+
+	public static final String STORAGE = "D:/upload/package/file/";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,26 +39,25 @@ public class Resource {
 	 */
 	@Column
 	private String url;
-	
+
 	/**
-	 * 位置
-	 * 轮播。
+	 * 位置 轮播。
 	 */
 	@Column
 	private String position;
-	
+
 	/**
 	 * 创建时间
 	 */
 	@Column
 	private Date creatTime;
-	
+
 	/**
 	 * title
 	 */
 	@Column
 	private String title;
-	
+
 	/**
 	 * 描述
 	 */
@@ -62,10 +69,10 @@ public class Resource {
 	 */
 	@Column
 	private Integer number;
-	
+
 	@Transient
 	private MultipartFile file;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -75,7 +82,7 @@ public class Resource {
 	}
 
 	public String getUrl() {
-		return url;
+		return STORAGE + url;
 	}
 
 	public void setUrl(String url) {
@@ -136,6 +143,10 @@ public class Resource {
 
 	public void setFile(MultipartFile file) {
 		this.file = file;
+	}
+
+	public Resource() {
+		super();
 	}
 
 }
