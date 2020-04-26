@@ -4,6 +4,7 @@ import com.xingyue.pojo.AfterSale;
 import com.xingyue.service.AfterSaleService;
 import com.xingyue.utils.MvcUtils;
 import com.xingyue.utils.PageUtils;
+import com.xingyue.vo.AfterSaleVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -53,7 +54,7 @@ public class AfterSaleController {
      */
     @ApiOperation("在线咨询添加")
     @RequestMapping(value = "/addAfterSale", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> addAfterSale(@RequestBody AfterSale afterSale) {
+    public ResponseEntity<Boolean> addAfterSale(@RequestBody AfterSaleVo afterSale) {
         afterSaleService.addAfterSale(afterSale);
         return MvcUtils.ok(true);
     }
@@ -80,7 +81,7 @@ public class AfterSaleController {
     @ApiOperation("在线咨询删除")
     @RequestMapping(value = "/deleteAfterSale", method = RequestMethod.POST)
     public ResponseEntity<Boolean> deleteAfterSale(@RequestBody AfterSale afterSale) {
-        afterSaleService.addAfterSale(afterSale);
+        afterSaleService.deleteAfterSale(afterSale);
         return MvcUtils.ok(true);
     }
 }

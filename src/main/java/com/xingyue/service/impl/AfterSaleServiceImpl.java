@@ -5,6 +5,8 @@ import com.xingyue.pojo.AfterSale;
 import com.xingyue.service.AfterSaleService;
 import com.xingyue.utils.DateUtils;
 import com.xingyue.utils.PageUtils;
+import com.xingyue.vo.AfterSaleVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.JpaSort;
@@ -57,12 +59,13 @@ public class AfterSaleServiceImpl implements AfterSaleService {
     /**
      * 在线咨询添加
      *
-     * @param afterSale
+     * @param afterSaleVo
      * @return
      */
     @Override
-    public Boolean addAfterSale(AfterSale afterSale) {
-        afterSale.setCreationTime(new Date());
+    public Boolean addAfterSale(AfterSaleVo afterSaleVo) {
+        AfterSale afterSale = new AfterSale();
+        BeanUtils.copyProperties(afterSaleVo, afterSale);
         AfterSale save = afterSaleRepository.save(afterSale);
         return !StringUtils.isEmpty(save);
     }
