@@ -140,4 +140,15 @@ public class AfterSale implements Serializable {
     public void setModificationTime(Date modificationTime) {
         this.modificationTime = modificationTime;
     }
+
+    public AfterSale() {
+        this.name = "";
+        this.phone = "";
+        this.mailbox = "";
+        this.address = "";
+        this.content = "";
+        this.status = 1;
+        this.creationTime = new Date();
+        this.modificationTime = null;
+    }
 }

@@ -2,6 +2,7 @@ package com.xingyue.service;
 
 import com.xingyue.pojo.AfterSale;
 import com.xingyue.utils.PageUtils;
+import com.xingyue.vo.AfterSaleVo;
 
 import java.util.Map;
 
@@ -25,7 +26,7 @@ public interface AfterSaleService {
      * @param afterSale
      * @return
      */
-    Boolean addAfterSale(AfterSale afterSale);
+    Boolean addAfterSale(AfterSaleVo afterSale);
 
     /**
      * 在线咨询修改
