@@ -166,7 +166,7 @@ public class ResourceServiceImpl implements ResourceService {
         HashMap<String, Object> m = new HashMap<>();
         m.put("titleurl", abouts.getUrl());
         m.put("video", abouts.getUrl());
-        m.put("description", abouts.getUrl());
+        m.put("description", abouts.getDescription());
         map.put("about", m);
         /**************************** 我是分割线 **********************************/
         // 改善创新
