@@ -218,9 +218,9 @@ public class ResourceServiceImpl implements ResourceService {
 		Map<String, Object> m = new HashMap<>(16);
 		Map<String, Object> map = new HashMap<>(16);
 		// 查询banner
-		List<Resource> resources = resourceRepository.queryByModuleAndAndPosition("AboutZR", "company_banner");
+		List<Resource> resources = resourceRepository.queryByModuleAndAndPosition("embellishOfInformation", "banner");
 		// 查询公司信息
-		List<Resource> resources2 = resourceRepository.queryByModuleAndAndPosition("AboutZR", "companyIntroduction");
+		List<Resource> resources2 = resourceRepository.queryByModuleAndAndPosition("embellishOfInformation", "companyIntroduction");
 
 		m.put("title", resources.get(0).getTitle());
 		m.put("description", resources.get(0).getDescription());
@@ -247,8 +247,7 @@ public class ResourceServiceImpl implements ResourceService {
 	public Map<String, Object> checkIndustryApprovedPictures() {
 		Map<String, Object> m = new HashMap<>(16);
 		List list = new ArrayList();
-		// 查询banner
-		List<Resource> resources = resourceRepository.queryByModuleAndAndPosition("AboutZR", "industryRecognition");
+		List<Resource> resources = resourceRepository.queryByModuleAndAndPosition("embellishOfInformation", "industryRecognition");
 		for (Resource r : resources) {
 			Map<String, Object> map = new HashMap<>(16);
 			map.put("title", r.getTitle());
@@ -303,6 +302,7 @@ public class ResourceServiceImpl implements ResourceService {
 				m.put("jzddescription", r.getDescription());
 				m.put("jzddpic", r.getUrl());
 				break;
+			//生产流程
 			case "workFlow":
 				Map<String, Object> m4 = new HashMap<>(16);
 				m4.put("title", r.getTitle());
@@ -457,13 +457,14 @@ public class ResourceServiceImpl implements ResourceService {
 				m.put("description", r.getDescription());
 				m.put("titlepic", r.getUrl());
 				break;
+			//底下位置
 			case "bottom":
 				bottomMap.put("title", r.getTitle());
 				bottomMap.put("description", r.getDescription());
 				bottomMap.put("titlepic", r.getUrl());
 				break;
 			default:
-				log.info("");
+				log.info("获取联系我们信息>>>没有匹配的数据<<<");
 			}
 		}
 		m.put("bottom", bottomMap);
