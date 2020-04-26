@@ -10,19 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
+import com.xingyue.utils.CustomizedPropertyConfigurer;
 import org.springframework.web.multipart.MultipartFile;
 
-@Component
-@PropertySource("classpath:application.yml")//加载配置文件
-@ConfigurationProperties(prefix = "package")
 @Entity
 @Table(name = "resource")
 public class Resource {
-
-	public static final String STORAGE = "D:/upload/package/file/";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -82,7 +75,7 @@ public class Resource {
 	}
 
 	public String getUrl() {
-		return STORAGE + url;
+		return CustomizedPropertyConfigurer.getContextProperty("package.storage") + url;
 	}
 
 	public void setUrl(String url) {

@@ -461,6 +461,9 @@ public class ResourceServiceImpl implements ResourceService {
 				bottomMap.put("title", r.getTitle());
 				bottomMap.put("description", r.getDescription());
 				bottomMap.put("titlepic", r.getUrl());
+				break;
+			default:
+				log.info("");
 			}
 		}
 		m.put("bottom", bottomMap);
