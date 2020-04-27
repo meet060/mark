@@ -433,6 +433,7 @@ public class ResourceServiceImpl implements ResourceService {
 			Map<String, Object> newsMap = new HashMap<>(3);
 			newsMap.put("id", r.getId());
 			newsMap.put("title", r.getTitle());
+			newsMap.put("url", r.getUrl());
 			newsMap.put("newtime", r.getCreatTime());
 			resourceList.add(newsMap);
 		}
