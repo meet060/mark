@@ -115,7 +115,7 @@ public class ResourceServiceImpl implements ResourceService {
 		Map<String, Object> map = new HashMap<>(4);
 		Sort sort = JpaSort.unsafe(Sort.Direction.ASC, "number");
 		Pageable pageable = PageRequest.of(page - 1, size, sort);
-		Page<Resource> resources = resourceRepository.queryByModule(module, pageable);
+		Page<Resource> resources = resourceRepository.findByModuleAndPositionIsNotNull(module, pageable);
 		// 有多少页
 		int totalPages = resources.getTotalPages();
 		// 总条数
@@ -334,6 +334,13 @@ public class ResourceServiceImpl implements ResourceService {
 				m6.put("description", r.getDescription());
 				m6.put("titlepic", r.getUrl());
 				flowList.add(m6);
+				break;
+				// 外袋系列
+			case "outerBagTitle":
+				Map<String, Object> m10 = new HashMap<>();
+				m10.put("outerBagTitle", r.getTitle());
+				m10.put("outerBagDescription", r.getDescription());
+				outerBagList.add(m10);
 				break;
 			default:
 				log.info("产品中心数据查询>>>没有匹配的数据<<<");

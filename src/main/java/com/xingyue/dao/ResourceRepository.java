@@ -24,7 +24,7 @@ public interface ResourceRepository extends JpaRepository<Resource, Integer> {
      * @param pageable 分页/排序
      * @return
      */
-    Page<Resource> queryByModule(String module, Pageable pageable);
+    Page<Resource> findByModuleAndPositionIsNotNull(String module, Pageable pageable);
 
     List<Resource> queryByModule(String module);
 
@@ -46,4 +46,5 @@ public interface ResourceRepository extends JpaRepository<Resource, Integer> {
      * @return
      */
     Page<Resource> queryByModuleAndAndPosition(String module, String position, Pageable pageable);
+
 }
