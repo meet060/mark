@@ -83,4 +83,6 @@ public interface ResourceService {
 	 * @return
 	 */
 	Boolean saveNews(Resource resource);
+
+	Map<String, Object> findNewsById(Integer id);
 }

@@ -521,4 +521,19 @@ public class ResourceServiceImpl implements ResourceService {
 			return false;
 		}
 	}
+
+	@Override
+	public Map<String, Object> findNewsById(Integer id) {
+		HashMap<String, Object> map = new HashMap<>();
+		Optional<Resource> resource = resourceRepository.findById(id);
+		if (resource.isPresent()) {
+			map.put("title",resource.get().getTitle());
+			map.put("date",resource.get().getCreatTime());
+			map.put("description",resource.get().getDescription());
+			map.put("url",resource.get().getUrl());
+			map.put("id",resource.get().getId());
+			return map;
+		}
+		return null;
+	}
 }

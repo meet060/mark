@@ -199,5 +199,17 @@ public class IndexController {
 		Map<String, Object> map = resourceService.getTheContactInformation();
 		return MvcUtils.ok(map);
 	}
+	
+	/**
+	 * 获取新闻详情
+	 *
+	 * @return
+	 */
+	@ApiOperation(value = "获取新闻详情")
+	@RequestMapping(value = "/news", method = RequestMethod.POST)
+	public ResponseEntity<?> findNewsById(@RequestBody Resource resource){
+		Map<String, Object> map = resourceService.findNewsById(resource != null ? resource.getId() : 192);
+		return MvcUtils.ok(map);
+	}
 
 }
