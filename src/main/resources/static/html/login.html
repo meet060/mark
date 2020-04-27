@@ -121,7 +121,7 @@
         }
         // 2、判断
         if (p.key == '' || p.password == '') {
-            return layer.msg('请输入任意内容即可');
+            return layer.msg('请输入用户名或密码');
         }
         // 3、请求后台
         sa.ajax('/api/user/login', p, function (res) {
