@@ -22,7 +22,7 @@ var sa = {
 		api_url: 'http://www.baidu.com',
 		web_url: 'http://www.baidu.com'
 	}
-	sa.cfg = cfg_dev; // 最终环境 , 上线前请选择正确的环境
+	sa.cfg = cfg_test; // 最终环境 , 上线前请选择正确的环境
 })();
 
 
