@@ -54,6 +54,14 @@ public class Filter implements javax.servlet.Filter {
                     ||"/new-con.html".equals(requestURI)
                     ||"/pro-con.html".equals(requestURI)
                     ||"/pro-shili.html".equals(requestURI)
+                    ||"/en/about.html".equals(requestURI)
+                    ||"/en/contact.html".equals(requestURI)
+                    ||"/en/index.html".equals(requestURI)
+                    ||"/en/jishu.html".equals(requestURI)
+                    ||"/en/news.html".equals(requestURI)
+                    ||"/en/new-con.html".equals(requestURI)
+                    ||"/en/pro-con.html".equals(requestURI)
+                    ||"/en/pro-shili.html".equals(requestURI)
                     ||"/".equals(requestURI)
                     ||requestURI.contains("swagger")){
                 chain.doFilter(request, response);

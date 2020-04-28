@@ -11,238 +11,47 @@
     <link rel="stylesheet" href="css/portal/base.css">
     <link rel="stylesheet" href="css/portal/style.css">
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/portal/cookie.js"></script>
     <script type="text/javascript" src="js/portal/common.js"></script>
     <script type="text/javascript" src="js/portal/base.js"></script>
-    <script>var _common={pageJs:'index'}</script>
+    <script>var _common={pageJs:'index',page:"3"}</script>
 </head>
 <body>
-    <div class="g-top-nav clearfix">
-        <a href="" class="g-logo-box f-fl"><img src="images/logo.png" alt="" class="pc-logo"></a>
-        <div class="g-nav_btn f-fr"></div>
-        <div class="f-lang f-fr"><a href="" class="f-lang-e cur">EN</a><a href="" class="f-lang-c">中</a></div>
-        <ul class="g-nav-list f-fr">
-            <li><a href="index.html" class="cur">网站首页</a><a href="about.html" rel="about.html">关于中润</a><a href="pro-shili.html" rel="pro-shili.html">产品中心</a><a href="jishu.html" rel="jishu.html">技术支持</a><a href="news.html" rel="news.html">新闻活动</a><a href="contact.html" rel="contact.html">联系我们</a></li>
-        </ul>
-    </div>
-    <div class="g-banner g-banner-about g-chanpin-about">
-        <p>中国高端FIBC产业先行者与核心解决方案商</p>
+    <div class="g-banner g-banner-about g-chanpin-about" id="pro_txt">
+        <p></p>
         <img src="images/07.jpg" alt="">
     </div>
-    <div class="g-hangye g-chanpin">
+    <div class="g-hangye g-chanpin" id="pro_shili">
         <h2>外袋系列</h2>
-        <p>多种定制化FIBC（柔性集装袋）产品，针对不同市场和应用领域，东亚拥有多年积累的专业技术经验。</p>
-        <ul class="g-chanpin-box clearfix">
-            <li>
-                <a href="">
-                    <em class="u-img"><img src="images/01.png" alt=""></em>
-                    <span class="g-txt-box">
-                        <strong>全自动拉丝机</strong>
-                        <p>全自动拉丝，无需人工换卷</p>    
-                    </span> 
-                </a>    
-            </li>
-            <li>
-                <a href="">
-                    <em class="u-img"><img src="images/11.png" alt=""></em>
-                    <span class="g-txt-box">
-                        <strong>全自动拉丝机</strong>
-                        <p>全自动拉丝，无需人工换卷</p>    
-                    </span> 
-                </a>    
-            </li>
-            <li>
-                <a href="">
-                    <em class="u-img"><img src="images/21.png" alt=""></em>
-                    <span class="g-txt-box">
-                        <strong>全自动拉丝机</strong>
-                        <p>全自动拉丝，无需人工换卷</p>    
-                    </span> 
-                </a>    
-            </li>
-            <li>
-                <a href="">
-                    <em class="u-img"><img src="images/31.png" alt=""></em>
-                    <span class="g-txt-box">
-                        <strong>全自动拉丝机</strong>
-                        <p>全自动拉丝，无需人工换卷</p>    
-                    </span> 
-                </a>    
-            </li>
-        </ul>
+        <p></p>
+        <ul class="g-chanpin-box clearfix"></ul>
     </div>
-    <div class="g-hangye g-chanpin g-waidai-box">
+    <div class="g-hangye g-chanpin g-waidai-box" id="pro_neidai">
         <h2>内袋系列</h2>
-        <p>东亚拥有食品级吹膜车间，自产食品级A型膜、B型膜、C型膜</p>
+        <p></p>
         <div class="g-waidai">
-            <img src="images/10.jpg" alt="">
+            <img src="images/10.jpg" alt="">    
         </div>
     </div>
-    <div class="g-hangye g-chanpin g-jizhuang clearfix">
-        <h2>集装袋 / 生产设备流程</h2>
-        <p class="f-fl">东严苛的工艺流程是保证产品品质始终如一的唯一途径。我们的技术专家将与你保持密切合作，共同参与方案制定，一起探讨工艺流程，确保产品得到最佳实现的方法。</p>
+    <div class="g-hangye g-chanpin g-jizhuang clearfix" id="pro_jzd">
+        <h2></h2>
+        <p class="f-fl"></p>
         <div class="f-jizhuang">
-            <img src="images/02.png" alt="">
+            <img src="images/02.png" alt="">    
         </div>
     </div>
-    <div class="g-jizhuang-box clearfix">
-        <a href="">
-            <em class="u-img"><img src="images/11.jpg" alt=""></em>
-            <span class="g-txt-box">
-                <strong>全自动拉丝机</strong>
-                <p>全自动拉丝，无需人工换卷</p>    
-            </span>     
-        </a>   
-        <a href="">
-            <em class="u-img"><img src="images/12.jpg" alt=""></em>
-            <span class="g-txt-box">
-                <strong>全自动拉丝机</strong>
-                <p>全自动拉丝，无需人工换卷</p>    
-            </span>     
-        </a>    
+    <div class="g-jizhuang-box clearfix" id="pro_jiejing"></div>
+    <div class="g-hangye g-chanpin g-dingzhi-box" id="pro_fangan">
+        <h2></h2>
+        <p></p>
+        <ul class="clearfix"></ul>
     </div>
-    <div class="g-hangye g-chanpin g-dingzhi-box">
-        <h2>覆盖全行业的定制包装解决方案</h2>
-        <p>无论是产品细分，还是个性化定制，我们力求为每一个客户实现最合适，最先进的包装解决制造方案。</p>
-        <ul class="clearfix">
-            <li>
-                <a href="">
-                    <em class="u-img"><img src="images/c-1.png" alt=""></em>
-                    <span class="g-txt-box">
-                        <strong>全自动拉丝机</strong>  
-                    </span>     
-                </a>    
-            </li>
-            <li>
-                <a href="">
-                    <em class="u-img"><img src="images/c-2.png" alt=""></em>
-                    <span class="g-txt-box">
-                        <strong>全自动拉丝机</strong>  
-                    </span>     
-                </a>    
-            </li>
-            <li>
-                <a href="">
-                    <em class="u-img"><img src="images/c-3.png" alt=""></em>
-                    <span class="g-txt-box">
-                        <strong>全自动拉丝机</strong>  
-                    </span>     
-                </a>    
-            </li>
-            <li>
-                <a href="">
-                    <em class="u-img"><img src="images/c-4.png" alt=""></em>
-                    <span class="g-txt-box">
-                        <strong>全自动拉丝机</strong>  
-                    </span>     
-                </a>    
-            </li>
-            <li>
-                <a href="">
-                    <em class="u-img"><img src="images/c-5.png" alt=""></em>
-                    <span class="g-txt-box">
-                        <strong>全自动拉丝机</strong>  
-                    </span>     
-                </a>    
-            </li>
-            <li>
-                <a href="">
-                    <em class="u-img"><img src="images/c-6.png" alt=""></em>
-                    <span class="g-txt-box">
-                        <strong>全自动拉丝机</strong>  
-                    </span>     
-                </a>    
-            </li>
-            <li>
-                <a href="">
-                    <em class="u-img"><img src="images/c-7.png" alt=""></em>
-                    <span class="g-txt-box">
-                        <strong>全自动拉丝机</strong>  
-                    </span>     
-                </a>    
-            </li>
-            <li>
-                <a href="">
-                    <em class="u-img"><img src="images/c-8.png" alt=""></em>
-                    <span class="g-txt-box">
-                        <strong>全自动拉丝机</strong>  
-                    </span>     
-                </a>    
-            </li>
-
-        </ul>
-    </div>
-    <div class="g-hangye g-liucheng-box">
-        <h2>覆盖全行业的定制包装解决方案</h2>
-        <p>无论是产品细分，还是个性化定制，我们力求为每一个客户实现最合适，最先进的包装解决制造方案。</p>
+    <div class="g-hangye g-liucheng-box" id="pro_liucheng">
+        <h2></h2>
+        <p></p>
         <ul class="f-liucheng">
-            <li class="clearfix">
-                <a href="">
-                    <em class="u-img">
-                        <img src="images/b-1.jpg" alt="">
-                    </em>
-                    <span class="g-txt-box">
-                        <strong>外部检测</strong>    
-                        <p>微生物指标检验报告（PP PE）/ 有害物质指标检验报告（PP PE）</p>
-                    </span>
-                </a>
-                <a href="">
-                    <em class="u-img">
-                        <img src="images/b-2.jpg" alt="">
-                    </em>    
-                    <span class="g-txt-box">
-                        <strong>外部检测</strong>    
-                        <p>微生物指标检验报告（PP PE）/ 有害物质指标检验报告（PP PE）</p>
-                    </span>
-                </a>
-                <a href="">
-                    <em class="u-img">
-                        <img src="images/b-3.jpg" alt="">
-                    </em>    
-                    <span class="g-txt-box">
-                        <strong>外部检测</strong>    
-                        <p>微生物指标检验报告（PP PE）/ 有害物质指标检验报告（PP PE）</p>
-                    </span>
-                </a>
-                <a href="">
-                    <em class="u-img">
-                        <img src="images/b-4.jpg" alt="">
-                    </em> 
-                    <span class="g-txt-box">
-                        <strong>外部检测</strong>    
-                        <p>微生物指标检验报告（PP PE）/ 有害物质指标检验报告（PP PE）</p>
-                    </span>   
-                </a>
-            </li>
+            <li class="clearfix"></li>
         </ul>
-    </div>
-    <div class="g-liuyan-box">
-        <h2>留言内容</h2>
-        <ul class="f-liuyan-box">
-            <li><textarea placeholder="请输入您的留言内容"></textarea></li>
-            <li><input type="text" placeholder="姓名"></li>
-            <li><input type="text" placeholder="电话(必填)"></li>
-            <li><input type="text" placeholder="邮箱"></li>
-            <li><input type="text" placeholder="地址"></li>
-            <li><input type="submit"></li>
-        </ul>  
-        <em><img src="images/icon_3.png" alt=""></em>
-    </div>
-    <div class="g-liuyan"></div>
-    <div class="g-gotop"></div>
-    <div class="g-foot-box clearfix">
-        <div class="g-foot-l">
-            <img src="images/w-logo.png" alt="">
-        </div>
-        <div class="g-foot-c">
-            <a href="index.html" class="cur">网站首页</a><a href="about.html">关于中润</a><a href="pro-shili.html" rel="">产品中心</a><a href="jishu.html" rel="">技术支持</a><a href="news.html" rel="">新闻活动</a><a href="contact.html" rel="">联系我们</a>
-        </div>
-        <div class="g-foot-r">
-            <img src="images/chat.png" alt="">
-            <em>微信扫一扫</em>  
-        </div>
-    </div>
-    <div class="g-footer">
-        2019- 燕教授减脂塑形官网 燕教授阿璠减脂招代理 © 版权所有
     </div>
 </body>
 </html>
