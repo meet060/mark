@@ -95,7 +95,7 @@
 						},
 						dataCount : 1,
 						dataList : [],
-						url : '/'
+						url : ''
 					},
 					methods : {
 						// 数据刷新
@@ -131,7 +131,7 @@
 							var y = 0;
 							var rand = parseInt(Math.random() * (x - y + 1) + y);
 							//图片地址
-							var url = "/" + data.url;
+							var url = data.url;
 							layer.photos({
 								photos : {
 									"data" : [ {
