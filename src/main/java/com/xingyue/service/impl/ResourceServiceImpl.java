@@ -526,12 +526,20 @@ public class ResourceServiceImpl implements ResourceService {
 	public Map<String, Object> findNewsById(Integer id) {
 		HashMap<String, Object> map = new HashMap<>();
 		Optional<Resource> resource = resourceRepository.findById(id);
-		if (resource.isPresent()) {
+		//上一条数据
+        Resource resource1 = resourceRepository.getsTheLastRecordById(id);
+        //下一条数据
+        Resource resource2 = resourceRepository.getsTheNextRecordById(id);
+        if (resource.isPresent()) {
 			map.put("title",resource.get().getTitle());
 			map.put("date",resource.get().getCreatTime());
 			map.put("description",resource.get().getDescription());
 			map.put("url",resource.get().getUrl());
 			map.put("id",resource.get().getId());
+			map.put("previousPageId",resource1.getId());
+			map.put("previousTitle",resource1.getTitle());
+			map.put("theNextPageId",resource2.getId());
+			map.put("theNextPageTitle",resource2.getTitle());
 			return map;
 		}
 		return null;
