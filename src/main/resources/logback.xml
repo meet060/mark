@@ -14,10 +14,10 @@
            stdout将日志信息输出到控制上，为方便开发测试使用
     -->
     <contextName>SpringBootDemo</contextName>
-    <property name="LOG_PATH" value="/C:/bak/package-web" />
+    <property name="LOG_PATH" value="/opt/bak" />
     <!--设置系统日志目录-->
     <property name="APPDIR" value="package-web" />
-    
+
     <!-- 彩色日志依赖的渲染类 -->
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
     <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />

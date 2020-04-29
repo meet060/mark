@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.xingyue.pojo.Resource;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -46,5 +47,26 @@ public interface ResourceRepository extends JpaRepository<Resource, Integer> {
      * @return
      */
     Page<Resource> queryByModuleAndAndPosition(String module, String position, Pageable pageable);
+
+    /**
+     * 根据id获取上一条记录
+     *
+     * @param id
+     * @return
+     */
+    @Query(value = "SELECT * FROM resource AS r WHERE r.module = 'pressCenter' and r.position = 'news' and r.id < ?1 ORDER BY r.id DESC  LIMIT 0,1",nativeQuery = true)
+    Resource getsTheLastRecordById(Integer id);
+
+    /**
+     * 根据id获取下一条记录
+     *
+     * @param id
+     * @return
+     */
+    @Query(value = "SELECT * FROM resource AS r WHERE r.module = 'pressCenter' and r.position = 'news' and r.id > ?1 ORDER BY r.id LIMIT 0,1",nativeQuery = true)
+    Resource getsTheNextRecordById(Integer id);
+
+
+
 
 }
