@@ -9,18 +9,18 @@ var sa = {
 (function(){
 	// 公司开发环境
 	var cfg_dev = {
-		api_url: 'http://127.0.0.1:9000',	// 所有ajax请求接口父地址
-		web_url: 'http://www.baidu.com'		// 此项目前台地址 (此配置项非必须)
+		api_url: '',	// 所有ajax请求接口父地址
+		web_url: ''		// 此项目前台地址 (此配置项非必须)
 	}
 	// 服务器测试环境
 	var cfg_test = {
-		api_url: 'http://120.53.18.245:9000',
-		web_url: 'http://www.baidu.com'
+		api_url: '',
+		web_url: ''
 	}
 	// 服务器测试环境
 	var cfg_prod = {
-		api_url: 'http://www.baidu.com',
-		web_url: 'http://www.baidu.com'
+		api_url: '',
+		web_url: ''
 	}
 	sa.cfg = cfg_test; // 最终环境 , 上线前请选择正确的环境
 })();

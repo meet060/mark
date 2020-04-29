@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import com.xingyue.dao.ContactUsRepository;
@@ -187,7 +188,8 @@ public class ResourceServiceImpl implements ResourceService {
         // 解决方案
         List<Resource> programs = filterResource(resources, "program", 4);
         List<Object> l2 = new ArrayList<>();
-        for (Resource program : programs) {
+        List<Resource> programs2 = programs.stream().sorted(Comparator.comparing(Resource :: getNumber)).collect(Collectors.toList());
+        for (Resource program : programs2) {
             HashMap<String, Object> m1 = new HashMap<>();
             m1.put("title", program.getTitle());
             m1.put("titleurl", program.getUrl());
@@ -230,7 +232,7 @@ public class ResourceServiceImpl implements ResourceService {
 			Map<String, Object> map1 = new HashMap<>(2);
 			Resource r = resources2.get(i - 1);
 			map1.put("introtitle" + i, r.getTitle());
-			map1.put("introduce" + i, r.getDescription());
+			map1.put("introDescription" + i,r.getDescription());
 			map1.put("introduce" + i, r.getUrl());
 			map.put("info"+i,map1);
 		}

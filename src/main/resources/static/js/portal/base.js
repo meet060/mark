@@ -103,9 +103,12 @@ $(function(){
         console.log(arrAbout)
         _about_title.find("p").html(arrAbout2.title)
         _about1_box.find(".g-about-r img").attr("src",api_url+'/'+arrAbout2.info.info1.introduce1)
-        _about1_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info1.introtitle1 +"</p>")
+        _about1_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info1.introDescription1 +"</p>")
+        _about1_box.find(".g-about-h2").html(arrAbout2.info.info1.introtitle1)
         _about2_box.find(".g-about-r img").attr("src",api_url+'/'+arrAbout2.info.info2.introduce2)
-        _about2_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info2.introtitle2 +"</p>")
+        _about2_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info2.introDescription2 +"</p>")
+        _about2_box.find(".g-about-h2").html(arrAbout2.info.info1.introtitle2)
+        
     }
     if(_common.page == "5" ){
         console.log(arrJishu)

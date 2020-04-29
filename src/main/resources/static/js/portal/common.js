@@ -1,4 +1,5 @@
-var api_url = 'http://120.53.18.245:9000'
+var api_url = ''
+//var api_url = 'http://120.53.18.245:9000'
 var jiekou = {
     "index_api":api_url+"/api/resource/queryIndexResources",//首页接口
     "industry_api":api_url+'/api/resource/getTheContactInformation',//查询行业认可图片
