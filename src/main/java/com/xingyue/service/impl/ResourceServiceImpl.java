@@ -136,9 +136,16 @@ public class ResourceServiceImpl implements ResourceService {
         /**************************** 我是分割线 **********************************/
         // 轮播图 3条数据按照最新发布信息(图片静态的)
         List<Resource> banners = filterResource(resources, "banner", 3);
-        HashMap<String, Object> bannermap = new HashMap<String, Object>();
-        bannermap.put("titleurl", banners.stream().map(Resource::getUrl).collect(Collectors.toList()));
-        map.put("banner", bannermap);
+        List<Map<String, Object>> list = new ArrayList<>();
+        for(Resource r : banners){
+			HashMap<String, Object> bannermap = new HashMap<String, Object>();
+			bannermap.put("titleurl", r.getUrl());
+			bannermap.put("title", r.getTitle());
+			bannermap.put("description", r.getDescription());
+			list.add(bannermap);
+		}
+		map.put("banner", list);
+
         /**************************** 我是分割线 **********************************/
         // 产品：按照产品最新 4条数据
         List<Resource> neidais = filterResource(resources, "neidai", 4);
