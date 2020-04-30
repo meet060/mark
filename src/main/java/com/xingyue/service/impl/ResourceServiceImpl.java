@@ -1,15 +1,9 @@
 package com.xingyue.service.impl;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.stream.Collector;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.xingyue.dao.ContactUsRepository;
@@ -135,17 +129,19 @@ public class ResourceServiceImpl implements ResourceService {
         List<Resource> resources = resourceRepository.queryByModule("AboutZR");
         /**************************** 我是分割线 **********************************/
         // 轮播图 3条数据按照最新发布信息(图片静态的)
-        List<Resource> banners = filterResource(resources, "banner", 3);
-        List<Map<String, Object>> list = new ArrayList<>();
-        for(Resource r : banners){
-			HashMap<String, Object> bannermap = new HashMap<String, Object>();
-			bannermap.put("titleurl", r.getUrl());
-			bannermap.put("title", r.getTitle());
-			bannermap.put("description", r.getDescription());
-			list.add(bannermap);
-		}
-		map.put("banner", list);
-
+        Sort sort = JpaSort.unsafe(Sort.Direction.ASC, "number");
+        Pageable pageable = PageRequest.of(0, 3, sort);
+        Page<Resource> resourcePage = resourceRepository.queryByModuleAndAndPosition("AboutZR", "banner", pageable);
+        List<Map<String ,Object>> list = new ArrayList<>();
+        List<Resource> content = resourcePage.getContent();
+        for(Resource r : content){
+            Map<String, Object> map1 = new HashMap<>();
+            map1.put("titleurl", r.getUrl());
+            map1.put("title", r.getTitle());
+            map1.put("description", r.getDescription());
+            list.add(map1);
+        }
+        map.put("banner", list);
         /**************************** 我是分割线 **********************************/
         // 产品：按照产品最新 4条数据
         List<Resource> neidais = filterResource(resources, "neidai", 4);
@@ -553,4 +549,37 @@ public class ResourceServiceImpl implements ResourceService {
 		}
 		return null;
 	}
+
+    /**
+     * list排序
+     *
+     * @param <E>
+     */
+    public class SortList<E> {
+        public  void Sort(List<E> list, final String method, final String sort) {
+            Collections.sort(list, new Comparator() {
+                public int compare(Object a, Object b) {
+                    int ret = 0;
+                    try {
+                        Method m1 = ((E) a).getClass().getMethod(method, null);
+                        Method m2 = ((E) b).getClass().getMethod(method, null);
+                        if (sort != null && "desc".equals(sort))// 倒序
+                            ret = m2.invoke(((E) b), null).toString()
+                                    .compareTo(m1.invoke(((E) a), null).toString());
+                        else
+                            // 正序
+                            ret = m1.invoke(((E) a), null).toString()
+                                    .compareTo(m2.invoke(((E) b), null).toString());
+                    } catch (NoSuchMethodException ne) {
+                        System.out.println(ne);
+                    } catch (IllegalAccessException ie) {
+                        System.out.println(ie);
+                    } catch (InvocationTargetException it) {
+                        System.out.println(it);
+                    }
+                    return ret;
+                }
+            });
+        }
+    }
 }
