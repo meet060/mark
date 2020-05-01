@@ -2,30 +2,37 @@ $(function(){
     if(typeof(_common) == 'undefined'){
         return false;
     }
+    $(".g-banner-about p").addClass("cur")
     head();//头部
     head_foot_txt("cn");//头部底部
     scoll_nav();//滚动条事件
-    $()
-    if( _common.pageJs == "index" ){
-        baseJs.Index();
-    }
     // 导航
     if(_common.pageTo == "con"){
     share();//分享；
     }
     if( _common.page == "1" ){
+        console.log(indexPro)
+        var _banner = $("#g_banner")
         var _pro_title = $("#f-pro-title")
         var index_pro1=$("#g-pro-list1")
         var index_pro3=$("#g-pro-list2")
         index_pro(index_pro1,1);
         index_pro2(index_pro3,5);
+        //首页banner
+        console.log(_banner.find("div").length)
+        var _banner = $("#g_banner")
+        for( var i=0;i<_banner.find("div").length; i++){
+            _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+''+indexPro.banner[i].titleurl)
+            _banner.find(".swiper-slide").eq(i).find("strong").html(indexPro.banner[i].title)
+            _banner.find(".swiper-slide").eq(i).find("p").html(indexPro.banner[i].description)
+        }
         // 首页关于我们
         var _about_index_title = $("#about_index_title")
         var _about_index = $("#about_index")
         var _about_index = $("#about_index")
         var _about_v = $("#about_v")
         var _about_html = '<video muted="" loop="" autoplay="">'+
-                                '<source src="'+api_url+'/'+indexPro.about.titleurl+'" type="video/ogg"/>'+
+                                '<source src="'+api_url+''+indexPro.about.titleurl+'" type="video/ogg"/>'+
                             '</video>'
         _about_index_title.html(arrAbout2.title)
         _about_index.html(arrAbout2.description)
@@ -41,10 +48,12 @@ $(function(){
                 var html = '<li>'+
                                 '<a href="pro-con.html?id='+ h +'">'+
                                     '<em class="u-img">'+
-                                        '<img src='+ api_url+'/'+indexPro.neidai[_num].titleurl +' alt="'+indexPro.neidai[_num].title+'">'+
+                                        '<img src='+ api_url+''+indexPro.neidai[_num].titleurl +' alt="'+indexPro.neidai[_num].title+'">'+
                                     '</em>'+
                                     '<strong>'+indexPro.neidai[_num].title+'</strong>'+
                                     '<p>'+indexPro.neidai[_num].description+'</p>'+
+                                    '<span class="u-img-zhao">'+indexPro.waidai[_num].description+
+                                    '</span>'+
                                 '</a>'+
                             '</li>'
                 e.append(html)
@@ -58,10 +67,12 @@ $(function(){
                 var html = '<li>'+
                                 '<a href="pro-con.html?id='+ h +'">'+
                                     '<em class="u-img">'+
-                                        '<img src='+ api_url+'/'+ indexPro.waidai[_num].titleurl +' alt="'+indexPro.waidai[_num].title+'">'+
+                                        '<img src='+ api_url+''+ indexPro.waidai[_num].titleurl +' alt="'+indexPro.waidai[_num].title+'">'+
                                     '</em>'+
                                     '<strong>'+indexPro.waidai[_num].title+'</strong>'+
                                     '<p>'+indexPro.waidai[_num].description+'</p>'+
+                                    '<span class="u-img-zhao">'+indexPro.waidai[_num].description+
+                                    '</span>'+
                                 '</a>'+
                             '</li>'
                 e.append(html)
@@ -72,8 +83,8 @@ $(function(){
     var _tuozhan = $("#g-tuozhan")
     for(var i=0;i<_tuozhan.find("li").length;i++){
         _tuozhan.find("li").eq(i).find("img").attr({
-            "src":api_url+'/'+indexPro.innovation.innovation[i].titlepic,
-            "alt":api_url+'/'+indexPro.innovation.innovation[i].title,
+            "src":api_url+''+indexPro.innovation.innovation[i].titlepic,
+            "alt":api_url+''+indexPro.innovation.innovation[i].title,
         })
     }
     _tuozhan_txt.find("p").html(indexPro.innovation.description)
@@ -81,12 +92,14 @@ $(function(){
     var _fangan = $("#fangan")
     var _fangan_txt = $("#fangan-box")
     _fangan.find("p").html(indexPro.program.description)
-    for(var i=0;i<_fangan_txt.find("li").length;i++){
-        _fangan_txt.find("li").eq(i).find("img").attr({
-            "src":api_url+'/'+indexPro.program.program[i].titlepic,
-            "alt":indexPro.program.program[i].title
-        })
+    for(var i=0;i<indexPro.program.program.length;i++){
+        html = '<li><a href=""><img src="'+ api_url+''+indexPro.program.program[i].titlepic +'" alt="'+ indexPro.program.program[i].title +'"><strong><em>'+ indexPro.program.program[i].title +'</em></strong></ a></li>'
+        _fangan_txt.append(html)
+        console.log(html)
     }
+    }
+    if( _common.pageJs == "index" ){
+        baseJs.Index();
     }
     if( _common.page == "2" ){
         pro_con()
@@ -100,15 +113,16 @@ $(function(){
         var _about_title = $("#about_box")
         var _about1_box = $("#about_box1")
         var _about2_box = $("#about_box2")
-        console.log(arrAbout)
+        // console.log(arrAbout2)
         _about_title.find("p").html(arrAbout2.title)
-        _about1_box.find(".g-about-r img").attr("src",api_url+'/'+arrAbout2.info.info1.introduce1)
-        _about1_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info1.introDescription1 +"</p>")
-        _about1_box.find(".g-about-h2").html(arrAbout2.info.info1.introtitle1)
-        _about2_box.find(".g-about-r img").attr("src",api_url+'/'+arrAbout2.info.info2.introduce2)
-        _about2_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info2.introDescription2 +"</p>")
-        _about2_box.find(".g-about-h2").html(arrAbout2.info.info1.introtitle2)
-        
+        _about1_box.find(".g-about-r img").attr("src",api_url+''+arrAbout2.info.info1.introduce1)
+        _about1_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info1.introDescription1 +"</p >")
+        //_about1_box.find(".g-about-h2").html(arrAbout2.info.info1.introtitle1)
+        _about1_box.find(".g-about-lh2").html('公司介绍')
+        _about2_box.find(".g-about-r img").attr("src",api_url+''+arrAbout2.info.info2.introduce2)
+        _about2_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info2.introDescription2 +"</p >")
+       // _about2_box.find(".g-about-h2").html(arrAbout2.info.info1.introtitle2)
+        _about2_box.find(".g-about-lh2").html("因为专注于此，所以持续领先")
     }
     if(_common.page == "5" ){
         console.log(arrJishu)
@@ -121,12 +135,12 @@ $(function(){
         _jishu_txt.find("p").html(arrJishu.sbdescription)
         _jishu_zc.find("p").html(arrJishu.jishu.jsdescription1)
         _jishu_zc.find("img").attr({
-            "src":api_url+'/'+arrJishu.jishu.jspic1,
+            "src":api_url+''+arrJishu.jishu.jspic1,
             "alt":arrJishu.jishu.jstitle1,
         })
         _jishu_cx.find("p").html(arrJishu.jishu.jsdescription2)
         _jishu_cx.find("img").attr({
-            "src":api_url+'/'+arrJishu.jishu.jspic2,
+            "src":api_url+''+arrJishu.jishu.jspic2,
             "alt":arrJishu.jishu.jstitle2,
         })
         _jishu_sl.find("p").html(arrJishu.sbdescription)
@@ -135,7 +149,7 @@ $(function(){
             var _e2 = 'jstitle'+i
             var _e3 = 'jsdescription'+i
             var js_html = '<a href="">'+
-                                '<em class="u-img"><img src="'+ api_url+'/'+arrJishu.device[_e] +'" alt=""></em>'+
+                                '<em class="u-img"><img src="'+ api_url+''+arrJishu.device[_e] +'" alt=""></em>'+
                                 '<span class="g-txt-box">'+
                                     '<strong>'+arrJishu.device[_e2] +'</strong>'+
                                     '<p>'+arrJishu.device[_e3] +'</p>'+
@@ -149,12 +163,12 @@ $(function(){
         }
     }
     if(_common.page == "6" ){
-        console.log(arrContact2)
+        // console.log(arrContact2)
         var _lianxi_txt =$("#lianxi_txt")
         var _lianxi_box =$("#lianxi_box")
         var _lianxi_jr = $("#lianxi_jr")
         _lianxi_txt.find("p").html(arrContact2.title)
-        _lianxi_txt.find("img").attr("src",api_url+'/'+arrContact2.titlepic)
+        _lianxi_txt.find("img").attr("src",api_url+''+arrContact2.titlepic)
         _lianxi_box.find("h3").html(arrContact2.contact.company)
         _lianxi_box.find("p").eq(0).html(arrContact2.contact.address)
         _lianxi_box.find("p").eq(1).html('电话：'+arrContact2.contact.phone)
@@ -165,19 +179,25 @@ $(function(){
         _lianxi_jr.find("p").html(arrContact2.bottom.description)
     }
     if(_common.page == "7" ){
-                var _url = window.location.search.substring("1")
-                var reg = new RegExp("&","g")
-                var reg2 = new RegExp("=","g")
-                var url = _url.replace(reg,'","')
-                var Url = url.replace(reg2,'":"')
-                var arr2 = '{"'+Url+'"}'
-                // var jsonarr = JSON.parse(arr2)
-                console.log(arr2)
-                // console.log(jsonarr.page,jsonarr.pagesize)
+        var reg,reg2,url,Url,arr2,jsonarr
+        var new_page,new_size,new_yema
+        var _url = window.location.search.substring("1")
+        new_size = 2
+        console.log(_url)
+        if( _url !="" ){
+            reg = new RegExp("&","g")
+            reg2 = new RegExp("=","g")
+            url = _url.replace(reg,'","')
+            Url = url.replace(reg2,'":"')
+            arr2 = '{"'+Url+'"}'
+            jsonarr = JSON.parse(arr2)
+            console.log(jsonarr.page,jsonarr.pagesize)
+            new_page = jsonarr.page
+        }else{
+            new_page = 1
+        }
         function new_list_box(){
-            var new_page = 1
-            var new_size = 10
-            var new_url = api_url+'/api/resource/getTheNewsCenterData?page='+ new_page +'&size='+new_size;
+            var new_url = api_url+'/api/resource/getTheNewsCenterData?page='+ new_page +'&pagesize='+new_size;
             var _new_list = $("#new_list")
             var _new_page = $("#new_list_page")
             $.ajax({
@@ -189,8 +209,8 @@ $(function(){
                     var new_time = val.newtime
                     var _new_time_ = new_time.split("T")
                     var html = '<li>'+
-                                    '<a href="news-con.html?'+ val.id +'">'+
-                                        '<em class="u-img"><img src="'+api_url+'/' + val.url +'" alt="'+ val.title +'"></em>'+
+                                    '<a href="news-con.html?id='+ val.id +'">'+
+                                        '<em class="u-img"><img src="'+api_url+'' + val.url +'" alt="'+ val.title +'"></em>'+
                                         '<span class="g-txt-box">'+
                                             '<strong>'+ val.title +'</strong>'+
                                             '<em>'+ _new_time_[0] +'</em>' +
@@ -199,20 +219,29 @@ $(function(){
                                 '</li>'
                     _new_list.append(html)
                 })
-                console.log(new_data)
                 //页码
-                var new_yema =  new_data.pagenum/new_size + 1
+                var new_yema =  new_data.pagenum/new_size
                     for( var i=1;i<new_yema;i++ ){
-                        var new_yema_txt = '<a href="news.html?page='+ new_page +'&pagesize='+ new_size +'" rel="'+ i +'">'+ i +'</a>'
+                        var new_yema_txt = '<a href="news.html?page='+ i +'&pagesize='+ new_size +'" rel="'+ i +'">'+ i +'</a>'
                         _new_page.find("a").last().before(new_yema_txt)
                     }
-                    _new_page.find("a").each(function(){
-                        var _page_class = $(this).attr("rel")
-                        if( _page_class == new_page ){
-                            $(this).addClass("cur")
+                    $("#new_list_page").find("a").eq(new_page).addClass("cur")
+                    $("#new_list_page").find("a").last().click(function(){
+                        if(new_page<new_yema-1){
+                            new_page++
+                        }else{
+                            return false;
                         }
+                        window.location.href = 'news.html?page='+ new_page +'&pagesize='+ new_size
                     })
-
+                    $("#new_list_page").find("a").first().click(function(){
+                        if(new_page>1){
+                            new_page--
+                        }else{
+                            return false;
+                        }
+                        window.location.href = 'news.html?page='+ new_page +'&pagesize='+ new_size
+                    })
                 },
                 error: function (data) {
                     console.log("error")
@@ -220,9 +249,34 @@ $(function(){
             });
         }
         new_list_box();
-        $("#new_list_page").find("a").click(function(){
-            var new_page = $(this).attr("rel")
-        })
+    }
+    if(_common.page == "8" ){
+        var reg,reg2,url,Url,arr2,jsonarr
+        var _url = window.location.search.substring("1")
+        console.log(_url)
+        reg2 = new RegExp("=","g")
+        Url = _url.replace(reg2,'":"')
+        arr2 = '{"'+Url+'"}'
+        jsonarr = JSON.parse(arr2)
+        console.log(jsonarr.id)
+        var _data = {'id':'121'}
+        var _con_img = $("#con_img")
+        var _con_txt = $("#con_txt")
+        $.ajax({
+            type: "POST",
+            data:JSON.stringify(_data),
+            url: jiekou.xiangqing_api,
+            headers:{'Content-Type':'application/json;'},
+            success: function(data_con) {
+               console.log(data_con)
+                _con_img.find("img").attr("src",api_url + ''+ data_con.url)
+                _con_txt.find("h1").html(data_con.title)
+               _con_txt.find(".f-text-content").append(data_con.description)
+            },
+            error: function (data) {
+                console.log("error")
+            }
+        });
     }
 });
 
@@ -373,7 +427,7 @@ function pro_list(){
     for(var i=0;i<4;i++){
             pro_html = '<li>'+
                         '<a href="pro-con.html?id='+ i +'">'+
-                            '<em class="u-img"><img src="'+ api_url+'/'+arrProduct.outerBag[i].wdpic +'" alt="'+ arrProduct.outerBag[i].wdtitle +'"></em>'+
+                            '<em class="u-img"><img src="'+ api_url+''+arrProduct.outerBag[i].wdpic +'" alt="'+ arrProduct.outerBag[i].wdtitle +'"></em>'+
                             '<span class="g-txt-box">'+
                                 '<strong>'+arrProduct.outerBag[i].wdtitle +'</strong>'+
                                 '<p>'+ arrProduct.outerBag[i].wddescription +'</p>'+
@@ -384,7 +438,7 @@ function pro_list(){
         }
     for(var i=0;i<2;i++){
         html='<a href="">'+
-                    '<em class="u-img"><img src="'+ api_url+'/'+arrProduct.process[i].titlepic +'" alt="'+ arrProduct.process[i].title +'"></em> '+
+                    '<em class="u-img"><img src="'+ api_url+''+arrProduct.process[i].titlepic +'" alt="'+ arrProduct.process[i].title +'"></em> '+
                     '<span class="g-txt-box">'+
                         '<strong>'+ arrProduct.process[i].title +'</strong>'+
                         '<p>'+ arrProduct.process[i].description +'</p> '+   
@@ -397,7 +451,7 @@ function pro_list(){
     for(var i=0;i<8;i++){
         _html='<li>'+
                 '<a href="">'+
-                   ' <em class="u-img"><img src="'+ api_url+'/'+arrProduct.program[i].titlepic +'" alt="'+ arrProduct.program[i].title +'"></em>'+
+                   ' <em class="u-img"><img src="'+ api_url+''+arrProduct.program[i].titlepic +'" alt="'+ arrProduct.program[i].title +'"></em>'+
                     '<span class="g-txt-box">'+
                         '<strong>'+ arrProduct.program[i].title +'</strong>'+
                     '</span>'+
@@ -412,7 +466,7 @@ function pro_list(){
     for(var i=0;i<4;i++){
         html='<a href="">'+
                    '<em class="u-img">'+
-                        '<img src="'+ api_url+'/'+ arrProduct.control[i].titlepic +'" alt="'+ arrProduct.control[i].title +'">'+
+                        '<img src="'+ api_url+''+ arrProduct.control[i].titlepic +'" alt="'+ arrProduct.control[i].title +'">'+
                     '</em>'+
                     '<span class="g-txt-box">'+
                         '<strong>'+ arrProduct.control[i].title +'</strong>'+

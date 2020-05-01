@@ -1,5 +1,4 @@
 var api_url = ''
-//var api_url = 'http://120.53.18.245:9000'
 var jiekou = {
     "index_api":api_url+"/api/resource/queryIndexResources",//首页接口
     "industry_api":api_url+'/api/resource/getTheContactInformation',//查询行业认可图片
@@ -8,6 +7,8 @@ var jiekou = {
     "online_api":api_url+'/api/afterSale/addAfterSale',//在线咨询
     "product_api":api_url+'/api/resource/productCenterDataQuery', //产品实力
     "jishu_api":api_url+'/api/resource/queryTechnicalSupportInformation',//技术页面
+    "xiangqing_api":api_url+'/api/resource/news/',//新闻详情
+    "liuyan_api":api_url+'/api/afterSale/addAfterSale'//留言POST
 }
 var arrAbout;  //关于我们
 var arrContact; //联系我们
@@ -16,16 +17,6 @@ var arrProduct;//产品中心
 var arrJishu;//产品中心
 $(function () {
     // jQuery.support.cors = true;
-    $.ajax({
-        type: "POST",
-        url: jiekou.industry_api,
-        success: function(data) {
-        //    console.log(data)
-        },
-        error: function (data) {
-            console.log("error")
-        }
-    });
 function indexApi(){
     $.ajax({
         type: "POST",
@@ -389,10 +380,11 @@ function head(){
                             '<li><input type="text" placeholder="" id="meailTxt"></li>'+
                             '<li><input type="text" placeholder="" id="addressTxt"></li>'+
                             '<li><textarea placeholder="" id="liuyanTxt"></textarea></li>'+
-                            '<li><input type="submit"></li>'+
+                            '<li><input type="submit" id="sumbtn"></li>'+
                         '</ul>  '+
                         '<em><img src="/images/icon_3.png" alt=""></em>  '+
                         '</div>'+
+                        '<a class="g-dianhua" href="tel:15369078000"></a>'+
                         '<div class="g-liuyan"></div>'+
                         '<div class="g-gotop"></div>'+
                         '<div class="g-foot-box clearfix">'+
@@ -434,6 +426,9 @@ function head(){
                      '</div>'
     _body.prepend(header);
     _body.append(footer);
+    if( _common.lug == "en" ){
+        $(".f-lang a").last().addClass("cur").siblings().removeClass("cur")
+    }
 }
 function head_foot_txt(e){
     var _head = $("#head")
@@ -528,5 +523,28 @@ function head_foot_txt(e){
         _foot.find(".f-foot-nav").eq(5).find("a").eq(i).html(val)
         })
     }
-    
+   
+    $("#sumbtn").click(function(){
+        var _data_smt = {
+            "address": $("#addressTxt").val(),
+            "content": $("#liuyanTxt").val(),
+            "mailbox": $("#meailTxt").val(),
+            "name": $("#nameTxt").val(),
+            "phone": $("#phoneTxt").val()
+        }
+        console.log(JSON.stringify(_data_smt))
+    $.ajax({
+        type: "POST",
+        data:JSON.stringify(_data_smt),
+        url: jiekou.liuyan_api,
+        headers:{'Content-Type':'application/json;charset=UTF-8'},
+        success: function(jishu) {
+            console.log("success")
+            window.location.reload();
+        },
+        error: function (data) {
+            console.log("error")
+        }
+    });
+    })  
 }
