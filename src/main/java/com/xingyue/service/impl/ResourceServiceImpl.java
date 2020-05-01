@@ -186,7 +186,11 @@ public class ResourceServiceImpl implements ResourceService {
         map.put("innovation", m2);
         /**************************** 我是分割线 **********************************/
         // 解决方案
-        List<Resource> programs = filterResource(resources, "program", 4);
+        //赞注释，使用产品模块接口方案
+        //List<Resource> programs = filterResource(resources, "program", 4);
+        
+        List<Resource> productCenters = resourceRepository.queryByModule("productCenter");
+        List<Resource> programs = filterResource(productCenters, "scheme", 8);
         List<Object> l2 = new ArrayList<>();
         List<Resource> programs2 = programs.stream().sorted(Comparator.comparing(Resource :: getNumber)).collect(Collectors.toList());
         for (Resource program : programs2) {
