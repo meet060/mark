@@ -1,14 +1,11 @@
 package com.xingyue.service.impl;
 
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import com.xingyue.dao.ContactUsRepository;
 import com.xingyue.pojo.ContactUs;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -563,38 +560,5 @@ public class ResourceServiceImpl implements ResourceService {
             return map;
         }
         return null;
-    }
-
-    /**
-     * list排序
-     *
-     * @param <E>
-     */
-    public class SortList<E> {
-        public void Sort(List<E> list, final String method, final String sort) {
-            Collections.sort(list, new Comparator() {
-                public int compare(Object a, Object b) {
-                    int ret = 0;
-                    try {
-                        Method m1 = ((E) a).getClass().getMethod(method, null);
-                        Method m2 = ((E) b).getClass().getMethod(method, null);
-                        if (sort != null && "desc".equals(sort))// 倒序
-                            ret = m2.invoke(((E) b), null).toString()
-                                    .compareTo(m1.invoke(((E) a), null).toString());
-                        else
-                            // 正序
-                            ret = m1.invoke(((E) a), null).toString()
-                                    .compareTo(m2.invoke(((E) b), null).toString());
-                    } catch (NoSuchMethodException ne) {
-                        System.out.println(ne);
-                    } catch (IllegalAccessException ie) {
-                        System.out.println(ie);
-                    } catch (InvocationTargetException it) {
-                        System.out.println(it);
-                    }
-                    return ret;
-                }
-            });
-        }
     }
 }
