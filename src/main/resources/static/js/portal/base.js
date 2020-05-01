@@ -92,11 +92,13 @@ $(function(){
     var _fangan = $("#fangan")
     var _fangan_txt = $("#fangan-box")
     _fangan.find("p").html(indexPro.program.description)
-    for(var i=0;i<indexPro.program.program.length;i++){
-        html = '<li><a href=""><img src="'+ api_url+''+indexPro.program.program[i].titlepic +'" alt="'+ indexPro.program.program[i].title +'"><strong><em>'+ indexPro.program.program[i].title +'</em></strong></ a></li>'
-        _fangan_txt.append(html)
-        console.log(html)
-    }
+    for (var i = 0; i < _fangan_txt.find("li").length; i++) {
+        _fangan_txt.find("li").eq(i).find("img").attr({
+            "src": api_url + indexPro.program.program[i].titlepic,
+            "alt": indexPro.program.program[i].title
+        })
+        _fangan_txt.find("li").eq(i).find("em").html(indexPro.program.program[i].title)
+        }
     }
     if( _common.pageJs == "index" ){
         baseJs.Index();
