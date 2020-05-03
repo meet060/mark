@@ -299,12 +299,7 @@ pro_btn.on("mouseover",function(){
 })
 
 //解决方案
-var fangan = $(".g-fangan ul li")
-fangan.mouseenter(function(){
-    $(this).find("strong").stop().slideUp();
-}).mouseleave(function(){
-    $(this).find("strong").stop().slideDown();
-})
+
 //回到顶部
 var go_top = $(".g-gotop")
 go_top.on("click",function(){
