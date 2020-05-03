@@ -19,7 +19,6 @@ $(function(){
         index_pro(index_pro1,1);
         index_pro2(index_pro3,5);
         //首页banner
-        console.log(_banner.find("div").length)
         var _banner = $("#g_banner")
         for( var i=0;i<_banner.find("div").length; i++){
             _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+''+indexPro.banner[i].titleurl)
@@ -92,13 +91,11 @@ $(function(){
     var _fangan = $("#fangan")
     var _fangan_txt = $("#fangan-box")
     _fangan.find("p").html(indexPro.program.description)
-    for (var i = 0; i < _fangan_txt.find("li").length; i++) {
-        _fangan_txt.find("li").eq(i).find("img").attr({
-            "src": api_url + indexPro.program.program[i].titlepic,
-            "alt": indexPro.program.program[i].title
-        })
-        _fangan_txt.find("li").eq(i).find("em").html(indexPro.program.program[i].title)
-        }
+    for(var i=0;i<indexPro.program.program.length;i++){
+        html = '<li><a href=""><img src="'+ api_url+''+indexPro.program.program[i].titlepic +'" alt="'+ indexPro.program.program[i].title +'"><strong><em>'+ indexPro.program.program[i].title +'</em></strong></a></li>'
+        _fangan_txt.append(html)
+        console.log(html)
+    }
     }
     if( _common.pageJs == "index" ){
         baseJs.Index();
@@ -108,7 +105,6 @@ $(function(){
     }
     if(_common.page == "3" ){
         pro_list();
-
     }
     if(_common.page == "4" ){
         pro_list();
@@ -116,15 +112,16 @@ $(function(){
         var _about1_box = $("#about_box1")
         var _about2_box = $("#about_box2")
         // console.log(arrAbout2)
+        _about_title.find("img").attr("src",api_url+''+arrAbout2.titlepic)
         _about_title.find("p").html(arrAbout2.title)
         _about1_box.find(".g-about-r img").attr("src",api_url+''+arrAbout2.info.info1.introduce1)
         _about1_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info1.introDescription1 +"</p >")
-        //_about1_box.find(".g-about-h2").html(arrAbout2.info.info1.introtitle1)
-        _about1_box.find(".g-about-lh2").html('公司介绍')
+        // _about1_box.find(".g-about-l h2").html(arrAbout2.info.info1.introtitle1)
+        _about1_box.find(".g-about-l h2").html('公司介绍')
         _about2_box.find(".g-about-r img").attr("src",api_url+''+arrAbout2.info.info2.introduce2)
         _about2_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info2.introDescription2 +"</p >")
-       // _about2_box.find(".g-about-h2").html(arrAbout2.info.info1.introtitle2)
-        _about2_box.find(".g-about-lh2").html("因为专注于此，所以持续领先")
+        // _about2_box.find(".g-about-l h2").html(arrAbout2.info.info1.introtitle2)
+        _about2_box.find(".g-about-l h2").html("因为专注于此，所以持续领先")
     }
     if(_common.page == "5" ){
         console.log(arrJishu)

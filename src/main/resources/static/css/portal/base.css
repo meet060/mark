@@ -78,10 +78,10 @@ html{font-size: 20px;}
  .swiper-container-wp8-vertical,.swiper-container-wp8-vertical>.swiper-wrapper{-ms-touch-action:pan-x;touch-action:pan-x}
  .swiper-button-next,.swiper-button-prev{position:absolute;top:50%;width:28px;height:44px;margin-top:-22px;z-index:10;cursor:pointer;background-size:27px 44px;background-position:center;background-repeat:no-repeat}
  .swiper-button-next.swiper-button-disabled,.swiper-button-prev.swiper-button-disabled{opacity:.35;cursor:auto;pointer-events:none}
- .swiper-button-prev,.swiper-container-rtl .swiper-button-next{left:30px;right:auto;background: url(../../images/icon_4.png) center no-repeat rgba(255,255,255,0.5);background-size: 1rem;}
- .swiper-button-next,.swiper-container-rtl .swiper-button-prev{right:30px;left:auto;background: url(../../images/icon_5.png) center no-repeat rgba(255,255,255,0.5);background-size: 1rem;}
- .swiper-button-prev:hover{background: url(../../images/icon_4.png) center no-repeat rgba(255,255,255,1);background-size: 1rem;}
- .swiper-button-next:hover{background: url(../../images/icon_5.png) center no-repeat rgba(255,255,255,1);background-size: 1rem;}
+ .swiper-button-prev,.swiper-container-rtl .swiper-button-next{left:30px;right:auto;background: url(/images/icon_4.png) center no-repeat rgba(255,255,255,0.5);background-size: 1rem;}
+ .swiper-button-next,.swiper-container-rtl .swiper-button-prev{right:30px;left:auto;background: url(/images/icon_5.png) center no-repeat rgba(255,255,255,0.5);background-size: 1rem;}
+ .swiper-button-prev:hover{background: url(/images/icon_4.png) center no-repeat rgba(255,255,255,1);background-size: 1rem;}
+ .swiper-button-next:hover{background: url(/images/icon_5.png) center no-repeat rgba(255,255,255,1);background-size: 1rem;}
  .swiper-button-prev.swiper-button-white,.swiper-container-rtl .swiper-button-next.swiper-button-white{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E")}
  .swiper-button-next.swiper-button-white,.swiper-container-rtl .swiper-button-prev.swiper-button-white{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E")}
  .swiper-button-prev.swiper-button-black,.swiper-container-rtl .swiper-button-next.swiper-button-black{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E")}

@@ -85,10 +85,11 @@ h2.f-tuozhan-title{padding: 3rem 2rem 1rem 2rem;}
 .g-fangan-box{background: #fff;padding-top: 0;}
 .g-fangan-box h2{padding-bottom: .5rem;}
 .g-fangan{margin-top: .5rem;}
-.g-fangan ul li{width: 25%;float: left;overflow: hidden;}
-.g-fangan ul li a,.g-fangan ul li a img{display: block;width: 100%;}
-.g-fangan li a{position: relative;}
-.g-fangan li a strong{display: block;position: absolute;width: 100%;height: 100%;line-height: 100%;top:0;left:0;background: rgba(0,0,0,.5);color: #fff;font-size: .9rem;font-weight: normal;}
+.g-fangan ul li{width: 25%;float: left;overflow: hidden;max-height: 15rem;}
+.g-fangan ul li a img{width: 100%;}
+.g-fangan li a{position: relative;height: 100%;display: block;}
+.g-fangan li a strong{display: block;position: absolute;width: 100%;height: 100%;line-height: 100%;top:100%;left:0;background: rgba(0,0,0,.5);color: #fff;font-size: .9rem;font-weight: normal;transition: top .5s;}
+.g-fangan li a:hover strong{top:0!important;}
 .g-fangan li a strong em{position: absolute;top:50%;left: auto;display: block;width: 100%;text-align: center;margin-top: -1rem;}
 .g-fangan li a strong em:after{display: block;position: absolute;content: "";width:2rem;height: .1rem;background: #fff;left:50%;margin: 1rem 0 -1rem -1rem;}
 .g-fangan-h{background: #fff;}
@@ -312,6 +313,9 @@ h2.f-tuozhan-title{padding: 3rem 2rem 1rem 2rem;}
     .f-lang{padding:.4rem 0;margin-left: .75rem;}
     .f-lang a{display: inline-block;width: 1.2rem;height: 1.2rem;line-height: 1.2rem;box-sizing: border-box;border:.05rem solid #3a0f78;text-align: center;border-radius: .2rem;font-size: .7rem;padding:0;}
 
+    .g-banner{height: 15rem;}
+    .g-index-banner-txt strong{font-size: .8rem;line-height: 1rem;}
+    .g-index-banner-txt p{padding: .5rem 0;line-height: .8rem;}
     .g-common {padding: 1rem .5rem 0 .5rem;background: #fff;margin: .5rem;border-radius: .4rem;box-shadow: 0 0 .25rem rgba(0,0,0,.2);}
     .g-common h2{font-size: 1.2rem;text-align: center;position: relative;margin-bottom: .5rem;}
     .g-common h2:after{display: block;content:"";width: 2rem;height: .2rem;border-radius: .2rem;background: #3a0f78;position: absolute;bottom: 0;left:
