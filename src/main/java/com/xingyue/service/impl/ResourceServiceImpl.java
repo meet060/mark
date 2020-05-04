@@ -169,6 +169,7 @@ public class ResourceServiceImpl implements ResourceService {
         m.put("titleurl", abouts.getUrl());
         m.put("video", abouts.getUrl());
         m.put("description", abouts.getDescription());
+        m.put("title", abouts.getTitle());
         map.put("about", m);
         /**************************** 我是分割线 **********************************/
         // 改善创新
