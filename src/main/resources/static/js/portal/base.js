@@ -28,13 +28,12 @@ $(function(){
         // 首页关于我们
         var _about_index_title = $("#about_index_title")
         var _about_index = $("#about_index")
-        var _about_index = $("#about_index")
         var _about_v = $("#about_v")
         var _about_html = '<video muted="" loop="" autoplay="">'+
-                                '<source src="'+api_url+''+indexPro.about.titleurl+'" type="video/ogg"/>'+
+                                '<source src="'+api_url+''+arrIndex.about.video+'" type="video/ogg"/>'+
                             '</video>'
-        _about_index_title.html(arrAbout2.title)
-        _about_index.html(arrAbout2.description)
+        _about_index_title.html(arrIndex.about.title)
+        _about_index.html(arrIndex.about.description)
         _about_v.append(_about_html)
     //产品标题描述
         _pro_title.html(indexPro.innovation.description)
@@ -111,6 +110,8 @@ $(function(){
         var _about_title = $("#about_box")
         var _about1_box = $("#about_box1")
         var _about2_box = $("#about_box2")
+        var _industry1 = $("#industry1")
+        var _industry2 = $("#industry2")
         // console.log(arrAbout2)
         _about_title.find("img").attr("src",api_url+''+arrAbout2.titlepic)
         _about_title.find("p").html(arrAbout2.title)
@@ -122,6 +123,57 @@ $(function(){
         _about2_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info2.introDescription2 +"</p >")
         // _about2_box.find(".g-about-l h2").html(arrAbout2.info.info1.introtitle2)
         _about2_box.find(".g-about-l h2").html("因为专注于此，所以持续领先")
+        function fnIndustry(){
+            // console.log(arrIndustry.recognized.length)
+            for( var i=0;i<arrIndustry.recognized.length;i++){
+                if(i<4){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry1.find("div").eq(0).append(_html_)
+                }else if(i<9){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry1.find("div").eq(1).append(_html_)
+                }else{
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry1.find("div").eq(2).append(_html_)
+                }
+                if(i<3){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry2.find("div").eq(0).append(_html_)
+                }else if(i<6){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry2.find("div").eq(1).append(_html_)
+                }else if(i<9){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry2.find("div").eq(2).append(_html_)
+                }else if(i<12){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry2.find("div").eq(3).append(_html_)
+                }else if(i<15){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry2.find("div").eq(4).append(_html_)
+                }else{
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry2.find("div").eq(5).append(_html_) 
+                }
+            }
+        }
+        fnIndustry();
+                //企业资质
+                var mySwiper = new Swiper('.swiper-container1', {
+                    autoplay: true,//可选选项，自动滑动
+                    loop : true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                })
+                //企业资质
+                var mySwiper = new Swiper('.swiper-container2', {
+                    autoplay: true,//可选选项，自动滑动
+                    loop : true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                })
     }
     if(_common.page == "5" ){
         console.log(arrJishu)
@@ -250,6 +302,7 @@ $(function(){
         new_list_box();
     }
     if(_common.page == "8" ){
+        $(".g-nav-list li a").eq(4).addClass("cur").siblings().removeClass("cur")
         var reg,reg2,url,Url,arr2,jsonarr
         var _url = window.location.search.substring("1")
         console.log(_url)
@@ -267,10 +320,30 @@ $(function(){
             url: jiekou.xiangqing_api,
             headers:{'Content-Type':'application/json;'},
             success: function(data_con) {
-               console.log(data_con)
+                var _g_pro_ = $("#g-pro")
+                var _g_next_ = $("#g-next")
+                var _g_pro_id = data_con.previousPageId  //上一页
+                var _g_next_id = data_con.theNextPageId  //下一页
+                console.log(data_con)
+                console.log(data_con.previousPageId,data_con.theNextPageId)
+                //console.log(data_con)
                 _con_img.find("img").attr("src",api_url + ''+ data_con.url)
                 _con_txt.find("h1").html(data_con.title)
                _con_txt.find(".f-text-content").append(data_con.description)
+                if( _g_pro_id == "" ){
+                    _g_pro_.attr("href","news.html")
+                    _g_pro_.html("返回栏目")
+                }else{
+                    _g_pro_.attr("href","news-con.html?id="+_g_pro_id)
+                    _g_pro_.html("上一页："+data_con.previousTitle)
+                }
+                if( _g_next_id == "" ){
+                    _g_next_.attr("href","news.html")
+                    _g_next_.html("返回首页")
+                }else{
+                    _g_next_.attr("href","news-con.html?id="+_g_next_id)
+                    _g_next_.html("下一页："+data_con.theNextPageTitle)
+                }
             },
             error: function (data) {
                 console.log("error")
@@ -326,22 +399,6 @@ liuyan_box.on("click",function(){
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
-    },
-})
-//企业资质
-var mySwiper = new Swiper('.swiper-container1', {
-    autoplay: true,//可选选项，自动滑动
-    loop : true,
-    pagination: {
-        el: '.swiper-pagination',
-    },
-})
-//企业资质
-var mySwiper = new Swiper('.swiper-container2', {
-    autoplay: true,//可选选项，自动滑动
-    loop : true,
-    pagination: {
-        el: '.swiper-pagination',
     },
 })
 //导航高亮
@@ -496,3 +553,4 @@ function pro_con(){
         _protxt1.html(pro_box[id].protxt1)
         _protxt2.html(pro_box[id].protxt2)
     }
+    

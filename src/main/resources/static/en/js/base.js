@@ -119,9 +119,63 @@ $(function(){
         var _about_title = $("#about_box")
         var _about1_box = $("#about_box1")
         var _about2_box = $("#about_box2")
+        var _industry1 = $("#industry1")
+        var _industry2 = $("#industry2")
         _about_title.find("img").attr("src",api_url+''+arrAbout2.titlepic)
         _about1_box.find(".g-about-r img").attr("src",api_url+''+arrAbout2.info.info1.introduce1)
         _about2_box.find(".g-about-r img").attr("src",api_url+''+arrAbout2.info.info2.introduce2)
+        function fnIndustry(){
+            // console.log(arrIndustry.recognized.length)
+            for( var i=0;i<arrIndustry.recognized.length;i++){
+                if(i<4){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _industry1.find("div").eq(0).append(_html_)
+                }else if(i<9){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _industry1.find("div").eq(1).append(_html_)
+                }else{
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _industry1.find("div").eq(2).append(_html_)
+                }
+                if(i<3){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _industry2.find("div").eq(0).append(_html_)
+                }else if(i<6){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _industry2.find("div").eq(1).append(_html_)
+                }else if(i<9){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _industry2.find("div").eq(2).append(_html_)
+                }else if(i<12){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _industry2.find("div").eq(3).append(_html_)
+                }else if(i<15){
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _industry2.find("div").eq(4).append(_html_)
+                }else{
+                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _industry2.find("div").eq(5).append(_html_) 
+                }
+            }
+        }
+        fnIndustry();
+                //企业资质
+                var mySwiper = new Swiper('.swiper-container1', {
+                    autoplay: true,//可选选项，自动滑动
+                    loop : true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                })
+                //企业资质
+                var mySwiper = new Swiper('.swiper-container2', {
+                    autoplay: true,//可选选项，自动滑动
+                    loop : true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                })
+
     }
     if(_common.page == "5" ){
         var _jishu_txt = $("#jishu_txt")
@@ -262,6 +316,7 @@ pro_btn.on("mouseover",function(){
 })
 
 //解决方案
+
 //回到顶部
 var go_top = $(".g-gotop")
 go_top.on("click",function(){
@@ -276,22 +331,6 @@ liuyan_btn.on("click",function(){
 })
 liuyan_box.on("click",function(){
     $(".g-liuyan-box").hide()
-})
-//企业资质
-var mySwiper = new Swiper('.swiper-container1', {
-    autoplay: true,//可选选项，自动滑动
-    loop : true,
-    pagination: {
-        el: '.swiper-pagination',
-    },
-})
-//企业资质
-var mySwiper = new Swiper('.swiper-container2', {
-    autoplay: true,//可选选项，自动滑动
-    loop : true,
-    pagination: {
-        el: '.swiper-pagination',
-    },
 })
 //导航高亮
     function nav(){
