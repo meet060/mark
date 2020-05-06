@@ -1,7 +1,7 @@
 var api_url = ''
 var jiekou = {
     "index_api":api_url+"/api/resource/queryIndexResources",//首页接口
-    "industry_api":api_url+'/api/resource/getTheContactInformation',//查询行业认可图片
+    "industry_api":api_url+'/api/resource/checkIndustryApprovedPictures',//查询行业认可图片
     "about_api":api_url+'/api/resource/obtainInformationAboutZhongrun',//关于我们POST 
     "contact_api":api_url+'/api/resource/getTheContactInformation',//联系我们
     "online_api":api_url+'/api/afterSale/addAfterSale',//在线咨询
@@ -11,12 +11,27 @@ var jiekou = {
     "liuyan_api":api_url+'/api/afterSale/addAfterSale'//留言POST
 }
 var arrAbout;  //关于我们
+var arrIndustry;//行业认可
 var arrContact; //联系我们
 var arrIndex;//首页产品
 var arrProduct;//产品中心
 var arrJishu;//产品中心
 $(function () {
-    // jQuery.support.cors = true;
+function industryApi(){
+        $.ajax({
+            type: "POST",
+            url: jiekou.industry_api,
+            success: function(industry) {
+                $.cookie('industryCookice', null);
+                arrIndustry=$.cookie('industryCookice')
+                localStorage.setItem('industryCookice',JSON.stringify(industry));
+            },
+            error: function (data) {
+                console.log("error")
+            }
+        });
+    }
+// jQuery.support.cors = true;
 function indexApi(){
     $.ajax({
         type: "POST",
@@ -89,6 +104,7 @@ function indexApi(){
         });
     }
     indexApi();//首页api
+    industryApi();//行业认证
     aboutApi();
     contactApi();
     productApi();
@@ -96,10 +112,11 @@ function indexApi(){
     // console.log(arrJishu)
 })
 //cookice
-var arrAbout2 = JSON.parse(localStorage.getItem('aboutCookice'))  //关于我们
+var arrAbout2 = JSON.parse(localStorage.getItem('aboutCookice'))  //首页
 var arrIndex = JSON.parse(localStorage.getItem('indexCookice'))  //关于我们
 var arrProduct = JSON.parse(localStorage.getItem('productCookice'))  //关于我们
 var arrJishu = JSON.parse(localStorage.getItem('jishuCookice'))  //技术
+var arrIndustry = JSON.parse(localStorage.getItem('industryCookice'))//行业认可
 var indexPro = arrIndex
 //产品数据
 var pro_box = {
@@ -340,7 +357,7 @@ var head_foot={
         "liuyanTieleTxt":"留言内容",
         "liuyanTxt":["姓名","电话(必填)","邮箱","地址","请输入您的留言内容"],
         "FootTxtEn": "In your complicated and meticulous operation, packaging is not a distracting part of you. This is the direction of Zhongrun's efforts. <br> We try our best to make your business use packaging and transportation Eliminate scruples without even paying too much attention to the existence of packaging, while saving you money, our task is to meet your needs through continuous improvement and innovation.",        "LiuyanTieleTxtEn": "Message Content",
-        "LiuyanTxtEn": ["Name", "Phone (required)", "Email", "Address", "Please enter your message content"],
+        "LiuyanTxtEn": ["Name", "Phone (required)", "Email(required)", "Address", "Please enter your message content"],
     },
     "foot":{
         "index_txt":"网站首页",
@@ -506,13 +523,12 @@ function head_foot_txt(e){
         if( _common.lug == "en" ){
             console.log(_foot_.index_txtEn)
             _foot.find(".f-foot-nav").eq(0).find("a").html(_foot_.index_txtEn)
+            $.each(_head_.LiuyanTxtEn,function(i,val){
+                _liuyanTxt.find("li").eq(i).children().attr("placeholder",val)
+            })
         }
-        _liuyan_.html(_head_.liuyanTieleTxtEn)
+        _liuyan_.html(_head_.LiuyanTieleTxtEn)
         _chatTxt.html(_foot_.chat_txtEn[3])
-        $.each(_head_.liuyanTxtEn,function(i,val){
-        _liuyanTxt.find("li").eq(i).children().attr("placeholder",val)
-        })
-        // _foot.find(".f-foot-nav").eq(0).find("a").html(_foot_.index_txt)
         $.each(_foot_.about_txtEn,function(i,val){
         _foot.find(".f-foot-nav").eq(1).find("a").eq(i).html(val)
         })
@@ -529,8 +545,16 @@ function head_foot_txt(e){
         _foot.find(".f-foot-nav").eq(5).find("a").eq(i).html(val)
         })
     }
-   
-    $("#sumbtn").click(function(){
+   function ts_box(ts_txt){
+        var tishi_html = '<div class="g-tishi">'+ ts_txt.txt +'<div>'
+        $("body").append(tishi_html)
+        setTimeout(function(){
+            $(".g-tishi").remove()
+        },1500)
+    }
+        $("#sumbtn").click(function(){
+        var regphone = /0?(13|14|15|17|18|19)[0-9]{9}/
+        var regmailbox = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
         var _data_smt = {
             "address": $("#addressTxt").val(),
             "content": $("#liuyanTxt").val(),
@@ -538,19 +562,36 @@ function head_foot_txt(e){
             "name": $("#nameTxt").val(),
             "phone": $("#phoneTxt").val()
         }
-        console.log(JSON.stringify(_data_smt))
-    $.ajax({
-        type: "POST",
-        data:JSON.stringify(_data_smt),
-        url: jiekou.liuyan_api,
-        headers:{'Content-Type':'application/json;charset=UTF-8'},
-        success: function(jishu) {
-            console.log("success")
-            window.location.reload();
-        },
-        error: function (data) {
-            console.log("error")
+
+        if( $("#phoneTxt").val() == "" || !regphone.test($("#phoneTxt").val()) ||  $("#meailTxt").val() == "" || regmailbox.test($("#meailTxt").val()) ){
+            if($("#phoneTxt").val() == "" || !regphone.test($("#phoneTxt").val())){
+                if( _common.lug == "en"){
+                    ts_box({txt:"Please enter the correct phone number"})
+                }else{
+                    ts_box({txt:"请输入正确的手机号码"})
+                }
+            }else if(!regmailbox.test($("#meailTxt").val())){
+                if( _common.lug == "en"){
+                    ts_box({txt:"please enter your vaild email"})
+                }else{
+                    ts_box({txt:"请输入正确的邮箱"})
+                }
+            }
+        }else{
+            $.ajax({
+                type: "POST",
+                data:JSON.stringify(_data_smt),
+                url: jiekou.liuyan_api,
+                headers:{'Content-Type':'application/json;charset=UTF-8'},
+                success: function(jishu) {
+                    console.log("success")
+                    window.location.reload();
+                },
+                error: function (data) {
+                    console.log("error")
+                }
+            });
         }
-    });
     })  
 }
+
