@@ -21,21 +21,36 @@ $(function(){
         //首页banner
         var _banner = $("#g_banner")
         for( var i=0;i<_banner.find("div").length; i++){
-            _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+''+indexPro.banner[i].titleurl)
+            _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+'/'+indexPro.banner[i].titleurl)
             _banner.find(".swiper-slide").eq(i).find("strong").html(indexPro.banner[i].title)
             _banner.find(".swiper-slide").eq(i).find("p").html(indexPro.banner[i].description)
         }
         // 首页关于我们
         var _about_index_title = $("#about_index_title")
         var _about_index = $("#about_index")
-        var _about_index = $("#about_index")
         var _about_v = $("#about_v")
         var _about_html = '<video muted="" loop="" autoplay="">'+
-                                '<source src="'+api_url+''+indexPro.about.titleurl+'" type="video/ogg"/>'+
+                                '<source src="'+api_url+'/'+arrIndex.about.video+'" type="video/ogg"/>'+
                             '</video>'
-        _about_index_title.html(arrAbout2.title)
-        _about_index.html(arrAbout2.description)
+        _about_index_title.html(arrIndex.about.title)
+        _about_index.html(arrIndex.about.description)
         _about_v.append(_about_html)
+        _about_v.find("video").click(function(){
+            console.log(arrIndex)
+            var v_html = '<div class="g-fixed-video">'+
+                            '<div class="f-fixed-video">'+
+                                '<video controls="controls" autoplay="">'+
+                                    '<source src="'+api_url+'/'+arrIndex.about.titleurl+'" type="video/mp4">'+
+                                '</video>'+
+                                '<em class="close_btn"><img src="images/icon_3.png"></em>'+
+                            '</div>'+
+                        '</div>'
+            $("body").append(v_html)
+            $(".close_btn").click(function(){
+                $(this).parents(".g-fixed-video").remove()
+            })
+        })
+
     //产品标题描述
         _pro_title.html(indexPro.innovation.description)
     //首页调用产品
@@ -47,7 +62,7 @@ $(function(){
                 var html = '<li>'+
                                 '<a href="pro-con.html?id='+ h +'">'+
                                     '<em class="u-img">'+
-                                        '<img src='+ api_url+''+indexPro.neidai[_num].titleurl +' alt="'+indexPro.neidai[_num].title+'">'+
+                                        '<img src='+ api_url+'/'+indexPro.neidai[_num].titleurl +' alt="'+indexPro.neidai[_num].title+'">'+
                                     '</em>'+
                                     '<strong>'+indexPro.neidai[_num].title+'</strong>'+
                                     '<p>'+indexPro.neidai[_num].description+'</p>'+
@@ -66,7 +81,7 @@ $(function(){
                 var html = '<li>'+
                                 '<a href="pro-con.html?id='+ h +'">'+
                                     '<em class="u-img">'+
-                                        '<img src='+ api_url+''+ indexPro.waidai[_num].titleurl +' alt="'+indexPro.waidai[_num].title+'">'+
+                                        '<img src='+ api_url+'/'+ indexPro.waidai[_num].titleurl +' alt="'+indexPro.waidai[_num].title+'">'+
                                     '</em>'+
                                     '<strong>'+indexPro.waidai[_num].title+'</strong>'+
                                     '<p>'+indexPro.waidai[_num].description+'</p>'+
@@ -82,8 +97,8 @@ $(function(){
     var _tuozhan = $("#g-tuozhan")
     for(var i=0;i<_tuozhan.find("li").length;i++){
         _tuozhan.find("li").eq(i).find("img").attr({
-            "src":api_url+''+indexPro.innovation.innovation[i].titlepic,
-            "alt":api_url+''+indexPro.innovation.innovation[i].title,
+            "src":api_url+'/'+indexPro.innovation.innovation[i].titlepic,
+            "alt":api_url+'/'+indexPro.innovation.innovation[i].title,
         })
     }
     _tuozhan_txt.find("p").html(indexPro.innovation.description)
@@ -92,7 +107,7 @@ $(function(){
     var _fangan_txt = $("#fangan-box")
     _fangan.find("p").html(indexPro.program.description)
     for(var i=0;i<indexPro.program.program.length;i++){
-        html = '<li><a href=""><img src="'+ api_url+''+indexPro.program.program[i].titlepic +'" alt="'+ indexPro.program.program[i].title +'"><strong><em>'+ indexPro.program.program[i].title +'</em></strong></a></li>'
+        html = '<li><a href=""><img src="'+ api_url+'/'+indexPro.program.program[i].titlepic +'" alt="'+ indexPro.program.program[i].title +'"><strong><em>'+ indexPro.program.program[i].title +'</em></strong></a></li>'
         _fangan_txt.append(html)
         console.log(html)
     }
@@ -111,17 +126,70 @@ $(function(){
         var _about_title = $("#about_box")
         var _about1_box = $("#about_box1")
         var _about2_box = $("#about_box2")
+        var _industry1 = $("#industry1")
+        var _industry2 = $("#industry2")
         // console.log(arrAbout2)
-        _about_title.find("img").attr("src",api_url+''+arrAbout2.titlepic)
+        _about_title.find("img").attr("src",api_url+'/'+arrAbout2.titlepic)
         _about_title.find("p").html(arrAbout2.title)
-        _about1_box.find(".g-about-r img").attr("src",api_url+''+arrAbout2.info.info1.introduce1)
+        _about1_box.find(".g-about-r img").attr("src",api_url+'/'+arrAbout2.info.info1.introduce1)
         _about1_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info1.introDescription1 +"</p >")
         // _about1_box.find(".g-about-l h2").html(arrAbout2.info.info1.introtitle1)
         _about1_box.find(".g-about-l h2").html('公司介绍')
-        _about2_box.find(".g-about-r img").attr("src",api_url+''+arrAbout2.info.info2.introduce2)
+        _about2_box.find(".g-about-r img").attr("src",api_url+'/'+arrAbout2.info.info2.introduce2)
         _about2_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info2.introDescription2 +"</p >")
         // _about2_box.find(".g-about-l h2").html(arrAbout2.info.info1.introtitle2)
         _about2_box.find(".g-about-l h2").html("因为专注于此，所以持续领先")
+        function fnIndustry(){
+            // console.log(arrIndustry.recognized.length)
+            for( var i=0;i<arrIndustry.recognized.length;i++){
+                if(i<4){
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry1.find("div").eq(0).append(_html_)
+                }else if(i<9){
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry1.find("div").eq(1).append(_html_)
+                }else{
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry1.find("div").eq(2).append(_html_)
+                }
+                if(i<3){
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry2.find("div").eq(0).append(_html_)
+                }else if(i<6){
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry2.find("div").eq(1).append(_html_)
+                }else if(i<9){
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry2.find("div").eq(2).append(_html_)
+                }else if(i<12){
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry2.find("div").eq(3).append(_html_)
+                }else if(i<15){
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry2.find("div").eq(4).append(_html_)
+                }else{
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _industry2.find("div").eq(5).append(_html_) 
+                }
+            }
+        }
+        fnIndustry();
+                //企业资质
+                var mySwiper = new Swiper('.swiper-container1', {
+                    autoplay: true,//可选选项，自动滑动
+                    loop : true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                })
+                //企业资质
+                var mySwiper = new Swiper('.swiper-container2', {
+                    autoplay: true,//可选选项，自动滑动
+                    loop : true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                })
     }
     if(_common.page == "5" ){
         console.log(arrJishu)
@@ -134,12 +202,12 @@ $(function(){
         _jishu_txt.find("p").html(arrJishu.sbdescription)
         _jishu_zc.find("p").html(arrJishu.jishu.jsdescription1)
         _jishu_zc.find("img").attr({
-            "src":api_url+''+arrJishu.jishu.jspic1,
+            "src":api_url+'/'+arrJishu.jishu.jspic1,
             "alt":arrJishu.jishu.jstitle1,
         })
         _jishu_cx.find("p").html(arrJishu.jishu.jsdescription2)
         _jishu_cx.find("img").attr({
-            "src":api_url+''+arrJishu.jishu.jspic2,
+            "src":api_url+'/'+arrJishu.jishu.jspic2,
             "alt":arrJishu.jishu.jstitle2,
         })
         _jishu_sl.find("p").html(arrJishu.sbdescription)
@@ -148,7 +216,7 @@ $(function(){
             var _e2 = 'jstitle'+i
             var _e3 = 'jsdescription'+i
             var js_html = '<a href="">'+
-                                '<em class="u-img"><img src="'+ api_url+''+arrJishu.device[_e] +'" alt=""></em>'+
+                                '<em class="u-img"><img src="'+ api_url+'/'+arrJishu.device[_e] +'" alt=""></em>'+
                                 '<span class="g-txt-box">'+
                                     '<strong>'+arrJishu.device[_e2] +'</strong>'+
                                     '<p>'+arrJishu.device[_e3] +'</p>'+
@@ -167,7 +235,7 @@ $(function(){
         var _lianxi_box =$("#lianxi_box")
         var _lianxi_jr = $("#lianxi_jr")
         _lianxi_txt.find("p").html(arrContact2.title)
-        _lianxi_txt.find("img").attr("src",api_url+''+arrContact2.titlepic)
+        _lianxi_txt.find("img").attr("src",api_url+'/'+arrContact2.titlepic)
         _lianxi_box.find("h3").html(arrContact2.contact.company)
         _lianxi_box.find("p").eq(0).html(arrContact2.contact.address)
         _lianxi_box.find("p").eq(1).html('电话：'+arrContact2.contact.phone)
@@ -209,7 +277,7 @@ $(function(){
                     var _new_time_ = new_time.split("T")
                     var html = '<li>'+
                                     '<a href="news-con.html?id='+ val.id +'">'+
-                                        '<em class="u-img"><img src="'+api_url+'' + val.url +'" alt="'+ val.title +'"></em>'+
+                                        '<em class="u-img"><img src="'+api_url+'/' + val.url +'" alt="'+ val.title +'"></em>'+
                                         '<span class="g-txt-box">'+
                                             '<strong>'+ val.title +'</strong>'+
                                             '<em>'+ _new_time_[0] +'</em>' +
@@ -250,6 +318,7 @@ $(function(){
         new_list_box();
     }
     if(_common.page == "8" ){
+        $(".g-nav-list li a").eq(4).addClass("cur").siblings().removeClass("cur")
         var reg,reg2,url,Url,arr2,jsonarr
         var _url = window.location.search.substring("1")
         console.log(_url)
@@ -267,10 +336,30 @@ $(function(){
             url: jiekou.xiangqing_api,
             headers:{'Content-Type':'application/json;'},
             success: function(data_con) {
-               console.log(data_con)
-                _con_img.find("img").attr("src",api_url + ''+ data_con.url)
+                var _g_pro_ = $("#g-pro")
+                var _g_next_ = $("#g-next")
+                var _g_pro_id = data_con.previousPageId  //上一页
+                var _g_next_id = data_con.theNextPageId  //下一页
+                console.log(data_con)
+                console.log(data_con.previousPageId,data_con.theNextPageId)
+                //console.log(data_con)
+                _con_img.find("img").attr("src",api_url + '/'+ data_con.url)
                 _con_txt.find("h1").html(data_con.title)
                _con_txt.find(".f-text-content").append(data_con.description)
+                if( _g_pro_id == "" ){
+                    _g_pro_.attr("href","news.html")
+                    _g_pro_.html("返回栏目")
+                }else{
+                    _g_pro_.attr("href","news-con.html?id="+_g_pro_id)
+                    _g_pro_.html("上一页："+data_con.previousTitle)
+                }
+                if( _g_next_id == "" ){
+                    _g_next_.attr("href","news.html")
+                    _g_next_.html("返回首页")
+                }else{
+                    _g_next_.attr("href","news-con.html?id="+_g_next_id)
+                    _g_next_.html("下一页："+data_con.theNextPageTitle)
+                }
             },
             error: function (data) {
                 console.log("error")
@@ -299,12 +388,7 @@ pro_btn.on("mouseover",function(){
 })
 
 //解决方案
-var fangan = $(".g-fangan ul li")
-fangan.mouseenter(function(){
-    $(this).find("strong").stop().slideUp();
-}).mouseleave(function(){
-    $(this).find("strong").stop().slideDown();
-})
+
 //回到顶部
 var go_top = $(".g-gotop")
 go_top.on("click",function(){
@@ -331,22 +415,6 @@ liuyan_box.on("click",function(){
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
-    },
-})
-//企业资质
-var mySwiper = new Swiper('.swiper-container1', {
-    autoplay: true,//可选选项，自动滑动
-    loop : true,
-    pagination: {
-        el: '.swiper-pagination',
-    },
-})
-//企业资质
-var mySwiper = new Swiper('.swiper-container2', {
-    autoplay: true,//可选选项，自动滑动
-    loop : true,
-    pagination: {
-        el: '.swiper-pagination',
     },
 })
 //导航高亮
@@ -426,7 +494,7 @@ function pro_list(){
     for(var i=0;i<4;i++){
             pro_html = '<li>'+
                         '<a href="pro-con.html?id='+ i +'">'+
-                            '<em class="u-img"><img src="'+ api_url+''+arrProduct.outerBag[i].wdpic +'" alt="'+ arrProduct.outerBag[i].wdtitle +'"></em>'+
+                            '<em class="u-img"><img src="'+ api_url+'/'+arrProduct.outerBag[i].wdpic +'" alt="'+ arrProduct.outerBag[i].wdtitle +'"></em>'+
                             '<span class="g-txt-box">'+
                                 '<strong>'+arrProduct.outerBag[i].wdtitle +'</strong>'+
                                 '<p>'+ arrProduct.outerBag[i].wddescription +'</p>'+
@@ -437,7 +505,7 @@ function pro_list(){
         }
     for(var i=0;i<2;i++){
         html='<a href="">'+
-                    '<em class="u-img"><img src="'+ api_url+''+arrProduct.process[i].titlepic +'" alt="'+ arrProduct.process[i].title +'"></em> '+
+                    '<em class="u-img"><img src="'+ api_url+'/'+arrProduct.process[i].titlepic +'" alt="'+ arrProduct.process[i].title +'"></em> '+
                     '<span class="g-txt-box">'+
                         '<strong>'+ arrProduct.process[i].title +'</strong>'+
                         '<p>'+ arrProduct.process[i].description +'</p> '+   
@@ -450,7 +518,7 @@ function pro_list(){
     for(var i=0;i<8;i++){
         _html='<li>'+
                 '<a href="">'+
-                   ' <em class="u-img"><img src="'+ api_url+''+arrProduct.program[i].titlepic +'" alt="'+ arrProduct.program[i].title +'"></em>'+
+                   ' <em class="u-img"><img src="'+ api_url+'/'+arrProduct.program[i].titlepic +'" alt="'+ arrProduct.program[i].title +'"></em>'+
                     '<span class="g-txt-box">'+
                         '<strong>'+ arrProduct.program[i].title +'</strong>'+
                     '</span>'+
@@ -465,7 +533,7 @@ function pro_list(){
     for(var i=0;i<4;i++){
         html='<a href="">'+
                    '<em class="u-img">'+
-                        '<img src="'+ api_url+''+ arrProduct.control[i].titlepic +'" alt="'+ arrProduct.control[i].title +'">'+
+                        '<img src="'+ api_url+'/'+ arrProduct.control[i].titlepic +'" alt="'+ arrProduct.control[i].title +'">'+
                     '</em>'+
                     '<span class="g-txt-box">'+
                         '<strong>'+ arrProduct.control[i].title +'</strong>'+
@@ -501,3 +569,4 @@ function pro_con(){
         _protxt1.html(pro_box[id].protxt1)
         _protxt2.html(pro_box[id].protxt2)
     }
+    
