@@ -11,7 +11,7 @@ $(function(){
     share();//分享；
     }
     if( _common.page == "1" ){
-        console.log(indexPro)
+        // console.log(indexPro)
         var _banner = $("#g_banner")
         var _pro_title = $("#f-pro-title")
         var index_pro1=$("#g-pro-list1")
@@ -93,7 +93,7 @@ $(function(){
     for(var i=0;i<indexPro.program.program.length;i++){
         html = '<li><a href=""><img src="'+ api_url+''+indexPro.program.program[i].titlepic +'" alt="'+ indexPro.program.program[i].title +'"><strong><em>'+ indexPro.program.program[i].title +'</em></strong></a></li>'
         _fangan_txt.append(html)
-        console.log(html)
+        // console.log(html)
     }
     }
     if( _common.pageJs == "index" ){
@@ -176,7 +176,7 @@ $(function(){
                 })
     }
     if(_common.page == "5" ){
-        console.log(arrJishu)
+        // console.log(arrJishu)
         var _jishu_txt = $("#jishu_txt")
         var _jishu_zc = $("#jishu_zc")
         var _jishu_cx = $("#jishu_cx")
@@ -234,7 +234,7 @@ $(function(){
         var new_page,new_size,new_yema
         var _url = window.location.search.substring("1")
         new_size = 2
-        console.log(_url)
+        // console.log(_url)
         if( _url !="" ){
             reg = new RegExp("&","g")
             reg2 = new RegExp("=","g")
@@ -242,7 +242,7 @@ $(function(){
             Url = url.replace(reg2,'":"')
             arr2 = '{"'+Url+'"}'
             jsonarr = JSON.parse(arr2)
-            console.log(jsonarr.page,jsonarr.pagesize)
+            //console.log(jsonarr.page,jsonarr.pagesize)
             new_page = jsonarr.page
         }else{
             new_page = 1
@@ -305,12 +305,12 @@ $(function(){
         $(".g-nav-list li a").eq(4).addClass("cur").siblings().removeClass("cur")
         var reg,reg2,url,Url,arr2,jsonarr
         var _url = window.location.search.substring("1")
-        console.log(_url)
+        //console.log(_url)
         reg2 = new RegExp("=","g")
         Url = _url.replace(reg2,'":"')
         arr2 = '{"'+Url+'"}'
         jsonarr = JSON.parse(arr2)
-        console.log(jsonarr.id)
+        //console.log(jsonarr.id)
         var _data = {'id':'121'}
         var _con_img = $("#con_img")
         var _con_txt = $("#con_txt")
@@ -324,8 +324,8 @@ $(function(){
                 var _g_next_ = $("#g-next")
                 var _g_pro_id = data_con.previousPageId  //上一页
                 var _g_next_id = data_con.theNextPageId  //下一页
-                console.log(data_con)
-                console.log(data_con.previousPageId,data_con.theNextPageId)
+                //console.log(data_con)
+                //console.log(data_con.previousPageId,data_con.theNextPageId)
                 //console.log(data_con)
                 _con_img.find("img").attr("src",api_url + ''+ data_con.url)
                 _con_txt.find("h1").html(data_con.title)

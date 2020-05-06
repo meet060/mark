@@ -521,7 +521,7 @@ function head_foot_txt(e){
         _head.find("a").eq(5).html(_foot_.lianxi_txtEn[0])
         //底部导航
         if( _common.lug == "en" ){
-            console.log(_foot_.index_txtEn)
+            // console.log(_foot_.index_txtEn)
             _foot.find(".f-foot-nav").eq(0).find("a").html(_foot_.index_txtEn)
             $.each(_head_.LiuyanTxtEn,function(i,val){
                 _liuyanTxt.find("li").eq(i).children().attr("placeholder",val)
@@ -584,7 +584,7 @@ function head_foot_txt(e){
                 url: jiekou.liuyan_api,
                 headers:{'Content-Type':'application/json;charset=UTF-8'},
                 success: function(jishu) {
-                    console.log("success")
+                    // console.log("success")
                     window.location.reload();
                 },
                 error: function (data) {
