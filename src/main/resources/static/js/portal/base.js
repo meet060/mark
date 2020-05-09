@@ -29,6 +29,7 @@ $(function(){
         var _about_index_title = $("#about_index_title")
         var _about_index = $("#about_index")
         var _about_v = $("#about_v")
+        var arr = arrIndex;
         var _about_html = '<video muted="" loop="" autoplay="">'+
                                 '<source src="'+api_url+''+arrIndex.about.video+'" type="video/ogg"/>'+
                             '</video>'
@@ -36,11 +37,11 @@ $(function(){
         _about_index.html(arrIndex.about.description)
         _about_v.append(_about_html)
         _about_v.find("video").click(function(){
-            console.log(arrIndex)
+            console.log(arr)
             var v_html = '<div class="g-fixed-video">'+
                             '<div class="f-fixed-video">'+
                                 '<video controls="controls" autoplay="">'+
-                                    '<source src="'+api_url+''+arrIndex.about.titleurl+'" type="video/mp4">'+
+                                    '<source src="'+api_url+''+arr.about.titleurl+'" type="video/mp4">'+
                                 '</video>'+
                                 '<em class="close_btn"><img src="/images/icon_3.png"></em>'+
                             '</div>'+
