@@ -8,6 +8,75 @@ $(function(){
     scoll_nav();//滚动条事件
     if( _common.pageJs == "index" ){
         baseJs.Index();
+        $(window).scroll(function(){
+            var winTop = $(window).scrollTop();
+            // console.log(winTop)
+            var _width = $(window).width()
+            if(_width>1000){
+                if( winTop > 300 ){
+                    $(".g-about-index").eq(0).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 1000 ){
+                    $(".g-about-index").eq(1).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 1900 ){
+                    $(".g-about-index").eq(2).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 2400 ){
+                    $(".g-about-index").eq(3).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 3000 ){
+                    $(".g-about-index").eq(4).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+            }else{
+                if( winTop > 80 ){
+                    $(".g-about-index").eq(0).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 600 ){
+                    $(".g-about-index").eq(1).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 1200 ){
+                    $(".g-about-index").eq(2).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 1700 ){
+                    $(".g-about-index").eq(3).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 2200 ){
+                    $(".g-about-index").eq(4).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                } 
+            }
+            
+        });
     }
     // 导航
     if(_common.pageTo == "con"){
@@ -17,7 +86,7 @@ $(function(){
         //首页banner
         var _banner = $("#g_banner")
         for( var i=0;i<_banner.find("div").length; i++){
-            _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+''+indexPro.banner[i].titleurl)
+            _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+'/'+indexPro.banner[i].titleurl)
         }
         // banner
             var mySwiper = new Swiper('.swiper-container0', {
@@ -42,7 +111,7 @@ $(function(){
                 var _about_index = $("#about_index")
                 var _about_v = $("#about_v")
                 var _about_html = '<video muted="" loop="" autoplay="">'+
-                                        '<source src="'+api_url+''+indexPro.about.titleurl+'" type="video/ogg"/>'+
+                                        '<source src="'+api_url+'/'+indexPro.about.titleurl+'" type="video/ogg"/>'+
                                     '</video>'
                 _about_index_title.html(arrAbout2.title)
                 _about_index_title.html('Break through the limitations of traditional thinking, and always keep the equipment and production capacity at the domestic advanced')
@@ -57,7 +126,7 @@ $(function(){
                 var html = '<li>'+
                                 '<a href="pro-con.html?id='+ h +'">'+
                                     '<em class="u-img">'+
-                                        '<img src='+ api_url+''+indexPro.neidai[_num].titleurl +' alt="'+pro_box[_e].titleEn+'">'+
+                                        '<img src='+ api_url+'/'+indexPro.neidai[_num].titleurl +' alt="'+pro_box[_e].titleEn+'">'+
                                     '</em>'+
                                     '<strong>'+pro_box[_e].titleEn+'</strong>'+
                                     '<p>'+pro_box[_e].titleHpEn+'</p>'+
@@ -76,7 +145,7 @@ $(function(){
                 var html = '<li>'+
                                 '<a href="pro-con.html?id='+ h +'">'+
                                     '<em class="u-img">'+
-                                        '<img src='+ api_url+''+ indexPro.waidai[_num].titleurl +' alt="'+pro_box[_e].titleEn+'">'+
+                                        '<img src='+ api_url+'/'+ indexPro.waidai[_num].titleurl +' alt="'+pro_box[_e].titleEn+'">'+
                                     '</em>'+
                                     '<strong>'+pro_box[_e].titleEn+'</strong>'+
                                     '<p>'+pro_box[_e].titleHpEn+'</p>'+
@@ -95,8 +164,8 @@ $(function(){
     var _tuozhan = $("#g-tuozhan")
     for(var i=0;i<_tuozhan.find("li").length;i++){
         _tuozhan.find("li").eq(i).find("img").attr({
-            "src":api_url+''+indexPro.innovation.innovation[i].titlepic,
-            "alt":api_url+''+indexPro.innovation.innovation[i].title,
+            "src":api_url+'/'+indexPro.innovation.innovation[i].titlepic,
+            "alt":api_url+'/'+indexPro.innovation.innovation[i].title,
         })
     }
     //解决方案
@@ -104,7 +173,7 @@ $(function(){
         console.log(indexPro.program.program.length)
         for(var i=0;i<indexPro.program.program.length;i++){
             _fangan_txt.find("li").eq(i).find("img").attr({
-                "src":api_url+''+indexPro.program.program[i].titlepic,
+                "src":api_url+'/'+indexPro.program.program[i].titlepic,
                 "alt":indexPro.program.program[i].title
             })
         }
@@ -121,39 +190,39 @@ $(function(){
         var _about2_box = $("#about_box2")
         var _industry1 = $("#industry1")
         var _industry2 = $("#industry2")
-        _about_title.find("img").attr("src",api_url+''+arrAbout2.titlepic)
-        _about1_box.find(".g-about-r img").attr("src",api_url+''+arrAbout2.info.info1.introduce1)
-        _about2_box.find(".g-about-r img").attr("src",api_url+''+arrAbout2.info.info2.introduce2)
+        _about_title.find("img").attr("src",api_url+'/'+arrAbout2.titlepic)
+        _about1_box.find(".g-about-r img").attr("src",api_url+'/'+arrAbout2.info.info1.introduce1)
+        _about2_box.find(".g-about-r img").attr("src",api_url+'/'+arrAbout2.info.info2.introduce2)
         function fnIndustry(){
             // console.log(arrIndustry.recognized.length)
             for( var i=0;i<arrIndustry.recognized.length;i++){
                 if(i<4){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
                     _industry1.find("div").eq(0).append(_html_)
                 }else if(i<9){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
                     _industry1.find("div").eq(1).append(_html_)
                 }else{
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
                     _industry1.find("div").eq(2).append(_html_)
                 }
                 if(i<3){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
                     _industry2.find("div").eq(0).append(_html_)
                 }else if(i<6){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
                     _industry2.find("div").eq(1).append(_html_)
                 }else if(i<9){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
                     _industry2.find("div").eq(2).append(_html_)
                 }else if(i<12){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
                     _industry2.find("div").eq(3).append(_html_)
                 }else if(i<15){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
                     _industry2.find("div").eq(4).append(_html_)
                 }else{
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a href="#"><img src="'+ api_url+'/'+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
                     _industry2.find("div").eq(5).append(_html_) 
                 }
             }
@@ -184,13 +253,13 @@ $(function(){
         var _jishu_sl = $("#jishu_sl")
         var _jishu_sl1 = $("#jishu_sl1")
         var _jishu_sl2 = $("#jishu_sl2")
-        _jishu_txt.find("img").attr("src",api_url+''+arrJishu.titlepic)
+        _jishu_txt.find("img").attr("src",api_url+'/'+arrJishu.titlepic)
         _jishu_zc.find("img").attr({
-            "src":api_url+''+arrJishu.jishu.jspic1,
+            "src":api_url+'/'+arrJishu.jishu.jspic1,
             "alt":arrJishu.jishu.jstitle1,
         })
         _jishu_cx.find("img").attr({
-            "src":api_url+''+arrJishu.jishu.jspic2,
+            "src":api_url+'/'+arrJishu.jishu.jspic2,
             "alt":arrJishu.jishu.jstitle2,
         })
         _jishu_sl.find("p").html(arrJishu.sbdescription)
@@ -201,9 +270,9 @@ $(function(){
             var _i = i-1
             var _i_ = i-3
             if(i<3){
-                _jishu_sl1.find("a").eq(_i).find("img").attr("src",api_url+''+arrJishu.device[_e])
+                _jishu_sl1.find("a").eq(_i).find("img").attr("src",api_url+'/'+arrJishu.device[_e])
             }else{
-                _jishu_sl2.find("a").eq(_i_).find("img").attr("src",api_url+''+arrJishu.device[_e])
+                _jishu_sl2.find("a").eq(_i_).find("img").attr("src",api_url+'/'+arrJishu.device[_e])
             }
         }
     }
@@ -212,7 +281,7 @@ $(function(){
         var _lianxi_txt =$("#lianxi_txt")
         var _lianxi_box =$("#lianxi_box")
         var _lianxi_jr = $("#lianxi_jr")
-        _lianxi_txt.find("img").attr("src",api_url+''+arrContact2.titlepic)
+        _lianxi_txt.find("img").attr("src",api_url+'/'+arrContact2.titlepic)
         _lianxi_box.find("h3").html(arrContact2.contact.company)
         _lianxi_box.find("p").eq(0).html(arrContact2.contact.address)
         _lianxi_box.find("p").eq(1).html('电话：'+arrContact2.contact.phone)
@@ -254,7 +323,7 @@ $(function(){
                     var _new_time_ = new_time.split("T")
                     var html = '<li>'+
                                     '<a href="news-con.html?id='+ val.id +'">'+
-                                        '<em class="u-img"><img src="'+api_url+'' + val.url +'" alt="'+ val.title +'"></em>'+
+                                        '<em class="u-img"><img src="'+api_url+'/' + val.url +'" alt="'+ val.title +'"></em>'+
                                         '<span class="g-txt-box">'+
                                             '<strong>news</strong>'+
                                             '<em>'+ _new_time_[0] +'</em>' +
@@ -402,7 +471,7 @@ function pro_list(){
         var _pro_ = "pro_"+i
             pro_html = '<li>'+
                         '<a href="pro-con.html?id='+ i +'">'+
-                            '<em class="u-img"><img src="'+ api_url+''+arrProduct.outerBag[i].wdpic +'" alt="'+ pro_box[_pro_].titleEn +'"></em>'+
+                            '<em class="u-img"><img src="'+ api_url+'/'+arrProduct.outerBag[i].wdpic +'" alt="'+ pro_box[_pro_].titleEn +'"></em>'+
                             '<span class="g-txt-box">'+
                                 '<strong>'+ pro_box[_pro_].titleEn +'</strong>'+
                                 '<p>'+ pro_box[_pro_].titleHpEn +'</p>'+
@@ -412,13 +481,13 @@ function pro_list(){
             _pro_list.append(pro_html)
         }
         for(var i=0;i<2;i++){
-            _pro_jiejing.find("a").eq(i).find('img').attr("src",api_url+''+arrProduct.process[i].titlepic)
+            _pro_jiejing.find("a").eq(i).find('img').attr("src",api_url+'/'+arrProduct.process[i].titlepic) 
         }
         for(var i=0;i<8;i++){
-            _pro_liucheng.find("li").eq(i).find('img').attr("src",api_url+''+arrProduct.program[i].titlepic)
+            _pro_liucheng.find("li").eq(i).find('img').attr("src",api_url+'/'+arrProduct.program[i].titlepic) 
         }
         for(var i=0;i<4;i++){
-            _pro_fangan.find("li").eq(i).find("img").attr("src",api_url+''+ arrProduct.control[i].titlepic)
+            _pro_fangan.find("li").eq(i).find("img").attr("src",api_url+'/'+ arrProduct.control[i].titlepic) 
         }
     }
 // 产品内容页面

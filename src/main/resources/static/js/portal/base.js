@@ -29,7 +29,6 @@ $(function(){
         var _about_index_title = $("#about_index_title")
         var _about_index = $("#about_index")
         var _about_v = $("#about_v")
-        var arr = arrIndex;
         var _about_html = '<video muted="" loop="" autoplay="">'+
                                 '<source src="'+api_url+''+arrIndex.about.video+'" type="video/ogg"/>'+
                             '</video>'
@@ -37,11 +36,11 @@ $(function(){
         _about_index.html(arrIndex.about.description)
         _about_v.append(_about_html)
         _about_v.find("video").click(function(){
-            console.log(arr)
+            console.log(arrIndex)
             var v_html = '<div class="g-fixed-video">'+
                             '<div class="f-fixed-video">'+
                                 '<video controls="controls" autoplay="">'+
-                                    '<source src="'+api_url+''+arr.about.titleurl+'" type="video/mp4">'+
+                                    '<source src="'+api_url+''+arrIndex.about.titleurl+'" type="video/mp4">'+
                                 '</video>'+
                                 '<em class="close_btn"><img src="/images/icon_3.png"></em>'+
                             '</div>'+
@@ -51,9 +50,8 @@ $(function(){
                 $(this).parents(".g-fixed-video").remove()
             })
         })
-
     //产品标题描述
-        _pro_title.html(indexPro.innovation.description)
+    _pro_title.html(indexPro.innovation.description)
     //首页调用产品
         function index_pro(e,h){
             var _h=h+4
@@ -115,6 +113,75 @@ $(function(){
     }
     if( _common.pageJs == "index" ){
         baseJs.Index();
+        $(window).scroll(function(){
+            var winTop = $(window).scrollTop();
+            // console.log(winTop)
+            var _width = $(window).width()
+            if(_width>1000){
+                if( winTop > 300 ){
+                    $(".g-about-index").eq(0).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 1000 ){
+                    $(".g-about-index").eq(1).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 1900 ){
+                    $(".g-about-index").eq(2).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 2400 ){
+                    $(".g-about-index").eq(3).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 3000 ){
+                    $(".g-about-index").eq(4).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+            }else{
+                if( winTop > 80 ){
+                    $(".g-about-index").eq(0).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 600 ){
+                    $(".g-about-index").eq(1).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 1200 ){
+                    $(".g-about-index").eq(2).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 1700 ){
+                    $(".g-about-index").eq(3).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                }
+                if(winTop > 2200 ){
+                    $(".g-about-index").eq(4).stop().animate({
+                        top:0,
+                        opacity:1
+                    },500)
+                } 
+            }
+            
+        });
     }
     if( _common.page == "2" ){
         pro_con()
@@ -193,7 +260,7 @@ $(function(){
                 })
     }
     if(_common.page == "5" ){
-        // console.log(arrJishu)
+        console.log(arrJishu)
         var _jishu_txt = $("#jishu_txt")
         var _jishu_zc = $("#jishu_zc")
         var _jishu_cx = $("#jishu_cx")
@@ -251,7 +318,7 @@ $(function(){
         var new_page,new_size,new_yema
         var _url = window.location.search.substring("1")
         new_size = 2
-        // console.log(_url)
+        console.log(_url)
         if( _url !="" ){
             reg = new RegExp("&","g")
             reg2 = new RegExp("=","g")
@@ -259,7 +326,7 @@ $(function(){
             Url = url.replace(reg2,'":"')
             arr2 = '{"'+Url+'"}'
             jsonarr = JSON.parse(arr2)
-            //console.log(jsonarr.page,jsonarr.pagesize)
+            console.log(jsonarr.page,jsonarr.pagesize)
             new_page = jsonarr.page
         }else{
             new_page = 1
@@ -322,12 +389,12 @@ $(function(){
         $(".g-nav-list li a").eq(4).addClass("cur").siblings().removeClass("cur")
         var reg,reg2,url,Url,arr2,jsonarr
         var _url = window.location.search.substring("1")
-        //console.log(_url)
+        console.log(_url)
         reg2 = new RegExp("=","g")
         Url = _url.replace(reg2,'":"')
         arr2 = '{"'+Url+'"}'
         jsonarr = JSON.parse(arr2)
-        //console.log(jsonarr.id)
+        console.log(jsonarr.id)
         var _data = {'id':'121'}
         var _con_img = $("#con_img")
         var _con_txt = $("#con_txt")
@@ -341,8 +408,8 @@ $(function(){
                 var _g_next_ = $("#g-next")
                 var _g_pro_id = data_con.previousPageId  //上一页
                 var _g_next_id = data_con.theNextPageId  //下一页
-                //console.log(data_con)
-                //console.log(data_con.previousPageId,data_con.theNextPageId)
+                console.log(data_con)
+                console.log(data_con.previousPageId,data_con.theNextPageId)
                 //console.log(data_con)
                 _con_img.find("img").attr("src",api_url + ''+ data_con.url)
                 _con_txt.find("h1").html(data_con.title)

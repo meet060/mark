@@ -63,7 +63,8 @@ public class Filter implements javax.servlet.Filter {
                     ||"/en/pro-con.html".equals(requestURI)
                     ||"/en/pro-shili.html".equals(requestURI)
                     ||"/".equals(requestURI)
-                    ||requestURI.contains("swagger")){
+                    //||requestURI.contains("swagger")
+                    ){
                 chain.doFilter(request, response);
                 return;
             }else{
