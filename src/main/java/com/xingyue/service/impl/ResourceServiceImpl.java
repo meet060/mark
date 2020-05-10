@@ -298,7 +298,7 @@ public class ResourceServiceImpl implements ResourceService {
                     break;
                 // 内袋系列
                 case "innerBag":
-                    Map<String, Object> m3 = new HashMap<>(4);
+                    Map<String, Object> m3 = new HashMap<>(5);
                     m3.put("ndtitle", r.getTitle());
                     m3.put("nddescription", r.getDescription());
                     m3.put("ndpic", r.getUrl());
