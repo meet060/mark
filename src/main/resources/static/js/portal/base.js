@@ -10,185 +10,20 @@ $(function(){
     if(_common.pageTo == "con"){
     share();//分享；
     }
-    if( _common.page == "1" ){
-        // console.log(indexPro)
-        var _banner = $("#g_banner")
-        var _pro_title = $("#f-pro-title")
-        var index_pro1=$("#g-pro-list1")
-        var index_pro3=$("#g-pro-list2")
-        index_pro(index_pro1,1);
-        index_pro2(index_pro3,5);
-        //首页banner
-        var _banner = $("#g_banner")
-        for( var i=0;i<_banner.find("div").length; i++){
-            _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+''+indexPro.banner[i].titleurl)
-            _banner.find(".swiper-slide").eq(i).find("strong").html(indexPro.banner[i].title)
-            _banner.find(".swiper-slide").eq(i).find("p").html(indexPro.banner[i].description)
-        }
-        // 首页关于我们
-        var _about_index_title = $("#about_index_title")
-        var _about_index = $("#about_index")
-        var _about_v = $("#about_v")
-        var arr = arrIndex;
-        var _about_html = '<video muted="" loop="" autoplay="">'+
-                                '<source src="'+api_url+''+arrIndex.about.video+'" type="video/ogg"/>'+
-                            '</video>'
-        _about_index_title.html(arrIndex.about.title)
-        _about_index.html(arrIndex.about.description)
-        _about_v.append(_about_html)
-        _about_v.find("video").click(function(){
-            console.log(arr)
-            var v_html = '<div class="g-fixed-video">'+
-                            '<div class="f-fixed-video">'+
-                                '<video controls="controls" autoplay="">'+
-                                    '<source src="'+api_url+''+arr.about.titleurl+'" type="video/mp4">'+
-                                '</video>'+
-                                '<em class="close_btn"><img src="/images/icon_3.png"></em>'+
-                            '</div>'+
-                        '</div>'
-            $("body").append(v_html)
-            $(".close_btn").click(function(){
-                $(this).parents(".g-fixed-video").remove()
-            })
-        })
-    //产品标题描述
-    _pro_title.html(indexPro.innovation.description)
-    //首页调用产品
-        function index_pro(e,h){
-            var _h=h+4
-            for( var h=1;h<_h;h++ ){
-                var _e = "pro_"+h
-                var _num = h-1
-                var html = '<li>'+
-                                '<a href="pro-con.html?id='+ h +'">'+
-                                    '<em class="u-img">'+
-                                        '<img src='+ api_url+''+indexPro.neidai[_num].titleurl +' alt="'+indexPro.neidai[_num].title+'">'+
-                                    '</em>'+
-                                    '<strong>'+indexPro.neidai[_num].title+'</strong>'+
-                                    '<p>'+indexPro.neidai[_num].description+'</p>'+
-                                    '<span class="u-img-zhao">'+indexPro.waidai[_num].description+
-                                    '</span>'+
-                                '</a>'+
-                            '</li>'
-                e.append(html)
-            }
-        }
-        function index_pro2(e,h){
-            var _h=h+4
-            for( var h;h<_h;h++ ){
-                var _e = "pro_"+h
-                var _num = h-5
-                var html = '<li>'+
-                                '<a href="pro-con.html?id='+ h +'">'+
-                                    '<em class="u-img">'+
-                                        '<img src='+ api_url+''+ indexPro.waidai[_num].titleurl +' alt="'+indexPro.waidai[_num].title+'">'+
-                                    '</em>'+
-                                    '<strong>'+indexPro.waidai[_num].title+'</strong>'+
-                                    '<p>'+indexPro.waidai[_num].description+'</p>'+
-                                    '<span class="u-img-zhao">'+indexPro.waidai[_num].description+
-                                    '</span>'+
-                                '</a>'+
-                            '</li>'
-                e.append(html)
-            }
-        }
-    //改善创新，拓展可能
-    var _tuozhan_txt = $("#f-tuozhan-txt")
-    var _tuozhan = $("#g-tuozhan")
-    for(var i=0;i<_tuozhan.find("li").length;i++){
-        _tuozhan.find("li").eq(i).find("img").attr({
-            "src":api_url+''+indexPro.innovation.innovation[i].titlepic,
-            "alt":api_url+''+indexPro.innovation.innovation[i].title,
-        })
-    }
-    _tuozhan_txt.find("p").html(indexPro.innovation.description)
-    //解决方案
-    var _fangan = $("#fangan")
-    var _fangan_txt = $("#fangan-box")
-    _fangan.find("p").html(indexPro.program.description)
-    for(var i=0;i<indexPro.program.program.length;i++){
-        html = '<li><a href=""><img src="'+ api_url+''+indexPro.program.program[i].titlepic +'" alt="'+ indexPro.program.program[i].title +'"><strong><em>'+ indexPro.program.program[i].title +'</em></strong></a></li>'
-        _fangan_txt.append(html)
-        // console.log(html)
-    }
-    }
     if( _common.pageJs == "index" ){
         baseJs.Index();
-        $(window).scroll(function(){
-            var winTop = $(window).scrollTop();
-            // console.log(winTop)
-            var _width = $(window).width()
-            if(_width>1000){
-                if( winTop > 300 ){
-                    $(".g-about-index").eq(0).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 1000 ){
-                    $(".g-about-index").eq(1).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 1900 ){
-                    $(".g-about-index").eq(2).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 2400 ){
-                    $(".g-about-index").eq(3).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 3000 ){
-                    $(".g-about-index").eq(4).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-            }else{
-                if( winTop > 80 ){
-                    $(".g-about-index").eq(0).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 600 ){
-                    $(".g-about-index").eq(1).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 1200 ){
-                    $(".g-about-index").eq(2).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 1700 ){
-                    $(".g-about-index").eq(3).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 2200 ){
-                    $(".g-about-index").eq(4).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                } 
-            }
-            
-        });
     }
     if( _common.page == "2" ){
         pro_con()
     }
     if(_common.page == "3" ){
         pro_list();
+        var _g_waidai = $("#g-waidai")
+        for( var i=0;i<_g_waidai.find("a").length;i++ ){
+            _g_waidai.find("a").eq(i).find("img").attr({
+                "src":api_url+''+arrProduct.innerBag[i].ndpic,
+            })
+        }
     }
     if(_common.page == "4" ){
         pro_list();
@@ -395,7 +230,7 @@ $(function(){
         Url = _url.replace(reg2,'":"')
         arr2 = '{"'+Url+'"}'
         jsonarr = JSON.parse(arr2)
-        console.log(jsonarr.id)
+        // console.log(jsonarr.id)
         var _data = {'id':'121'}
         var _con_img = $("#con_img")
         var _con_txt = $("#con_txt")
@@ -474,18 +309,6 @@ liuyan_box.on("click",function(){
     $(".g-liuyan-box").hide()
 })
 
-// banner
-   var mySwiper = new Swiper('.swiper-container0', {
-    autoplay: true,//可选选项，自动滑动
-    loop : true,
-    pagination: {
-        el: '.swiper-pagination',
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-})
 //导航高亮
     function nav(){
         var nav_on = $(".g-nav-list li a")
@@ -638,4 +461,3 @@ function pro_con(){
         _protxt1.html(pro_box[id].protxt1)
         _protxt2.html(pro_box[id].protxt2)
     }
-    
