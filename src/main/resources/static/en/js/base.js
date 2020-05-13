@@ -121,7 +121,7 @@ $(function(){
                                         '<video controls="controls" autoplay="">'+
                                             '<source src="'+api_url+''+indexPro.about.titleurl+'" type="video/mp4">'+
                                         '</video>'+
-                                        '<em class="close_btn"><img src="images/icon_3.png"></em>'+
+                                        '<em class="close_btn"><img src="/images/icon_3.png"></em>'+
                                     '</div>'+
                                 '</div>'
                     $("body").append(v_html)
