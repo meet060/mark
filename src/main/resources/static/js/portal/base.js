@@ -20,9 +20,13 @@ $(function(){
         pro_list();
         var _g_waidai = $("#g-waidai")
         for( var i=0;i<_g_waidai.find("a").length;i++ ){
+            var _i = i+1
             _g_waidai.find("a").eq(i).find("img").attr({
                 "src":api_url+''+arrProduct.innerBag[i].ndpic,
+                "alt":arrProduct.innerBag[i].ndtitle
             })
+            _g_waidai.find("a").eq(i).attr("href","pro-con.html?id="+_i)
+            _g_waidai.find("a").eq(i).find("strong").html(arrProduct.innerBag[i].ndtitle)
         }
     }
     if(_common.page == "4" ){
@@ -379,7 +383,7 @@ function pro_list(){
     var _pro_fangan = $("#pro_fangan")
     var _pro_liucheng = $("#pro_liucheng")
     _pro_txt.html(arrProduct.title)
-    _pro_list.find("p").html(arrProduct.outerBagDescription)
+    _pro_list.find("p").html(arrProduct.outerBag[4].outerBagDescription)
     _pro_neidai.find("p").html(arrProduct.innerBag[0].nddescription)
     _pro_jzd.find("h2").html(arrProduct.jzdtitle)
     _pro_jzd.find("p").html(arrProduct.jzddescription)

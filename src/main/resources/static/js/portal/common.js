@@ -333,12 +333,12 @@ $(function () {
                         var _about_index_title = $("#about_index_title")
                         var _about_index = $("#about_index")
                         var _about_v = $("#about_v")
-                        var _about_html = '<video muted="" loop="" autoplay="">'+
-                                                '<source src="'+api_url+''+res.about.video+'" type="video/ogg"/>'+
-                                            '</video>'
+                        var _video_url = api_url+res.about.video;
+                        var _video=document.getElementById("startvideo"); 
+                        _about_v.find("video").attr("src",_video_url)
+                        // _video.play();
                         _about_index_title.html(res.about.title)
                         _about_index.html(res.about.description)
-                        _about_v.append(_about_html)
                         _about_v.find("video").click(function(){
                             console.log(res)
                             var v_html = '<div class="g-fixed-video">'+

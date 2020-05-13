@@ -1,4 +1,4 @@
-var api_url = ''
+var api_url = 'http://39.99.197.225:9000'
 var jiekou = {
     "index_api":api_url+"/api/resource/queryIndexResources",//首页接口
     "industry_api":api_url+'/api/resource/checkIndustryApprovedPictures',//查询行业认可图片
@@ -382,7 +382,7 @@ function head(){
     var header = '<div class="g-top-nav clearfix">'+
                     '<a href="" class="g-logo-box f-fl"><img src="/images/logo.png" alt="" class="pc-logo"></a>'+
                     '<div class="g-nav_btn f-fr"></div>'+
-                    '<div class="f-lang f-fr"><a href="index.html" class="f-lang-e cur">中</a><a href="en/index.html" class="f-lang-c">EN</a></div>'+
+                    '<div class="f-lang f-fr"><a href="/index.html" class="f-lang-e cur">中</a><a href="en/index.html" class="f-lang-c">EN</a></div>'+
                     '<ul class="g-nav-list f-fr" id="head">'+
                         '<li><a href="index.html" class="cur"></a><a href="about.html" rel="about.html"></a><a href="pro-shili.html" rel="pro"></a><a href="jishu.html" rel="jishu.html"></a><a href="news.html" rel="news.html"></a><a href="contact.html" rel="contact.html"></a></li>'+
                     '</ul>'+

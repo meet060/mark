@@ -110,20 +110,18 @@ $(function(){
                 var _about_index = $("#about_index")
                 var _about_index = $("#about_index")
                 var _about_v = $("#about_v")
-                var _about_html = '<video muted="" loop="" autoplay="">'+
-                                        '<source src="'+api_url+''+indexPro.about.titleurl+'" type="video/ogg"/>'+
-                                    '</video>'
+                var _video_url = api_url+arrIndex.about.video;
+                _about_v.find("video").attr("src",_video_url)
                 _about_index_title.html(arrAbout2.title)
                 _about_index_title.html('Break through the limitations of traditional thinking, and always keep the equipment and production capacity at the domestic advanced')
                 _about_index.html('Break through the limitations of traditional thinking, and always keep the equipment and production capacity at the domestic advanced')
-                _about_v.append(_about_html)
                 _about_v.find("video").click(function(){
                     var v_html = '<div class="g-fixed-video">'+
                                     '<div class="f-fixed-video">'+
                                         '<video controls="controls" autoplay="">'+
                                             '<source src="'+api_url+''+indexPro.about.titleurl+'" type="video/mp4">'+
                                         '</video>'+
-                                        '<em class="close_btn"><img src="/images/icon_3.png"></em>'+
+                                        '<em class="close_btn"><img src="images/icon_3.png"></em>'+
                                     '</div>'+
                                 '</div>'
                     $("body").append(v_html)
@@ -203,7 +201,7 @@ $(function(){
                 "src":api_url+''+arrProduct.innerBag[i].ndpic,
                 "alt":arrProduct.innerBag[i].ndtitle
             })
-            _g_waidai.find("a").eq(i).find("strong").html(arrProduct.innerBag[i].ndtitle)
+            // _g_waidai.find("a").eq(i).find("strong").html(arrProduct.innerBag[i].ndtitle)
         }
     }
     if(_common.page == "4" ){
@@ -306,10 +304,10 @@ $(function(){
         _lianxi_txt.find("img").attr("src",api_url+''+arrContact2.titlepic)
         _lianxi_box.find("h3").html(arrContact2.contact.company)
         _lianxi_box.find("p").eq(0).html(arrContact2.contact.address)
-        _lianxi_box.find("p").eq(1).html('电话：'+arrContact2.contact.phone)
-        _lianxi_box.find("p").eq(2).html('手机：'+arrContact2.contact.cellPhone)
-        _lianxi_box.find("p").eq(3).html('传真：'+arrContact2.contact.fax)
-        _lianxi_box.find("p").eq(4).html('邮箱：'+arrContact2.contact.mailbox)
+        _lianxi_box.find("p").eq(1).html('cell：'+arrContact2.contact.phone)
+        _lianxi_box.find("p").eq(2).html('phone：'+arrContact2.contact.cellPhone)
+        _lianxi_box.find("p").eq(3).html('fax：'+arrContact2.contact.fax)
+        _lianxi_box.find("p").eq(4).html('email：'+arrContact2.contact.mailbox)
         _lianxi_jr.find("h2").html(arrContact2.bottom.title)
         _lianxi_jr.find("p").html(arrContact2.bottom.description)
     }
@@ -490,10 +488,11 @@ function pro_list(){
     var _pro_fangan = $("#pro_fangan")
     var _pro_liucheng = $("#pro_liucheng")
     for(var i=1;i<5;i++){
+        var _i = i -1
         var _pro_ = "pro_"+i
             pro_html = '<li>'+
                         '<a href="pro-con.html?id='+ i +'">'+
-                            '<em class="u-img"><img src="'+ api_url+''+arrProduct.outerBag[i].wdpic +'" alt="'+ pro_box[_pro_].titleEn +'"></em>'+
+                            '<em class="u-img"><img src="'+ api_url+''+arrProduct.outerBag[_i].wdpic +'" alt="'+ pro_box[_pro_].titleEn +'"></em>'+
                             '<span class="g-txt-box">'+
                                 '<strong>'+ pro_box[_pro_].titleEn +'</strong>'+
                                 '<p>'+ pro_box[_pro_].titleHpEn +'</p>'+
