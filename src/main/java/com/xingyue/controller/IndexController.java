@@ -212,4 +212,21 @@ public class IndexController {
 		return MvcUtils.ok(map);
 	}
 
+	
+	/**
+	 * 首页&关于
+	 *
+	 * @param module
+	 * @param page
+	 * @param size
+	 * @return
+	 */
+	@ApiOperation(value = "根据模块查询资源")
+	@GetMapping(value = "/queryResourcesByIndexAndAbout")
+	public ResponseEntity<?> queryResourcesByModule(
+			@RequestParam(name = "page", defaultValue = "1") int page,
+			@RequestParam(name = "size", defaultValue = "10") int size) {
+		Map<String, Object> map = resourceService.queryResourcesByIndexAndAbout(page, size);
+		return MvcUtils.ok(map);
+	}
 }

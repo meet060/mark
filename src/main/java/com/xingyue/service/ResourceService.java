@@ -85,4 +85,6 @@ public interface ResourceService {
 	Boolean saveNews(Resource resource);
 
 	Map<String, Object> findNewsById(Integer id);
+
+	Map<String, Object> queryResourcesByIndexAndAbout(int page, int size);
 }

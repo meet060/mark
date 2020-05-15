@@ -69,6 +69,7 @@ var menuList =	[
 			{id: '1-3', name: '技术支持', url: '../html/management/technology.html'},
 			{id: '1-4', name: '新闻活动', url: '../html/management/news.html'},
 			{id: '1-5', name: '联系我们', url: '../html/management/contact.html'},
+			{id: '1-6', name: '首页&关于中润', url: '../html/management/index.html'},
 			/*{
 				id: '1-3',
 				name: '用户统计',
