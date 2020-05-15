@@ -121,6 +121,11 @@ public class ResourceServiceImpl implements ResourceService {
         return map;
     }
 
+    /**
+     * 门户首页
+     *
+     * @return
+     */
     @Override
     public Map<String, Object> queryResourcesByModule() {
         Map<String, Object> map = new HashMap<>();
@@ -149,6 +154,7 @@ public class ResourceServiceImpl implements ResourceService {
             m.put("titleurl", p.getUrl());
             m.put("title", p.getTitle());
             m.put("description", p.getDescription());
+//            m.put("id", p.getId());
             r.add(m);
         }
         map.put("neidai", r);
@@ -159,6 +165,7 @@ public class ResourceServiceImpl implements ResourceService {
             m.put("titleurl", p.getUrl());
             m.put("title", p.getTitle());
             m.put("description", p.getDescription());
+//            m.put("id", p.getId());
             waidai.add(m);
         }
         map.put("waidai", waidai);
@@ -500,7 +507,9 @@ public class ResourceServiceImpl implements ResourceService {
 
     public List<Resource> filterResource(List<Resource> resources, String position, int limit) {
         List<Resource> res = resources.stream().filter(r -> position.equals(r.getPosition()))
-                .sorted(Comparator.comparing(Resource::getCreatTime).reversed()).limit(limit)
+                .sorted(Comparator.comparing(Resource::getCreatTime)
+//                .reversed()
+                ).limit(limit)
                 .collect(Collectors.toList());
         return res;
     }
