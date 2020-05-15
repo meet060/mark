@@ -562,4 +562,22 @@ public class ResourceServiceImpl implements ResourceService {
         }
         return null;
     }
+
+	@Override
+	public Map<String, Object> queryResourcesByIndexAndAbout(int page, int size) {
+		 Map<String, Object> map = new HashMap<>(4);
+	        Sort sort = JpaSort.unsafe(Sort.Direction.ASC, "number");
+	        Pageable pageable = PageRequest.of(page - 1, size, sort);
+	        Page<Resource> resources = resourceRepository.findByModuleOrModuleAndPositionNotNullAndUrlNotNull("AboutZR", "productCenter", pageable);
+	        // 有多少页
+	        int totalPages = resources.getTotalPages();
+	        // 总条数
+	        long totalElements = resources.getTotalElements();
+	        // 返回数据
+	        List<Resource> content = resources.getContent();
+	        map.put("content", content);
+	        map.put("totalPages", totalPages);
+	        map.put("totalElements", totalElements);
+	        return map;
+	}
 }
