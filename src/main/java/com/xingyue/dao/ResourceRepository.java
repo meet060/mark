@@ -67,7 +67,6 @@ public interface ResourceRepository extends JpaRepository<Resource, Integer> {
     Resource getsTheNextRecordById(Integer id);
 
 
-	@Query(value = "select * from resource where module = 'AboutZR' or 'productCenter' and url is not null ",nativeQuery = true)
 	Page<Resource> findByModuleOrModuleAndPositionNotNullAndUrlNotNull(String string, String string2,
 			Pageable pageable);
 
