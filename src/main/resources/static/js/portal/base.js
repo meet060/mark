@@ -51,32 +51,32 @@ $(function(){
             // console.log(arrIndustry.recognized.length)
             for( var i=0;i<arrIndustry.recognized.length;i++){
                 if(i<4){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _html_ = '<a><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
                     _industry1.find("div").eq(0).append(_html_)
                 }else if(i<9){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _html_ = '<a><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
                     _industry1.find("div").eq(1).append(_html_)
                 }else{
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _html_ = '<a><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
                     _industry1.find("div").eq(2).append(_html_)
                 }
                 if(i<3){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _html_ = '<a><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
                     _industry2.find("div").eq(0).append(_html_)
                 }else if(i<6){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _html_ = '<a><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
                     _industry2.find("div").eq(1).append(_html_)
                 }else if(i<9){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _html_ = '<a><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
                     _industry2.find("div").eq(2).append(_html_)
                 }else if(i<12){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _html_ = '<a><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
                     _industry2.find("div").eq(3).append(_html_)
                 }else if(i<15){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _html_ = '<a><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
                     _industry2.find("div").eq(4).append(_html_)
                 }else{
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
+                    _html_ = '<a><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p>'+ arrIndustry.recognized[i].title +'</p></a>'
                     _industry2.find("div").eq(5).append(_html_) 
                 }
             }
@@ -123,7 +123,7 @@ $(function(){
             var _e = "jspic"+i
             var _e2 = 'jstitle'+i
             var _e3 = 'jsdescription'+i
-            var js_html = '<a href="">'+
+            var js_html = '<a >'+
                                 '<em class="u-img"><img src="'+ api_url+''+arrJishu.device[_e] +'" alt=""></em>'+
                                 '<span class="g-txt-box">'+
                                     '<strong>'+arrJishu.device[_e2] +'</strong>'+
@@ -158,7 +158,7 @@ $(function(){
         var new_page,new_size,new_yema
         var _url = window.location.search.substring("1")
         new_size = 2
-        console.log(_url)
+        // console.log(_url)
         if( _url !="" ){
             reg = new RegExp("&","g")
             reg2 = new RegExp("=","g")
@@ -234,8 +234,8 @@ $(function(){
         Url = _url.replace(reg2,'":"')
         arr2 = '{"'+Url+'"}'
         jsonarr = JSON.parse(arr2)
-        // console.log(jsonarr.id)
-        var _data = {'id':'121'}
+        console.log(jsonarr.id)
+        var _data = {'id':jsonarr.id}
         var _con_img = $("#con_img")
         var _con_txt = $("#con_txt")
         $.ajax({
@@ -400,7 +400,7 @@ function pro_list(){
             _pro_list.find("ul").append(pro_html)
         }
     for(var i=0;i<2;i++){
-        html='<a href="">'+
+        html='<a >'+
                     '<em class="u-img"><img src="'+ api_url+''+arrProduct.process[i].titlepic +'" alt="'+ arrProduct.process[i].title +'"></em> '+
                     '<span class="g-txt-box">'+
                         '<strong>'+ arrProduct.process[i].title +'</strong>'+
@@ -413,7 +413,7 @@ function pro_list(){
     _pro_fangan.find("p").html(arrProduct.qhydescription)
     for(var i=0;i<8;i++){
         _html='<li>'+
-                '<a href="">'+
+                '<a >'+
                    ' <em class="u-img"><img src="'+ api_url+''+arrProduct.program[i].titlepic +'" alt="'+ arrProduct.program[i].title +'"></em>'+
                     '<span class="g-txt-box">'+
                         '<strong>'+ arrProduct.program[i].title +'</strong>'+
@@ -427,7 +427,7 @@ function pro_list(){
     _pro_liucheng.find("h2").html(arrProduct.zktitle)
     _pro_liucheng.find("p").html(arrProduct.zkdescription)
     for(var i=0;i<4;i++){
-        html='<a href="">'+
+        html='<a >'+
                    '<em class="u-img">'+
                         '<img src="'+ api_url+''+ arrProduct.control[i].titlepic +'" alt="'+ arrProduct.control[i].title +'">'+
                     '</em>'+
