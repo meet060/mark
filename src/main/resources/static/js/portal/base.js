@@ -19,14 +19,18 @@ $(function(){
     if(_common.page == "3" ){
         pro_list();
         var _g_waidai = $("#g-waidai")
-        for( var i=0;i<_g_waidai.find("a").length;i++ ){
-            var _i = i+1
-            _g_waidai.find("a").eq(i).find("img").attr({
-                "src":api_url+''+arrProduct.innerBag[i].ndpic,
-                "alt":arrProduct.innerBag[i].ndtitle
-            })
-            _g_waidai.find("a").eq(i).attr("href","pro-con.html?id="+_i)
-            _g_waidai.find("a").eq(i).find("strong").html(arrProduct.innerBag[i].ndtitle)
+        for( var i=0;i<6;i++ ){
+            if(i==4){
+                return null;
+            }else{
+                var _i = i+1
+                _g_waidai.find("a").eq(i).find("img").attr({
+                    "src":api_url+''+arrProduct.outerBag[i].wdpic,
+                    "alt":arrProduct.outerBag[i].wdtitle
+                })
+                _g_waidai.find("a").eq(i).find("strong").html(arrProduct.outerBag[i].wdtitle)
+            }
+
         }
     }
     if(_common.page == "4" ){
@@ -381,22 +385,29 @@ function pro_list(){
     var _pro_jzd = $("#pro_jzd")
     var _pro_jiejing = $("#pro_jiejing")
     var _pro_fangan = $("#pro_fangan")
+    var _pro_fangan2 = $("#pro_fangan2")
     var _pro_liucheng = $("#pro_liucheng")
     _pro_txt.html(arrProduct.title)
-    _pro_list.find("p").html(arrProduct.outerBag[4].outerBagDescription)
-    _pro_neidai.find("p").html(arrProduct.innerBag[0].nddescription)
+    _pro_list.find("p").html('多元化定制集装袋，针对不同市场和应用领域，中润拥有多年累积的专业技术及设计经验。中润拥有超过50人的设计及销售团队，持续为您设计及推荐更合理的产品。') //arrProduct.outerBag[4].outerBagDescription
+    _pro_neidai.find("p").html('中润拥有食品级吹膜车间，自产食品级A型、B型、C型成型内袋及拉筋内袋。')//arrProduct.innerBag[0].nddescription
     _pro_jzd.find("h2").html(arrProduct.jzdtitle)
     _pro_jzd.find("p").html(arrProduct.jzddescription)
-    for(var i=0;i<4;i++){
+    for(var i=0;i<8;i++){
+            // if(i>4){
+            //     i=i-1
+            // }
+            var h=i+1
             pro_html = '<li>'+
-                        '<a href="pro-con.html?id='+ i +'">'+
-                            '<em class="u-img"><img src="'+ api_url+''+arrProduct.outerBag[i].wdpic +'" alt="'+ arrProduct.outerBag[i].wdtitle +'"></em>'+
+                        '<a href="pro-con.html?id='+ h +'">'+
+                            '<em class="u-img"><img src="'+ api_url+''+arrProduct.innerBag[i].ndpic +'" alt="'+ arrProduct.innerBag[i].ndtitle +'"></em>'+
                             '<span class="g-txt-box">'+
-                                '<strong>'+arrProduct.outerBag[i].wdtitle +'</strong>'+
-                                '<p>'+ arrProduct.outerBag[i].wddescription +'</p>'+
+                                '<strong>'+arrProduct.innerBag[i].ndtitle +'</strong>'+
+                                '<p>'+ arrProduct.innerBag[i].nddescription +'</p>'+
                             '</span> '+
                         '</a>'+
                     '</li>'
+  
+
             _pro_list.find("ul").append(pro_html)
         }
     for(var i=0;i<2;i++){
@@ -409,6 +420,7 @@ function pro_list(){
                 '</a>'
         _pro_jiejing.append(html)  
     }
+    console.log(arrProduct.zktitle)
     _pro_fangan.find("h2").html(arrProduct.qhytitle)
     _pro_fangan.find("p").html(arrProduct.qhydescription)
     for(var i=0;i<8;i++){

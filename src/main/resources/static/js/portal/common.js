@@ -13,9 +13,9 @@ var jiekou = {
 //首页联系我们
 var dongya = {
         "jiaru":"中润，助你成就每一程",
-        "beian":"© 邯郸市中润包装有限公司 冀ICP备14008699号-5",
+        "beian":"邯郸市中润塑料制品有限公司",
         "jiaruEn":"Zhongrun, help you achieve every journey",
-        "beianEn":"© 2020 Jiangyin Zhongrun Packaging Co., Ltd. JI ICP No.14008699-5"
+        "beianEn":"Handan Zhongrun Plastic Products Co., Ltd."
     }
 var head_foot={
     "head":{
@@ -45,9 +45,9 @@ var head_foot={
 function head(){
     var _body = $("body")
     var header = '<div class="g-top-nav clearfix">'+
-                    '<a href="" class="g-logo-box f-fl"><img src="images/logo.png" alt="" class="pc-logo"></a>'+
+                    '<a href="" class="g-logo-box f-fl"><img src="/images/logo.png" alt="" class="pc-logo"></a>'+
                     '<div class="g-nav_btn f-fr"></div>'+
-                    '<div class="f-lang f-fr"><a href="../index.html" class="f-lang-e cur">中</a><a href="en/index.html" class="f-lang-c">EN</a></div>'+
+                    '<div class="f-lang f-fr"><a href="/index.html" class="f-lang-e cur">中</a><a href="en/index.html" class="f-lang-c">EN</a></div>'+
                     '<ul class="g-nav-list f-fr" id="head">'+
                         '<li><a href="index.html" class="cur"></a><a href="about.html" rel="about.html"></a><a href="pro-shili.html" rel="pro"></a><a href="jishu.html" rel="jishu.html"></a><a href="news.html" rel="news.html"></a><a href="contact.html" rel="contact.html"></a></li>'+
                     '</ul>'+
@@ -65,7 +65,7 @@ function head(){
                             '<li><textarea placeholder="" id="liuyanTxt"></textarea></li>'+
                             '<li><input type="submit" id="sumbtn"></li>'+
                         '</ul>  '+
-                        '<em><img src="images/icon_3.png" alt=""></em>  '+
+                        '<em><img src="/images/icon_3.png" alt=""></em>  '+
                         '</div>'+
                         '<div class="g-liuyan"></div>'+
                         '<div class="g-gotop"></div>'+
@@ -103,11 +103,11 @@ function head(){
                     '</div>'+
                     '<div class="g-foot-r">'+
                         '<div class="g-foot-chat f-fl">'+
-                            '<img src="images/chat.png" alt="">  '+
+                            '<img src="/images/chat.png" alt="">  '+
                             '<em id="chat_txt"></em> '+
                         '</div>'+
                         '<div class="g-foot-chat f-fl">'+
-                            '<img src="images/chat.png" alt="">  '+
+                            '<img src="/images/chat.png" alt="">  '+
                             '<em id="chat_txt2"></em> '+
                         '</div>'+
                      '</div>'+
@@ -346,7 +346,7 @@ $(function () {
                                                 '<video controls="controls" autoplay="">'+
                                                     '<source src="'+api_url+''+res.about.titleurl+'" type="video/mp4">'+
                                                 '</video>'+
-                                                '<em class="close_btn"><img src="images/icon_3.png"></em>'+
+                                                '<em class="close_btn"><img src="/images/icon_3.png"></em>'+
                                             '</div>'+
                                         '</div>'
                             $("body").append(v_html)
@@ -535,7 +535,7 @@ $(function () {
                             var _e = "pro_"+h
                             var _num = h-1
                             var html = '<li>'+
-                                            '<a href="pro-con.html?id='+ _num +'">'+
+                                            '<a href="pro-con.html?id='+ h +'">'+
                                                 '<em class="u-img">'+
                                                     '<img src='+ api_url+''+ product.innerBag[_num].ndpic +' alt="'+product.innerBag[_num].ndtitle+'">'+
                                                 '</em>'+
@@ -592,7 +592,7 @@ var pro_box = {
     "pro_1":{
                 title:"TYPE-A拉筋集装袋/防膨胀集装袋/普通集装袋/不具备防静电功能",
                 banner_txt:"TYPE-A拉筋集装袋/防膨胀集装袋/普通集装袋/不具备防静电功能",
-                pro_img:"images/41.png",
+                pro_img:api_url+''+ arrProduct.innerBag[0].ndpic,
                 titleH:"TYPE-A拉筋集装袋/防膨胀集装袋/普通集装袋/不具备防静电功能",
                 titleHp:"TYPE-A拉筋集装袋/防膨胀集装袋/普通集装袋/不具备防静电功能",
                 titleH2:"TYPE-A拉筋集装袋/防膨胀集装袋/普通集装袋/<em>不具备防静电功能</em>",
@@ -605,7 +605,7 @@ var pro_box = {
                 protxt2:"这款产品设计时考虑到装载超细粉末时会在针孔处喷漏出来，所以增加了防漏棉条及无纺布防漏、并且考虑到长宽尺寸大不能够两个并排放在卡车上运输，增加了拉筋来解决膨胀问题，考虑到客户装载物料流动性不好的情况下我们建议使用网状拉筋片作为拉角筋，避免物料进入角筋内部困难，本产品已解决以上所有问题。让客户任意装，使用无忧。",
 titleEn: "TYPE-A Lace FIBC",
                 banner_txtEn: "TYPE-A lacing FIBC / anti-expansion FIBC / common FIBC / without anti-static function",
-                pro_imgEn: "../images/41.png",
+                pro_imgEn: api_url+''+ arrProduct.innerBag[0].ndpic,
                 titleHEn: "TYPE-A Lace FIBC",
                 titleHpEn: "TYPE-A lacing FIBC / anti-expansion FIBC / common FIBC / without anti-static function",
                 titleH2En: "TYPE-A lacing FIBC <em> / anti-expansion FIBC / common FIBC / without antistatic function </ em>",
@@ -620,7 +620,7 @@ titleEn: "TYPE-A Lace FIBC",
     "pro_2":{
         title:"TYPE-B防静电集装袋/防静电吨包/放静电吨包袋/防静电吨袋",
         banner_txt:"TYPE-B防静电集装袋/防静电吨包/放静电吨包袋/防静电吨袋",
-        pro_img:"images/42.png",
+        pro_img:api_url+''+ arrProduct.innerBag[1].ndpic,
         titleH:"TYPE-B防静电集装袋/防静电吨包/放静电吨包袋/防静电吨袋",
         titleHp:"TYPE-B防静电集装袋/防静电吨包/放静电吨包袋/防静电吨袋 符合国际电工委员会IEC 61340-4-4标准",
         titleH2:"TYPE-B防静电集装袋/<em>低击穿电压，防止静电产生</em>",
@@ -631,7 +631,7 @@ titleEn: "TYPE-A Lace FIBC",
         protxt1:"TYPE-B型集装袋面料在编织和涂膜过程中按比例添加抗静电母料，此特殊工艺使TYPE-B型集装袋面料具有较低的击穿电压，可以防止高强度的危险静电的产生，确保装料和卸料过程中的安全性。 *面料两面表面击穿电压应小于6KV。",
         protxt2:"这款产品设计时考虑到装载超细粉末时会在针孔出喷漏出来，所以增加了防漏棉条及无纺布防漏、并且考虑到长宽尺寸大不能够 两个并排放在卡车上运输，增加了拉筋来解决膨胀问题，考虑到客户装载物料流动性不好的情况下我们建议使用网状拉筋片作为拉角筋，避免物料进入角筋内部困难，已解决以上所有问题。让客户任意装，使用无忧。",
         banner_txtEn: "TYPE-A heavy-duty FIBC / common FIBC / without anti-static function, in line with national GB / T10454-2000 executive standard and European ISO21898 executive standard",
-        pro_imgEn: "../images/42.png",
+        pro_imgEn: api_url+''+ arrProduct.innerBag[1].ndpic,
         titleHEn: "TYPE-A Heavy Duty FIBC",
         titleHpEn: "YPE-A heavy-duty FIBC / common FIBC / without anti-static function",
         titleH2En: "TYPE-A heavy-duty FIBC <em> / common FIBC / without anti-static function </ em>",
@@ -645,7 +645,7 @@ titleEn: "TYPE-A Lace FIBC",
     "pro_3":{
         title:"TYPE-C导电集装袋",
         banner_txt:"TYPE-C导电集装袋/防静电集装袋/通过导电丝及传导线将静电释放到地下。",
-        pro_img:"images/43.png",
+        pro_img:api_url+''+ arrProduct.innerBag[2].ndpic,
         titleH:"TYPE-C导电集装袋 符合国际电工委员会IEC 61340-4-4标准",
         titleHp:"TYPE-C导电集装袋/防静电集装袋/",
         titleH2:"TYPE-C导电集装袋<em>防静电集装袋</em>",
@@ -657,7 +657,7 @@ titleEn: "TYPE-A Lace FIBC",
         protxt2:"这款产品设计时考虑到装载超细粉末时会在针孔出喷漏出来，所以增加了防漏棉条及无纺布防漏、并且考虑到长宽尺寸大不能够 两个并排放在卡车上运输，增加了拉筋来解决膨胀问题，考虑到客户装载物料流动性不好的情况下我们建议使用网状拉筋片作为拉角筋，避免物料进入角筋内部困难，已解决以上所有问题。让客户任意装，使用无忧。",
         titleEn: "TYPE-B Antistatic Container Bag",
                 banner_txtEn: "TYPE-B anti-static container bag / low breakdown voltage, to prevent static electricity-conform to the International Electrotechnical Commission IEC 61340-4-4 standard",
-                pro_imgEn: "../images/43.png",
+                pro_imgEn:api_url+''+ arrProduct.innerBag[2].ndpic,
                 titleHEn: "TYPE-B Antistatic Container Bag",
                 titleHpEn: "TYPE-B anti-static container bag / low breakdown voltage, prevent static electricity",
                 titleH2En: "TYPE-A lacing FIBC <em> / anti-expansion FIBC / common FIBC / without antistatic function </ em>",
@@ -671,7 +671,7 @@ titleEn: "TYPE-A Lace FIBC",
     "pro_4":{
         title:"TYPE-D导电集装袋/防静电集装袋/无需接地即可安全使用",
         banner_txt:"TYPE-D导电集装袋符合国际电工委员会IEC 61340-4-4标准",
-        pro_img:"images/44.png",
+        pro_img:api_url+''+ arrProduct.innerBag[3].ndpic,
         titleH:"TYPE-D导电集装袋",
         titleHp:"TYPE-D导电集装袋/防静电集装袋/无需接地即可安全使用。",
         titleH2:"TYPE-D导电集装袋/防静电集装袋/无需接地即可安全使用<em>符合国际电工委员会IEC 61340-4-4标准</em>",
@@ -683,7 +683,7 @@ titleEn: "TYPE-A Lace FIBC",
         protxt2:"这款产品设计时考虑到装载超细粉末时会在针孔出喷漏出来，所以增加了防漏棉条及无纺布防漏、并且考虑到长宽尺寸大不能够 两个并排放在卡车上运输，增加了拉筋来解决膨胀问题，考虑到客户装载物料流动性不好的情况下我们建议使用网状拉筋片作为拉角筋，避免物料进入角筋内部困难，已解决以上所有问题。让客户任意装，使用无忧。",
 titleEn: "TYPE-C conductive container bag",
                 banner_txtEn: "TYPE-C conductive container bag / anti-static container bag / discharge static electricity to the ground through conductive wire and conductive wire",
-                pro_imgEn: "../images/44.png",
+                pro_imgEn: api_url+''+ arrProduct.innerBag[3].ndpic,
                 titleHEn: "TYPE-C conductive container bag",
                 titleHpEn: "TYPE-C conductive FIBC conforms to the International Electrotechnical Commission IEC 61340-4-4 standard",
                 titleH2En: "TYPE-C conductive container bag <em> / anti-static container bag / discharge static electricity to the ground through conductive wire and conductive wire </ em>",
@@ -697,7 +697,7 @@ titleEn: "TYPE-C conductive container bag",
     "pro_5":{
         title:"TYPE-A重型集装袋/普通集装袋/不具备防静电功能",
         banner_txt:"TYPE-A重型集装袋符合国家GB/T10454-2000执行标准 及欧洲ISO21898执行标准",
-        pro_img:"images/45.png",
+        pro_img:api_url+''+ arrProduct.innerBag[4].ndpic,
         titleH:"TYPE-A重型集装袋/普通集装袋/不具备防静电功能",
         titleHp:"TYPE-A重型集装袋/普通集装袋/不具备防静电功能",
         titleH2:"TYPE-A重型集装袋/普通集装袋/不具备防静电功能<em>符合国家GB/T10454-2000执行标准 及欧洲ISO21898执行标准</em>",
@@ -709,7 +709,7 @@ titleEn: "TYPE-C conductive container bag",
         protxt2:"这款产品设计时考虑到装载量大、称重范围1.5-3.5吨均可采用本款产品。 井字托底更加牢固可靠。",
 titleEn: "TYPE-C Tray-Free Conductive Container Bag",
                 banner_txtEn: "TYPE-C tray-free conductive container / anti-static container / discharge static electricity to the ground through conductive wires and conductive wires",
-                pro_imgEn: "../images/45.png",
+                pro_imgEn: api_url+''+ arrProduct.innerBag[4].ndpic,
                 titleHEn: "TYPE-C Tray-Free Conductive Container Bag",
                 titleHpEn: "TYPE-C pallet-free conductive FIBC conforms to the International Electrotechnical Commission IEC 61340-4-4 standard",
                 titleH2En: "TYPE-C tray-free conductive container bag <em> / antistatic container bag / discharge static electricity to the ground through conductive wire and conductive wire </ em>",
@@ -723,7 +723,7 @@ titleEn: "TYPE-C Tray-Free Conductive Container Bag",
     "pro_6":{
         title:"TYPE-C免托盘导电集装袋",
         banner_txt:"TYPE-C免托盘导电集装袋 符合国际电工委员会IEC 61340-4-4标准",
-        pro_img:"images/46.png",
+        pro_img:api_url+''+ arrProduct.innerBag[5].ndpic,
         titleH:"TYPE-C免托盘导电集装袋",
         titleHp:"TYPE-C免托盘导电集装袋 符合国际电工委员会IEC 61340-4-4标准",
         titleH2:"TYPE-C免托盘导电集装袋<em> /防静电集装袋/通过导电丝及传导线将静电释放到地下</em>",
@@ -735,7 +735,7 @@ titleEn: "TYPE-C Tray-Free Conductive Container Bag",
         protxt2:"这款产品设计时考虑到装载超细粉末时会在针孔出喷漏出来，所以增加了防漏棉条及无纺布防漏、并且考虑到长宽尺寸大不能够 两个并排放在卡车上运输，增加了拉筋来解决膨胀问题，考虑到客户装载物料流动性不好的情况下我们建议使用网状拉筋片作为拉角筋，避免物料进入角筋内部困难，这款集装袋可以免去托盘，集装袋装货物后下面可以不放托盘，叉车可以直接插入袋子底部两侧的位置，即可完成搬运工作。已解决以上所有问题。让客户任意装，使用无忧。",
 titleEn: "TYPE-D conductive container bag",
                 banner_txtEn: "TYPE-D conductive FIBC / anti-static FIBC / safe to use without grounding",
-                pro_imgEn: "../images/46.png",
+                pro_imgEn: api_url+''+ arrProduct.innerBag[5].ndpic,
                 titleHEn: "TYPE-D conductive container bag",
                 titleHpEn: "TYPE-D conductive FIBC conforms to the International Electrotechnical Commission IEC 61340-4-4 standard",
                 titleH2En: "TYPE-D conductive FIBC <em> / anti-static FIBC / safe to use without grounding </ em>",
@@ -749,7 +749,7 @@ titleEn: "TYPE-D conductive container bag",
     "pro_7":{
         title:"拉筋内袋集装袋/铝膜拉筋集装袋/防膨胀集装袋/普通集装袋/不具备防静电功能",
         banner_txt:"拉筋内袋集装袋/铝膜拉筋集装袋/防膨胀集装袋/普通集装袋/不具备防静电功能 符合国家GB/T10454-2000执行标准 及欧洲ISO21898执行标准",
-        pro_img:"images/47.png",
+        pro_img:api_url+''+ arrProduct.innerBag[6].ndpic,
         titleH:"拉筋内袋集装袋/铝膜拉筋集装袋/防膨胀集装袋/普通集装袋/不具备防静电功能",
         titleHp:"符合国家GB/T10454-2000执行标准 及欧洲ISO21898执行标准",
         titleH2:"拉筋内袋集装袋<em> /铝膜拉筋集装袋/防膨胀集装袋/普通集装袋/不具备防静电功能</em>",
@@ -761,7 +761,7 @@ titleEn: "TYPE-D conductive container bag",
         protxt2:"这款产品设计时主要解决了泄露、潮湿结块、等一系列问题，并且考虑到长宽尺寸大不能够两个并排放在卡车上运输，增加了拉筋来解决膨胀问题，考虑到客户装载物料流动性不好的情况下，我们建议使用网状拉筋片作为拉角筋，避免物料进入角筋内部困难，并且可指定铝膜作为内袋的原材料及按照B型防静电、C型防静电、D型防静电标准的同款袋型，已解决以上所有问题。让客户任意装，使用无忧。",
 titleEn: "Reinforcement inner bag container bag",
         banner_txtEn: "Reinforced inner bag container bag / Aluminum film reinforced container bag / anti-expansion container bag / common container bag / without anti-static function",
-        pro_imgEn: "../images/47.png",
+        pro_imgEn: api_url+''+ arrProduct.innerBag[6].ndpic,
         titleHEn: "Reinforced inner bag container bag / Aluminum film reinforced container bag / Anti-expansion container bag / General container bag /",
         titleHpEn: "Reinforced inner bag FIBC / Aluminum film reinforced FIBC / anti-expansion FIBC / common FIBC / without anti-static function conforms to the national GB / T10454-2000 executive standard and European ISO21898 executive standard" ,
         titleH2En: "Reinforced Inner Bag FIBC <em> / Aluminum Film Reinforced FIBC / Anti-expansion FIBC / Common FIBC / No Antistatic Function </ em>",
@@ -773,11 +773,11 @@ titleEn: "Reinforcement inner bag container bag",
         protxt2En: "This product is mainly designed to solve a series of problems such as leakage, wet agglomeration, etc., and considering that the length and width are not large enough to be transported on the truck side by side, adding tie bars to solve the expansion problem, consider When the loading material of the customer has poor fluidity, we recommend the use of mesh ribs as corner ribs to avoid the difficulty of materials entering the corner ribs, and aluminum film can be designated as the raw material of the inner bag and according to type B anti-static, The same bag type of C-type anti-static and D-type anti-static standards has solved all of the above problems. Let customers install it arbitrarily and use it without worry. "
     },
     "pro_8":{
-        title:"TYPE-A拉筋集装袋/防膨胀集装袋/普通集装袋/不具备防静电功能",
-        banner_txt:"TYPE-A拉筋集装袋/防膨胀集装袋/普通集装袋/不具备防静电功能 符合国家GB/T10454-2000执行标准 及欧洲ISO21898执行标准",
-        pro_img:"images/48.png",
-        titleH:"TYPE-A拉筋集装袋/防膨胀集装袋/普通集装袋/不具备防静电功能",
-        titleHp:"TYPE-A拉筋集装袋/防膨胀集装袋/普通集装袋/不具备防静电功能 符合国家GB/T10454-2000执行标准 及欧洲ISO21898执行标准",
+        title:"TYPE-A透气集装袋/吨袋/吨包/吨包袋 不具备防静电功能",
+        banner_txt:"TYPE-A透气集装袋/吨袋/吨包/吨包袋 符合国家GB/T10454-2000执行标准 及欧洲ISO21898执行标准",
+        pro_img:api_url+''+ arrProduct.innerBag[7].ndpic,
+        titleH:"TYPE-A透气集装袋/吨袋/吨包/吨包袋",
+        titleHp:"TYPE-A透气集装袋/吨袋/吨包/吨包袋 符合国家GB/T10454-2000执行标准 及欧洲ISO21898执行标准",
         titleH2:"TYPE-A拉筋集装袋<em> /防膨胀集装袋/普通集装袋/不具备防静电功能</em>",
         aqTxt:"<p>规格：95X95X100cm（尺寸可定制）</p>"+
                 "<p>进料口可定制，出料口可定制。</p>"+
@@ -787,7 +787,7 @@ titleEn: "Reinforcement inner bag container bag",
         protxt2:"这款产品设计主要考虑透气性能，主要用途是装载及运输蔬菜圆葱、土豆（马铃薯）、红薯、大蒜等农作物，齐特点不会对以上蔬菜造成污染及损害，增加了透气条，能够使蔬菜自由的呼吸，不会把蔬菜捂坏，减少人工搬运造成的人工浪费及蔬菜损坏。降低了灌装的劳动强度。",
 titleEn: "Vegetable Breathable Bag",
         banner_txtEn: "Vegetable breathable bags / anti-expansion container bags / common container bags / without anti-static function conforms to the national GB / T10454-2000 executive standard and the European ISO21898 executive standard",
-        pro_imgEn: "../images/48.png",
+        pro_imgEn: api_url+''+ arrProduct.innerBag[7].ndpic,
         titleHEn: "Vegetable Breathable Bag",
         titleHpEn: "Vegetable breathable bags / anti-expansion container bags / common container bags / without anti-static function conforms to the national GB / T10454-2000 executive standard and the European ISO21898 executive standard",
         titleH2En: "Vegetable Breathable Bag <em> / Anti-expansion Container Bag / General Container Bag / No Anti-static Function </ em>",
@@ -805,4 +805,4 @@ $(document).ready(function() {
     return false;
     });
 });
-document.writeln('<script type="text/javascript" src="https://shak60.kuaishang.cn/bs/ks.j?cI=615791&fI=126728" charset="utf-8"></script>')
+// document.writeln('<script type="text/javascript" src="https://shak60.kuaishang.cn/bs/ks.j?cI=615791&fI=126728" charset="utf-8"></script>')
