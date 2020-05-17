@@ -282,6 +282,8 @@ public class ResourceServiceImpl implements ResourceService {
     public Map<String, Object> productCenterDataQuery() {
         Map<String, Object> m = new HashMap<>(16);
         List outerBagList = new ArrayList();
+        List outerBagTitleList = new ArrayList();
+        List innerBagTitleList = new ArrayList();
         List innerBagList = new ArrayList();
         List flexibleFreightBagsList = new ArrayList();
         List schemeList = new ArrayList();
@@ -303,6 +305,13 @@ public class ResourceServiceImpl implements ResourceService {
                     m2.put("wdpic", r.getUrl());
                     outerBagList.add(m2);
                     break;
+                // 外袋系列标题
+                case "outerBagTitle":
+                    Map<String, Object> m10 = new HashMap<>(3);
+                    m10.put("outerBagTitle", r.getTitle());
+                    m10.put("outerBagDescription", r.getDescription());
+                    outerBagTitleList.add(m10);
+                    break;
                 // 内袋系列
                 case "innerBag":
                     Map<String, Object> m3 = new HashMap<>(5);
@@ -310,6 +319,13 @@ public class ResourceServiceImpl implements ResourceService {
                     m3.put("nddescription", r.getDescription());
                     m3.put("ndpic", r.getUrl());
                     innerBagList.add(m3);
+                    break;
+                // 内袋系列
+                case "innerBagTitle":
+                    Map<String, Object> m11 = new HashMap<>(5);
+                    m11.put("innerBagTitle", r.getTitle());
+                    m11.put("innerBagDescription", r.getDescription());
+                    innerBagTitleList.add(m11);
                     break;
                 // 集装袋生产流程
                 case "flexibleFreightBags":
@@ -350,20 +366,15 @@ public class ResourceServiceImpl implements ResourceService {
                     m6.put("titlepic", r.getUrl());
                     flowList.add(m6);
                     break;
-                // 外袋系列
-                case "outerBagTitle":
-                    Map<String, Object> m10 = new HashMap<>();
-                    m10.put("outerBagTitle", r.getTitle());
-                    m10.put("outerBagDescription", r.getDescription());
-                    outerBagList.add(m10);
-                    break;
                 default:
                     log.info("产品中心数据查询>>>没有匹配的数据<<<");
             }
 
         }
         m.put("outerBag", outerBagList);
+        m.put("outerBagTitle", outerBagTitleList);
         m.put("innerBag", innerBagList);
+        m.put("innerBagTitle", innerBagTitleList);
         m.put("process", flexibleFreightBagsList);
         m.put("program", schemeList);
         m.put("control", flowList);
