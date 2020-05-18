@@ -236,10 +236,14 @@ public class ResourceServiceImpl implements ResourceService {
         List<Resource> resources = resourceRepository.queryByModuleAndAndPosition("embellishOfInformation", "banner");
         // 查询公司信息
         List<Resource> resources2 = resourceRepository.queryByModuleAndAndPosition("embellishOfInformation", "companyIntroduction");
-
-        m.put("title", resources.get(0).getTitle());
-        m.put("description", resources.get(0).getDescription());
-        m.put("titlepic", resources.get(0).getUrl());
+        List<Map<String, Object>> bannerList = new ArrayList<>();
+        for(Resource r : resources){
+            Map<String, Object> m1 = new HashMap<>();
+            m1.put("title", r.getTitle());
+            m1.put("description", r.getDescription());
+            m1.put("titlepic", r.getUrl());
+            bannerList.add(m1);
+        }
 
         for (int i = 1; i <= resources2.size(); i++) {
             Map<String, Object> map1 = new HashMap<>(2);
@@ -249,6 +253,7 @@ public class ResourceServiceImpl implements ResourceService {
             map1.put("introduce" + i, r.getUrl());
             map.put("info" + i, map1);
         }
+        m.put("banner",bannerList);
         m.put("info", map);
         return m;
     }
@@ -288,14 +293,17 @@ public class ResourceServiceImpl implements ResourceService {
         List flexibleFreightBagsList = new ArrayList();
         List schemeList = new ArrayList();
         List flowList = new ArrayList();
+        List bannerList =  new ArrayList();
         List<Resource> resourceList = resourceRepository.queryByModule("productCenter");
         for (Resource r : resourceList) {
             switch (r.getPosition()) {
                 // 产品banner
                 case "banner":
-                    m.put("title", r.getTitle());
-                    m.put("description", r.getDescription());
-                    m.put("titlepic", r.getUrl());
+                    Map m1 = new HashMap();
+                    m1.put("title", r.getTitle());
+                    m1.put("description", r.getDescription());
+                    m1.put("titlepic", r.getUrl());
+                    bannerList.add(m1);
                     break;
                 // 外袋系列
                 case "outerBag":
@@ -378,6 +386,7 @@ public class ResourceServiceImpl implements ResourceService {
         m.put("process", flexibleFreightBagsList);
         m.put("program", schemeList);
         m.put("control", flowList);
+        m.put("banner", bannerList);
         return m;
     }
 
@@ -396,6 +405,7 @@ public class ResourceServiceImpl implements ResourceService {
         Map<String, Object> deviceMap = new HashMap<>(7);
         // 获取技术支持所有集
         List<Resource> resourceList = resourceRepository.queryByModule("technicalSupport");
+        List bannerList = new ArrayList();
         // 区分key用
         int i = 1;
         int j = 1;
@@ -403,9 +413,11 @@ public class ResourceServiceImpl implements ResourceService {
             switch (r.getPosition()) {
                 // 技术支持banner
                 case "banner":
-                    m.put("title", r.getTitle());
-                    m.put("description", r.getDescription());
-                    m.put("titlepic", r.getUrl());
+                    Map m1 = new HashMap();
+                    m1.put("title", r.getTitle());
+                    m1.put("description", r.getDescription());
+                    m1.put("titlepic", r.getUrl());
+                    bannerList.add(m1);
                     break;
                 // 技术
                 case "technique":
@@ -432,6 +444,7 @@ public class ResourceServiceImpl implements ResourceService {
         }
         m.put("jishu", techniqueMap);
         m.put("device", deviceMap);
+        m.put("banner",bannerList);
         return m;
     }
 
@@ -446,10 +459,14 @@ public class ResourceServiceImpl implements ResourceService {
         Map<String, Object> m = new HashMap<>(16);
         // 获取新闻中心所有数据
         List<Resource> resources = resourceRepository.queryByModuleAndAndPosition("pressCenter", "banner");
-        m.put("title", resources.get(0).getTitle());
-        m.put("description", resources.get(0).getDescription());
-        m.put("titlepic", resources.get(0).getUrl());
-
+        List<Map<String, Object>> bannerList = new ArrayList<>();
+        for(Resource r : resources){
+            Map<String, Object> m1 = new HashMap<>(16);
+            m1.put("title",r.getTitle());
+            m1.put("description", r.getDescription());
+            m1.put("titlepic", r.getUrl());
+            bannerList.add(m1);
+        }
         // news 新闻
         List<Map<String, Object>> resourceList = new ArrayList<>();
         Pageable pageable = PageRequest.of(page - 1, size);
@@ -469,6 +486,8 @@ public class ResourceServiceImpl implements ResourceService {
         m.put("pagenum", resourcePage.getTotalElements());
         // 新闻
         m.put("news", resourceList);
+        //banner
+        m.put("banner",bannerList);
         return m;
     }
 
@@ -484,12 +503,15 @@ public class ResourceServiceImpl implements ResourceService {
         Map<String, Object> contancUsMap = new HashMap<>(4);
         List<Resource> resourceList = resourceRepository.queryByModule("contactUs");
         List<ContactUs> contactUsList = contactUsRepository.findAll();
+        List bannerList = new ArrayList<>();
         for (Resource r : resourceList) {
             switch (r.getPosition()) {
                 case "banner":
-                    m.put("title", r.getTitle());
-                    m.put("description", r.getDescription());
-                    m.put("titlepic", r.getUrl());
+                    Map m1 = new HashMap();
+                    m1.put("title", r.getTitle());
+                    m1.put("description", r.getDescription());
+                    m1.put("titlepic", r.getUrl());
+                    bannerList.add(m1);
                     break;
                 //底下位置
                 case "bottom":
@@ -513,6 +535,7 @@ public class ResourceServiceImpl implements ResourceService {
             contancUsMap.put("mailbox", contactUsList.get(0).getMailbox());
         }
         m.put("contact", contancUsMap);
+        m.put("banner", bannerList);
         return m;
     }
 
