@@ -101,7 +101,7 @@ h2.f-tuozhan-title{padding: 3rem 2rem 1rem 2rem;}
 .g-fangan li a strong em:after{display: block;position: absolute;content: "";width:2rem;height: .1rem;background: #fff;left:50%;margin: 1rem 0 -1rem -1rem;}
 .g-fangan-h{background: #fff;}
 
-.g-hezuo-box .f-hezuo{text-align: center;padding-top: 0;display: block;line-height: 6rem;margin-bottom: 1rem;}
+.g-hezuo-box .f-hezuo{text-align: center;padding-top: 0;display: block;line-height: 2rem;margin-bottom: 1rem;}
 .g-hezuo-box{background:url(/images/icon_bg.png) center no-repeat;background-size:100% 100%;}
 .g-hezuo-list li{float: left;width: 20%;padding-bottom: 1rem;}
 .g-hezuo-list li a{width: 100%;}
@@ -151,7 +151,7 @@ h2.f-tuozhan-title{padding: 3rem 2rem 1rem 2rem;}
 
 
 /* 关于我们 */
-.g-banner-about {position: relative;padding-bottom: 2rem;padding-top: 1rem;background: #fff;height: 25rem;overflow: hidden;margin-bottom: 1rem;}
+.g-banner-about {position: relative;padding-bottom: 2rem;padding-top: 1rem;background: #fff;height:36rem;overflow: hidden;margin-bottom: 1rem;}
 .g-banner-about p{position: absolute;top:30%;left:20%;width: 40%;font-size: 2rem;color: #fff;line-height:2.4rem;border-bottom: .05rem solid #3a0f78;padding-bottom: .5rem;opacity: 0;transition: left .5s,opacity .5s;}
 .g-banner-about p.cur{opacity: 1;left:10%;}
 .g-gongsi-about{background: #fff;}
@@ -300,6 +300,8 @@ h2.f-tuozhan-title{padding: 3rem 2rem 1rem 2rem;}
 .g-chanpin-img img{width: 50%;float: left;}
 
 /* 联系我们 */
+.swiper-container-about .g-index-banner-txt strong{text-shadow: 2px 2px 0px #000;}
+
 .g-lianxi-box {padding: 4rem;}
 .g-lianxi-box h2{font-size: 1.5rem;line-height: 1.5rem;}
 
@@ -497,4 +499,6 @@ h2.f-tuozhan-title{padding: 3rem 2rem 1rem 2rem;}
     .g-fixed-video .f-fixed-video .close_btn{    top: -2rem; right: 0;background: #fff;border-radius: 50%;}
     .g-fixed-video .f-fixed-video .close_btn img{ width: 60%; padding: 20%;}
     .g-footer{padding:.5rem;}
+
+    .g-hezuo-box .f-hezuo{line-height: 1.2rem;font-size: 0.9rem;}
 }

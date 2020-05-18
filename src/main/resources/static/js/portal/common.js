@@ -1,4 +1,4 @@
-var api_url = 'http://39.99.197.225:9000'
+var api_url = ''
 var jiekou = {
     "index_api":api_url+"/api/resource/queryIndexResources",//首页接口
     "industry_api":api_url+'/api/resource/checkIndustryApprovedPictures',//查询行业认可图片
@@ -47,7 +47,7 @@ function head(){
     var header = '<div class="g-top-nav clearfix">'+
                     '<a href="" class="g-logo-box f-fl"><img src="/images/logo.png" alt="" class="pc-logo"></a>'+
                     '<div class="g-nav_btn f-fr"></div>'+
-                    '<div class="f-lang f-fr"><a href="/index.html" class="f-lang-e cur">中</a><a href="en/index.html" class="f-lang-c">EN</a></div>'+
+                    '<div class="f-lang f-fr"><a href="/index.html" class="f-lang-e cur">中</a><a href="/en/index.html" class="f-lang-c">EN</a></div>'+
                     '<ul class="g-nav-list f-fr" id="head">'+
                         '<li><a href="index.html" class="cur"></a><a href="about.html" rel="about.html"></a><a href="pro-shili.html" rel="pro"></a><a href="jishu.html" rel="jishu.html"></a><a href="news.html" rel="news.html"></a><a href="contact.html" rel="contact.html"></a></li>'+
                     '</ul>'+
@@ -312,12 +312,26 @@ $(function () {
                         var _pro_title = $("#f-pro-title")
                         //首页banner
                         var _banner = $("#g_banner")
-                        for( var i=0;i<_banner.find("div").length; i++){
-                            _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+''+res.banner[i].titleurl)
-                            _banner.find(".swiper-slide").eq(i).find("strong").html(res.banner[i].title)
-                            _banner.find(".swiper-slide").eq(i).find("p").html(res.banner[i].description)
-                        }
+                        // for( var i=0;i<_banner.find("div").length; i++){
+                        //     _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+''+res.banner[i].titleurl)
+                        //     _banner.find(".swiper-slide").eq(i).find("strong").html(res.banner[i].title)
+                        //     _banner.find(".swiper-slide").eq(i).find("p").html(res.banner[i].description)
+                        // }
                         // banner
+                        var banner_len = res.banner.length
+                        console.log(res.banner)
+                        for(var i=0;i<banner_len;i++){
+                            var banner_html = '<div class="swiper-slide">'+
+                                                    '<a>'+
+                                                        '<img title="" alt="" src="'+ api_url+res.banner[i].titleurl +'">'+
+                                                        '<span class="g-index-banner-txt">'+
+                                                            '<strong>'+res.banner[i].title+'</strong>'+
+                                                            '<p>'+res.banner[i].description+'</p>'+
+                                                        '</span>'+
+                                                    '</a>'+
+                                                '</div>'
+                                _banner.append(banner_html)
+                            }
                             var mySwiper = new Swiper('.swiper-container0', {
                                 autoplay: true,//可选选项，自动滑动
                                 loop : true,
@@ -463,6 +477,31 @@ $(function () {
                 type: "POST",
                 url: jiekou.about_api,
                 success: function(data) {
+                    var _about_title_to =  $("#about_box")
+                    var about_len = data.banner.length
+                    for(var i=0;i<about_len;i++){
+                        var about_html = '<div class="swiper-slide">'+
+                                    '<a>'+
+                                        '<img title="" alt="" src="'+ api_url+data.banner[i].titlepic +'">'+
+                                        '<span class="g-index-banner-txt">'+
+                                            '<strong>'+data.banner[i].title+'</strong>'+
+                                            '<p>'+data.banner[i].description+'</p>'+
+                                        '</span>'+
+                                    '</a>'+
+                                '</div>'
+                     _about_title_to.find(".swiper-wrapper").append(about_html)
+                }
+                    var mySwiper = new Swiper('.swiper-container-about', {
+                        autoplay: true,//可选选项，自动滑动
+                        loop : true,
+                        pagination: {
+                            el: '.swiper-pagination',
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                    })
                     $.cookie('aboutCookice', null);
                     arrAbout=$.cookie('aboutCookice')
                     localStorage.setItem('aboutCookice',JSON.stringify(data));
@@ -518,11 +557,11 @@ $(function () {
                             var html = '<li>'+
                                             '<a href="pro-con.html?id='+ h +'">'+
                                                 '<em class="u-img">'+
-                                                    '<img src='+ api_url+''+product.innerBag[_num].ndpic +' alt="'+product.innerBag[_num].ndtitle+'">'+
+                                                    '<img src='+ api_url+''+product.outerBag[_num].wdpic +' alt="'+product.outerBag[_num].wdtitle+'">'+
                                                 '</em>'+
-                                                '<strong>'+product.innerBag[_num].ndtitle+'</strong>'+
-                                                '<p>'+product.innerBag[_num].nddescription+'</p>'+
-                                                '<span class="u-img-zhao">'+product.innerBag[_num].nddescription+
+                                                '<strong>'+product.outerBag[_num].wdtitle+'</strong>'+
+                                                '<p>'+product.outerBag[_num].wddescription+'</p>'+
+                                                '<span class="u-img-zhao">'+product.outerBag[_num].wddescription+
                                                 '</span>'+
                                             '</a>'+
                                         '</li>'
@@ -537,11 +576,11 @@ $(function () {
                             var html = '<li>'+
                                             '<a href="pro-con.html?id='+ h +'">'+
                                                 '<em class="u-img">'+
-                                                    '<img src='+ api_url+''+ product.innerBag[_num].ndpic +' alt="'+product.innerBag[_num].ndtitle+'">'+
+                                                    '<img src='+ api_url+''+ product.outerBag[_num].wdpic +' alt="'+product.outerBag[_num].wdtitle+'">'+
                                                 '</em>'+
-                                                '<strong>'+product.innerBag[_num].ndtitle+'</strong>'+
-                                                '<p>'+product.innerBag[_num].nddescription+'</p>'+
-                                                '<span class="u-img-zhao">'+product.innerBag[_num].nddescription+
+                                                '<strong>'+product.outerBag[_num].wdtitle+'</strong>'+
+                                                '<p>'+product.outerBag[_num].wddescription+'</p>'+
+                                                '<span class="u-img-zhao">'+product.outerBag[_num].wddescription+
                                                 '</span>'+
                                             '</a>'+
                                         '</li>'
@@ -669,7 +708,7 @@ titleEn: "TYPE-A Lace FIBC",
                 protxt2En: "This product is designed to take into account that the ultra-fine powder will be sprayed out of the pinhole when it is loaded, so a leak-proof sliver and a non-woven fabric are added to prevent leakage, and considering the size of the length and width can not be two side by side It is transported on the truck, and the reinforcement bar is added to solve the expansion problem. Considering that the customer's loading material has poor fluidity, we recommend using mesh-shaped reinforcement bar as the corner bar to avoid the difficulty of materials entering the corner bar. All of the above problems. Let customers install it freely and use it without worry. "
     },
     "pro_4":{
-        title:"TYPE-D导电集装袋/防静电集装袋/无需接地即可安全使用",
+        title:"TYPE-D导电集装袋",
         banner_txt:"TYPE-D导电集装袋符合国际电工委员会IEC 61340-4-4标准",
         pro_img:'/images/41.png',
         titleH:"TYPE-D导电集装袋",
@@ -695,7 +734,7 @@ titleEn: "TYPE-C conductive container bag",
                 protxt2En: "This product is designed to take into account that the ultra-fine powder will be sprayed out of the pinhole when it is loaded, so a leak-proof sliver and a non-woven fabric are added to prevent leakage, and considering the size of the length and width can not be two side by side It is transported on the truck, and the reinforcement bar is added to solve the expansion problem. Considering that the customer's loading material has poor fluidity, we recommend using mesh-shaped reinforcement bar as the corner bar to avoid the difficulty of materials entering the corner bar. All of the above problems. Let customers install it freely and use it without worry. "
     },
     "pro_5":{
-        title:"TYPE-A重型集装袋/普通集装袋/不具备防静电功能",
+        title:"TYPE-A重型集装袋",
         banner_txt:"TYPE-A重型集装袋符合国家GB/T10454-2000执行标准 及欧洲ISO21898执行标准",
         pro_img:'/images/41.png',
         titleH:"TYPE-A重型集装袋/普通集装袋/不具备防静电功能",
