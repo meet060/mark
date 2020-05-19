@@ -457,10 +457,11 @@ function pro_list(){
 
 }
 // 产品内容页面
-function pro_con(){
-    var index_url=window.location.search
-    var id = "pro_"+index_url.substring(1).split("=")[1]
-    var _title = $("#title"),
+function pro_con(){
+    var index_url=window.location.search
+    var id = "pro_"+index_url.substring(1).split("=")[1]
+    var _id = index_url.substring(1).split("=")[1] -1
+    var _title = $("#title"),
         _banner_txt=$("#banner_txt"),
         _pro_img=$("#pro_img"),
         _titleH=$("#titleH"),
@@ -470,14 +471,14 @@ function pro_con(){
         _jzTxt=$("#jzTxt"),
         _protxt1=$("#protxt1"),
         _protxt2=$("#protxt2")
-        _title.html(pro_box[id].title)
-        _banner_txt.html(pro_box[id].banner_txt)
-        _pro_img.attr("src",pro_box[id].pro_img)
-        _titleH.html(pro_box[id].titleH)
-        _titleHp.html(pro_box[id].titleHp)
-        _titleH2.html(pro_box[id].titleH2)
-        _aqTxt.append(pro_box[id].aqTxt)
-        _jzTxt.html(pro_box[id].jzTxt)
-        _protxt1.html(pro_box[id].protxt1)
-        _protxt2.html(pro_box[id].protxt2)
-    }
+    _title.html(pro_box[id].title)
+    _banner_txt.html(pro_box[id].banner_txt)
+    _pro_img.attr("src",api_url+arrProduct.outerBag[_id].wdpic)
+    _titleH.html(pro_box[id].titleH)
+    _titleHp.html(pro_box[id].titleHp)
+    _titleH2.html(pro_box[id].titleH2)
+    _aqTxt.append(pro_box[id].aqTxt)
+    _jzTxt.html(pro_box[id].jzTxt)
+    _protxt1.html(pro_box[id].protxt1)
+    _protxt2.html(pro_box[id].protxt2)
+}
