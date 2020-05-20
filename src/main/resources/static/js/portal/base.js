@@ -148,10 +148,23 @@ $(function(){
         _lianxi_txt.find("img").attr("src",api_url+arrContact2.banner[0].titlepic)
         _lianxi_box.find("h3").html(arrContact2.contact.company)
         _lianxi_box.find("p").eq(0).html(arrContact2.contact.address)
-        _lianxi_box.find("p").eq(1).html('电话：'+arrContact2.contact.phone)
-        _lianxi_box.find("p").eq(2).html('手机：'+arrContact2.contact.cellPhone)
-        _lianxi_box.find("p").eq(3).html('传真：'+arrContact2.contact.fax)
-        _lianxi_box.find("p").eq(4).html('邮箱：'+arrContact2.contact.mailbox)
+        // console.log(index_url.length)
+        $.each(index_url,function(i,val){
+            if(_index_url.indexOf(val) > -1){
+                 _lianxi_box.find("p").eq(1).html('联系人：'+index_lxr[i])
+                 $("#lianxi_kufe").find("img").attr("src","/images/chat_1"+i+".png")
+                 $("#bottom_chat").find("img").attr("src","/images/chat_1"+i+".png")
+                 if( _common.lug !== "en" ){
+                    $(".g-foot-c p").eq(1).html('联系人：'+index_lxr[i])
+                 }else{
+                    $(".g-foot-c p").eq(1).html('联系人：'+index_lxr[i])
+                 }
+               }
+        })
+        _lianxi_box.find("p").eq(2).html('电话：'+arrContact2.contact.phone)
+        _lianxi_box.find("p").eq(3).html('手机：'+arrContact2.contact.cellPhone)
+        _lianxi_box.find("p").eq(4).html('传真：'+arrContact2.contact.fax)
+        _lianxi_box.find("p").eq(5).html('邮箱：'+arrContact2.contact.mailbox)
         _lianxi_jr.find("h2").html(arrContact2.bottom.title)
         _lianxi_jr.find("p").html(arrContact2.bottom.description)
     }
@@ -457,11 +470,11 @@ function pro_list(){
 
 }
 // 产品内容页面
-function pro_con(){
-    var index_url=window.location.search
-    var id = "pro_"+index_url.substring(1).split("=")[1]
-    var _id = index_url.substring(1).split("=")[1] -1
-    var _title = $("#title"),
+function pro_con(){
+    var index_url=window.location.search
+    var id = "pro_"+index_url.substring(1).split("=")[1]
+    var _id = index_url.substring(1).split("=")[1] -1
+    var _title = $("#title"),
         _banner_txt=$("#banner_txt"),
         _pro_img=$("#pro_img"),
         _titleH=$("#titleH"),
@@ -471,14 +484,14 @@ function pro_con(){
         _jzTxt=$("#jzTxt"),
         _protxt1=$("#protxt1"),
         _protxt2=$("#protxt2")
-    _title.html(pro_box[id].title)
-    _banner_txt.html(pro_box[id].banner_txt)
-    _pro_img.attr("src",api_url+arrProduct.outerBag[_id].wdpic)
-    _titleH.html(pro_box[id].titleH)
-    _titleHp.html(pro_box[id].titleHp)
-    _titleH2.html(pro_box[id].titleH2)
-    _aqTxt.append(pro_box[id].aqTxt)
-    _jzTxt.html(pro_box[id].jzTxt)
-    _protxt1.html(pro_box[id].protxt1)
-    _protxt2.html(pro_box[id].protxt2)
-}
+        _title.html(pro_box[id].title)
+        _banner_txt.html(pro_box[id].banner_txt)
+        _pro_img.attr("src",api_url+arrProduct.outerBag[_id].wdpic)
+        _titleH.html(arrProduct.outerBag[_id].wdtitle)
+        _titleHp.html(pro_box[id].titleHp)
+        _titleH2.html(arrProduct.outerBag[_id].wdtitle)
+        _aqTxt.append(pro_box[id].aqTxt)
+        _jzTxt.html(pro_box[id].jzTxt)
+        _protxt1.html(pro_box[id].protxt1)
+        _protxt2.html(pro_box[id].protxt2)
+    }

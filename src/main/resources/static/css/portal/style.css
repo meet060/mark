@@ -339,8 +339,8 @@ h2.f-tuozhan-title{padding: 3rem 2rem 1rem 2rem;}
 
     .g-banner{height: auto;}
     .g-banner-index{height: 15rem;}
-    .g-index-banner-txt strong{font-size: .8rem;line-height: 1rem;}
-    .g-index-banner-txt p{padding: .5rem 0;line-height: .8rem;}
+    .g-index-banner-txt strong{font-size: .7rem;line-height: 1rem;}
+    .g-index-banner-txt p{padding: .5rem 0;line-height: .8rem;font-size: .6rem;}
     .g-common {padding: 1rem .5rem 0 .5rem;margin: .5rem;border-radius: .4rem;box-shadow: 0 0 .25rem rgba(0,0,0,.2);}
     .g-common h2{font-size: 1.2rem;text-align: center;position: relative;margin-bottom: .5rem;}
     .g-common h2:after{display: block;content:"";width: 2rem;height: .2rem;border-radius: .2rem;background: #3a0f78;position: absolute;bottom: 0;left:
@@ -408,7 +408,7 @@ h2.f-tuozhan-title{padding: 3rem 2rem 1rem 2rem;}
     .g-liuyan-box{width: 80%;margin-left: -40%;}
  
     /* 关于我们 */
-    .g-banner-about{padding-bottom: 0;}
+    .g-banner-about{padding-bottom: 0;padding-top: 0;}
     .g-banner-about p{font-size: .9rem;line-height: 1.2rem;width: 80%;}
     .g-gongsi-about{padding-top: .5rem;}
     .g-gongsi-about div{width: 100%;}
@@ -469,7 +469,7 @@ h2.f-tuozhan-title{padding: 3rem 2rem 1rem 2rem;}
 
     .g-chanpin-nav{padding:.5rem;}
     .g-chanpin-nav span{text-align: center;max-width:100%;}
-    .g-chanpin-nav em,.g-chanpin-nav a{font-size: .8rem;display: inline-block;margin:.5rem .5rem .5rem 0;}
+    .g-chanpin-nav em,.g-chanpin-nav a{font-size: .8rem;display: inline-block;margin:.5rem .5rem 0 0;}
     .g-chanpin-content{padding: .5rem;margin:.5rem;box-shadow: 0 0 .5rem rgba(0,0,0,.2);}
     .g-chanpin-content .g-chanpin-conl, .g-chanpin-content .g-chanpin-conr{padding: 0;width: 100%;}
 
@@ -505,4 +505,6 @@ h2.f-tuozhan-title{padding: 3rem 2rem 1rem 2rem;}
     .swiper-button-prev,.swiper-button-next{display: none;}
     .swiper-slide img{height: auto;}
     .g-banner-index{height: auto;margin:.5rem;border-radius: .5rem;overflow: hidden;}
+
+    .g-chanpin-conl h1{font-size: 1rem;line-height: 1.2rem;}
 }

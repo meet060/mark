@@ -10,6 +10,10 @@ var jiekou = {
     "xiangqing_api":api_url+'/api/resource/news/',//新闻详情
     "liuyan_api":api_url+'/api/afterSale/addAfterSale'//留言POST
 }
+var index_url = ["hdzrsl.com","hdzrsl.cn","hbzrbz.com","hbzrbz.cn"]
+var index_lxr = ['韩亚洲15028453452','张燕  18830093666','秦向前  13931059103','李全星 15231029903']
+var _index_url = window.location.href
+
 //首页联系我们
 var dongya = {
         "jiaru":"中润，助你成就每一程",
@@ -32,7 +36,7 @@ var head_foot={
         "jishu_txt":["技术支持","设备实力"],
         "news_txt":["新闻活动","最新动态"],
         "lianxi_txt":["联系我们","联系地址","加入中润"],
-        "chat_txt":["电话","传真","邮箱","微信扫一扫","微信扫一扫"],
+        "chat_txt":["电话","传真","邮箱","微信公众号","微信客服"],
         "index_txtEn": "Homepage",
          "about_txtEn": ["About Zhongrun", "Zhongrun Packaging", "Industry Recognition", "Global Customers"],
          "pro_txtEn": ["Product Strength", "Product Center", "Public Welfare Process", "Application Field", "Quality Control"],
@@ -55,19 +59,19 @@ function head(){
     var footer = '<div class="g-link-box">'+
                         '<p id="footTxt"></p>'+
                         '</div>'+
-                        '<div class="g-liuyan-box">'+
-                        '<h2 id="liuyanTieleTxt"></h2>'+
-                        '<ul class="f-liuyan-box" id="liuyan_txt">'+
-                            '<li><input type="text" placeholder="" id="nameTxt"></li>'+
-                            '<li><input type="text" placeholder="" id="phoneTxt"></li>'+
-                            '<li><input type="text" placeholder="" id="meailTxt"></li>'+
-                            '<li><input type="text" placeholder="" id="addressTxt"></li>'+
-                            '<li><textarea placeholder="" id="liuyanTxt"></textarea></li>'+
-                            '<li><input type="submit" id="sumbtn"></li>'+
-                        '</ul>  '+
-                        '<em><img src="/images/icon_3.png" alt=""></em>  '+
-                        '</div>'+
-                        '<div class="g-liuyan"></div>'+
+                        // '<div class="g-liuyan-box">'+
+                        // '<h2 id="liuyanTieleTxt"></h2>'+
+                        //     '<ul class="f-liuyan-box" id="liuyan_txt">'+
+                        //         '<li><input type="text" placeholder="" id="nameTxt"></li>'+
+                        //         '<li><input type="text" placeholder="" id="phoneTxt"></li>'+
+                        //         '<li><input type="text" placeholder="" id="meailTxt"></li>'+
+                        //         '<li><input type="text" placeholder="" id="addressTxt"></li>'+
+                        //         '<li><textarea placeholder="" id="liuyanTxt"></textarea></li>'+
+                        //         '<li><input type="submit" id="sumbtn"></li>'+
+                        //     '</ul>  '+
+                        // '<em><img src="/images/icon_3.png" alt=""></em>  '+
+                        // '</div>'+
+                        // '<div class="g-liuyan"></div>'+
                         '<div class="g-gotop"></div>'+
                         '<div class="g-foot-box clearfix">'+
                     '<div class="g-foot-l" id="foot_txt">'+
@@ -103,11 +107,11 @@ function head(){
                     '</div>'+
                     '<div class="g-foot-r">'+
                         '<div class="g-foot-chat f-fl">'+
-                            '<img src="/images/chat.png" alt="">  '+
+                            '<img src="/images/chat_2.png" alt="">  '+
                             '<em id="chat_txt"></em> '+
                         '</div>'+
-                        '<div class="g-foot-chat f-fl">'+
-                            '<img src="/images/chat.png" alt="">  '+
+                        '<div class="g-foot-chat f-fl" id="bottom_chat">'+
+                            '<img src="/images/chat_1.png" alt="">  '+
                             '<em id="chat_txt2"></em> '+
                         '</div>'+
                      '</div>'+
@@ -138,6 +142,7 @@ function head_foot_txt(e){
     var _foot_ = head_foot.foot
     if( e == "cn"){
         var foot_cen = '<div class="g-foot-c">'+
+                                    '<p></p>'+
                                     '<p></p>'+
                                     '<p></p>'+
                                     '<p></p>'+
@@ -228,54 +233,54 @@ function head_foot_txt(e){
         })
         $("#footTxt").html(_head_.FootTxtEn)
     }
-   function ts_box(ts_txt){
-        var tishi_html = '<div class="g-tishi">'+ ts_txt.txt +'<div>'
-        $("body").append(tishi_html)
-        setTimeout(function(){
-            $(".g-tishi").remove()
-        },1500)
-    }
-        $("#sumbtn").click(function(){
-        var regphone = /0?(13|14|15|17|18|19)[0-9]{9}/
-        var regmailbox = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
-        var _data_smt = {
-            "address": $("#addressTxt").val(),
-            "content": $("#liuyanTxt").val(),
-            "mailbox": $("#meailTxt").val(),
-            "name": $("#nameTxt").val(),
-            "phone": $("#phoneTxt").val()
-        }
+//    function ts_box(ts_txt){
+//         var tishi_html = '<div class="g-tishi">'+ ts_txt.txt +'<div>'
+//         $("body").append(tishi_html)
+//         setTimeout(function(){
+//             $(".g-tishi").remove()
+//         },1500)
+//     }
+//         $("#sumbtn").click(function(){
+//         var regphone = /0?(13|14|15|17|18|19)[0-9]{9}/
+//         var regmailbox = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
+//         var _data_smt = {
+//             "address": $("#addressTxt").val(),
+//             "content": $("#liuyanTxt").val(),
+//             "mailbox": $("#meailTxt").val(),
+//             "name": $("#nameTxt").val(),
+//             "phone": $("#phoneTxt").val()
+//         }
 
-        if( $("#phoneTxt").val() == "" || !regphone.test($("#phoneTxt").val()) ||  $("#meailTxt").val() == "" || regmailbox.test($("#meailTxt").val()) ){
-            if($("#phoneTxt").val() == "" || !regphone.test($("#phoneTxt").val())){
-                if( _common.lug == "en"){
-                    ts_box({txt:"Please enter the correct phone number"})
-                }else{
-                    ts_box({txt:"请输入正确的手机号码"})
-                }
-            }else if(!regmailbox.test($("#meailTxt").val())){
-                if( _common.lug == "en"){
-                    ts_box({txt:"please enter your vaild email"})
-                }else{
-                    ts_box({txt:"请输入正确的邮箱"})
-                }
-            }
-        }else{
-            $.ajax({
-                type: "POST",
-                data:JSON.stringify(_data_smt),
-                url: jiekou.liuyan_api,
-                headers:{'Content-Type':'application/json;charset=UTF-8'},
-                success: function(jishu) {
-                    console.log("success")
-                    window.location.reload();
-                },
-                error: function (data) {
-                    console.log("error")
-                }
-            });
-        }
-    })  
+//         if( $("#phoneTxt").val() == "" || !regphone.test($("#phoneTxt").val()) ||  $("#meailTxt").val() == "" || regmailbox.test($("#meailTxt").val()) ){
+//             if($("#phoneTxt").val() == "" || !regphone.test($("#phoneTxt").val())){
+//                 if( _common.lug == "en"){
+//                     ts_box({txt:"Please enter the correct phone number"})
+//                 }else{
+//                     ts_box({txt:"请输入正确的手机号码"})
+//                 }
+//             }else if(!regmailbox.test($("#meailTxt").val())){
+//                 if( _common.lug == "en"){
+//                     ts_box({txt:"please enter your vaild email"})
+//                 }else{
+//                     ts_box({txt:"请输入正确的邮箱"})
+//                 }
+//             }
+//         }else{
+//             $.ajax({
+//                 type: "POST",
+//                 data:JSON.stringify(_data_smt),
+//                 url: jiekou.liuyan_api,
+//                 headers:{'Content-Type':'application/json;charset=UTF-8'},
+//                 success: function(jishu) {
+//                     console.log("success")
+//                     window.location.reload();
+//                 },
+//                 error: function (data) {
+//                     console.log("error")
+//                 }
+//             });
+//         }
+//     })  
 }
 
 var arrAbout;  //关于我们
@@ -313,7 +318,7 @@ $(function () {
                         //首页banner
                         var _banner = $("#g_banner")
                         // for( var i=0;i<_banner.find("div").length; i++){
-                        //     _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+''+res.banner[i].titleurl)
+                        //     _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+'/'+res.banner[i].titleurl)
                         //     _banner.find(".swiper-slide").eq(i).find("strong").html(res.banner[i].title)
                         //     _banner.find(".swiper-slide").eq(i).find("p").html(res.banner[i].description)
                         // }
@@ -358,7 +363,7 @@ $(function () {
                             var v_html = '<div class="g-fixed-video">'+
                                             '<div class="f-fixed-video">'+
                                                 '<video controls="controls" autoplay="">'+
-                                                    '<source src="'+api_url+''+res.about.titleurl+'" type="video/mp4">'+
+                                                    '<source src="'+api_url+'/'+res.about.titleurl+'" type="video/mp4">'+
                                                 '</video>'+
                                                 '<em class="close_btn"><img src="/images/icon_3.png"></em>'+
                                             '</div>'+
@@ -376,8 +381,8 @@ $(function () {
                     var _tuozhan = $("#g-tuozhan")
                     for(var i=0;i<_tuozhan.find("li").length;i++){
                         _tuozhan.find("li").eq(i).find("img").attr({
-                            "src":api_url+''+res.innovation.innovation[i].titlepic,
-                            "alt":api_url+''+res.innovation.innovation[i].title,
+                            "src":api_url+'/'+res.innovation.innovation[i].titlepic,
+                            "alt":api_url+'/'+res.innovation.innovation[i].title,
                         })
                     }
                     _tuozhan_txt.find("p").html(res.innovation.description)
@@ -386,7 +391,7 @@ $(function () {
                     var _fangan_txt = $("#fangan-box")
                     _fangan.find("p").html(res.program.description)
                     for(var i=0;i<res.program.program.length;i++){
-                        html = '<li><a><img src="'+ api_url+''+res.program.program[i].titlepic +'" alt="'+ res.program.program[i].title +'"><strong><em>'+ res.program.program[i].title +'</em></strong></a></li>'
+                        html = '<li><a><img src="'+ api_url+'/'+res.program.program[i].titlepic +'" alt="'+ res.program.program[i].title +'"><strong><em>'+ res.program.program[i].title +'</em></strong></a></li>'
                         _fangan_txt.append(html)
                         // console.log(html)
                     }
@@ -519,16 +524,17 @@ $(function () {
                 success: function(contact) {
                     if( _common.lug !== "en" ){
                         $(".g-foot-c p").eq(0).html(contact.contact.company)
-                        $(".g-foot-c p").eq(1).html(contact.contact.address)
-                        $(".g-foot-c p").eq(2).html('电话：'+contact.contact.phone+' '+contact.contact.cellPhone)
-                        $(".g-foot-c p").eq(3).html('传真：'+contact.contact.fax)
-                        $(".g-foot-c p").eq(4).html('邮箱：'+contact.contact.mailbox)
+                        
+                        $(".g-foot-c p").eq(2).html(contact.contact.address)
+                        $(".g-foot-c p").eq(3).html('电话：'+contact.contact.phone)
+                        $(".g-foot-c p").eq(4).html('传真：'+contact.contact.fax)
+                        $(".g-foot-c p").eq(5).html('邮箱：'+contact.contact.mailbox)
                     }else{
                         $(".g-foot-c p").eq(0).html(contact.contact.enCompany)
-                        $(".g-foot-c p").eq(1).html(contact.contact.enAddress)
-                        $(".g-foot-c p").eq(2).html('Phone: '+contact.contact.phone+' '+contact.contact.cellPhone)
-                        $(".g-foot-c p").eq(3).html('Fax: '+contact.contact.fax)
-                        $(".g-foot-c p").eq(4).html('Mailbox: '+contact.contact.mailbox)
+                        $(".g-foot-c p").eq(2).html(contact.contact.enAddress)
+                        $(".g-foot-c p").eq(3).html('Phone: '+contact.contact.phone)
+                        $(".g-foot-c p").eq(4).html('Fax: '+contact.contact.fax)
+                        $(".g-foot-c p").eq(5).html('Mailbox: '+contact.contact.mailbox)
                     }
                     $.cookie('contactCookice', null);
                     arrContact=$.cookie('contactCookice')
@@ -557,7 +563,7 @@ $(function () {
                             var html = '<li>'+
                                             '<a href="pro-con.html?id='+ h +'">'+
                                                 '<em class="u-img">'+
-                                                    '<img src='+ api_url+''+product.outerBag[_num].wdpic +' alt="'+product.outerBag[_num].wdtitle+'">'+
+                                                    '<img src='+ api_url+'/'+product.outerBag[_num].wdpic +' alt="'+product.outerBag[_num].wdtitle+'">'+
                                                 '</em>'+
                                                 '<strong>'+product.outerBag[_num].wdtitle+'</strong>'+
                                                 '<p>'+product.outerBag[_num].wddescription+'</p>'+
@@ -576,7 +582,7 @@ $(function () {
                             var html = '<li>'+
                                             '<a href="pro-con.html?id='+ h +'">'+
                                                 '<em class="u-img">'+
-                                                    '<img src='+ api_url+''+ product.outerBag[_num].wdpic +' alt="'+product.outerBag[_num].wdtitle+'">'+
+                                                    '<img src='+ api_url+'/'+ product.outerBag[_num].wdpic +' alt="'+product.outerBag[_num].wdtitle+'">'+
                                                 '</em>'+
                                                 '<strong>'+product.outerBag[_num].wdtitle+'</strong>'+
                                                 '<p>'+product.outerBag[_num].wddescription+'</p>'+
@@ -844,4 +850,4 @@ $(document).ready(function() {
     return false;
     });
 });
-// document.writeln('<script type="text/javascript" src="https://shak60.kuaishang.cn/bs/ks.j?cI=615791&fI=126728" charset="utf-8"></script>')
+document.writeln('<script type="text/javascript" src="https://shak60.kuaishang.cn/bs/ks.j?cI=615791&fI=126728" charset="utf-8"></script>')
