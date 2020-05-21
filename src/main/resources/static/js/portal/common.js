@@ -11,7 +11,9 @@ var jiekou = {
     "liuyan_api":api_url+'/api/afterSale/addAfterSale'//留言POST
 }
 var index_url = ["hdzrsl.com","hdzrsl.cn","hbzrbz.com","hbzrbz.cn"]
-var index_lxr = ['韩亚洲15028453452','张燕  18830093666','秦向前  13931059103','李全星 15231029903']
+var index_lxr_txt = ['韩亚洲','张燕','秦向前','李全星']
+var index_lxr = ['韩亚洲 15028453452','张燕  18830093666','秦向前  13931059103','李全星 15231029903']
+var index_tel = ['15028453452','18830093666','13931059103','15231029903']
 var _index_url = window.location.href
 
 //首页联系我们
@@ -106,13 +108,13 @@ function head(){
                     ' </div>'+
                     '</div>'+
                     '<div class="g-foot-r">'+
+                        '<div class="g-foot-chat f-fl" id="bottom_chat">'+
+                        '<img src="/images/chat_1.png" alt="">  '+
+                        '<em id="chat_txt2"></em> '+
+                    '</div>'+
                         '<div class="g-foot-chat f-fl">'+
                             '<img src="/images/chat_2.png" alt="">  '+
                             '<em id="chat_txt"></em> '+
-                        '</div>'+
-                        '<div class="g-foot-chat f-fl" id="bottom_chat">'+
-                            '<img src="/images/chat_1.png" alt="">  '+
-                            '<em id="chat_txt2"></em> '+
                         '</div>'+
                      '</div>'+
                      '</div>'
@@ -127,7 +129,7 @@ function head(){
         $(".f-lang a").last().addClass("cur").siblings().removeClass("cur")
         $("body").append('<div class="g-dibu-nav"><a class="g-dianhua" href="/">HOME</a><a class="g-dianhua" href="about.html">ABOUT</a><a class="g-dianhua" href="tel:15369078000">CONTACT</a></div>')
     }else{
-        $("body").append('<div class="g-dibu-nav"><a class="g-dianhua" href="/">首页</a><a class="g-dianhua" href="about.html">关于我们</a><a class="g-dianhua" href="tel:15369078000">联系我们</a></div>')  
+        $("body").append('<div class="g-dibu-nav"><a class="g-dianhua" href="/">首页</a><a class="g-dianhua" href="about.html">关于我们</a><a class="g-dianhua" id="tel_txt" href="tel:15369078000">联系我们</a></div>')  
     }
 }
 
@@ -141,7 +143,8 @@ function head_foot_txt(e){
     var _head_ = head_foot.head
     var _foot_ = head_foot.foot
     if( e == "cn"){
-        var foot_cen = '<div class="g-foot-c">'+
+        var foot_cen = '<div class="g-foot-c" id="lianxi_box_index">'+
+                                    '<p></p>'+
                                     '<p></p>'+
                                     '<p></p>'+
                                     '<p></p>'+
@@ -154,6 +157,17 @@ function head_foot_txt(e){
             '</div>'
         $(".g-foot-r").before(foot_cen)
         $(".g-foot-box").after(foot_bot)
+        $.each(index_url,function(i,val){
+            if(_index_url.indexOf(val) > -1){
+                 $("#lianxi_box").find("p").eq(0).html('联系人：'+index_lxr_txt[i])
+                 $("#lianxi_box").find("p").eq(1).html('手机：'+index_tel[i])
+                 $("#lianxi_kufe").find("img").attr("src","/images/chat_1"+i+".png")
+                 $("#bottom_chat").find("img").attr("src","/images/chat_1"+i+".png")
+                 $("#tel_txt").attr("href",'tel:'+index_tel[i])
+                 $(".g-foot-c p").eq(1).html('联系人：'+index_lxr_txt[i])
+                 $(".g-foot-c p").eq(2).html('手机：'+index_tel[i])
+               }
+        })
         //头部导航
         _head.find("a").eq(0).html(_foot_.index_txt)
         _head.find("a").eq(1).html(_foot_.about_txt[0])
@@ -318,7 +332,7 @@ $(function () {
                         //首页banner
                         var _banner = $("#g_banner")
                         // for( var i=0;i<_banner.find("div").length; i++){
-                        //     _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+'/'+res.banner[i].titleurl)
+                        //     _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+''+res.banner[i].titleurl)
                         //     _banner.find(".swiper-slide").eq(i).find("strong").html(res.banner[i].title)
                         //     _banner.find(".swiper-slide").eq(i).find("p").html(res.banner[i].description)
                         // }
@@ -363,7 +377,7 @@ $(function () {
                             var v_html = '<div class="g-fixed-video">'+
                                             '<div class="f-fixed-video">'+
                                                 '<video controls="controls" autoplay="">'+
-                                                    '<source src="'+api_url+'/'+res.about.titleurl+'" type="video/mp4">'+
+                                                    '<source src="'+api_url+''+res.about.titleurl+'" type="video/mp4">'+
                                                 '</video>'+
                                                 '<em class="close_btn"><img src="/images/icon_3.png"></em>'+
                                             '</div>'+
@@ -381,8 +395,8 @@ $(function () {
                     var _tuozhan = $("#g-tuozhan")
                     for(var i=0;i<_tuozhan.find("li").length;i++){
                         _tuozhan.find("li").eq(i).find("img").attr({
-                            "src":api_url+'/'+res.innovation.innovation[i].titlepic,
-                            "alt":api_url+'/'+res.innovation.innovation[i].title,
+                            "src":api_url+''+res.innovation.innovation[i].titlepic,
+                            "alt":api_url+''+res.innovation.innovation[i].title,
                         })
                     }
                     _tuozhan_txt.find("p").html(res.innovation.description)
@@ -391,7 +405,7 @@ $(function () {
                     var _fangan_txt = $("#fangan-box")
                     _fangan.find("p").html(res.program.description)
                     for(var i=0;i<res.program.program.length;i++){
-                        html = '<li><a><img src="'+ api_url+'/'+res.program.program[i].titlepic +'" alt="'+ res.program.program[i].title +'"><strong><em>'+ res.program.program[i].title +'</em></strong></a></li>'
+                        html = '<li><a><img src="'+ api_url+''+res.program.program[i].titlepic +'" alt="'+ res.program.program[i].title +'"><strong><em>'+ res.program.program[i].title +'</em></strong></a></li>'
                         _fangan_txt.append(html)
                         // console.log(html)
                     }
@@ -524,11 +538,10 @@ $(function () {
                 success: function(contact) {
                     if( _common.lug !== "en" ){
                         $(".g-foot-c p").eq(0).html(contact.contact.company)
-                        
-                        $(".g-foot-c p").eq(2).html(contact.contact.address)
                         $(".g-foot-c p").eq(3).html('电话：'+contact.contact.phone)
                         $(".g-foot-c p").eq(4).html('传真：'+contact.contact.fax)
                         $(".g-foot-c p").eq(5).html('邮箱：'+contact.contact.mailbox)
+                        $(".g-foot-c p").eq(6).html('地址：'+contact.contact.address)
                     }else{
                         $(".g-foot-c p").eq(0).html(contact.contact.enCompany)
                         $(".g-foot-c p").eq(2).html(contact.contact.enAddress)
@@ -563,7 +576,7 @@ $(function () {
                             var html = '<li>'+
                                             '<a href="pro-con.html?id='+ h +'">'+
                                                 '<em class="u-img">'+
-                                                    '<img src='+ api_url+'/'+product.outerBag[_num].wdpic +' alt="'+product.outerBag[_num].wdtitle+'">'+
+                                                    '<img src='+ api_url+''+product.outerBag[_num].wdpic +' alt="'+product.outerBag[_num].wdtitle+'">'+
                                                 '</em>'+
                                                 '<strong>'+product.outerBag[_num].wdtitle+'</strong>'+
                                                 '<p>'+product.outerBag[_num].wddescription+'</p>'+
@@ -582,7 +595,7 @@ $(function () {
                             var html = '<li>'+
                                             '<a href="pro-con.html?id='+ h +'">'+
                                                 '<em class="u-img">'+
-                                                    '<img src='+ api_url+'/'+ product.outerBag[_num].wdpic +' alt="'+product.outerBag[_num].wdtitle+'">'+
+                                                    '<img src='+ api_url+''+ product.outerBag[_num].wdpic +' alt="'+product.outerBag[_num].wdtitle+'">'+
                                                 '</em>'+
                                                 '<strong>'+product.outerBag[_num].wdtitle+'</strong>'+
                                                 '<p>'+product.outerBag[_num].wddescription+'</p>'+
@@ -850,4 +863,5 @@ $(document).ready(function() {
     return false;
     });
 });
+
 document.writeln('<script type="text/javascript" src="https://shak60.kuaishang.cn/bs/ks.j?cI=615791&fI=126728" charset="utf-8"></script>')

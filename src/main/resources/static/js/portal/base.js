@@ -147,24 +147,10 @@ $(function(){
         _lianxi_txt.find("p").html(arrContact2.banner[0].title)
         _lianxi_txt.find("img").attr("src",api_url+arrContact2.banner[0].titlepic)
         _lianxi_box.find("h3").html(arrContact2.contact.company)
-        _lianxi_box.find("p").eq(0).html(arrContact2.contact.address)
-        // console.log(index_url.length)
-        $.each(index_url,function(i,val){
-            if(_index_url.indexOf(val) > -1){
-                 _lianxi_box.find("p").eq(1).html('联系人：'+index_lxr[i])
-                 $("#lianxi_kufe").find("img").attr("src","/images/chat_1"+i+".png")
-                 $("#bottom_chat").find("img").attr("src","/images/chat_1"+i+".png")
-                 if( _common.lug !== "en" ){
-                    $(".g-foot-c p").eq(1).html('联系人：'+index_lxr[i])
-                 }else{
-                    $(".g-foot-c p").eq(1).html('联系人：'+index_lxr[i])
-                 }
-               }
-        })
         _lianxi_box.find("p").eq(2).html('电话：'+arrContact2.contact.phone)
-        _lianxi_box.find("p").eq(3).html('手机：'+arrContact2.contact.cellPhone)
-        _lianxi_box.find("p").eq(4).html('传真：'+arrContact2.contact.fax)
-        _lianxi_box.find("p").eq(5).html('邮箱：'+arrContact2.contact.mailbox)
+        _lianxi_box.find("p").eq(3).html('传真：'+arrContact2.contact.fax)
+        _lianxi_box.find("p").eq(4).html('邮箱：'+arrContact2.contact.mailbox)
+        _lianxi_box.find("p").eq(5).html('地址：'+arrContact2.contact.address)
         _lianxi_jr.find("h2").html(arrContact2.bottom.title)
         _lianxi_jr.find("p").html(arrContact2.bottom.description)
     }
