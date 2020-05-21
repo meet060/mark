@@ -60,12 +60,14 @@ body{background:#f2f2f2;padding-top: 4.5rem;}
 
 
 /* 关于我们 */
+.g-about-wome{background: #fff;}
 .f-title{display: none;font-size: 1.5rem;}
 .f-title2{display: block;}
 .g-about-box{background: #fff;}
-.g-about div{width: 50%;box-sizing: border-box;height: 35.5rem;overflow: hidden;}
-.g-about div.g-about-l video{width: 100%;height: auto;}
-.g-about div.g-about-r{padding:2rem;background: #f2f2f2;height: 35.5rem;box-sizing: border-box;} 
+.g-about-box .g-about{background: #f2f2f2;}
+.g-about div{width: 50%;box-sizing: border-box;overflow: hidden;}
+.g-about div.g-about-l video{width: 100%;height: auto;display: block;}
+.g-about div.g-about-r{padding:2rem;background: #f2f2f2;box-sizing: border-box;} 
 .g-about div.g-about-r h2{font-size: 1.4rem;line-height: 1.6rem;margin: .5rem 0;}
 .g-about div.g-about-r p{font-size: .8rem;line-height: 1.2rem;max-height: 6rem;overflow: hidden;color: #999;text-align: justify;margin: .5rem 0 .75rem 0;}
 .g-about div.g-about-r a{display: inline-block;border:.1rem solid #666;color: #666;padding:.5rem .75rem;font-size: .7rem;margin-top: 1rem;}
@@ -321,6 +323,9 @@ h2.f-tuozhan-title{padding: 3rem 2rem 1rem 2rem;}
 
 /* 首页淡显效果 */
 .g-about-index{position: relative;top:1.5rem;opacity: 0;}
+
+
+
 @media ( max-width: 1180px ){
     body{padding: 3.5rem 0 2rem 0;}
     .g-nav_btn{display: block;}

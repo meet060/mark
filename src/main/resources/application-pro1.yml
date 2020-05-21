@@ -1,0 +1,19 @@
+# mysql 数据连接信息
+Spring:
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/package-prod2?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
+      username: root
+      password: Xy#$%2020
+  jpa:
+    show-sql: true
+---
+server:
+  port: 9001
+# session失效时间，单位秒
+  servlet:
+    session:
+     #配置会话失效时间。30m表示30分钟，如果不写单位则默认单位是秒
+     #（注意：由于Tomcat的中配置会话过期时间是以分钟为单位，如果我们这里设置是秒的话，
+     # 那么会自动转换为一个不超过所配置秒数的最大分钟数。等等配置了119秒，那么实际会话过期时间是1分钟）
+      timeout: 30m

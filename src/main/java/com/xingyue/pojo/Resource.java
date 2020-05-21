@@ -75,7 +75,7 @@ public class Resource {
 	}
 
 	public String getUrl() {
-		return CustomizedPropertyConfigurer.getContextProperty("package.storage") + url;
+		return CustomizedPropertyConfigurer.getContextProperty("package.storageUrl") + url;
 	}
 
 	public void setUrl(String url) {
