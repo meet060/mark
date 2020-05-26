@@ -46,16 +46,28 @@ public class Resource {
 	private Date creatTime;
 
 	/**
-	 * title
+	 * 中文标题
 	 */
 	@Column
-	private String title;
+	private String titleCn;
 
 	/**
-	 * 描述
+	 * 英文标题
 	 */
 	@Column
-	private String description;
+	private String titleEn;
+
+	/**
+	 * 中文描述
+	 */
+	@Column
+	private String descriptionCn;
+
+	/**
+	 * 英文描述
+	 */
+	@Column
+	private String descriptionEn;
 
 	/**
 	 * 图片编号
@@ -82,12 +94,18 @@ public class Resource {
 		this.url = url;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDescriptionCn() {
+		return descriptionCn;
+	}
+	public String getDescriptionEn() {
+		return descriptionEn;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
+	public void setDescriptionCn(String descriptionCn) {
+		this.descriptionCn = descriptionCn;
 	}
 
 	public String getModule() {
@@ -122,12 +140,19 @@ public class Resource {
 		this.creatTime = creatTime;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getTitleCn() {
+		return titleCn;
+	}
+	public String getTitleEn() {
+		return titleEn;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTitleCn(String titleCn) {
+		this.titleCn = titleCn;
+	}
+
+	public void setTitleEn(String titleEn) {
+		this.titleEn = titleEn;
 	}
 
 	public MultipartFile getFile() {

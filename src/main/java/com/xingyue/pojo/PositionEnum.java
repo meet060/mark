@@ -43,9 +43,17 @@ public enum PositionEnum {
      */
     industryRecognition,
     /**
+     * 产品中心外袋标题
+     */
+    outerBagTitle,
+    /**
      * 产品中心-外袋
      */
     outerBag,
+    /**
+     * 产品中心-内袋标题
+     */
+    innerBagTitle,
     /**
      * 产品中心-内袋
      */

@@ -84,12 +84,14 @@ public class ResourceServiceImpl implements ResourceService {
             file.transferTo(newFile);
             Resource resource = new Resource();
             resource.setUrl(newfilename);
-            resource.setDescription(res.getDescription());
+            resource.setDescriptionEn(res.getDescriptionEn());
+            resource.setDescriptionCn(res.getDescriptionCn());
             resource.setModule(res.getModule());
             resource.setNumber(res.getNumber());
             resource.setPosition(res.getPosition());
             resource.setCreatTime(new Date());
-            resource.setTitle(res.getTitle());
+            resource.setTitleEn(res.getTitleEn());
+            resource.setTitleCn(res.getTitleCn());
             return resourceRepository.save(resource);
         }
         return null;
@@ -138,10 +140,12 @@ public class ResourceServiceImpl implements ResourceService {
         List<Map<String, Object>> list = new ArrayList<>();
         List<Resource> content = resourcePage.getContent();
         for (Resource r : content) {
-            Map<String, Object> map1 = new HashMap<>();
+            Map<String, Object> map1 = new HashMap<>(6);
             map1.put("titleurl", r.getUrl());
-            map1.put("title", r.getTitle());
-            map1.put("description", r.getDescription());
+            map1.put("title", r.getTitleCn());
+            map1.put("titleEn", r.getTitleEn());
+            map1.put("description", r.getDescriptionCn());
+            map1.put("descriptionEn", r.getDescriptionEn());
             list.add(map1);
         }
         map.put("banner", list);
@@ -152,9 +156,11 @@ public class ResourceServiceImpl implements ResourceService {
         for (Resource p : neidais) {
             HashMap<String, Object> m = new HashMap<>();
             m.put("titleurl", p.getUrl());
-            m.put("title", p.getTitle());
-            m.put("description", p.getDescription());
-//            m.put("id", p.getId());
+            m.put("title", p.getTitleCn());
+            m.put("titleEn", p.getTitleEn());
+            m.put("description", p.getDescriptionCn());
+            m.put("descriptionEn", p.getDescriptionEn());
+            m.put("id", p.getId());
             r.add(m);
         }
         map.put("neidai", r);
@@ -163,9 +169,11 @@ public class ResourceServiceImpl implements ResourceService {
         for (Resource p : waidais) {
             HashMap<String, Object> m = new HashMap<>();
             m.put("titleurl", p.getUrl());
-            m.put("title", p.getTitle());
-            m.put("description", p.getDescription());
-//            m.put("id", p.getId());
+            m.put("title", p.getTitleCn());
+            m.put("titleEn", p.getTitleEn());
+            m.put("description", p.getDescriptionCn());
+            m.put("descriptionEn", p.getDescriptionEn());
+            m.put("id", p.getId());
             waidai.add(m);
         }
         map.put("waidai", waidai);
@@ -175,8 +183,10 @@ public class ResourceServiceImpl implements ResourceService {
         HashMap<String, Object> m = new HashMap<>();
         m.put("titleurl", abouts.getUrl());
         m.put("video", abouts.getUrl());
-        m.put("description", abouts.getDescription());
-        m.put("title", abouts.getTitle());
+        m.put("description", abouts.getDescriptionCn());
+        m.put("descriptionEn", abouts.getDescriptionEn());
+        m.put("title", abouts.getTitleCn());
+        m.put("titleEn", abouts.getTitleEn());
         map.put("about", m);
         /**************************** 我是分割线 **********************************/
         // 改善创新
@@ -184,13 +194,15 @@ public class ResourceServiceImpl implements ResourceService {
         List<Object> l1 = new ArrayList<>();
         for (Resource innovation : innovations) {
             HashMap<String, Object> m1 = new HashMap<>();
-            m1.put("title", innovation.getTitle());
+            m1.put("titleEn", innovation.getTitleEn());
+            m1.put("title", innovation.getTitleCn());
             m1.put("titleurl", innovation.getUrl());
             m1.put("titlepic", innovation.getUrl());
             l1.add(m1);
         }
-        HashMap<String, Object> m2 = new HashMap<>();
-        m2.put("description", innovations.get(0).getDescription());
+        HashMap<String, Object> m2 = new HashMap<>(5);
+        m2.put("descriptionEn", innovations.get(0).getDescriptionEn());
+        m2.put("description", innovations.get(0).getDescriptionCn());
         m2.put("innovation", l1);
         map.put("innovation", m2);
         /**************************** 我是分割线 **********************************/
@@ -204,20 +216,23 @@ public class ResourceServiceImpl implements ResourceService {
         List<Resource> programs2 = programs.stream().sorted(Comparator.comparing(Resource::getNumber)).collect(Collectors.toList());
         for (Resource program : programs2) {
             HashMap<String, Object> m1 = new HashMap<>();
-            m1.put("title", program.getTitle());
+            m1.put("titleEn", program.getTitleEn());
+            m1.put("title", program.getTitleCn());
             m1.put("titleurl", program.getUrl());
             m1.put("titlepic", program.getUrl());
             l2.add(m1);
         }
         HashMap<String, Object> m3 = new HashMap<>();
-        m3.put("description", innovations.get(0).getDescription());
+        m3.put("descriptionEn", innovations.get(0).getDescriptionEn());
+        m3.put("description", innovations.get(0).getDescriptionCn());
         m3.put("program", l2);
         map.put("program", m3);
         /**************************** 我是分割线 **********************************/
         // 友情链接
         Resource link = filterResource(resources, "link", 1).get(0);
         HashMap<String, Object> m4 = new HashMap<>();
-        m4.put("title", link.getTitle());
+        m4.put("titleEn", link.getTitleEn());
+        m4.put("title", link.getTitleCn());
         m4.put("titleurl", link.getUrl());
         map.put("link", m4);
         return map;
@@ -239,8 +254,10 @@ public class ResourceServiceImpl implements ResourceService {
         List<Map<String, Object>> bannerList = new ArrayList<>();
         for(Resource r : resources){
             Map<String, Object> m1 = new HashMap<>();
-            m1.put("title", r.getTitle());
-            m1.put("description", r.getDescription());
+            m1.put("titleEn", r.getTitleEn());
+            m1.put("title", r.getTitleCn());
+            m1.put("descriptionEn", r.getDescriptionEn());
+            m1.put("description", r.getDescriptionCn());
             m1.put("titlepic", r.getUrl());
             bannerList.add(m1);
         }
@@ -248,8 +265,10 @@ public class ResourceServiceImpl implements ResourceService {
         for (int i = 1; i <= resources2.size(); i++) {
             Map<String, Object> map1 = new HashMap<>(2);
             Resource r = resources2.get(i - 1);
-            map1.put("introtitle" + i, r.getTitle());
-            map1.put("introDescription" + i, r.getDescription());
+            map1.put("introtitleEn" + i, r.getTitleEn());
+            map1.put("introtitle" + i, r.getTitleCn());
+            map1.put("introDescriptionEn" + i, r.getDescriptionEn());
+            map1.put("introDescription" + i, r.getDescriptionCn());
             map1.put("introduce" + i, r.getUrl());
             map.put("info" + i, map1);
         }
@@ -270,7 +289,8 @@ public class ResourceServiceImpl implements ResourceService {
         List<Resource> resources = resourceRepository.queryByModuleAndAndPosition("embellishOfInformation", "industryRecognition");
         for (Resource r : resources) {
             Map<String, Object> map = new HashMap<>(16);
-            map.put("title", r.getTitle());
+            map.put("titleEn", r.getTitleEn());
+            map.put("title", r.getTitleCn());
             map.put("titlepic", r.getUrl());
             list.add(map);
         }
@@ -299,78 +319,99 @@ public class ResourceServiceImpl implements ResourceService {
             switch (r.getPosition()) {
                 // 产品banner
                 case "banner":
-                    Map m1 = new HashMap();
-                    m1.put("title", r.getTitle());
-                    m1.put("description", r.getDescription());
+                    Map m1 = new HashMap(6);
+                    m1.put("titleEn", r.getTitleEn());
+                    m1.put("title", r.getTitleCn());
+                    m1.put("descriptionEn", r.getDescriptionEn());
+                    m1.put("description", r.getDescriptionCn());
                     m1.put("titlepic", r.getUrl());
                     bannerList.add(m1);
                     break;
                 // 外袋系列
                 case "outerBag":
                     Map<String, Object> m2 = new HashMap<>(4);
-                    m2.put("wdtitle", r.getTitle());
-                    m2.put("wddescription", r.getDescription());
+                    m2.put("wdtitleEn", r.getTitleEn());
+                    m2.put("wdtitle", r.getTitleCn());
+                    m2.put("wddescriptionEn", r.getDescriptionEn());
+                    m2.put("wddescription", r.getDescriptionCn());
                     m2.put("wdpic", r.getUrl());
                     outerBagList.add(m2);
                     break;
                 // 外袋系列标题
                 case "outerBagTitle":
                     Map<String, Object> m10 = new HashMap<>(3);
-                    m10.put("outerBagTitle", r.getTitle());
-                    m10.put("outerBagDescription", r.getDescription());
+                    m10.put("outerBagTitleEn", r.getTitleEn());
+                    m10.put("outerBagTitle", r.getTitleCn());
+                    m10.put("outerBagDescriptionEn", r.getDescriptionEn());
+                    m10.put("outerBagDescription", r.getDescriptionCn());
                     outerBagTitleList.add(m10);
                     break;
                 // 内袋系列
                 case "innerBag":
                     Map<String, Object> m3 = new HashMap<>(5);
-                    m3.put("ndtitle", r.getTitle());
-                    m3.put("nddescription", r.getDescription());
+                    m3.put("ndtitleEn", r.getTitleEn());
+                    m3.put("ndtitle", r.getTitleCn());
+                    m3.put("nddescriptionEn", r.getDescriptionEn());
+                    m3.put("nddescription", r.getDescriptionCn());
                     m3.put("ndpic", r.getUrl());
                     innerBagList.add(m3);
                     break;
                 // 内袋系列
                 case "innerBagTitle":
                     Map<String, Object> m11 = new HashMap<>(5);
-                    m11.put("innerBagTitle", r.getTitle());
-                    m11.put("innerBagDescription", r.getDescription());
+                    m11.put("innerBagTitleEn", r.getTitleEn());
+                    m11.put("innerBagTitle", r.getTitleCn());
+                    m11.put("innerBagDescriptionEn", r.getDescriptionEn());
+                    m11.put("innerBagDescription", r.getDescriptionCn());
                     innerBagTitleList.add(m11);
                     break;
                 // 集装袋生产流程
                 case "flexibleFreightBags":
-                    m.put("jzdtitle", r.getTitle());
-                    m.put("jzddescription", r.getDescription());
+                    m.put("jzdtitleEn", r.getTitleEn());
+                    m.put("jzdtitle", r.getTitleCn());
+                    m.put("jzddescriptionEn", r.getDescriptionEn());
+                    m.put("jzddescription", r.getDescriptionCn());
                     m.put("jzddpic", r.getUrl());
                     break;
                 //生产流程
                 case "workFlow":
                     Map<String, Object> m4 = new HashMap<>(16);
-                    m4.put("title", r.getTitle());
-                    m4.put("description", r.getDescription());
+                    m4.put("titleEn", r.getTitleEn());
+                    m4.put("title", r.getTitleCn());
+                    m4.put("descriptionEn", r.getDescriptionEn());
+                    m4.put("description", r.getDescriptionCn());
                     m4.put("titlepic", r.getUrl());
                     flexibleFreightBagsList.add(m4);
                     break;
                 // 覆盖全行业的定制包装解决方案
                 case "allIndustry":
-                    m.put("qhytitle", r.getTitle());
-                    m.put("qhydescription", r.getDescription());
+                    m.put("qhytitleEn", r.getTitleEn());
+                    m.put("qhytitle", r.getTitleCn());
+                    m.put("qhydescriptionEn", r.getDescriptionEn());
+                    m.put("qhydescription", r.getDescriptionCn());
                     break;
                 // 覆盖全行业的定制包装解决方案2
                 case "scheme":
                     Map<String, Object> m5 = new HashMap<>(3);
-                    m5.put("title", r.getTitle());
+                    m5.put("titleEn", r.getTitleEn());
+                    m5.put("title", r.getTitleCn());
                     m5.put("titlepic", r.getUrl());
                     schemeList.add(m5);
                     break;
                 // 质控流程
                 case "qualityControlProcess":
-                    m.put("zktitle", r.getTitle());
-                    m.put("zkdescription", r.getDescription());
+                    m.put("zktitleEn", r.getTitleEn());
+                    m.put("zktitle", r.getTitleCn());
+                    m.put("zkdescriptionEn", r.getDescriptionEn());
+                    m.put("zkdescription", r.getDescriptionCn());
                     break;
                 // 质控流程2
                 case "flow":
                     Map<String, Object> m6 = new HashMap<>(16);
-                    m6.put("title", r.getTitle());
-                    m6.put("description", r.getDescription());
+                    m6.put("titleEn", r.getTitleEn());
+                    m6.put("title", r.getTitleCn());
+                    m6.put("descriptionEn", r.getDescriptionEn());
+                    m6.put("description", r.getDescriptionCn());
                     m6.put("titlepic", r.getUrl());
                     flowList.add(m6);
                     break;
@@ -414,27 +455,35 @@ public class ResourceServiceImpl implements ResourceService {
                 // 技术支持banner
                 case "banner":
                     Map m1 = new HashMap();
-                    m1.put("title", r.getTitle());
-                    m1.put("description", r.getDescription());
+                    m1.put("titleEn", r.getTitleEn());
+                    m1.put("title", r.getTitleCn());
+                    m1.put("descriptionEn", r.getDescriptionEn());
+                    m1.put("description", r.getDescriptionCn());
                     m1.put("titlepic", r.getUrl());
                     bannerList.add(m1);
                     break;
                 // 技术
                 case "technique":
-                    techniqueMap.put("jstitle" + j, r.getTitle());
-                    techniqueMap.put("jsdescription" + j, r.getDescription());
+                    techniqueMap.put("jstitleEn" + j, r.getTitleEn());
+                    techniqueMap.put("jstitle" + j, r.getTitleCn());
+                    techniqueMap.put("jsdescriptionEn" + j, r.getDescriptionEn());
+                    techniqueMap.put("jsdescription" + j, r.getDescriptionCn());
                     techniqueMap.put("jspic" + j, r.getUrl());
                     j++;
                     break;
                 // 设备实力
                 case "deviceInstance":
-                    m.put("sbtitle", r.getTitle());
-                    m.put("sbdescription", r.getDescription());
+                    m.put("sbtitleEn", r.getTitleEn());
+                    m.put("sbtitle", r.getTitleCn());
+                    m.put("sbdescriptionEn", r.getDescriptionEn());
+                    m.put("sbdescription", r.getDescriptionCn());
                     break;
                 // 设备
                 case "device":
-                    deviceMap.put("jstitle" + i, r.getTitle());
-                    deviceMap.put("jsdescription" + i, r.getDescription());
+                    deviceMap.put("jstitleEn" + i, r.getTitleEn());
+                    deviceMap.put("jstitle" + i, r.getTitleCn());
+                    deviceMap.put("jsdescriptionEn" + i, r.getDescriptionEn());
+                    deviceMap.put("jsdescription" + i, r.getDescriptionCn());
                     deviceMap.put("jspic" + i, r.getUrl());
                     i++;
                     break;
@@ -462,8 +511,10 @@ public class ResourceServiceImpl implements ResourceService {
         List<Map<String, Object>> bannerList = new ArrayList<>();
         for(Resource r : resources){
             Map<String, Object> m1 = new HashMap<>(16);
-            m1.put("title",r.getTitle());
-            m1.put("description", r.getDescription());
+            m1.put("titleEn",r.getTitleEn());
+            m1.put("title",r.getTitleCn());
+            m1.put("descriptionEn", r.getDescriptionEn());
+            m1.put("description", r.getDescriptionCn());
             m1.put("titlepic", r.getUrl());
             bannerList.add(m1);
         }
@@ -475,7 +526,8 @@ public class ResourceServiceImpl implements ResourceService {
         for (Resource r : resourcePage.getContent()) {
             Map<String, Object> newsMap = new HashMap<>(3);
             newsMap.put("id", r.getId());
-            newsMap.put("title", r.getTitle());
+            newsMap.put("titleEn", r.getTitleEn());
+            newsMap.put("title", r.getTitleCn());
             newsMap.put("url", r.getUrl());
             newsMap.put("newtime", r.getCreatTime());
             resourceList.add(newsMap);
@@ -507,16 +559,20 @@ public class ResourceServiceImpl implements ResourceService {
         for (Resource r : resourceList) {
             switch (r.getPosition()) {
                 case "banner":
-                    Map m1 = new HashMap();
-                    m1.put("title", r.getTitle());
-                    m1.put("description", r.getDescription());
+                    Map m1 = new HashMap(6);
+                    m1.put("titleEn", r.getTitleEn());
+                    m1.put("title", r.getTitleCn());
+                    m1.put("descriptionEn", r.getDescriptionEn());
+                    m1.put("description", r.getDescriptionCn());
                     m1.put("titlepic", r.getUrl());
                     bannerList.add(m1);
                     break;
                 //底下位置
                 case "bottom":
-                    bottomMap.put("title", r.getTitle());
-                    bottomMap.put("description", r.getDescription());
+                    bottomMap.put("titleEn", r.getTitleEn());
+                    bottomMap.put("title", r.getTitleCn());
+                    bottomMap.put("descriptionEn", r.getDescriptionEn());
+                    bottomMap.put("description", r.getDescriptionCn());
                     bottomMap.put("titlepic", r.getUrl());
                     break;
                 default:
@@ -582,24 +638,30 @@ public class ResourceServiceImpl implements ResourceService {
         //下一条数据
         Resource resource2 = resourceRepository.getsTheNextRecordById(id);
         if (resource.isPresent()) {
-            map.put("title", resource.get().getTitle());
+            map.put("titleEn", resource.get().getTitleEn());
+            map.put("title", resource.get().getTitleCn());
             map.put("date", resource.get().getCreatTime());
-            map.put("description", resource.get().getDescription());
+            map.put("descriptionEn", resource.get().getDescriptionEn());
+            map.put("description", resource.get().getDescriptionCn());
             map.put("url", resource.get().getUrl());
             map.put("id", resource.get().getId());
             if (null != resource1) {
                 map.put("previousPageId", resource1.getId());
-                map.put("previousTitle", resource1.getTitle());
+                map.put("previousTitleEn", resource1.getTitleEn());
+                map.put("previousTitle", resource1.getTitleCn());
             } else {
                 map.put("previousPageId", "");
                 map.put("previousTitle", "");
+                map.put("previousTitleEn", "");
             }
             if (null != resource2) {
                 map.put("theNextPageId", resource2.getId());
-                map.put("theNextPageTitle", resource2.getTitle());
+                map.put("theNextPageTitleEn", resource2.getTitleEn());
+                map.put("theNextPageTitle", resource2.getTitleCn());
             } else {
                 map.put("theNextPageId", "");
                 map.put("theNextPageTitle", "");
+                map.put("theNextPageTitleEn", "");
             }
             return map;
         }

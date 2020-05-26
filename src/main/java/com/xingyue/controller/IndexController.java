@@ -93,8 +93,7 @@ public class IndexController {
 
     /**
      *查询首页资源
-     *
-     * @param modeule
+	 *
      * @return
      */
 	@ApiOperation(value = "查询首页资源")
@@ -174,14 +173,18 @@ public class IndexController {
 	@RequestMapping(value = "/save/news", method = RequestMethod.POST)
 	public ResponseEntity<?> saveNews(
 			@RequestParam(value="file", required = false) MultipartFile file,
-			@RequestParam(value="title", required = false)String title,
-			@RequestParam(value="description", required = false)String description,
+			@RequestParam(value="titleEn", required = false)String titleEn,
+			@RequestParam(value="titleCn", required = false)String titleCn,
+			@RequestParam(value="descriptionEn", required = false)String descriptionEn,
+			@RequestParam(value="descriptionCn", required = false)String descriptionCn,
 			@RequestParam(value="creatTime", required = false) Date creatTime) {
 		Resource resource = new Resource();
 		resource.setCreatTime(creatTime);
 		resource.setFile(file);
-		resource.setTitle(title);
-		resource.setDescription(description);
+		resource.setTitleEn(titleEn);
+		resource.setTitleCn(titleCn);
+		resource.setDescriptionEn(descriptionEn);
+		resource.setDescriptionCn(descriptionCn);
 		resource.setModule("pressCenter");
 		resource.setPosition("news");
 		Boolean flag = resourceService.saveNews(resource);
