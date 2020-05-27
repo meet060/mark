@@ -2,193 +2,16 @@ $(function(){
     if(typeof(_common) == 'undefined'){
         return false;
     }
-    var arrAbout2 = JSON.parse(localStorage.getItem('aboutCookice'))  //关于我们
+    $(".g-banner-about p").addClass("cur")
     head();//头部
-    head_foot_txt("en");//头部底部
+    head_foot_txt();//头部底部
     scoll_nav();//滚动条事件
-    if( _common.pageJs == "index" ){
-        baseJs.Index();
-        $(window).scroll(function(){
-            var winTop = $(window).scrollTop();
-            // console.log(winTop)
-            var _width = $(window).width()
-            if(_width>1000){
-                if( winTop > 300 ){
-                    $(".g-about-index").eq(0).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 1000 ){
-                    $(".g-about-index").eq(1).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 1900 ){
-                    $(".g-about-index").eq(2).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 2400 ){
-                    $(".g-about-index").eq(3).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 3000 ){
-                    $(".g-about-index").eq(4).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-            }else{
-                if( winTop > 80 ){
-                    $(".g-about-index").eq(0).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 600 ){
-                    $(".g-about-index").eq(1).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 1200 ){
-                    $(".g-about-index").eq(2).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 1700 ){
-                    $(".g-about-index").eq(3).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                }
-                if(winTop > 2200 ){
-                    $(".g-about-index").eq(4).stop().animate({
-                        top:0,
-                        opacity:1
-                    },500)
-                } 
-            }
-            
-        });
-    }
     // 导航
     if(_common.pageTo == "con"){
     share();//分享；
     }
-    if( _common.page == "1" ){
-        //首页banner
-        var _banner = $("#g_banner")
-        for( var i=0;i<_banner.find("div").length; i++){
-            _banner.find(".swiper-slide").eq(i).find("img").attr("src",api_url+''+indexPro.banner[i].titleurl)
-        }
-        // banner
-            var mySwiper = new Swiper('.swiper-container0', {
-                autoplay: true,//可选选项，自动滑动
-                loop : true,
-                pagination: {
-                    el: '.swiper-pagination',
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-            })
-        var index_pro1=$("#g-pro-list1")
-        var index_pro3=$("#g-pro-list2")
-
-        // 首页关于我们
-        var _about_index_title = $("#about_index_title")
-        var _about_index = $("#about_index")
-                var _about_index_title = $("#about_index_title")
-                var _about_index = $("#about_index")
-                var _about_index = $("#about_index")
-                var _about_v = $("#about_v")
-                var _video_url = api_url+arrIndex.about.video;
-                _about_v.find("video").attr("src",_video_url)
-                _about_index_title.html(arrAbout2.title)
-                _about_index_title.html('Break through the limitations of traditional thinking, and always keep the equipment and production capacity at the domestic advanced')
-                _about_index.html('Break through the limitations of traditional thinking, and always keep the equipment and production capacity at the domestic advanced')
-                _about_v.find("video").click(function(){
-                    var v_html = '<div class="g-fixed-video">'+
-                                    '<div class="f-fixed-video">'+
-                                        '<video controls="controls" autoplay="">'+
-                                            '<source src="'+api_url+''+indexPro.about.titleurl+'" type="video/mp4">'+
-                                        '</video>'+
-                                        '<em class="close_btn"><img src="/images/icon_3.png"></em>'+
-                                    '</div>'+
-                                '</div>'
-                    $("body").append(v_html)
-                    $(".close_btn").click(function(){
-                        $(this).parents(".g-fixed-video").remove()
-                    })
-                })
-    //首页调用产品
-            function index_pro(e,h){
-            var _h=h+4
-            for( var h=1;h<_h;h++ ){
-                var _e = "pro_"+h
-                var _num = h-1
-                var html = '<li>'+
-                                '<a href="pro-con.html?id='+ h +'">'+
-                                    '<em class="u-img">'+
-                                        '<img src='+ api_url+''+indexPro.neidai[_num].titleurl +' alt="'+pro_box[_e].titleEn+'">'+
-                                    '</em>'+
-                                    '<strong>'+pro_box[_e].titleEn+'</strong>'+
-                                    '<p>'+pro_box[_e].titleHpEn+'</p>'+
-                                    '<span class="u-img-zhao">'+pro_box[_e].titleHpEn+
-                                    '</span>'+
-                                '</a>'+
-                            '</li>'
-                e.append(html)
-            }
-        }
-        function index_pro2(e,h){
-            var _h=h+4
-            for( var h;h<_h;h++ ){
-                var _e = "pro_"+h
-                var _num = h-5
-                var html = '<li>'+
-                                '<a href="pro-con.html?id='+ h +'">'+
-                                    '<em class="u-img">'+
-                                        '<img src='+ api_url+''+ indexPro.waidai[_num].titleurl +' alt="'+pro_box[_e].titleEn+'">'+
-                                    '</em>'+
-                                    '<strong>'+pro_box[_e].titleEn+'</strong>'+
-                                    '<p>'+pro_box[_e].titleHpEn+'</p>'+
-                                    '<span class="u-img-zhao">'+pro_box[_e].titleHpEn+
-                                    '</span>'+
-                                '</a>'+
-                            '</li>'
-                e.append(html)
-            }
-        }
-        index_pro(index_pro1,1);
-        index_pro2(index_pro3,5);
-
-    //改善创新，拓展可能
-    var _tuozhan_txt = $("#f-tuozhan-txt")
-    var _tuozhan = $("#g-tuozhan")
-    for(var i=0;i<_tuozhan.find("li").length;i++){
-        _tuozhan.find("li").eq(i).find("img").attr({
-            "src":api_url+''+indexPro.innovation.innovation[i].titlepic,
-            "alt":api_url+''+indexPro.innovation.innovation[i].title,
-        })
-    }
-    //解决方案
-        var _fangan_txt = $("#fangan-box")
-        console.log(indexPro.program.program.length)
-        for(var i=0;i<indexPro.program.program.length;i++){
-            _fangan_txt.find("li").eq(i).find("img").attr({
-                "src":api_url+''+indexPro.program.program[i].titlepic,
-                "alt":indexPro.program.program[i].title
-            })
-        }
+    if( _common.pageJs == "index" ){
+        baseJs.Index();
     }
     if( _common.page == "2" ){
         pro_con()
@@ -196,53 +19,59 @@ $(function(){
     if(_common.page == "3" ){
         pro_list();
         var _g_waidai = $("#g-waidai")
-        for( var i=0;i<_g_waidai.find("a").length;i++ ){
-            _g_waidai.find("a").eq(i).find("img").attr({
-                "src":api_url+''+arrProduct.innerBag[i].ndpic,
-                "alt":arrProduct.innerBag[i].ndtitle
-            })
-            // _g_waidai.find("a").eq(i).find("strong").html(arrProduct.innerBag[i].ndtitle)
-        }
+        for( var i=0;i<5;i++ ){
+                var _i = i+1
+                _g_waidai.find("a").eq(i).find("img").attr({
+                    "src":api_url+arrProduct.innerBag[i].ndpic,
+                    "alt":arrProduct.innerBag[i].ndtitleEn
+                })
+                _g_waidai.find("a").eq(i).find("strong").html(arrProduct.innerBag[i].ndtitleEn)
+            }
     }
     if(_common.page == "4" ){
+        pro_list();
         var _about_title = $("#about_box")
         var _about1_box = $("#about_box1")
         var _about2_box = $("#about_box2")
         var _industry1 = $("#industry1")
         var _industry2 = $("#industry2")
-        _about_title.find("img").attr("src",api_url+''+arrAbout2.titlepic)
-        _about1_box.find(".g-about-r img").attr("src",api_url+''+arrAbout2.info.info1.introduce1)
-        _about2_box.find(".g-about-r img").attr("src",api_url+''+arrAbout2.info.info2.introduce2)
+        console.log(arrAbout2)
+        _about1_box.find(".g-about-r img").attr("src",api_url+arrAbout2.info.info1.introduce1)
+        _about1_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info1.introtitleEn1 +"</p >")
+        _about1_box.find(".g-about-l h2").html('Company profile')
+        _about2_box.find(".g-about-r img").attr("src",api_url+arrAbout2.info.info2.introduce2)
+        _about2_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info2.introtitleEn2 +"</p >")
+        _about2_box.find(".g-about-l h2").html("Because we are focus on it,So keeping leading")
         function fnIndustry(){
             // console.log(arrIndustry.recognized.length)
             for( var i=0;i<arrIndustry.recognized.length;i++){
                 if(i<4){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a><img src="'+ api_url+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].titleEn +'" alt="'+ arrIndustry.recognized[i].titleEn +'"><p>'+ arrIndustry.recognized[i].titleEn +'</p></a>'
                     _industry1.find("div").eq(0).append(_html_)
                 }else if(i<9){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a><img src="'+ api_url+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].titleEn +'" alt="'+ arrIndustry.recognized[i].titleEn +'"><p>'+ arrIndustry.recognized[i].titleEn +'</p></a>'
                     _industry1.find("div").eq(1).append(_html_)
                 }else{
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a><img src="'+ api_url+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].titleEn +'" alt="'+ arrIndustry.recognized[i].titleEn +'"><p>'+ arrIndustry.recognized[i].titleEn +'</p></a>'
                     _industry1.find("div").eq(2).append(_html_)
                 }
                 if(i<3){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a><img src="'+ api_url+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].titleEn +'" alt="'+ arrIndustry.recognized[i].titleEn +'"><p>'+ arrIndustry.recognized[i].titleEn +'</p></a>'
                     _industry2.find("div").eq(0).append(_html_)
                 }else if(i<6){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a><img src="'+ api_url+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].titleEn +'" alt="'+ arrIndustry.recognized[i].titleEn +'"><p>'+ arrIndustry.recognized[i].titleEn +'</p></a>'
                     _industry2.find("div").eq(1).append(_html_)
                 }else if(i<9){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a><img src="'+ api_url+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].titleEn +'" alt="'+ arrIndustry.recognized[i].titleEn +'"><p>'+ arrIndustry.recognized[i].titleEn +'</p></a>'
                     _industry2.find("div").eq(2).append(_html_)
                 }else if(i<12){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a><img src="'+ api_url+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].titleEn +'" alt="'+ arrIndustry.recognized[i].titleEn +'"><p>'+ arrIndustry.recognized[i].titleEn +'</p></a>'
                     _industry2.find("div").eq(3).append(_html_)
                 }else if(i<15){
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a><img src="'+ api_url+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].titleEn +'" alt="'+ arrIndustry.recognized[i].titleEn +'"><p>'+ arrIndustry.recognized[i].titleEn +'</p></a>'
                     _industry2.find("div").eq(4).append(_html_)
                 }else{
-                    _html_ = '<a href="#"><img src="'+ api_url+''+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].title +'" alt="'+ arrIndustry.recognized[i].title +'"><p></p></a>'
+                    _html_ = '<a><img src="'+ api_url+arrIndustry.recognized[i].titlepic +'" title="'+ arrIndustry.recognized[i].titleEn +'" alt="'+ arrIndustry.recognized[i].titleEn +'"><p>'+ arrIndustry.recognized[i].titleEn +'</p></a>'
                     _industry2.find("div").eq(5).append(_html_) 
                 }
             }
@@ -264,35 +93,44 @@ $(function(){
                         el: '.swiper-pagination',
                     },
                 })
-
     }
     if(_common.page == "5" ){
+        console.log(arrJishu)
         var _jishu_txt = $("#jishu_txt")
         var _jishu_zc = $("#jishu_zc")
         var _jishu_cx = $("#jishu_cx")
         var _jishu_sl = $("#jishu_sl")
         var _jishu_sl1 = $("#jishu_sl1")
         var _jishu_sl2 = $("#jishu_sl2")
-        _jishu_txt.find("img").attr("src",api_url+''+arrJishu.titlepic)
+        console.log(arrJishu)
+        _jishu_txt.find("p").html(arrJishu.banner[0].titleEn)
+        _jishu_txt.find("img").attr("src",api_url+ arrJishu.banner[0].titlepic)
+        _jishu_zc.find("p").html(arrJishu.jishu.jsdescriptionEn1)
         _jishu_zc.find("img").attr({
-            "src":api_url+''+arrJishu.jishu.jspic1,
-            "alt":arrJishu.jishu.jstitle1,
+            "src":api_url+arrJishu.jishu.jspic1,
+            "alt":arrJishu.jishu.jstitleEn1,
         })
+        _jishu_cx.find("p").html(arrJishu.jishu.jsdescriptionEn2)
         _jishu_cx.find("img").attr({
-            "src":api_url+''+arrJishu.jishu.jspic2,
-            "alt":arrJishu.jishu.jstitle2,
+            "src":api_url+arrJishu.jishu.jspic2,
+            "alt":arrJishu.jishu.jstitleEn2,
         })
-        _jishu_sl.find("p").html(arrJishu.sbdescription)
+        _jishu_sl.find("p").html(arrJishu.sbdescriptionEn)
         for(var i=1;i<6;i++){
             var _e = "jspic"+i
-            var _e2 = 'jstitle'+i
-            var _e3 = 'jsdescription'+i
-            var _i = i-1
-            var _i_ = i-3
+            var _e2 = 'jstitleEn'+i
+            var _e3 = 'jsdescriptionEn'+i
+            var js_html = '<a >'+
+                                '<em class="u-img"><img src="'+ api_url+arrJishu.device[_e] +'" alt=""></em>'+
+                                '<span class="g-txt-box">'+
+                                    '<strong>'+arrJishu.device[_e2] +'</strong>'+
+                                    '<p>'+arrJishu.device[_e3] +'</p>'+
+                                '</span>'+
+                            '</a>'
             if(i<3){
-                _jishu_sl1.find("a").eq(_i).find("img").attr("src",api_url+''+arrJishu.device[_e])
+                _jishu_sl1.append(js_html)
             }else{
-                _jishu_sl2.find("a").eq(_i_).find("img").attr("src",api_url+''+arrJishu.device[_e])
+                _jishu_sl2.append(js_html)
             }
         }
     }
@@ -301,22 +139,24 @@ $(function(){
         var _lianxi_txt =$("#lianxi_txt")
         var _lianxi_box =$("#lianxi_box")
         var _lianxi_jr = $("#lianxi_jr")
-        _lianxi_txt.find("img").attr("src",api_url+''+arrContact2.titlepic)
-        _lianxi_box.find("h3").html(arrContact2.contact.company)
-        _lianxi_box.find("p").eq(0).html(arrContact2.contact.address)
-        _lianxi_box.find("p").eq(1).html('cell：'+arrContact2.contact.phone)
-        _lianxi_box.find("p").eq(2).html('phone：'+arrContact2.contact.cellPhone)
-        _lianxi_box.find("p").eq(3).html('fax：'+arrContact2.contact.fax)
-        _lianxi_box.find("p").eq(4).html('email：'+arrContact2.contact.mailbox)
-        _lianxi_jr.find("h2").html(arrContact2.bottom.title)
-        _lianxi_jr.find("p").html(arrContact2.bottom.description)
+        console.log(arrContact2)
+        _lianxi_txt.find("p").html(arrContact2.banner[0].titleEn)
+        _lianxi_txt.find("img").attr("src",api_url+arrContact2.banner[0].titlepic)
+        _lianxi_box.find("h3").html(arrContact2.contact.enCompany)
+        _lianxi_box.find("p").eq(2).html('Phone：'+arrContact2.contact.phone)
+        _lianxi_box.find("p").eq(3).html('Fax：'+arrContact2.contact.fax)
+        _lianxi_box.find("p").eq(4).html('Mail：'+arrContact2.contact.mailbox)
+        _lianxi_box.find("p").eq(5).html('Address：'+arrContact2.contact.enAddress)
+        _lianxi_jr.find("h2").html(arrContact2.bottom.titleEn)
+        _lianxi_jr.find("p").html(arrContact2.bottom.descriptionEn)
     }
     if(_common.page == "7" ){
+        var _news_banner = $("#news-banner")
         var reg,reg2,url,Url,arr2,jsonarr
         var new_page,new_size,new_yema
         var _url = window.location.search.substring("1")
         new_size = 2
-        console.log(_url)
+        // console.log(_url)
         if( _url !="" ){
             reg = new RegExp("&","g")
             reg2 = new RegExp("=","g")
@@ -343,14 +183,17 @@ $(function(){
                     var _new_time_ = new_time.split("T")
                     var html = '<li>'+
                                     '<a href="news-con.html?id='+ val.id +'">'+
-                                        '<em class="u-img"><img src="'+api_url+'' + val.url +'" alt="'+ val.title +'"></em>'+
+                                        '<em class="u-img"><img src="'+api_url + val.url +'" alt="'+ val.titleEn +'"></em>'+
                                         '<span class="g-txt-box">'+
-                                            '<strong>news</strong>'+
+                                            '<strong>'+ val.titleEn +'</strong>'+
                                             '<em>'+ _new_time_[0] +'</em>' +
                                         '</span>'+
                                     '</a>'+
                                 '</li>'
                     _new_list.append(html)
+                    console.log(new_data)
+                    _news_banner.find("p").html(new_data.banner[0].titleEn)
+                    _news_banner.find("img").attr("src",api_url +new_data.banner[0].titlepic)
                 })
                 //页码
                 var new_yema =  new_data.pagenum/new_size
@@ -382,6 +225,55 @@ $(function(){
             });
         }
         new_list_box();
+    }
+    if(_common.page == "8" ){
+        $(".g-nav-list li a").eq(4).addClass("cur").siblings().removeClass("cur")
+        var reg,reg2,url,Url,arr2,jsonarr
+        var _url = window.location.search.substring("1")
+        console.log(_url)
+        reg2 = new RegExp("=","g")
+        Url = _url.replace(reg2,'":"')
+        arr2 = '{"'+Url+'"}'
+        jsonarr = JSON.parse(arr2)
+        console.log(jsonarr.id)
+        var _data = {'id':jsonarr.id}
+        var _con_img = $("#con_img")
+        var _con_txt = $("#con_txt")
+        $.ajax({
+            type: "POST",
+            data:JSON.stringify(_data),
+            url: jiekou.xiangqing_api,
+            headers:{'Content-Type':'application/json;'},
+            success: function(data_con) {
+                var _g_pro_ = $("#g-pro")
+                var _g_next_ = $("#g-next")
+                var _g_pro_id = data_con.previousPageId  //上一页
+                var _g_next_id = data_con.theNextPageId  //下一页
+                console.log(data_con)
+                console.log(data_con.previousPageId,data_con.theNextPageId)
+                //console.log(data_con)
+                _con_img.find("img").attr("src",api_url + ''+ data_con.url)
+                _con_txt.find("h1").html(data_con.titleEn)
+               _con_txt.find(".f-text-content").append(data_con.descriptionEn)
+                if( _g_pro_id == "" ){
+                    _g_pro_.attr("href","news.html")
+                    _g_pro_.html("Section")
+                }else{
+                    _g_pro_.attr("href","news-con.html?id="+_g_pro_id)
+                    _g_pro_.html("Previous："+data_con.previousTitleEn)
+                }
+                if( _g_next_id == "" ){
+                    _g_next_.attr("href","news.html")
+                    _g_next_.html("Home")
+                }else{
+                    _g_next_.attr("href","news-con.html?id="+_g_next_id)
+                    _g_next_.html("Next page："+data_con.theNextPageTitleEn)
+                }
+            },
+            error: function (data) {
+                console.log("error")
+            }
+        });
     }
 });
 
@@ -421,6 +313,7 @@ liuyan_btn.on("click",function(){
 liuyan_box.on("click",function(){
     $(".g-liuyan-box").hide()
 })
+
 //导航高亮
     function nav(){
         var nav_on = $(".g-nav-list li a")
@@ -484,37 +377,83 @@ $(window).scroll(function(){
 //产品列表页
 function pro_list(){
     var _pro_list=$("#pro_shili")
+    var _pro_txt = $("#pro_txt")
+    var _pro_neidai = $("#pro_neidai")
+    var _pro_jzd = $("#pro_jzd")
     var _pro_jiejing = $("#pro_jiejing")
     var _pro_fangan = $("#pro_fangan")
+    var _pro_fangan2 = $("#pro_fangan2")
     var _pro_liucheng = $("#pro_liucheng")
-    for(var i=1;i<5;i++){
-        var _i = i -1
-        var _pro_ = "pro_"+i
+    _pro_txt.find("p").html(arrProduct.banner[0].titleEn)
+    _pro_txt.find("img").attr("src",api_url + ''+ arrProduct.banner[0].titlepic)
+    _pro_list.find("p").html('Diversified customized bags for different markets and application fields, zhongrun has accumulated many years of professional technology and design experience. With a design and sales team of more than 50 people, zhongrun will continue to design and recommend more reasonable products for you.') //arrProduct.outerBag[4].outerBagDescription
+    _pro_neidai.find("p").html('Zhongrun has A food-grade film blowing workshop, which produces its own food-grade A, B, C shaped inner bag and inner bag of tensile reinforcement')//arrProduct.innerBag[0].nddescription
+    _pro_jzd.find("h2").html(arrProduct.jzdtitleEn)
+    _pro_jzd.find("p").html(arrProduct.jzddescriptionEn)
+    console.log(arrProduct)
+    for(var i=0;i<8;i++){
+            // if(i>4){
+            //     i=i-1
+            // }
+            var h=i+1
             pro_html = '<li>'+
-                        '<a href="pro-con.html?id='+ i +'">'+
-                            '<em class="u-img"><img src="'+ api_url+''+arrProduct.outerBag[_i].wdpic +'" alt="'+ pro_box[_pro_].titleEn +'"></em>'+
+                        '<a href="pro-con.html?id='+ h +'">'+
+                            '<em class="u-img"><img src="'+ api_url+arrProduct.outerBag[i].wdpic +'" alt="'+ arrProduct.outerBag[i].wdtitleEn +'"></em>'+
                             '<span class="g-txt-box">'+
-                                '<strong>'+ pro_box[_pro_].titleEn +'</strong>'+
-                                '<p>'+ pro_box[_pro_].titleHpEn +'</p>'+
+                                '<strong>'+arrProduct.outerBag[i].wdtitleEn +'</strong>'+
+                                '<p>'+ arrProduct.outerBag[i].wddescriptionEn +'</p>'+
                             '</span> '+
                         '</a>'+
                     '</li>'
-            _pro_list.append(pro_html)
+            _pro_list.find("ul").append(pro_html)
         }
-        for(var i=0;i<2;i++){
-            _pro_jiejing.find("a").eq(i).find('img').attr("src",api_url+''+arrProduct.process[i].titlepic)
-        }
-        for(var i=0;i<8;i++){
-            _pro_liucheng.find("li").eq(i).find('img').attr("src",api_url+''+arrProduct.program[i].titlepic)
-        }
-        for(var i=0;i<4;i++){
-            _pro_fangan.find("li").eq(i).find("img").attr("src",api_url+''+ arrProduct.control[i].titlepic)
-        }
+    for(var i=0;i<2;i++){
+        html='<a >'+
+                    '<em class="u-img"><img src="'+ api_url+arrProduct.process[i].titlepic +'" alt="'+ arrProduct.process[i].titleEn +'"></em> '+
+                    '<span class="g-txt-box">'+
+                        '<strong>'+ arrProduct.process[i].titleEn +'</strong>'+
+                        '<p>'+ arrProduct.process[i].descriptionEn +'</p> '+   
+                    '</span>'+
+                '</a>'
+        _pro_jiejing.append(html)  
     }
+    // console.log(arrProduct.zktitle)
+    _pro_fangan.find("h2").html(arrProduct.qhytitleEn)
+    _pro_fangan.find("p").html(arrProduct.qhydescriptionEn)
+    for(var i=0;i<8;i++){
+        _html='<li>'+
+                '<a >'+
+                   ' <em class="u-img"><img src="'+ api_url+arrProduct.program[i].titlepic +'" alt="'+ arrProduct.program[i].titleEn +'"></em>'+
+                    '<span class="g-txt-box">'+
+                        '<strong>'+ arrProduct.program[i].titleEn +'</strong>'+
+                    '</span>'+
+                '</a>'+
+            '</li>'
+        _pro_fangan.find("ul").append(_html) 
+    }
+
+    //流程
+    _pro_liucheng.find("h2").html(arrProduct.zktitleEn)
+    _pro_liucheng.find("p").html(arrProduct.zkdescriptionEn)
+    for(var i=0;i<4;i++){
+        html='<a >'+
+                   '<em class="u-img">'+
+                        '<img src="'+ api_url+ arrProduct.control[i].titlepic +'" alt="'+ arrProduct.control[i].titleEn +'">'+
+                    '</em>'+
+                    '<span class="g-txt-box">'+
+                        '<strong>'+ arrProduct.control[i].titleEn +'</strong>'+
+                        '<p>'+ arrProduct.control[i].descriptionEn +'</p>'+
+                    '</span>'+
+                '</a>'
+            _pro_liucheng.find("li").append(html)
+        }
+
+}
 // 产品内容页面
 function pro_con(){
     var index_url=window.location.search
     var id = "pro_"+index_url.substring(1).split("=")[1]
+    var _id = index_url.substring(1).split("=")[1] -1
     var _title = $("#title"),
         _banner_txt=$("#banner_txt"),
         _pro_img=$("#pro_img"),
@@ -525,12 +464,23 @@ function pro_con(){
         _jzTxt=$("#jzTxt"),
         _protxt1=$("#protxt1"),
         _protxt2=$("#protxt2")
+        // _title.html(pro_box[id].title)
+        // _banner_txt.html(pro_box[id].banner_txt)
+        // _pro_img.attr("src",api_url+arrProduct.outerBag[_id].wdpic)
+        // _titleH.html(arrProduct.outerBag[_id].wdtitle)
+        // _titleHp.html(pro_box[id].titleHp)
+        // _titleH2.html(arrProduct.outerBag[_id].wdtitle)
+        // _aqTxt.append(pro_box[id].aqTxt)
+        // _jzTxt.html(pro_box[id].jzTxt)
+        // _protxt1.html(pro_box[id].protxt1)
+        // _protxt2.html(pro_box[id].protxt2)
+        console.log(arrProduct)
         _title.html(pro_box[id].titleEn)
         _banner_txt.html(pro_box[id].banner_txtEn)
-        _pro_img.attr("src",pro_box[id].pro_imgEn)
-        _titleH.html(pro_box[id].titleHEn)
+        _pro_img.attr("src",api_url+arrProduct.outerBag[_id].wdpic)
+        _titleH.html(pro_box[id].titleEn)
         _titleHp.html(pro_box[id].titleHpEn)
-        _titleH2.html(pro_box[id].titleH2En)
+        _titleH2.html(arrProduct.outerBag[_id].wdtitleEn)
         _aqTxt.append(pro_box[id].aqTxtEn)
         _jzTxt.html(pro_box[id].jzTxtEn)
         _protxt1.html(pro_box[id].protxt1En)
