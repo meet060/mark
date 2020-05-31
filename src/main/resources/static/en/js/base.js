@@ -14,7 +14,14 @@ $(function(){
         baseJs.Index();
     }
     if( _common.page == "2" ){
-        pro_con()
+        pro_con();
+        var _pro_top = $("#pro_top_list")
+        console.log(arrProduct.outerBag)
+        $.each(arrProduct.outerBag,function(i,val){
+            var _i = i+1
+            html = '<a href="pro-con.html?id='+ _i +'"><img src="'+ api_url + val.wdpic +'" alt="'+ val.wdtitleEn +'"><em>'+ val.wdtitleEn +'</em></ a>'
+            _pro_top.append(html)
+        })
     }
     if(_common.page == "3" ){
         pro_list();
@@ -35,12 +42,12 @@ $(function(){
         var _about2_box = $("#about_box2")
         var _industry1 = $("#industry1")
         var _industry2 = $("#industry2")
-        console.log(arrAbout2)
+        // console.log(arrAbout2)
         _about1_box.find(".g-about-r img").attr("src",api_url+arrAbout2.info.info1.introduce1)
-        _about1_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info1.introtitleEn1 +"</p >")
+        _about1_box.find(".g-about-l h2").after(arrAbout2.info.info1.introDescriptionEn1)
         _about1_box.find(".g-about-l h2").html('Company profile')
         _about2_box.find(".g-about-r img").attr("src",api_url+arrAbout2.info.info2.introduce2)
-        _about2_box.find(".g-about-l").append("<p>"+ arrAbout2.info.info2.introtitleEn2 +"</p >")
+        _about2_box.find(".g-about-l h2").after(arrAbout2.info.info2.introDescriptionEn2)
         _about2_box.find(".g-about-l h2").html("Because we are focus on it,So keeping leading")
         function fnIndustry(){
             // console.log(arrIndustry.recognized.length)
@@ -474,7 +481,6 @@ function pro_con(){
         // _jzTxt.html(pro_box[id].jzTxt)
         // _protxt1.html(pro_box[id].protxt1)
         // _protxt2.html(pro_box[id].protxt2)
-        console.log(arrProduct)
         _title.html(pro_box[id].titleEn)
         _banner_txt.html(pro_box[id].banner_txtEn)
         _pro_img.attr("src",api_url+arrProduct.outerBag[_id].wdpic)

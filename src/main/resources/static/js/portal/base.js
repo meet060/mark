@@ -14,7 +14,13 @@ $(function(){
         baseJs.Index();
     }
     if( _common.page == "2" ){
-        pro_con()
+        pro_con();
+        var _pro_top = $("#pro_top_list")
+        $.each(arrProduct.outerBag,function(i,val){
+            var _i = i+1
+            html = '<a href="pro-con.html?id='+ _i +'"><img src="'+api_url+ val.wdpic +'" alt="'+ val.wdtitle +'"><em>'+ val.wdtitle +'</em></ a>'
+            _pro_top.append(html)
+        })
     }
     if(_common.page == "3" ){
         pro_list();

@@ -10,11 +10,11 @@ var jiekou = {
     "xiangqing_api":api_url+'/api/resource/news/',//新闻详情
     "liuyan_api":api_url+'/api/afterSale/addAfterSale'//留言POST
 }
-var index_url = ["hdzrsl.com","hdzrsl.cn","hbzrbz.com","hbzrbz.cn"]
-var index_lxr_txt = ['Han yazhou','Zhangyan','Qin xiangqian','Li quanxing']
-var index_lxr = ['Han yazhou 15028453452','Zhangyan  18830093666','Qin xiangqian  13931059103','Li quanxing 15231029903']
-var index_tel = ['15028453452','18830093666','13931059103','15231029903']
-var _index_url = window.location.href
+var index_url = ["hdzrsl.com","hdzrsl.cn","hbzrbz.com","hbzrbz.cn"]
+var index_lxr_txt = ['Han Yazhou','Zhang Yinlong','Qin Xiangqian','Li Quanxing']
+var index_lxr = ['Han Yazhou 15028453452','Zhang Yinlong  15031014004','Qin Xiangqian  13931059103','Li Quanxing 15231029903']
+var index_tel = ['15028453452','15031014004','13931059103','15231029903']
+var _index_url = window.location.href
 
 //产品数据
 var pro_box = {
@@ -263,7 +263,7 @@ function head(){
     var header = '<div class="g-top-nav clearfix">'+
                     '<a href="" class="g-logo-box f-fl"><img src="/images/logo.png" alt="" class="pc-logo"></a>'+
                     '<div class="g-nav_btn f-fr"></div>'+
-                    '<div class="f-lang f-fr"><a href="/index.html" class="f-lang-e cur">中</a><a href="/en/index.html" class="f-lang-c">EN</a></div>'+
+                    '<div class="f-lang f-fr"><a href="/index.html" class="f-lang-e">中</a><a href="/en/index.html" class="f-lang-c cur">EN</a></div>'+
                     '<ul class="g-nav-list f-fr" id="head">'+
                         '<li><a href="index.html" class="cur"></a><a href="about.html" rel="about.html"></a><a href="pro-shili.html" rel="pro"></a><a href="jishu.html" rel="jishu.html"></a><a href="news.html" rel="news.html"></a><a href="contact.html" rel="contact.html"></a></li>'+
                     '</ul>'+
