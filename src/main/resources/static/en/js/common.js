@@ -355,13 +355,14 @@ function head_foot_txt(){
         $.each(index_url,function(i,val){
             if(_index_url.indexOf(val) > -1){
                 console.log(i)
-                 $("#lianxi_box").find("p").eq(0).html('Contact：'+index_lxr_txt[i])
-                 $("#lianxi_box").find("p").eq(1).html('phone：'+index_tel[i])
+                 $("#lianxi_box").find("p").eq(0).html('CONTACT：'+index_lxr_txt[i])
+                 $("#lianxi_box").find("p").eq(1).html('Phone number：'+index_tel[i])
                  $("#lianxi_kufe").find("img").attr("src","/images/chat_1"+i+".png")
                  $("#bottom_chat").find("img").attr("src","/images/chat_1"+i+".png")
                  $("#tel_txt").attr("href",'tel:'+index_tel[i])
                  $(".g-foot-c p").eq(1).html('Contact: '+index_lxr_txt[i])
                  $(".g-foot-c p").eq(2).html('Cell phone: '+index_tel[i])
+
                }
         })
         //头部导航
