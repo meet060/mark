@@ -54,7 +54,8 @@ public interface ResourceRepository extends JpaRepository<Resource, Integer> {
      * @param id
      * @return
      */
-    @Query(value = "SELECT * FROM resource AS r WHERE r.module = 'pressCenter' and r.position = 'news' and r.id < ?1 ORDER BY r.id DESC  LIMIT 0,1",nativeQuery = true)
+    @Query(value = "SELECT * FROM resource AS r WHERE r.module = 'pressCenter' and r.position = 'news' and " +
+            "r.id < ?1 ORDER BY r.id DESC  LIMIT 0,1",nativeQuery = true)
     Resource getsTheLastRecordById(Integer id);
 
     /**
@@ -63,11 +64,12 @@ public interface ResourceRepository extends JpaRepository<Resource, Integer> {
      * @param id
      * @return
      */
-    @Query(value = "SELECT * FROM resource AS r WHERE r.module = 'pressCenter' and r.position = 'news' and r.id > ?1 ORDER BY r.id LIMIT 0,1",nativeQuery = true)
+    @Query(value = "SELECT * FROM resource AS r WHERE r.module = 'pressCenter' and r.position = 'news' and " +
+            "r.id > ?1 ORDER BY r.id LIMIT 0,1",nativeQuery = true)
     Resource getsTheNextRecordById(Integer id);
 
 
-	Page<Resource> findByModuleOrModuleAndPositionNotNullAndUrlNotNull(String string, String string2,
+	Page<Resource> findByModuleOrModuleAndPositionNotNullAndUrlCnNotNull(String string, String string2,
 			Pageable pageable);
 
 }

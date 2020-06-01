@@ -28,10 +28,16 @@ public class Resource {
 	private String module;
 
 	/**
-	 * 路径
+	 * 中文图片
 	 */
 	@Column
-	private String url;
+	private String urlCn;
+
+	/**
+	 * 英文图片
+	 */
+	@Column
+	private String urlEn;
 
 	/**
 	 * 位置 轮播。
@@ -86,12 +92,18 @@ public class Resource {
 		this.id = id;
 	}
 
-	public String getUrl() {
-		return CustomizedPropertyConfigurer.getContextProperty("package.storageUrl") + url;
+	public String getUrlCn() {
+		return CustomizedPropertyConfigurer.getContextProperty("package.storageUrl") + urlCn;
+	}
+	public String getUrlEn() {
+		return CustomizedPropertyConfigurer.getContextProperty("package.storageUrl") + urlEn;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
+	public void setUrlCn(String url) {
+		this.urlCn = urlCn;
+	}
+	public void setUrlEn(String urlEn) {
+		this.urlEn = urlEn;
 	}
 
 	public String getDescriptionCn() {

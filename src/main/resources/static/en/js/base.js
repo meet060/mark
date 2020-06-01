@@ -29,7 +29,7 @@ $(function(){
         for( var i=0;i<5;i++ ){
                 var _i = i+1
                 _g_waidai.find("a").eq(i).find("img").attr({
-                    "src":api_url+arrProduct.innerBag[i].ndpic,
+                    "src":api_url+arrProduct.innerBag[i].ndpicEn,
                     "alt":arrProduct.innerBag[i].ndtitleEn
                 })
                 _g_waidai.find("a").eq(i).find("strong").html(arrProduct.innerBag[i].ndtitleEn)

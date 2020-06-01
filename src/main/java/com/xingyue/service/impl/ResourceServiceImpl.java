@@ -57,7 +57,8 @@ public class ResourceServiceImpl implements ResourceService {
             } catch (Exception e) {
                 return false;
             }
-            Resource.get().setUrl(newfilename);
+            Resource.get().setUrlCn(newfilename);
+            Resource.get().setUrlEn(newfilename);
             resourceRepository.save(Resource.get());
             return true;
         }
@@ -83,7 +84,8 @@ public class ResourceServiceImpl implements ResourceService {
             File newFile = new File(storagePath, newfilename);
             file.transferTo(newFile);
             Resource resource = new Resource();
-            resource.setUrl(newfilename);
+            resource.setUrlCn(newfilename);
+            resource.setUrlEn(newfilename);
             resource.setDescriptionEn(res.getDescriptionEn());
             resource.setDescriptionCn(res.getDescriptionCn());
             resource.setModule(res.getModule());
@@ -141,7 +143,8 @@ public class ResourceServiceImpl implements ResourceService {
         List<Resource> content = resourcePage.getContent();
         for (Resource r : content) {
             Map<String, Object> map1 = new HashMap<>(6);
-            map1.put("titleurl", r.getUrl());
+            map1.put("titleurl", r.getUrlCn());
+            map1.put("titleurlEn", r.getUrlEn());
             map1.put("title", r.getTitleCn());
             map1.put("titleEn", r.getTitleEn());
             map1.put("description", r.getDescriptionCn());
@@ -155,7 +158,8 @@ public class ResourceServiceImpl implements ResourceService {
         List<Object> r = new ArrayList<>();
         for (Resource p : neidais) {
             HashMap<String, Object> m = new HashMap<>();
-            m.put("titleurl", p.getUrl());
+            m.put("titleurl", p.getUrlCn());
+            m.put("titleurlEn", p.getUrlEn());
             m.put("title", p.getTitleCn());
             m.put("titleEn", p.getTitleEn());
             m.put("description", p.getDescriptionCn());
@@ -168,7 +172,8 @@ public class ResourceServiceImpl implements ResourceService {
         List<Object> waidai = new ArrayList<>();
         for (Resource p : waidais) {
             HashMap<String, Object> m = new HashMap<>();
-            m.put("titleurl", p.getUrl());
+            m.put("titleurl", p.getUrlCn());
+            m.put("titleurlEn", p.getUrlEn());
             m.put("title", p.getTitleCn());
             m.put("titleEn", p.getTitleEn());
             m.put("description", p.getDescriptionCn());
@@ -181,8 +186,10 @@ public class ResourceServiceImpl implements ResourceService {
         // 关于我们：
         Resource abouts = filterResource(resources, "about", 1).get(0);
         HashMap<String, Object> m = new HashMap<>();
-        m.put("titleurl", abouts.getUrl());
-        m.put("video", abouts.getUrl());
+        m.put("titleurl", abouts.getUrlCn());
+        m.put("titleurlEn", abouts.getUrlEn());
+        m.put("video", abouts.getUrlCn());
+        m.put("videoEn", abouts.getUrlEn());
         m.put("description", abouts.getDescriptionCn());
         m.put("descriptionEn", abouts.getDescriptionEn());
         m.put("title", abouts.getTitleCn());
@@ -196,8 +203,8 @@ public class ResourceServiceImpl implements ResourceService {
             HashMap<String, Object> m1 = new HashMap<>();
             m1.put("titleEn", innovation.getTitleEn());
             m1.put("title", innovation.getTitleCn());
-            m1.put("titleurl", innovation.getUrl());
-            m1.put("titlepic", innovation.getUrl());
+            m1.put("titleurl", innovation.getUrlCn());
+            m1.put("titlepicEn", innovation.getUrlEn());
             l1.add(m1);
         }
         HashMap<String, Object> m2 = new HashMap<>(5);
@@ -218,8 +225,10 @@ public class ResourceServiceImpl implements ResourceService {
             HashMap<String, Object> m1 = new HashMap<>();
             m1.put("titleEn", program.getTitleEn());
             m1.put("title", program.getTitleCn());
-            m1.put("titleurl", program.getUrl());
-            m1.put("titlepic", program.getUrl());
+            m1.put("titleurl", program.getUrlCn());
+            m1.put("titleurlEn", program.getUrlEn());
+            m1.put("titlepic", program.getUrlCn());
+            m1.put("titlepicEn", program.getUrlEn());
             l2.add(m1);
         }
         HashMap<String, Object> m3 = new HashMap<>();
@@ -233,7 +242,8 @@ public class ResourceServiceImpl implements ResourceService {
         HashMap<String, Object> m4 = new HashMap<>();
         m4.put("titleEn", link.getTitleEn());
         m4.put("title", link.getTitleCn());
-        m4.put("titleurl", link.getUrl());
+        m4.put("titleurl", link.getUrlCn());
+        m4.put("titleurlEn", link.getUrlEn());
         map.put("link", m4);
         return map;
     }
@@ -258,7 +268,8 @@ public class ResourceServiceImpl implements ResourceService {
             m1.put("title", r.getTitleCn());
             m1.put("descriptionEn", r.getDescriptionEn());
             m1.put("description", r.getDescriptionCn());
-            m1.put("titlepic", r.getUrl());
+            m1.put("titlepic", r.getUrlCn());
+            m1.put("titlepicEn", r.getUrlEn());
             bannerList.add(m1);
         }
 
@@ -269,7 +280,8 @@ public class ResourceServiceImpl implements ResourceService {
             map1.put("introtitle" + i, r.getTitleCn());
             map1.put("introDescriptionEn" + i, r.getDescriptionEn());
             map1.put("introDescription" + i, r.getDescriptionCn());
-            map1.put("introduce" + i, r.getUrl());
+            map1.put("introduce" + i, r.getUrlCn());
+            map1.put("introduceEn" + i, r.getUrlEn());
             map.put("info" + i, map1);
         }
         m.put("banner",bannerList);
@@ -291,7 +303,8 @@ public class ResourceServiceImpl implements ResourceService {
             Map<String, Object> map = new HashMap<>(16);
             map.put("titleEn", r.getTitleEn());
             map.put("title", r.getTitleCn());
-            map.put("titlepic", r.getUrl());
+            map.put("titlepic", r.getUrlCn());
+            map.put("titlepicEn", r.getUrlEn());
             list.add(map);
         }
         m.put("recognized", list);
@@ -324,7 +337,8 @@ public class ResourceServiceImpl implements ResourceService {
                     m1.put("title", r.getTitleCn());
                     m1.put("descriptionEn", r.getDescriptionEn());
                     m1.put("description", r.getDescriptionCn());
-                    m1.put("titlepic", r.getUrl());
+                    m1.put("titlepic", r.getUrlCn());
+                    m1.put("titlepicEn", r.getUrlEn());
                     bannerList.add(m1);
                     break;
                 // 外袋系列
@@ -334,7 +348,8 @@ public class ResourceServiceImpl implements ResourceService {
                     m2.put("wdtitle", r.getTitleCn());
                     m2.put("wddescriptionEn", r.getDescriptionEn());
                     m2.put("wddescription", r.getDescriptionCn());
-                    m2.put("wdpic", r.getUrl());
+                    m2.put("wdpic", r.getUrlCn());
+                    m2.put("wdpicEn", r.getUrlEn());
                     outerBagList.add(m2);
                     break;
                 // 外袋系列标题
@@ -353,7 +368,8 @@ public class ResourceServiceImpl implements ResourceService {
                     m3.put("ndtitle", r.getTitleCn());
                     m3.put("nddescriptionEn", r.getDescriptionEn());
                     m3.put("nddescription", r.getDescriptionCn());
-                    m3.put("ndpic", r.getUrl());
+                    m3.put("ndpic", r.getUrlCn());
+                    m3.put("ndpicEn", r.getUrlEn());
                     innerBagList.add(m3);
                     break;
                 // 内袋系列
@@ -371,7 +387,8 @@ public class ResourceServiceImpl implements ResourceService {
                     m.put("jzdtitle", r.getTitleCn());
                     m.put("jzddescriptionEn", r.getDescriptionEn());
                     m.put("jzddescription", r.getDescriptionCn());
-                    m.put("jzddpic", r.getUrl());
+                    m.put("jzddpic", r.getUrlCn());
+                    m.put("jzddpicEn", r.getUrlEn());
                     break;
                 //生产流程
                 case "workFlow":
@@ -380,7 +397,8 @@ public class ResourceServiceImpl implements ResourceService {
                     m4.put("title", r.getTitleCn());
                     m4.put("descriptionEn", r.getDescriptionEn());
                     m4.put("description", r.getDescriptionCn());
-                    m4.put("titlepic", r.getUrl());
+                    m4.put("titlepic", r.getUrlCn());
+                    m4.put("titlepicEn", r.getUrlEn());
                     flexibleFreightBagsList.add(m4);
                     break;
                 // 覆盖全行业的定制包装解决方案
@@ -395,7 +413,8 @@ public class ResourceServiceImpl implements ResourceService {
                     Map<String, Object> m5 = new HashMap<>(3);
                     m5.put("titleEn", r.getTitleEn());
                     m5.put("title", r.getTitleCn());
-                    m5.put("titlepic", r.getUrl());
+                    m5.put("titlepic", r.getUrlCn());
+                    m5.put("titlepicEn", r.getUrlEn());
                     schemeList.add(m5);
                     break;
                 // 质控流程
@@ -412,7 +431,8 @@ public class ResourceServiceImpl implements ResourceService {
                     m6.put("title", r.getTitleCn());
                     m6.put("descriptionEn", r.getDescriptionEn());
                     m6.put("description", r.getDescriptionCn());
-                    m6.put("titlepic", r.getUrl());
+                    m6.put("titlepic", r.getUrlCn());
+                    m6.put("titlepicEn", r.getUrlEn());
                     flowList.add(m6);
                     break;
                 default:
@@ -459,7 +479,8 @@ public class ResourceServiceImpl implements ResourceService {
                     m1.put("title", r.getTitleCn());
                     m1.put("descriptionEn", r.getDescriptionEn());
                     m1.put("description", r.getDescriptionCn());
-                    m1.put("titlepic", r.getUrl());
+                    m1.put("titlepic", r.getUrlCn());
+                    m1.put("titlepicEn", r.getUrlEn());
                     bannerList.add(m1);
                     break;
                 // 技术
@@ -468,7 +489,8 @@ public class ResourceServiceImpl implements ResourceService {
                     techniqueMap.put("jstitle" + j, r.getTitleCn());
                     techniqueMap.put("jsdescriptionEn" + j, r.getDescriptionEn());
                     techniqueMap.put("jsdescription" + j, r.getDescriptionCn());
-                    techniqueMap.put("jspic" + j, r.getUrl());
+                    techniqueMap.put("jspic" + j, r.getUrlCn());
+                    techniqueMap.put("jspicEn" + j, r.getUrlEn());
                     j++;
                     break;
                 // 设备实力
@@ -484,7 +506,8 @@ public class ResourceServiceImpl implements ResourceService {
                     deviceMap.put("jstitle" + i, r.getTitleCn());
                     deviceMap.put("jsdescriptionEn" + i, r.getDescriptionEn());
                     deviceMap.put("jsdescription" + i, r.getDescriptionCn());
-                    deviceMap.put("jspic" + i, r.getUrl());
+                    deviceMap.put("jspic" + i, r.getUrlCn());
+                    deviceMap.put("jspicEn" + i, r.getUrlEn());
                     i++;
                     break;
                 default:
@@ -515,7 +538,8 @@ public class ResourceServiceImpl implements ResourceService {
             m1.put("title",r.getTitleCn());
             m1.put("descriptionEn", r.getDescriptionEn());
             m1.put("description", r.getDescriptionCn());
-            m1.put("titlepic", r.getUrl());
+            m1.put("titlepic", r.getUrlCn());
+            m1.put("titlepicEn", r.getUrlEn());
             bannerList.add(m1);
         }
         // news 新闻
@@ -528,7 +552,8 @@ public class ResourceServiceImpl implements ResourceService {
             newsMap.put("id", r.getId());
             newsMap.put("titleEn", r.getTitleEn());
             newsMap.put("title", r.getTitleCn());
-            newsMap.put("url", r.getUrl());
+            newsMap.put("url", r.getUrlCn());
+            newsMap.put("urlEn", r.getUrlEn());
             newsMap.put("newtime", r.getCreatTime());
             resourceList.add(newsMap);
         }
@@ -564,7 +589,8 @@ public class ResourceServiceImpl implements ResourceService {
                     m1.put("title", r.getTitleCn());
                     m1.put("descriptionEn", r.getDescriptionEn());
                     m1.put("description", r.getDescriptionCn());
-                    m1.put("titlepic", r.getUrl());
+                    m1.put("titlepic", r.getUrlCn());
+                    m1.put("titlepicEn", r.getUrlEn());
                     bannerList.add(m1);
                     break;
                 //底下位置
@@ -573,7 +599,8 @@ public class ResourceServiceImpl implements ResourceService {
                     bottomMap.put("title", r.getTitleCn());
                     bottomMap.put("descriptionEn", r.getDescriptionEn());
                     bottomMap.put("description", r.getDescriptionCn());
-                    bottomMap.put("titlepic", r.getUrl());
+                    bottomMap.put("titlepic", r.getUrlCn());
+                    bottomMap.put("titlepicEn", r.getUrlEn());
                     break;
                 default:
                     log.info("获取联系我们信息>>>没有匹配的数据<<<");
@@ -620,7 +647,8 @@ public class ResourceServiceImpl implements ResourceService {
             File newFile = new File(storagePath, newfilename);
 
             resource.getFile().transferTo(newFile);
-            resource.setUrl(newfilename);
+            resource.setUrlEn(newfilename);
+            resource.setUrlCn(newfilename);
             resourceRepository.save(resource);
             return true;
         } catch (Exception e) {
@@ -643,7 +671,8 @@ public class ResourceServiceImpl implements ResourceService {
             map.put("date", resource.get().getCreatTime());
             map.put("descriptionEn", resource.get().getDescriptionEn());
             map.put("description", resource.get().getDescriptionCn());
-            map.put("url", resource.get().getUrl());
+            map.put("url", resource.get().getUrlCn());
+            map.put("urlEn", resource.get().getUrlEn());
             map.put("id", resource.get().getId());
             if (null != resource1) {
                 map.put("previousPageId", resource1.getId());
@@ -673,7 +702,8 @@ public class ResourceServiceImpl implements ResourceService {
 		 Map<String, Object> map = new HashMap<>(4);
 	        Sort sort = JpaSort.unsafe(Sort.Direction.ASC, "number");
 	        Pageable pageable = PageRequest.of(page - 1, size, sort);
-	        Page<Resource> resources = resourceRepository.findByModuleOrModuleAndPositionNotNullAndUrlNotNull("AboutZR", "productCenter", pageable);
+	        Page<Resource> resources = resourceRepository.findByModuleOrModuleAndPositionNotNullAndUrlCnNotNull(
+	                "AboutZR", "productCenter", pageable);
 	        // 有多少页
 	        int totalPages = resources.getTotalPages();
 	        // 总条数
