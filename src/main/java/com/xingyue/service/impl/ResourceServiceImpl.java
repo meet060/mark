@@ -204,6 +204,8 @@ public class ResourceServiceImpl implements ResourceService {
             m1.put("titleEn", innovation.getTitleEn());
             m1.put("title", innovation.getTitleCn());
             m1.put("titleurl", innovation.getUrlCn());
+            m1.put("titleurlEn", innovation.getUrlCn());
+            m1.put("titlepic", innovation.getUrlCn());
             m1.put("titlepicEn", innovation.getUrlEn());
             l1.add(m1);
         }
