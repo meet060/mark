@@ -11,9 +11,9 @@ var jiekou = {
     "liuyan_api":api_url+'/api/afterSale/addAfterSale'//留言POST
 }
 var index_url = ["hdzrsl.com","hdzrsl.cn","hbzrbz.com","hbzrbz.cn"]
-var index_lxr_txt = ['韩亚洲','张银龙','秦向前','李全星']
-var index_lxr = ['韩亚洲 15028453452','张银龙 15031014004','秦向前  13931059103','李全星 15231029903']
-var index_tel = ['15028453452','15031014004','13931059103','15231029903']
+var index_lxr_txt = ['韩亚洲','张燕','秦向前','李全星']
+var index_lxr = ['韩亚洲 15028453452','张燕 18830093666','秦向前  13931059103','李全星 15231029903']
+var index_tel = ['15028453452','18830093666','13931059103','15231029903']
 var _index_url = window.location.href
 
 //首页联系我们
