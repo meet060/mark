@@ -87,4 +87,8 @@ public interface ResourceService {
 	Map<String, Object> findNewsById(Integer id);
 
 	Map<String, Object> queryResourcesByIndexAndAbout(int page, int size);
+
+	Resource findOne(Integer id);
+
+	Resource updateResources(Resource resource, MultipartFile file1, MultipartFile file2);
 }

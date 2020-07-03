@@ -1,6 +1,7 @@
 package com.xingyue.service.impl;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -716,5 +717,65 @@ public class ResourceServiceImpl implements ResourceService {
 	        map.put("totalPages", totalPages);
 	        map.put("totalElements", totalElements);
 	        return map;
+	}
+
+	@Override
+	public Resource findOne(Integer id) {
+		Optional<Resource> res = resourceRepository.findById(id);
+		if(res.isPresent()) {
+			return res.get();
+		}
+		return null;
+	}
+
+	@Override
+	public Resource updateResources(Resource r, MultipartFile file1, MultipartFile file2) {
+		Resource resource = resourceRepository.findById(r.getId()).get();
+		if (resource != null && file1 != null) {
+			String urlCn = uploud(file1);
+			resource.setUrlCn(urlCn);
+		}
+		if (resource != null && file2 != null) {
+			String urlEn = uploud(file2);
+			resource.setUrlEn(urlEn);
+		}
+		resource.setId(r.getId());
+		if (r.getTitleCn() != null) {
+			resource.setTitleCn(r.getTitleCn());
+		}
+		System.out.println(r.getTitleEn());
+		if (r.getTitleEn() != null) {
+			resource.setTitleEn(r.getTitleEn());
+		}
+		if (r.getDescriptionCn() != null) {
+			resource.setDescriptionCn(r.getDescriptionCn());
+		}
+		if (r.getDescriptionEn() != null) {
+			resource.setDescriptionEn(r.getDescriptionEn());
+		}
+		return resourceRepository.save(resource);
+	}
+	
+	public String uploud(MultipartFile file) {
+		File f = new File(storagePath);
+        if (!f.exists()) {
+            f.mkdirs();
+        }
+        String fileName = file.getOriginalFilename();
+        UUID uid = UUID.randomUUID();
+        String uuid = uid.toString().substring(1, 16);
+        String prefix = fileName.substring(fileName.lastIndexOf(".") + 1);
+        String newfilename = uuid + "." + prefix;
+        File newFile = new File(storagePath, newfilename);
+        try {
+			file.transferTo(newFile);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return newfilename;
 	}
 }

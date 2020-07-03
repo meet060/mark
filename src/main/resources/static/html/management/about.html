@@ -42,27 +42,28 @@
 		<div class="c-panel">
 			<!-- 参数栏 -->
 			<div class="c-title">数据列表</div>
-			<div style="float: right;">
-				<form id="form" content="multipart/form-data">
-					<input type="file" name="file" id="file">
-				</form>
-			</div>
 			<el-table :data="dataList" size="mini"> <el-table-column
 				label="编号" prop="id" width="70px"></el-table-column> <el-table-column
 				label="标题"> <template slot-scope="s">
-			{{s.row.title}} </template> </el-table-column> <el-table-column label="描述"> <template
-				slot-scope="s"> {{s.row.description}} </template> </el-table-column> <el-table-column
+			{{s.row.titleCn}} </template> </el-table-column> <el-table-column label="描述"> <template
+				slot-scope="s"> {{s.row.descriptionCn}} </template> </el-table-column> 
+				<el-table-column
 				label="图片" prop="module" width="200px"> <template
 				slot-scope="s">
 			<div style="width: 180px; height: 80px;">
 				<img :src="url + s.row.urlCn" :id="s.row.id"
 					style="width: 100%; height: 100%" @click="get(s.row)">
 			</div>
-			</template> </el-table-column> <el-table-column prop="address" label="操作"> <template
-				slot-scope="s"> <el-button class="c-btn" type="success"
-				icon="el-icon-view" @click="get(s.row)"> 详情 </el-button> <el-button
-				class="c-btn" type="danger" icon="el-icon-delete"
-				@click="put(s.row)"> 修改图片 </el-button> </template> </el-table-column> </el-table>
+			</template> 
+			</el-table-column> 
+			<el-table-column prop="address" label="操作"> 
+			<template slot-scope="s"> 
+				<el-button class="c-btn" type="success"icon="el-icon-view" @click="get(s.row)"> 详情 </el-button>
+				<el-button class="c-btn" type="danger" icon="el-icon-delete"@click="func(s.row.id)"> 修改</el-button> </template> 
+			</el-table-column> 
+				
+		</el-table>
+				
 			<!-- 分页 -->
 			<div class="page-box">
 				<el-pagination background
@@ -95,7 +96,7 @@
 						},
 						dataCount : 1,
 						dataList : [],
-						url : ''
+						url : '127.0.0.1:9000'
 					},
 					methods : {
 						// 数据刷新
@@ -173,7 +174,10 @@
 									});
 								}
 							});
-						}
+						},
+						func (id){
+							window.location.href="update_detial.html?id="+id;
+			            }
 					},
 					created : function() {
 						this.f5();
