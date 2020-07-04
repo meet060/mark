@@ -579,7 +579,7 @@ public class ResourceServiceImpl implements ResourceService {
     public Map<String, Object> getTheContactInformation() {
         Map<String, Object> m = new HashMap<>(16);
         Map<String, Object> bottomMap = new HashMap<>(4);
-        Map<String, Object> contancUsMap = new HashMap<>(4);
+        Map<String, Object> contancUsMap = new HashMap<>(16);
         List<Resource> resourceList = resourceRepository.queryByModule("contactUs");
         List<ContactUs> contactUsList = contactUsRepository.findAll();
         List bannerList = new ArrayList<>();
@@ -614,10 +614,18 @@ public class ResourceServiceImpl implements ResourceService {
             contancUsMap.put("enCompany", contactUsList.get(0).getCompanyEn());
             contancUsMap.put("address", contactUsList.get(0).getAddressCn());
             contancUsMap.put("enAddress", contactUsList.get(0).getAddressEn());
-            contancUsMap.put("phone", contactUsList.get(0).getPhone());
-            contancUsMap.put("cellPhone", contactUsList.get(0).getCellPhone());
-            contancUsMap.put("fax", contactUsList.get(0).getFax());
-            contancUsMap.put("mailbox", contactUsList.get(0).getMailbox());
+            contancUsMap.put("phone", contactUsList.get(0).getPhoneCn());
+            contancUsMap.put("phoneEn", contactUsList.get(0).getPhoneEn());
+            contancUsMap.put("cellPhone", contactUsList.get(0).getCellPhoneCn());
+            contancUsMap.put("cellPhoneEn", contactUsList.get(0).getCellPhoneEn());
+            contancUsMap.put("fax", contactUsList.get(0).getFaxCn());
+            contancUsMap.put("faxEn", contactUsList.get(0).getFaxEn());
+            contancUsMap.put("mailbox", contactUsList.get(0).getMailboxCn());
+            contancUsMap.put("mailboxEn", contactUsList.get(0).getMailboxEn());
+            contancUsMap.put("url", contactUsList.get(0).getUrlCn());
+            contancUsMap.put("urlEn", contactUsList.get(0).getUrlEn());
+            contancUsMap.put("weChatUrl", contactUsList.get(0).getWeChatUrlCn());
+            contancUsMap.put("weChatUrlEn", contactUsList.get(0).getWeChatUrlEn());
         }
         m.put("contact", contancUsMap);
         m.put("banner", bannerList);
