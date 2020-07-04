@@ -11,9 +11,9 @@ var jiekou = {
     "liuyan_api":api_url+'/api/afterSale/addAfterSale'//留言POST
 }
 var index_url = ["hdzrsl.com","hdzrsl.cn","hbzrbz.com","hbzrbz.cn"]
-var index_lxr_txt = ['韩亚洲','张燕','秦向前','李全星']
-var index_lxr = ['韩亚洲 15028453452','张燕 18830093666','秦向前  13931059103','李全星 15231029903']
-var index_tel = ['15028453452','18830093666','13931059103','15231029903']
+var index_lxr_txt = ['韩亚洲','赵艳超','秦向前','李全星']
+var index_lxr = ['韩亚洲 15028453452','赵艳超 18830092666','秦向前  13931059103','李全星 15231029903']
+var index_tel = ['15028453452','18830092666','13931059103','15231029903']
 var _index_url = window.location.href
 
 //首页联系我们
@@ -831,17 +831,17 @@ titleEn: "Reinforcement inner bag container bag",
         protxt2En: "This product is mainly designed to solve a series of problems such as leakage, wet agglomeration, etc., and considering that the length and width are not large enough to be transported on the truck side by side, adding tie bars to solve the expansion problem, consider When the loading material of the customer has poor fluidity, we recommend the use of mesh ribs as corner ribs to avoid the difficulty of materials entering the corner ribs, and aluminum film can be designated as the raw material of the inner bag and according to type B anti-static, The same bag type of C-type anti-static and D-type anti-static standards has solved all of the above problems. Let customers install it arbitrarily and use it without worry. "
     },
     "pro_8":{
-        title:"TYPE-A透气集装袋/吨袋/吨包/吨包袋 不具备防静电功能",
-        banner_txt:"TYPE-A透气集装袋/吨袋/吨包/吨包袋 符合国家GB/T10454-2000执行标准 及欧洲ISO21898执行标准",
+        title:" 蔬菜透气吨袋/吨袋/吨包/吨包袋 不具备防静电功能",
+        banner_txt:" 蔬菜透气吨袋/吨袋/吨包/吨包袋 符合国家GB/T10454-2000执行标准 及欧洲ISO21898执行标准",
         pro_img:'/images/41.png',
-        titleH:"TYPE-A透气集装袋/吨袋/吨包/吨包袋",
-        titleHp:"TYPE-A透气集装袋/吨袋/吨包/吨包袋 符合国家GB/T10454-2000执行标准 及欧洲ISO21898执行标准",
-        titleH2:"TYPE-A拉筋集装袋<em> /防膨胀集装袋/普通集装袋/不具备防静电功能</em>",
+        titleH:"蔬菜透气吨袋/吨袋/吨包/吨包袋",
+        titleHp:"蔬菜透气吨袋/吨袋/吨包/吨包袋 符合国家GB/T10454-2000执行标准 及欧洲ISO21898执行标准",
+        titleH2:"蔬菜透气吨袋<em> /防膨胀集装袋/普通集装袋/不具备防静电功能</em>",
         aqTxt:"<p>规格：95X95X100cm（尺寸可定制）</p>"+
                 "<p>进料口可定制，出料口可定制。</p>"+
                 "<p>产品适用:用于运输不易燃易爆的物品、并且集装袋周围没有易燃的溶剂或气体，主要用于装载运输马铃薯、红薯、大蒜等农作物。</p>",
         jzTxt:"禁止使用：禁止用于运输易燃易爆物品，禁止在使用环境周围放置易燃易爆的溶剂及气体。",
-        protxt1:"TYPE-A透气集装袋是由普通的聚丙烯材料或者其他非传导性的材料制成的。在填充或清空集装袋时，货物在集装袋内侧的移动将会导致静电的产生。A型集装袋的一个本质缺陷就在于它没有任何机制来耗散静电，因此无法防止高强度的危险的传播型刷形放电PBD的产生。对于这种类型的集装袋，一般在静电防控方面不作要求，所以无需进行静电测试，也没有具体的测试标准，也无需贴分类标签。虽然可以贴上TYPE-A型集装袋的标签，但人们很少这么做。因为如果集装袋上没有贴上如B型，C型或D型之类的标签，那么就可以认定该集装袋为A型。",
+        protxt1:"蔬菜透气吨袋是由普通的聚丙烯材料或者其他非传导性的材料制成的。在填充或清空集装袋时，货物在集装袋内侧的移动将会导致静电的产生。A型集装袋的一个本质缺陷就在于它没有任何机制来耗散静电，因此无法防止高强度的危险的传播型刷形放电PBD的产生。对于这种类型的集装袋，一般在静电防控方面不作要求，所以无需进行静电测试，也没有具体的测试标准，也无需贴分类标签。虽然可以贴上蔬菜透气吨袋的标签，但人们很少这么做。因为如果集装袋上没有贴上如B型，C型或D型之类的标签，那么就可以认定该集装袋为A型。",
         protxt2:"这款产品设计主要考虑透气性能，主要用途是装载及运输蔬菜圆葱、土豆（马铃薯）、红薯、大蒜等农作物，齐特点不会对以上蔬菜造成污染及损害，增加了透气条，能够使蔬菜自由的呼吸，不会把蔬菜捂坏，减少人工搬运造成的人工浪费及蔬菜损坏。降低了灌装的劳动强度。",
 titleEn: "Vegetable Breathable Bag",
         banner_txtEn: "Vegetable breathable bags / anti-expansion container bags / common container bags / without anti-static function conforms to the national GB / T10454-2000 executive standard and the European ISO21898 executive standard",

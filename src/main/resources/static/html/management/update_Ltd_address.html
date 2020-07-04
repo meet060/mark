@@ -54,17 +54,45 @@
 				<el-form-item label="英文公司地址">
 					<el-input v-model="formLabelAlign.addressEn" type="textarea" autosize></el-input>
 				</el-form-item>
-				<el-form-item label="公司电话">
-					<el-input v-model="formLabelAlign.phone" type="textarea" autosize></el-input>
+				<el-form-item label="中文负责人">
+					<el-input v-model="formLabelAlign.nameCn" type="textarea" autosize></el-input>
 				</el-form-item>
-				<el-form-item label="公司手机">
-					<el-input v-model="formLabelAlign.cellPhone" type="textarea" autosize></el-input>
+				<el-form-item label="英文负责人">
+					<el-input v-model="formLabelAlign.nameEn" type="textarea" autosize></el-input>
 				</el-form-item>
-				<el-form-item label="公司传真">
-					<el-input v-model="formLabelAlign.fax" type="textarea" autosize></el-input>
+				<el-form-item label="中文公司手机">
+					<el-input v-model="formLabelAlign.cellPhoneCn" type="textarea" autosize></el-input>
 				</el-form-item>
-				<el-form-item label="公司邮箱">
-					<el-input v-model="formLabelAlign.mailbox" type="textarea" autosize></el-input>
+				<el-form-item label="英文公司手机">
+					<el-input v-model="formLabelAlign.cellPhoneEn" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item label="中文公司传真">
+					<el-input v-model="formLabelAlign.faxCn" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item label="英文公司传真">
+					<el-input v-model="formLabelAlign.faxEn" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item label="中文公司邮箱">
+					<el-input v-model="formLabelAlign.mailboxCn" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item label="英文公司邮箱">
+					<el-input v-model="formLabelAlign.mailboxEn" type="textarea" autosize></el-input>
+				</el-form-item>
+                <el-form-item label="中文微信">
+					<img :src="url + formLabelAlign.urlCn" style="width: 100px; height: 100px;margin-left:36px">
+					<input type="file" id="urlCn" name="urlCn" style="margin-left: 20px;" @change="createFile('urlCn')">
+                </el-form-item>
+				<el-form-item label="英文微信" STYLE="margin-left:600px;margin-top: -137px">
+					<img :src="url + formLabelAlign.urlEn" style="width: 100px; height: 100px;margin-left:36px">
+					<input type="file" id="urlEn" name="urlEn" style="margin-left: 20px;" @change="createFile('urlEn')">
+				</el-form-item>
+				<el-form-item label="中文公众号" STYLE="margin-left:12px;">
+					<img :src="url + formLabelAlign.weChatUrlCn" style="width: 100px; height: 100px;margin-left:23px">
+					<input type="file" id="weChatUrlCn" name="weChatUrlCn" style="margin-left: 20px;" @change="createFile('weChatUrlCn')">
+				</el-form-item>
+				<el-form-item label="英文公众号" STYLE="margin-left:600px;margin-top: -137px">
+					<img :src="url + formLabelAlign.weChatUrlEn" style="width: 100px; height: 100px;margin-left:36px">
+					<input type="file" id="weChatUrlEn" name="weChatUrlEn" style="margin-left: 20px;" @change="createFile('weChatUrlEn')">
 				</el-form-item>
 				<el-form-item>
 					<el-button type="primary" @click="put()">立即修改</el-button>
@@ -74,7 +102,6 @@
 	</div>
 	<script src="../../js/user/data-list.js"></script>
 	<script type="text/javascript">
-		var data = null;
 		var app = new Vue(
 				{
 					el : '.vue-box',
@@ -85,13 +112,24 @@
 							companyCn:'',
 							addressEn:'',
 							addressCn:'',
-							phone:'',
-							cellPhone: '',
-							fax: '',
-							mailbox: ''
+                            nameCn:'',
+                            nameEn:'',
+							phoneCn:'',
+							phoneEn:'',
+							cellPhoneCn: '',
+							cellPhoneEn: '',
+							faxCn: '',
+							faxEn: '',
+							mailboxCn: '',
+							mailboxEn: '',
+                            urlCn:'',
+                            urlEn:'',
+                            weChatUrlCn:'',
+                            weChatUrlEn:''
 						},
 						//表单右对齐
-						labelPosition: 'right'
+						labelPosition: 'right',
+                        url: "/img/"
 					},
 					methods : {
 						// 数据刷新
@@ -108,30 +146,50 @@
 									that.formLabelAlign.companyCn = res[0].companyCn;
 									that.formLabelAlign.addressEn = res[0].addressEn;
 									that.formLabelAlign.addressCn = res[0].addressCn;
-									that.formLabelAlign.phone = res[0].phone;
-									that.formLabelAlign.cellPhone = res[0].cellPhone;
-									that.formLabelAlign.fax = res[0].fax;
-									that.formLabelAlign.mailbox = res[0].mailbox;
+                                    that.formLabelAlign.nameCn = res[0].nameCn;
+                                    that.formLabelAlign.nameEn = res[0].nameEn;
+									that.formLabelAlign.phoneCn = res[0].phoneCn;
+									that.formLabelAlign.phoneEn = res[0].phoneEn;
+									that.formLabelAlign.cellPhoneCn = res[0].cellPhoneCn;
+									that.formLabelAlign.cellPhoneEn = res[0].cellPhoneEn;
+									that.formLabelAlign.faxCn = res[0].faxCn;
+									that.formLabelAlign.faxEn = res[0].faxEn;
+									that.formLabelAlign.mailboxCn = res[0].mailboxCn;
+									that.formLabelAlign.mailboxEn = res[0].mailboxEn;
+									that.formLabelAlign.urlCn = res[0].urlCn;
+									that.formLabelAlign.urlEn = res[0].urlEn;
+									that.formLabelAlign.weChatUrlCn = res[0].weChatUrlCn;
+									that.formLabelAlign.weChatUrlEn = res[0].weChatUrlEn;
 								}
 							})
 						},
-						put : function(data) {
+						put : function() {
 							var than = this;
 							layer.msg('确定要修改吗？', {
 								time : 0, //不自动关闭
 								btn : [ '确定', '我在想想。' ],
 								yes : function(index) {
 									layer.close(index);
-									var formdata = new FormData();
+                                    var formdata = new FormData();
 									formdata.append("id",than.formLabelAlign.id);
 									formdata.append("companyCn",than.formLabelAlign.companyCn);
 									formdata.append("companyEn",than.formLabelAlign.companyEn);
 									formdata.append("addressCn",than.formLabelAlign.addressCn);
 									formdata.append("addressEn",than.formLabelAlign.addressEn);
-									formdata.append("phone",than.formLabelAlign.phone);
-									formdata.append("cellPhone",than.formLabelAlign.cellPhone);
-									formdata.append("fax",than.formLabelAlign.fax);
-									formdata.append("mailbox",than.formLabelAlign.mailbox); 
+                                    formdata.append("nameCn" , than.formLabelAlign.nameCn);
+                                    formdata.append("nameEn" , than.formLabelAlign.nameEn);
+									formdata.append("phoneCn",than.formLabelAlign.phoneCn);
+									formdata.append("phoneEn",than.formLabelAlign.phoneEn);
+									formdata.append("cellPhoneCn",than.formLabelAlign.cellPhoneCn);
+									formdata.append("cellPhoneEn",than.formLabelAlign.cellPhoneEn);
+									formdata.append("faxCn",than.formLabelAlign.faxCn);
+									formdata.append("faxEn",than.formLabelAlign.faxEn);
+									formdata.append("mailboxCn",than.formLabelAlign.mailboxCn);
+									formdata.append("mailboxEn",than.formLabelAlign.mailboxEn);
+                                    formdata.append("urlCn",than.formLabelAlign.urlCn);
+                                    formdata.append("urlEn",than.formLabelAlign.urlEn);
+                                    formdata.append("weChatUrlCn",than.formLabelAlign.weChatUrlCn);
+                                    formdata.append("weChatUrlEn",than.formLabelAlign.weChatUrlEn);
 									$.ajax({
 										type : "POST",
 										url : "/api/contactUs/modifyContactUsForInformation",
@@ -141,19 +199,75 @@
 										success : function(data) {
 											if (data) {
 												sa.ok('修改成功!');
+                                                window.location.reload()
 											} else {
 												sa.error("修改失败,请稍后重试！")
-												//window.location.reload()
-												
 											}
 										}
 									}).done(function() {
-		
 									});
 								}
 							});
-						}
+						},
+						createFile : function(id){
+						    var data_val = this;
+                            var formdata = new FormData();
+                            var fileName =document.getElementById("urlCn").value;
+                            var suffixIndex = fileName.lastIndexOf(".");
+                            var suffix = fileName.substring(suffixIndex+1).toUpperCase();
+                            var fileName1 = document.getElementById("urlEn").value;
+                            var suffixIndex1 = fileName1.lastIndexOf(".");
+                            var suffix1 = fileName1.substring(suffixIndex1+1).toUpperCase();
+                            var fileName2=document.getElementById("weChatUrlCn").value;
+                            var suffixIndex2=fileName2.lastIndexOf(".");
+                            var suffix2=fileName2.substring(suffixIndex2+1).toUpperCase();
+                            var fileName3=document.getElementById("weChatUrlEn").value;
+                            var suffixIndex3=fileName3.lastIndexOf(".");
+                            var suffix3=fileName3.substring(suffixIndex3+1).toUpperCase();
+                            if(suffix!="BMP"&&suffix!="JPG"&&suffix!="JPEG"&&suffix!="PNG"&&suffix!="GIF"&&suffix!="") {
+                                sa.error('请上传图片（格式BMP、JPG、JPEG、PNG、GIF等）!');
+                            }else if(suffix1!="BMP"&&suffix1!="JPG"&&suffix1!="JPEG"&&suffix1!="PNG"&&suffix1!="GIF"&&suffix1!="") {
+                                sa.error('请上传图片（格式BMP、JPG、JPEG、PNG、GIF等）!');
+                            }else if(suffix2!="BMP"&&suffix2!="JPG"&&suffix2!="JPEG"&&suffix2!="PNG"&&suffix2!="GIF"&&suffix2!="") {
+                                sa.error('请上传图片（格式BMP、JPG、JPEG、PNG、GIF等）!');
+                            }else if(suffix3!="BMP"&&suffix3!="JPG"&&suffix3!="JPEG"&&suffix3!="PNG"&&suffix3!="GIF"&&suffix3!="") {
+                                sa.error('请上传图片（格式BMP、JPG、JPEG、PNG、GIF等）!');
+                            }else{
+                                formdata.append("file", $("#"+id)[0].files[0]);
+                                $.ajax({
+                                    type : "POST",
+                                    url : "/api/contactUs/create/file",
+                                    processData : false,
+                                    contentType : false,
+                                    data : formdata,
+                                    success : function(data) {
+                                        switch (id) {
+                                            case "urlCn":
+                                                data_val.formLabelAlign.urlCn = data
+                                                break;
+                                            case "urlEn":
+                                                data_val.formLabelAlign.urlEn = data
+                                                break;
+                                            case "weChatUrlCn":
+                                                data_val.formLabelAlign.weChatUrlCn = data
+                                                break;
+                                            case "weChatUrlEn":
+                                                data_val.formLabelAlign.weChatUrlEn = data
+                                                break;
+                                            default:
+                                                break;
+                                        }}
+                                }).done(function() {
+
+                                });
+							}
+
+                        },
+                        addPic : function() {
+                            console.log("可以进来")
+                        }
 					},
+
 					created : function() {
 						this.f5();
 					}

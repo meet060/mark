@@ -11,9 +11,9 @@ var jiekou = {
     "liuyan_api": api_url + '/api/afterSale/addAfterSale'//留言POST
 }
 var index_url = ["hdzrsl.com", "hdzrsl.cn", "hbzrbz.com", "hbzrbz.cn"]
-var index_lxr_txt = ['Han Yazhou', 'Zhang Yan', 'Qin Xiangqian', 'Li Quanxing']
-var index_lxr = ['Han Yazhou 15028453452', 'Zhang Yan  18830093666', 'Qin Xiangqian  13931059103', 'Li Quanxing 15231029903']
-var index_tel = ['15028453452', '18830093666', '13931059103', '15231029903']
+var index_lxr_txt = ['Han Yazhou', ' Zhao Yanchao', 'Qin Xiangqian', 'Li Quanxing']
+var index_lxr = ['Han Yazhou 15028453452', 'Zhao Yanchao  18830092666', 'Qin Xiangqian  13931059103', 'Li Quanxing 15231029903']
+var index_tel = ['15028453452', '18830092666', '13931059103', '15231029903']
 var _index_url = window.location.href
 
 //产品数据

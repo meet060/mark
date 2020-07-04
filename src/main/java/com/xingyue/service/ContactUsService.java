@@ -1,7 +1,9 @@
 package com.xingyue.service;
 
 import com.xingyue.pojo.ContactUs;
+import com.xingyue.pojo.Resource;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -38,4 +40,14 @@ public interface ContactUsService {
      * @return
      */
     Boolean deleteContactUsForInformation(ContactUs contactUs);
+
+    /**
+     * 上传图片
+     *
+     * @param file     图片地址
+     * @return
+     * @throws Exception
+     */
+    String createFile(MultipartFile file);
+
 }
