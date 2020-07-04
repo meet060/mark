@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>修改公司地址</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<!-- 所有的 css & js 资源 -->
+<link rel="stylesheet"
+	href="https://unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="../../css/admin/sa.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script src="../../js/vue.min.js"></script>
+<!--	<script src="../../js/list.js"></script>-->
+<script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
+<script src="../../js/jquery.min.js"></script>
+<script src="https://www.layuicdn.com/layer-v3.1.1/layer.js"></script>
+<script src="../../js/sa.js"></script>
+<script src="../../js/layer.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<meta http-equiv="Content-Type"
+	content="multipart/form-data; charset=utf-8" />
+<style>
+	.time {
+		font-size: 13px;
+		color: #999;
+	}
+	
+	.bottom {
+		margin-top: 13px;
+		line-height: 12px;
+	}
+
+	.button {
+		padding: 0;
+		float: right;
+	}
+
+	.image {
+		width: 100%;
+		display: block;
+	}
+
+	.clearfix:before,
+	.clearfix:after {
+			display: table;
+			content: "";
+	}
+	
+	.clearfix:after {
+			clear: both
+	}
+	
+	.btn {
+		display:block;
+		margin:0 auto;
+	}
+</style>
+
+</head>
+
+<body>
+	<!-- 防止margin向下击穿 -->
+	<div style="margin-top: -1em;">
+		<br>
+	</div>
+	<div class="vue-box" style="display: none;" :style="'display: block;'"id="test">
+		<div class="c-panel">
+			<div class="c-title">数据列表</div>
+			<el-form :label-position="labelPosition" label-width="120px" :model="formLabelAlign" id ="form">
+					<el-input type="hidden" v-model="formLabelAlign.id"></el-input>
+				<el-form-item label="中文标题" >
+					<el-input v-model="formLabelAlign.titleCn" type="textarea" autosize  @input="onInput()"></el-input>
+				</el-form-item>
+				<el-form-item label="英文标题">
+					<el-input v-model="formLabelAlign.titleEn" type="textarea" autosize @input="onInput()"></el-input>
+				</el-form-item>
+				<el-form-item label="中文详情">
+					<el-input v-model="formLabelAlign.descriptionCn" type="textarea" autosize @input="onInput()"></el-input>
+				</el-form-item>
+				<el-form-item label="英文详情">
+					<el-input v-model="formLabelAlign.descriptionEn" type="textarea" autosize @input="onInput()"></el-input>
+				</el-form-item>
+				<el-table-column label="图片" prop="module" width="200px"> 
+				</template>
+				<el-form-item label="中文图片">
+					<input type="file" id="img1" name="urlCn"> <span>选择文件进行修改(不选择默认不修改)</span><br/>
+					<!-- <el-upload
+						type="file"
+						class="upload-demo"
+						name="formLabelAlign.urlCn"
+						ref="upload"
+						action="https://jsonplaceholder.typicode.com/posts/"
+						:on-preview="handlePreview"
+						:on-remove="handleRemove"
+						:file-list="fileList"
+						:auto-upload="false">
+						
+						<el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+						<el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+						<div slot="tip" class="el-upload__tip">只能上传jpg/png等图片文件</div>
+					</el-upload> -->
+					<img :src="formLabelAlign.urlCn" style="width: 800px;hight:600px; ">
+				</el-form-item>
+				<el-form-item label="英文图片">
+					<!-- <el-upload
+						type="file"
+						class="upload-demo"
+						name="formLabelAlign.urlEn"
+						ref="upload"
+						:on-preview="handlePreview"
+						:on-remove="handleRemove"
+						:file-list="fileList2"
+						:auto-upload="false">
+						<el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+						<el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+						<div slot="tip" class="el-upload__tip">只能上传jpg/png等图片文件</div>
+					</el-upload> -->
+					<input type="file" id="img2" name="urlEn"> <span>选择文件进行修改(不选择默认不修改)</span><br/>
+					<img :src="formLabelAlign.urlEn" style="width: 800px;hight:600px;" alt="暂无图片">
+				</el-form-item>
+				</el-table-column>
+				<el-form-item>
+					<el-button class="btn" type="primary" @click="put()">立即修改</el-button>
+				</el-form-item>
+			</el-form>
+		</div>
+	</div>
+	<script src="../../js/user/data-list.js"></script>
+	<script type="text/javascript">
+		var data = null;
+		var app = new Vue(
+				{
+					el : '.vue-box',
+					data : {
+						currentDate: new Date(),
+						fileList: "",
+						fileList2: "",
+						formLabelAlign: {
+							id:'',
+							companyEn:'',
+							companyCn:'',
+							addressEn:'',
+							addressCn:'',
+							phone:'',
+							cellPhone: '',
+							fax: '',
+							mailbox: '',
+							urlCn:'',
+							urlEn:''
+						},
+						//表单右对齐
+						labelPosition: 'right'
+					},
+					methods : {
+						// 数据刷新
+						f5 : function() {
+							var url = location.search; //获取url中"?"符后的字串 ('?modFlag=business&role=1')	
+							var theRequest = new Object();	
+							if ( url.indexOf( "?" ) != -1 ) {
+								var str = url.substr( 1 ); //substr()方法返回从参数值开始到结束的字符串；	
+								var strs = str.split( "&" );	
+								for ( var i = 0; i < strs.length; i++ ) {	
+									theRequest[ strs[ i ].split( "=" )[ 0 ] ] = ( strs[ i ].split( "=" )[ 1 ] );	
+								}
+							}
+							var id = theRequest.id;
+							var that = this;
+							$.ajax({
+								type : "GET",
+								url : "/api/resource/detail/"+id,
+								dataType : "json",
+								async : false,
+								success : function(res) {
+									console.log(res)
+									that.formLabelAlign.id = res.id;
+									that.formLabelAlign.titleEn = res.titleEn;
+									that.formLabelAlign.titleCn = res.titleCn;
+									that.formLabelAlign.descriptionEn = res.descriptionEn;
+									that.formLabelAlign.descriptionCn = res.descriptionCn;
+									that.formLabelAlign.urlCn = res.urlCn;
+									that.formLabelAlign.urlEn = res.urlEn;
+									
+									let list = [];
+									let list2 = [];
+									let obj1 = {name:"中文图片",url:res.urlEn};
+									let obj2 = {name:"英文图片",url:res.urlCn};
+									list.push(obj1);
+									list2.push(obj2);
+									that.fileList = list;
+									that.fileList2 = list2;
+									/* that.formLabelAlign.addressEn = res[0].addressEn;
+									that.formLabelAlign.addressCn = res[0].addressCn;
+									that.formLabelAlign.phone = res[0].phone;
+									that.formLabelAlign.cellPhone = res[0].cellPhone;
+									that.formLabelAlign.fax = res[0].fax;
+									that.formLabelAlign.mailbox = res[0].mailbox; */
+								}
+							})
+						},
+						put : function(data) {
+							var than = this;
+							layer.msg('确定要修改吗？', {
+								time : 0, //不自动关闭
+								btn : [ '确定', '我在想想。' ],
+								yes : function(index) {
+									var fileObj = document.getElementById("img1").files[0]; // js 获取文件对象
+									var fileObj2 = document.getElementById("img2").files[0]; // js 获取文件对象
+									var formdata = new FormData();
+									formdata.append("id",than.formLabelAlign.id);
+									if (than.formLabelAlign.titleCn != null){
+										formdata.append("titleCn", than.formLabelAlign.titleCn);
+									}
+									if (than.formLabelAlign.titleEn != null){
+										formdata.append("titleEn", than.formLabelAlign.titleEn);
+									}
+									if (than.formLabelAlign.descriptionCn != null){
+										formdata.append("descriptionCn", than.formLabelAlign.descriptionCn);
+									}
+									if (than.formLabelAlign.descriptionEn != null){
+										formdata.append("descriptionEn", than.formLabelAlign.descriptionEn);
+									}
+									
+									formdata.append("file1", fileObj);
+									formdata.append("file2", fileObj2);
+									$.ajax({
+										type : "POST",
+										url : "/api/resource/update/resources",
+										processData : false,
+										contentType : false,
+										data : formdata,
+										success : function(data) {
+											if (data) {
+												sa.ok('修改成功!');
+												window.location.href="about.html";
+											} else {
+												sa.error("修改失败,请稍后重试！")
+												//window.location.reload()
+												
+											}
+										}
+									}).done(function() {
+		
+									});
+								}
+							});
+						},
+						submitUpload() {
+						      this.$refs.upload.submit();
+						    },
+						    handleRemove(file, fileList) {
+						      console.log(file, fileList);
+						    },
+						    handlePreview(file) {
+						      console.log(file);
+						    },
+						    onInput(){
+						        this.$forceUpdate();
+						   }
+						    
+					},
+					created : function() {
+						this.f5();
+					}
+				})
+	</script>
+</body>
+</html>

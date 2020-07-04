@@ -42,11 +42,6 @@
 		<div class="c-panel">
 			<!-- 参数栏 -->
 			<div class="c-title">数据列表</div>
-			<div style="float: right;">
-				<form id="form" content="multipart/form-data">
-					<input type="file" name="file" id="file">
-				</form>
-			</div>
 			<el-table :data="dataList" size="mini"> <el-table-column
 				label="编号" prop="id" width="70px"></el-table-column> <el-table-column
 				label="标题"> <template slot-scope="s">
@@ -60,9 +55,9 @@
 			</div>
 			</template> </el-table-column> <el-table-column prop="address" label="操作"> <template
 				slot-scope="s"> <el-button class="c-btn" type="success"
-				icon="el-icon-view" @click="get(s.row)"> 详情 </el-button> <el-button
-				class="c-btn" type="danger" icon="el-icon-delete"
-				@click="put(s.row)"> 修改图片 </el-button> </template> </el-table-column> </el-table>
+				icon="el-icon-view" @click="get(s.row)"> 详情 </el-button> 
+				<el-button class="c-btn" type="danger" icon="el-icon-delete"@click="func(s.row.id)"> 修改</el-button> </template> 
+				</template> </el-table-column> </el-table>
 			<!-- 分页 -->
 			<div class="page-box">
 				<el-pagination background
@@ -173,7 +168,10 @@
 									});
 								}
 							});
-						}
+						},
+						func (id){
+							window.location.href="update_detial.html?id="+id;
+			            }
 					},
 					created : function() {
 						this.f5();

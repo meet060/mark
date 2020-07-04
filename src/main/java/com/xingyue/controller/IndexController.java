@@ -232,4 +232,41 @@ public class IndexController {
 		Map<String, Object> map = resourceService.queryResourcesByIndexAndAbout(page, size);
 		return MvcUtils.ok(map);
 	}
+	
+	/**
+	 * 根据ID查询详情
+	 *
+	 * @param module
+	 * @param page
+	 * @param size
+	 * @return
+	 */
+	@ApiOperation(value = "根据ID查询详情")
+	@GetMapping(value = "/detail/{id}")
+	public ResponseEntity<?> queryResourcesByModule(@PathVariable("id") Integer id){
+		Resource r = resourceService.findOne(id);
+		return MvcUtils.ok(r);
+	}
+	
+	
+	/**
+	 *  修改数据
+	 *
+	 * @param file
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@ApiOperation("修改数据")
+	@RequestMapping(value = "/update/resources", method = RequestMethod.POST)
+	public ResponseEntity<?> updateResources(Resource resource, MultipartFile file1,MultipartFile file2, HttpServletRequest request,
+			HttpServletResponse response) {
+		try {
+			Resource createFile = resourceService.updateResources(resource,file1,file2);
+			return MvcUtils.ok(createFile);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return MvcUtils.notFound();
+	}
 }
