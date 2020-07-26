@@ -20,3 +20,4 @@ info:
 package: ####### 修改文件地址一定要把Resource实体中常量修改
   storageUrl: /img/
   storage: /C:/upload/package/img/file/
+#  storage: /opt/upload/package/img/file/
