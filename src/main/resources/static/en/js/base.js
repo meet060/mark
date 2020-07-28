@@ -169,7 +169,7 @@ $(function() {
                 _lianxi_box.find("p").eq(4).html('fax:' + _lianxi.mailboxEn)
                 _lianxi_box.find("p").eq(5).html('address：' + _lianxi.addressEn)
                 $("#lianxi_kufe").find("img").attr("src", '/img/' + _lianxi.urlEn)
-                $(".f-lianxi-chat").find("img").attr("src", '/img/' + _lianxi.weChatUrlEn)
+                $(".f-lianxi-chat").eq(1).find("img").attr("src", '/img/' + _lianxi.weChatUrlEn)
                 _lianxi_box.find("h3").html(_lianxi.companyEn)
             },
             error: function(data) {

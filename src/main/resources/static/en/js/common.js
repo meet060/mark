@@ -430,7 +430,7 @@ $(function() {
                 type: "POST",
                 url: jiekou.index_api,
                 success: function(res) {
-                    if (_common.page == "1" && _common.lug != "en") {
+                    if (_common.page == "1" && _common.lug == "en") {
                         // console.log(res)
                         // console.log(indexPro)
                         var _banner = $("#g_banner")
@@ -766,8 +766,8 @@ function lianxiApi() {
             $(".g-foot-c p").eq(4).html('fax:' + _lianxi.cellPhoneEn);
             $(".g-foot-c p").eq(5).html('fax::' + _lianxi.mailboxEn);
             $(".g-foot-c p").eq(6).html('address：' + _lianxi.addressEn);
-            $("#chat_txt2").find("img").attr("src", '/img/' + _lianxi.urlEn)
-            $(".g-foot-chat").find("img").attr("src", '/img/' + _lianxi.weChatUrlEn)
+            $("#bottom_chat").find("img").attr("src", '/img/' + _lianxi.urlEn)
+            $(".g-foot-chat").eq(1).find("img").attr("src", '/img/' + _lianxi.weChatUrlEn)
         },
         error: function(data) {
             console.log("error")

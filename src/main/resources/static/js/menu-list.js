@@ -83,31 +83,31 @@ var menuList =	[
 			}*/
 		]
 	},
+	// {
+	// 	id: '2',
+	// 	name: '在线咨询',
+	// 	icon: 'el-icon-s-custom',
+	// 	info: '处理客户咨询的问题',
+	// 	childList: [
+	// 		{id: '2-1', name: '咨询列表', url: '../html/afterSale/afterSale-list.html'}
+	// 	]
+	// },
 	{
 		id: '2',
-		name: '在线咨询',
-		icon: 'el-icon-s-custom',
-		info: '处理客户咨询的问题',
-		childList: [
-			{id: '2-1', name: '咨询列表', url: '../html/afterSale/afterSale-list.html'}
-		]
-	},
-	{
-		id: '3',
 		name: '修改地址',
 		icon: 'el-icon-setting',
 		info: '修改公司地址',
 		childList: [
-			{id: '3-1', name: '修改公司地址', url: '../html/management/update_Ltd_address.html'}
+			{id: '2-1', name: '修改公司地址', url: '../html/management/update_Ltd_address.html'}
 			]
 	},
 	{
-		id: '4',
+		id: '3',
 		name: '新闻管理',
 		icon: 'el-icon-setting',
 		info: '添加新闻',
 		childList: [
-			{id: '4-1', name: '添加新闻', url: '../html/management/add_news.html'}
+			{id: '3-1', name: '添加新闻', url: '../html/management/add_news.html'}
 			]
 	},
 	/*{

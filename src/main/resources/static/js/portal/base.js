@@ -179,7 +179,7 @@ $(function() {
                     _lianxi_box.find("p").eq(4).html('邮箱：' + _lianxi.mailboxCn)
                     _lianxi_box.find("p").eq(5).html('地址：' + _lianxi.addressCn)
                     $("#lianxi_kufe").find("img").attr("src", '/img/' + _lianxi.urlCn)
-                    $(".f-lianxi-chat").find("img").attr("src", '/img/' + _lianxi.weChatUrlCn)
+                    $(".f-lianxi-chat").eq(1).find("img").attr("src", '/img/' + _lianxi.weChatUrlCn)
                 } else {
                     _lianxi_box.find("h3").html(_lianxi.companyEn)
                     _lianxi_box.find("p").eq(0).html('联系人：' + _lianxi.nameEn)
@@ -189,7 +189,7 @@ $(function() {
                     _lianxi_box.find("p").eq(4).html('邮箱：' + _lianxi.mailboxEn)
                     _lianxi_box.find("p").eq(5).html('地址：' + _lianxi.addressEn)
                     $("#lianxi_kufe").find("img").attr("src", '/img/' + _lianxi.urlEn)
-                    $(".f-lianxi-chat").find("img").attr("src", '/img/' + _lianxi.weChatUrlEn)
+                    $(".f-lianxi-chat").eq(1).find("img").attr("src", '/img/' + _lianxi.weChatUrlEn)
                 }
             }
         })

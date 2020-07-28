@@ -871,8 +871,8 @@ function lianxiApi() {
                 $(".g-foot-c p").eq(4).html('传真：' + _lianxi.cellPhoneCn);
                 $(".g-foot-c p").eq(5).html('邮箱：' + _lianxi.mailboxCn);
                 $(".g-foot-c p").eq(6).html('地址：' + _lianxi.addressCn);
-                $("#chat_txt2").find("img").attr("src", '/img/' + _lianxi.urlCn)
-                $(".g-foot-chat").find("img").attr("src", '/img/' + _lianxi.weChatUrlCn)
+                $("#bottom_chat").find("img").attr("src", '/img/' + _lianxi.urlCn)
+                $(".g-foot-chat").eq("1").find("img").attr("src", '/img/' + _lianxi.weChatUrlEn)
             } else {
                 $(".g-foot-c p").eq(0).html(_lianxi.companyEn);
                 $(".g-foot-c p").eq(1).html('联系人：' + _lianxi.nameEn);
@@ -881,8 +881,8 @@ function lianxiApi() {
                 $(".g-foot-c p").eq(4).html('传真：' + _lianxi.cellPhoneEn);
                 $(".g-foot-c p").eq(5).html('邮箱：' + _lianxi.mailboxEn);
                 $(".g-foot-c p").eq(6).html('地址：' + _lianxi.addressEn);
-                $("#chat_txt2").find("img").attr("src", '/img/' + _lianxi.urlEn)
-                $(".g-foot-chat").find("img").attr("src", '/img/' + _lianxi.weChatUrlEn)
+                $("#bottom_chat").find("img").attr("src", '/img/' + _lianxi.urlEn)
+                $(".g-foot-chat").eq("1").find("img").attr("src", '/img/' + _lianxi.weChatUrlCn)
             }
         },
         error: function(data) {
