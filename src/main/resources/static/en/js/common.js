@@ -38,7 +38,7 @@ var pro_box = {
         pro_imgEn: '/images/42.png',
         titleHEn: "TYPE-A: Baffled Fibc bag",
         titleHpEn: "TYPE-A: Baffled Fibc bag/Protection against expansion/Ordinary FIBC bag/No anti-static functio",
-        titleH2En: "TYPE-A: Baffled Fibc bag<em> / Protection against expansion/Ordinary FIBC bag/No anti-static function</ em>",
+        titleH2En: "TYPE-A: Baffled Fibc bag<em> / Protection against expansion/Ordinary FIBC bag/No anti-static function</em>",
         aqTxtEn: "<p> Product introduction</ p>" +
             "<p> Size:105X105X120cm（customization）</ p>" +
             "<p> Loading spout and unloading spout (customization)</ p>",
@@ -63,9 +63,9 @@ var pro_box = {
         pro_imgEn: '/images/44.png',
         titleHEn: "TYPE-A: Baffled Fibc bag",
         titleHpEn: "TYPE-A: Baffled Fibc bag/ Comply with IEC 61340-4-4 standard",
-        titleH2En: "TYPE-A: Baffled Fibc bag <em> / Comply with IEC 61340-4-4 standard </ em>",
+        titleH2En: "TYPE-A: Baffled Fibc bag <em> / Comply with IEC 61340-4-4 standard </em>",
         aqTxtEn: "<p>Size 105*105*120cm(customization) </ p>" +
-            "<p> Used to transport dry, flammable powders, but must be free of flammable solvents or gases around the product。</ p>",
+            "<p> Used to transport dry, flammable powders, but must be free of flammable solvents or gases around the product。</p>",
         jzTxtEn: "Prohibit the use of this product when there are flammable and explosive solvents and gases around the Type-B bag",
         protxt1En: "TYPE-B type Fibc bag fabric is added antis-tatic masterbatch proportionally in the process of weaving and coating film. this special process makes the TYPE-B type Fibc bag fabric have lower breakdown voltage, which can prevent the generation of dangerous static electricity with high strength and ensure the safety during loading and unloading. * A breakdown voltage of less than 6 KV. on both surfaces of the fabric",
         protxt2En: "This product design takes into account the loading of ultra-fine powder will leak out in the pinhole, so added leakproof cotton and non-woven fabric leakproof, and considering the size of the length and width can not be two side-by-side transport on the truck, added tension baffle to solve the expansion problem, considering the customer loading material fluidity is not good, we recommend the use of mesh baffle, to avoid the material liquidity into the inner difficulties, has solved all the above problems. Let customers feel free to wear, use worry-free."
@@ -88,7 +88,7 @@ var pro_box = {
         pro_imgEn: '/images/41.png',
         titleHEn: "TYPE-C conductive FIBC bag",
         titleHpEn: "TYPE-C conductive FIBC bag / Comply with IEC 61340-4-4 standard",
-        titleH2En: "TYPE-C conductive bag/anti-static bag <em> / The release of static electricity into the ground by conducting wire and conducting silks Product introduction </ em>",
+        titleH2En: "TYPE-C conductive bag/anti-static bag <em> / The release of static electricity into the ground by conducting wire and conducting silks Product introduction </em>",
         aqTxtEn: "<p> Size 105*105*120cm(customization)</ p>" +
             "<p>Loading spout and loop free height(customization)</ p>" +
             "<p>Used to transport flammable powder, when there is flammable solvent or gas around the FIBC bag, this product can avoid electrostatic ignition </ p>",
@@ -114,7 +114,7 @@ var pro_box = {
         pro_imgEn: '/images/41.png',
         titleHEn: "TYPE-D conductive FIBC bag",
         titleHpEn: "TYPE-D conductive FIBC bag/anti-static FIBC bag   /Comply with IEC 61340-4-4 standard ",
-        titleH2En: "TYPE-D conductive FIBC bag/anti-static FIBC bag  <em> /Comply with IEC 61340-4-4 standard </ em>",
+        titleH2En: "TYPE-D conductive FIBC bag/anti-static FIBC bag  <em> /Comply with IEC 61340-4-4 standard </em>",
         aqTxtEn: "<p> Safe use without grounding</ p>" +
             "<p> Size 105*105*120cm(customization) </ p>" +
             "<p> Loading spout and loop free height(customization)</ p>",
@@ -140,7 +140,7 @@ var pro_box = {
         pro_imgEn: '/images/41.png',
         titleHEn: "TYPE-A: Heavy duty Fibc bag/Ordinary FIBC bag",
         titleHpEn: "TYPE-A: Heavy duty Fibc bag/Ordinary FIBC bag/No anti-static function",
-        titleH2En: "TYPE-A: Heavy duty Fibc bag/Ordinary FIBC bag/No anti-static function <em> / Compliance with China(GB/T10454-2000) and European (ISO21898)Implementation Standards</ em>",
+        titleH2En: "TYPE-A: Heavy duty Fibc bag/Ordinary FIBC bag/No anti-static function <em> / Compliance with China(GB/T10454-2000) and European (ISO21898)Implementation Standards</em>",
         aqTxtEn: "<p> Size:90X90X120cm（customization）</ p>" +
             "<p>Loading spout and loop,free height (customization)</ p>" +
             "<p>Suitable for the transportation of non-flammable and explosive articles, and there is no flammable volume or gas around</p>",
@@ -166,7 +166,7 @@ var pro_box = {
         pro_imgEn: '/images/41.png',
         titleHEn: "TYPE-C  tray-free conductive FIBC bag",
         titleHpEn: "TYPE-C  tray-free conductive FIBC bag/anti-static bag /The release of static electricity into the ground by conducting wire and conducting silks ",
-        titleH2En: "TYPE-C  tray-free conductive FIBC bag <em> / anti-static bag /The release of static electricity into the ground by conducting wire and conducting silks</ em>",
+        titleH2En: "TYPE-C  tray-free conductive FIBC bag <em> / anti-static bag /The release of static electricity into the ground by conducting wire and conducting silks</em>",
         aqTxtEn: "<p> Size 105*105*120cm(customization) </ p>" +
             "<p>Loading spout and loop free height(customization)</ p>" +
             "<p>Used to transport flammable powder, when there is flammable solvent or gas around the FIBC bag, this product can avoid electrostatic ignition</ p>",
@@ -192,7 +192,7 @@ var pro_box = {
         pro_imgEn: '/images/41.png',
         titleHEn: "TYPE:Shaped-baffled PE liner Fibc bag/ Aluminum film inner baffle Fibc bag/Protection against expansion/Ordinary FIBC bag/",
         titleHpEn: "TYPE:Shaped-baffled PE liner Fibc bag/ Aluminum film inner baffle Fibc bag/Protection against expansion/Ordinary FIBC bag/",
-        titleH2En: "TYPE:Shaped-baffled PE liner Fibc bag<em>/ Aluminum film inner baffle Fibc bag/Protection against expansion/Ordinary FIBC bag/</ em>",
+        titleH2En: "TYPE:Shaped-baffled PE liner Fibc bag<em>/ Aluminum film inner baffle Fibc bag/Protection against expansion/Ordinary FIBC bag/</em>",
         aqTxtEn: "<p>Size:105X105X120cm（customization）</ p>" +
             "<p> Loading spout and unloading spout (customization)</ p>",
         jzTxtEn: "Suitable for the transportation of non-flammable and explosive articles, and there is no flammable volume or gas around.",
@@ -217,7 +217,7 @@ var pro_box = {
         pro_imgEn: '/images/41.png',
         titleHEn: "YPE-A: Baffled Fibc bag/Protection against expansion/Ordinary FIBC bag/",
         titleHpEn: "YPE-A: Baffled Fibc bag/Protection against expansion/Ordinary FIBC bag/",
-        titleH2En: "YPE-A: Baffled Fibc bag/Protection against expansion/Ordinary FIBC bag/<em> /Compliance with China(GB/T10454-2000) and European (ISO21898)Implementation Standards </ em>",
+        titleH2En: "YPE-A: Baffled Fibc bag/Protection against expansion/Ordinary FIBC bag/<em> /Compliance with China(GB/T10454-2000) and European (ISO21898)Implementation Standards </em>",
         aqTxtEn: "<p>Size:90X90X100cm（customization）</ p>" +
             "<p>Loading spout and unloading spout (customization)</ p>" +
             "<p>Suitable for the transportation of non-flammable and explosive articles, and there is no flammable volume or gas around.Mainly used for loading and transporting potato, sweet potato, garlic and other crops. </ p>",
@@ -324,11 +324,24 @@ function head() {
     $(".f-foot-nav").each(function() {
         $(this).find("a").eq(0).nextAll().hide();
     })
-    if (_common.lug == "en") {
+
+    if (_common.lug == "en") {
         $(".f-lang a").last().addClass("cur").siblings().removeClass("cur")
-        $("body").append('<div class="g-dibu-nav"><a class="g-dianhua" href="/">HOME</a><a class="g-dianhua" href="about.html">ABOUT</a><a class="g-dianhua" href="tel:15369078000">CONTACT</a></div>')
+        $("body").append('<div class="g-dibu-nav"><a class="g-dianhua" href="/">HOME</a><a class="g-dianhua" href="about.html">ABOUT</a><a class="g-dianhua" id="lianxi_di" href="tel:15369078000">CONTACT</a></div>')
+        if (_index_url.indexOf("hdzrsl.com") > 1) {
+            $("#lianxi_di").attr("href", "15028453452")
+        }
+        if (_index_url.indexOf("hdzrsl.cn") > 1) {
+            $("#tel_txt").attr("href", "15231029903")
+        }
     } else {
         $("body").append('<div class="g-dibu-nav"><a class="g-dianhua" href="/">首页</a><a class="g-dianhua" href="about.html">关于我们</a><a class="g-dianhua" id="tel_txt" href="tel:15369078000">联系我们</a></div>')
+        if (_index_url.indexOf("hdzrsl.com") > 1) {
+            $("#tel_txt").attr("href", "15028453452")
+        }
+        if (_index_url.indexOf("hdzrsl.cn") > 1) {
+            $("#tel_txt").attr("href", "15231029903")
+        }
     }
 }
 
@@ -776,4 +789,4 @@ function lianxiApi() {
 }
 
 
-// document.writeln('<script type="text/javascript" src="https://shak60.kuaishang.cn/bs/ks.j?cI=615791&fI=126728" charset="utf-8"></script>')
+document.writeln('<script type="text/javascript" src="https://shak60.kuaishang.cn/bs/ks.j?cI=615791&fI=126728" charset="utf-8"></script>')
