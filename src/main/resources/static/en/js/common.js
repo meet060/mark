@@ -329,18 +329,30 @@ function head() {
         $(".f-lang a").last().addClass("cur").siblings().removeClass("cur")
         $("body").append('<div class="g-dibu-nav"><a class="g-dianhua" href="/">HOME</a><a class="g-dianhua" href="about.html">ABOUT</a><a class="g-dianhua" id="lianxi_di" href="tel:15369078000">CONTACT</a></div>')
         if (_index_url.indexOf("hdzrsl.com") > 1) {
-            $("#lianxi_di").attr("href", "15028453452")
+            $("#lianxi_di").attr("href", "tel:15028453452")
         }
         if (_index_url.indexOf("hdzrsl.cn") > 1) {
-            $("#tel_txt").attr("href", "15231029903")
+            $("#lianxi_di").attr("href", "tel:18830092666")
+        }
+        if (_index_url.indexOf("hbzrbz.cn") > 1) {
+            $("#lianxi_di").attr("href", "tel:15231029903")
+        }
+        if (_index_url.indexOf("hbzrbz.com") > 1) {
+            $("#lianxi_di").attr("href", "tel:15128024025")
         }
     } else {
         $("body").append('<div class="g-dibu-nav"><a class="g-dianhua" href="/">首页</a><a class="g-dianhua" href="about.html">关于我们</a><a class="g-dianhua" id="tel_txt" href="tel:15369078000">联系我们</a></div>')
         if (_index_url.indexOf("hdzrsl.com") > 1) {
-            $("#tel_txt").attr("href", "15028453452")
+            $("#tel_txt").attr("href", "tel:15028453452")
         }
         if (_index_url.indexOf("hdzrsl.cn") > 1) {
-            $("#tel_txt").attr("href", "15231029903")
+            $("#tel_txt").attr("href", "tel:18830092666")
+        }
+        if (_index_url.indexOf("hbzrbz.cn") > 1) {
+            $("#tel_txt").attr("href", "tel:15231029903")
+        }
+        if (_index_url.indexOf("hbzrbz.com") > 1) {
+            $("#tel_txt").attr("href", "tel:15128024025")
         }
     }
 }
