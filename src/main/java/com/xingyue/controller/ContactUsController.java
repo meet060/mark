@@ -69,6 +69,19 @@ public class ContactUsController {
     }
 
     /**
+     * 修改联系我们手机端电话
+     *
+     * @param contactUs
+     * @return
+     */
+    @ApiOperation("修改联系我们手机端电话")
+    @PostMapping(value = "/modifyContactUsOnMobilePhone")
+    public ResponseEntity<?> modifyContactUsOnMobilePhone(ContactUs contactUs) {
+        Boolean aBoolean = contactUsService.modifyContactUsOnMobilePhone(contactUs);
+        return MvcUtils.ok(aBoolean);
+    }
+
+    /**
      * 删除联系我们信息
      *
      * @return

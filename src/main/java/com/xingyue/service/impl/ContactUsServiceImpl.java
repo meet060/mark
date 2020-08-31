@@ -3,6 +3,7 @@ package com.xingyue.service.impl;
 import com.xingyue.dao.ContactUsRepository;
 import com.xingyue.pojo.ContactUs;
 import com.xingyue.service.ContactUsService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +77,22 @@ public class ContactUsServiceImpl implements ContactUsService {
             contactUs.setWeChatUrlEn(contactUs1.getWeChatUrlEn());
         }
         ContactUs save = contactUsRepository.save(contactUs);
+        return null == save ? false : true;
+    }
+
+    /**
+     * 修改联系我们手机端电话
+     *
+     * @param contactUs
+     * @return
+     */
+    @Override
+    public Boolean modifyContactUsOnMobilePhone(ContactUs contactUs) {
+        Optional<ContactUs> c = contactUsRepository.findById(contactUs.getId());
+        ContactUs contactUs1 = c.get();
+        contactUs1.setCnCellPhone(contactUs.getCnCellPhone());
+        contactUs1.setEnCellPhone(contactUs.getEnCellPhone());
+        ContactUs save = contactUsRepository.save(contactUs1);
         return null == save ? false : true;
     }
 

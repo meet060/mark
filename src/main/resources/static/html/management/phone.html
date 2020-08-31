@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>修改手机端联系方式</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<!-- 所有的 css & js 资源 -->
+<link rel="stylesheet"
+	href="https://unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="../../css/admin/sa.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script src="../../js/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
+<script src="../../js/jquery.min.js"></script>
+<script src="https://www.layuicdn.com/layer-v3.1.1/layer.js"></script>
+<script src="../../js/sa.js"></script>
+<script src="../../js/layer.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<meta http-equiv="Content-Type"
+	content="multipart/form-data; charset=utf-8" />
+<style>
+.update {
+	height: 200px;
+	width: 200px;
+	background: red;
+}
+</style>
+</head>
+
+<body>
+	<!-- 防止margin向下击穿 -->
+	<div style="margin-top: -1em;">
+		<br>
+	</div>
+	<div class="vue-box" style="display: none;" :style="'display: block;'"id="test">
+		<div class="c-panel">
+			<el-form :label-position="labelPosition" label-width="130px" :model="formLabelAlign" id ="form">
+					<el-input type="hidden" v-model="formLabelAlign.id"></el-input>
+				<el-form-item label="中文网址联系方式" >
+					<el-input v-model="formLabelAlign.cnCellPhone" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item label="英文网址联系方式">
+					<el-input v-model="formLabelAlign.enCellPhone" type="textarea" autosize></el-input>
+				</el-form-item>
+				<el-form-item>
+					<el-button type="primary" @click="put()">立即修改</el-button>
+				</el-form-item>
+			</el-form>
+		</div>
+	</div>
+	<script src="../../js/user/data-list.js"></script>
+	<script type="text/javascript">
+		var app = new Vue(
+				{
+					el : '.vue-box',
+					data : {
+						formLabelAlign: {
+							id:'',
+                            cnCellPhone:'',
+                            enCellPhone:'',
+						},
+						//表单右对齐
+						labelPosition: 'right',
+					},
+					methods : {
+						// 数据刷新
+						f5 : function() {
+							var that = this;
+							$.ajax({
+								type : "POST",
+								url : "/api/contactUs/enquiriesContactUsForInformation",
+								dataType : "json",
+								async : false,
+								success : function(res) {
+									that.formLabelAlign.id = res[0].id;
+									that.formLabelAlign.cnCellPhone = res[0].cnCellPhone;
+									that.formLabelAlign.enCellPhone = res[0].enCellPhone;
+								}
+							})
+						},
+						put : function() {
+							var than = this;
+							layer.msg('确定要修改吗？', {
+								time : 0, //不自动关闭
+								btn : [ '确定', '我在想想。' ],
+								yes : function(index) {
+									layer.close(index);
+                                    var mobile_mode=/^1[34578]\d{9}$/;
+									var cnCellPhone = than.formLabelAlign.cnCellPhone;
+									var enCellPhone = than.formLabelAlign.enCellPhone;
+                                    if(cnCellPhone == null || cnCellPhone.length == 0 || !mobile_mode.test(cnCellPhone)) {
+                                        sa.error('中文网址联系方式手机号为空或者手机号不对，请检查！！！');
+                                        return;
+                                    }
+                                    if(enCellPhone == null || enCellPhone.length == 0 || !mobile_mode.test(enCellPhone)) {
+                                        sa.error('中文网址联系方式手机号为空或者手机号不对，请检查！！！');
+                                        return;
+                                    }
+                                    var formdata = new FormData();
+									formdata.append("id",than.formLabelAlign.id);
+									formdata.append("cnCellPhone",cnCellPhone);
+									formdata.append("enCellPhone",enCellPhone);
+									$.ajax({
+										type : "POST",
+										url : "/api/contactUs/modifyContactUsOnMobilePhone",
+										processData : false,
+										contentType : false,
+										data : formdata,
+										success : function(data) {
+											if (data) {
+												sa.ok('修改成功!');
+                                                window.location.reload()
+											} else {
+												sa.error("修改失败,请稍后重试！")
+											}
+										}
+									}).done(function() {
+									});
+								}
+							});
+						}
+					},
+					created : function() {
+						this.f5();
+					}
+				})
+	</script>
+</body>
+</html>

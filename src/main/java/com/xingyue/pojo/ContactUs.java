@@ -114,6 +114,32 @@ public class ContactUs implements Serializable {
      */
     @Column
     private String weChatUrlEn;
+    /**
+     * 手机端联系我们电话中文
+     */
+    @Column
+    private String cnCellPhone;
+    /**
+     * 手机端联系我们电话英文
+     */
+    @Column
+    private String enCellPhone;
+
+    public String getCnCellPhone() {
+        return cnCellPhone;
+    }
+
+    public void setCnCellPhone(String cnCellPhone) {
+        this.cnCellPhone = cnCellPhone;
+    }
+
+    public String getEnCellPhone() {
+        return enCellPhone;
+    }
+
+    public void setEnCellPhone(String enCellPhone) {
+        this.enCellPhone = enCellPhone;
+    }
 
     public int getId() {
         return id;

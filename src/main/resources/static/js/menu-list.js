@@ -61,8 +61,8 @@ var menuList =	[
 	{
 		id: '1',
 		name: '图片管理',
-		icon: 'el-icon-s-data',
-		info: '对用户列表、添加、统计等等...',
+		icon: 'el-icon-picture',
+		info: '管理门户页',
 		childList: [
 			{id: '1-1', name: '关于中润', url: '../html/management/about.html'},
 			{id: '1-2', name: '产品实力', url: '../html/management/product.html'},
@@ -83,33 +83,42 @@ var menuList =	[
 			}*/
 		]
 	},
-	// {
-	// 	id: '2',
-	// 	name: '在线咨询',
-	// 	icon: 'el-icon-s-custom',
-	// 	info: '处理客户咨询的问题',
-	// 	childList: [
-	// 		{id: '2-1', name: '咨询列表', url: '../html/afterSale/afterSale-list.html'}
-	// 	]
-	// },
-	{
-		id: '2',
-		name: '修改地址',
-		icon: 'el-icon-setting',
-		info: '修改公司地址',
-		childList: [
-			{id: '2-1', name: '修改公司地址', url: '../html/management/update_Ltd_address.html'}
-			]
-	},
+    {
+        id: '2',
+        name: '新闻管理',
+        icon: 'el-icon-s-comment',
+        info: '添加新闻',
+        childList: [
+            {id: '2-1', name: '添加新闻', url: '../html/management/add_news.html'}
+        ]
+    },
 	{
 		id: '3',
-		name: '新闻管理',
-		icon: 'el-icon-setting',
-		info: '添加新闻',
+		name: '修改地址',
+		icon: 'el-icon-edit',
+		info: '修改公司地址',
 		childList: [
-			{id: '3-1', name: '添加新闻', url: '../html/management/add_news.html'}
+			{id: '3-1', name: '修改公司地址', url: '../html/management/update_Ltd_address.html'}
 			]
 	},
+    {
+    	id: '4',
+    	name: 'SEO修改',
+    	icon: 'el-icon-edit',
+    	info: '修改搜索网址的关键信息',
+    	childList: [
+    		{id: '4-1', name: 'SEO修改', url: '../html/management/SEO.html'}
+    	]
+    },
+    {
+        id: '5',
+        name: '手机端联系方式',
+        icon: 'el-icon-phone',
+        info: '手机端联系方式修改',
+        childList: [
+            {id: '5-1', name: '联系方式', url: '../html/management/phone.html'}
+        ]
+    }
 	/*{
 		id: '3',
 		name: '系统设置',

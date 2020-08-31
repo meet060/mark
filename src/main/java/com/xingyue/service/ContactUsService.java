@@ -35,6 +35,13 @@ public interface ContactUsService {
     Boolean modifyContactUsForInformation(ContactUs contactUs);
 
     /**
+     * 修改联系我们手机端电话
+     *
+     * @return
+     */
+    Boolean modifyContactUsOnMobilePhone(ContactUs contactUs);
+
+    /**
      * 删除联系我们信息
      *
      * @return

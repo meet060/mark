@@ -9,7 +9,8 @@ var jiekou = {
     "jishu_api": api_url + '/api/resource/queryTechnicalSupportInformation', //技术页面
     "xiangqing_api": api_url + '/api/resource/news/', //新闻详情
     "liuyan_api": api_url + '/api/afterSale/addAfterSale', //留言POST
-    "lianxi_api": api_url + '/api/contactUs/enquiriesContactUsForInformation' //联系信息
+    "lianxi_api": api_url + '/api/contactUs/enquiriesContactUsForInformation', //联系信息
+    "seo_api": api_url + '/api/seo/findAll' //SEO
 }
 var index_url = ["hdzrsl.com", "hdzrsl.cn", "hbzrbz.com", "hbzrbz.cn"]
 var index_lxr_txt = ['韩亚洲', '赵艳超', '秦向前', '李全星']
@@ -131,32 +132,34 @@ function head() {
         // $("#footTxt").html(head_foot.head.FootTxtEn)
         $(".f-lang a").last().addClass("cur").siblings().removeClass("cur")
         $("body").append('<div class="g-dibu-nav"><a class="g-dianhua" href="/">HOME</a><a class="g-dianhua" href="about.html">ABOUT</a><a class="g-dianhua" id="lianxi_di" href="tel:15369078000">CONTACT</a></div>')
-        if (_index_url.indexOf("hdzrsl.com") > 1) {
-            $("#lianxi_di").attr("href", "tel:15028453452")
-        }
-        if (_index_url.indexOf("hdzrsl.cn") > 1) {
-            $("#lianxi_di").attr("href", "tel:18830092666")
-        }
-        if (_index_url.indexOf("hbzrbz.cn") > 1) {
-            $("#lianxi_di").attr("href", "tel:15231029903")
-        }
-        if (_index_url.indexOf("hbzrbz.com") > 1) {
-            $("#lianxi_di").attr("href", "tel:15128024025")
-        }
+        mobilePhoneContacts();
+        // if (_index_url.indexOf("hdzrsl.com") > 1) {
+        //     $("#lianxi_di").attr("href", "tel:15028453452")
+        // }
+        // if (_index_url.indexOf("hdzrsl.cn") > 1) {
+        //     $("#lianxi_di").attr("href", "tel:18830092666")
+        // }
+        // if (_index_url.indexOf("hbzrbz.cn") > 1) {
+        //     $("#lianxi_di").attr("href", "tel:15231029903")
+        // }
+        // if (_index_url.indexOf("hbzrbz.com") > 1) {
+        //     $("#lianxi_di").attr("href", "tel:15128024025")
+        // }
     } else {
         $("body").append('<div class="g-dibu-nav"><a class="g-dianhua" href="/">首页</a><a class="g-dianhua" href="about.html">关于我们</a><a class="g-dianhua" id="tel_txt" href="tel:15369078000">联系我们</a></div>')
-        if (_index_url.indexOf("hdzrsl.com") > 1) {
-            $("#tel_txt").attr("href", "tel:15028453452")
-        }
-        if (_index_url.indexOf("hdzrsl.cn") > 1) {
-            $("#tel_txt").attr("href", "tel:18830092666")
-        }
-        if (_index_url.indexOf("hbzrbz.cn") > 1) {
-            $("#tel_txt").attr("href", "tel:15231029903")
-        }
-        if (_index_url.indexOf("hbzrbz.com") > 1) {
-            $("#tel_txt").attr("href", "tel:15128024025")
-        }
+        mobilePhoneContacts();
+        // if (_index_url.indexOf("hdzrsl.com") > 1) {
+        //     $("#tel_txt").attr("href", "tel:15028453452")
+        // }
+        // if (_index_url.indexOf("hdzrsl.cn") > 1) {
+        //     $("#tel_txt").attr("href", "tel:18830092666")
+        // }
+        // if (_index_url.indexOf("hbzrbz.cn") > 1) {
+        //     $("#tel_txt").attr("href", "tel:15231029903")
+        // }
+        // if (_index_url.indexOf("hbzrbz.com") > 1) {
+        //     $("#tel_txt").attr("href", "tel:15128024025")
+        // }
     }
 }
 
@@ -882,8 +885,47 @@ $(document).ready(function () {
     $(document).bind("contextmenu", function (e) {
         return false;
     });
+    $.ajax({
+        type: "POST",
+        url: jiekou.seo_api,
+        success: function (data) {
+            var _seo = data[0]
+            if (_common.lug !== "en") {
+                $("#title").text(_seo.titleCn);
+                $("#keywords").attr("content", "" + _seo.keywordsCn)
+                $("#description").attr("content", ""+ _seo.descriptionCn)
+            } else {
+                $("#title").text(_seo.titleEn);
+                $("#keywords").attr("content", "" + _seo.keywordsEn)
+                $("#description").attr("content", ""+ _seo.descriptionEn)
+            }
+        },
+        error: function (data) {
+            console.log("error")
+        }
+    });
 });
 
+/**
+ * 手机端联系人显示
+ */
+function mobilePhoneContacts() {
+    $.ajax({
+        type: "POST",
+        url: jiekou.lianxi_api,
+        success: function (lianxi) {
+            var _lianxi = lianxi[0]
+            if (_common.lug !== "en") {
+                $("#tel_txt").attr("href", "tel:"+ _lianxi.cnCellPhone)
+            } else {
+                $("#lianxi_di").attr("href", "tel:"+ _lianxi.enCellPhone)
+            }
+        },
+        error: function () {
+            console.log("error")
+        }
+    });
+}
 function lianxiApi() {
     $.ajax({
         type: "POST",
