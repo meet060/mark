@@ -42,63 +42,23 @@
 			<div class="c-title">数据列表</div>
 			<el-form :label-position="labelPosition" label-width="120px" :model="formLabelAlign" id ="form">
 					<el-input type="hidden" v-model="formLabelAlign.id"></el-input>
-				<el-form-item label="中文公司名称" >
-					<el-input v-model="formLabelAlign.companyCn" type="textarea" autosize></el-input>
+				<el-form-item label="SEO中文标题" >
+					<el-input v-model="formLabelAlign.titleCn" type="textarea" autosize  placeholder=""></el-input>
 				</el-form-item>
-				<el-form-item label="英文公司名称">
-					<el-input v-model="formLabelAlign.companyEn" type="textarea" autosize></el-input>
+				<el-form-item label="SEO英文标题">
+					<el-input v-model="formLabelAlign.titleEn" type="textarea" autosize placeholder=""></el-input>
 				</el-form-item>
-				<el-form-item label="中文公司地址">
-					<el-input v-model="formLabelAlign.addressCn" type="textarea" autosize></el-input>
+				<el-form-item label="SEO中文关键字">
+					<el-input v-model="formLabelAlign.keywordsCn" type="textarea" autosize placeholder="多个关键字请用英文逗号分隔！！！"></el-input>
 				</el-form-item>
-				<el-form-item label="英文公司地址">
-					<el-input v-model="formLabelAlign.addressEn" type="textarea" autosize></el-input>
+				<el-form-item label="SEO英文关键字">
+					<el-input v-model="formLabelAlign.keywordsEn" type="textarea" autosize placeholder="多个关键字请用英文逗号分隔！！！"></el-input>
 				</el-form-item>
-				<el-form-item label="中文负责人">
-					<el-input v-model="formLabelAlign.nameCn" type="textarea" autosize></el-input>
+				<el-form-item label="SEO中文描述">
+					<el-input v-model="formLabelAlign.descriptionCn" type="textarea" autosize></el-input>
 				</el-form-item>
-				<el-form-item label="英文负责人">
-					<el-input v-model="formLabelAlign.nameEn" type="textarea" autosize></el-input>
-				</el-form-item>
-				<el-form-item label="中文公司电话">
-					<el-input v-model="formLabelAlign.phoneCn" type="textarea" autosize></el-input>
-				</el-form-item>
-				<el-form-item label="英文公司电话">
-					<el-input v-model="formLabelAlign.phoneEn" type="textarea" autosize></el-input>
-				</el-form-item>
-				<el-form-item label="中文公司手机">
-					<el-input v-model="formLabelAlign.cellPhoneCn" type="textarea" autosize></el-input>
-				</el-form-item>
-				<el-form-item label="英文公司手机">
-					<el-input v-model="formLabelAlign.cellPhoneEn" type="textarea" autosize></el-input>
-				</el-form-item>
-				<el-form-item label="中文公司传真">
-					<el-input v-model="formLabelAlign.faxCn" type="textarea" autosize></el-input>
-				</el-form-item>
-				<el-form-item label="英文公司传真">
-					<el-input v-model="formLabelAlign.faxEn" type="textarea" autosize></el-input>
-				</el-form-item>
-				<el-form-item label="中文公司邮箱">
-					<el-input v-model="formLabelAlign.mailboxCn" type="textarea" autosize></el-input>
-				</el-form-item>
-				<el-form-item label="英文公司邮箱">
-					<el-input v-model="formLabelAlign.mailboxEn" type="textarea" autosize></el-input>
-				</el-form-item>
-                <el-form-item label="中文微信">
-					<img :src="url + formLabelAlign.urlCn" style="width: 100px; height: 100px;margin-left:36px">
-					<input type="file" id="urlCn" name="urlCn" style="margin-left: 20px;" @change="createFile('urlCn')">
-                </el-form-item>
-				<el-form-item label="英文微信" STYLE="margin-left:600px;margin-top: -137px">
-					<img :src="url + formLabelAlign.urlEn" style="width: 100px; height: 100px;margin-left:36px">
-					<input type="file" id="urlEn" name="urlEn" style="margin-left: 20px;" @change="createFile('urlEn')">
-				</el-form-item>
-				<el-form-item label="中文公众号" STYLE="margin-left:12px;">
-					<img :src="url + formLabelAlign.weChatUrlCn" style="width: 100px; height: 100px;margin-left:23px">
-					<input type="file" id="weChatUrlCn" name="weChatUrlCn" style="margin-left: 20px;" @change="createFile('weChatUrlCn')">
-				</el-form-item>
-				<el-form-item label="英文公众号" STYLE="margin-left:600px;margin-top: -137px">
-					<img :src="url + formLabelAlign.weChatUrlEn" style="width: 100px; height: 100px;margin-left:36px">
-					<input type="file" id="weChatUrlEn" name="weChatUrlEn" style="margin-left: 20px;" @change="createFile('weChatUrlEn')">
+				<el-form-item label="SEO英文描述">
+					<el-input v-model="formLabelAlign.descriptionEn" type="textarea" autosize></el-input>
 				</el-form-item>
 				<el-form-item>
 					<el-button type="primary" @click="put()">立即修改</el-button>
@@ -114,24 +74,12 @@
 					data : {
 						formLabelAlign: {
 							id:'',
-							companyEn:'',
-							companyCn:'',
-							addressEn:'',
-							addressCn:'',
-                            nameCn:'',
-                            nameEn:'',
-							phoneCn:'',
-							phoneEn:'',
-							cellPhoneCn: '',
-							cellPhoneEn: '',
-							faxCn: '',
-							faxEn: '',
-							mailboxCn: '',
-							mailboxEn: '',
-                            urlCn:'',
-                            urlEn:'',
-                            weChatUrlCn:'',
-                            weChatUrlEn:''
+                            titleCn:'',
+                            titleEn:'',
+                            keywordsCn:'',
+                            keywordsEn:'',
+                            descriptionCn:'',
+                            descriptionEn:''
 						},
 						//表单右对齐
 						labelPosition: 'right',
@@ -143,29 +91,17 @@
 							var that = this;
 							$.ajax({
 								type : "POST",
-								url : "/api/contactUs/enquiriesContactUsForInformation",
+								url : "/api/seo/findAll",
 								dataType : "json",
 								async : false,
 								success : function(res) {
 									that.formLabelAlign.id = res[0].id;
-									that.formLabelAlign.companyEn = res[0].companyEn;
-									that.formLabelAlign.companyCn = res[0].companyCn;
-									that.formLabelAlign.addressEn = res[0].addressEn;
-									that.formLabelAlign.addressCn = res[0].addressCn;
-                                    that.formLabelAlign.nameCn = res[0].nameCn;
-                                    that.formLabelAlign.nameEn = res[0].nameEn;
-									that.formLabelAlign.phoneCn = res[0].phoneCn;
-									that.formLabelAlign.phoneEn = res[0].phoneEn;
-									that.formLabelAlign.cellPhoneCn = res[0].cellPhoneCn;
-									that.formLabelAlign.cellPhoneEn = res[0].cellPhoneEn;
-									that.formLabelAlign.faxCn = res[0].faxCn;
-									that.formLabelAlign.faxEn = res[0].faxEn;
-									that.formLabelAlign.mailboxCn = res[0].mailboxCn;
-									that.formLabelAlign.mailboxEn = res[0].mailboxEn;
-									that.formLabelAlign.urlCn = res[0].urlCn;
-									that.formLabelAlign.urlEn = res[0].urlEn;
-									that.formLabelAlign.weChatUrlCn = res[0].weChatUrlCn;
-									that.formLabelAlign.weChatUrlEn = res[0].weChatUrlEn;
+									that.formLabelAlign.titleCn = res[0].titleCn;
+									that.formLabelAlign.titleEn = res[0].titleEn;
+									that.formLabelAlign.keywordsCn = res[0].keywordsCn;
+									that.formLabelAlign.keywordsEn = res[0].keywordsEn;
+                                    that.formLabelAlign.descriptionCn = res[0].descriptionCn;
+                                    that.formLabelAlign.descriptionEn = res[0].descriptionEn;
 								}
 							})
 						},
@@ -178,34 +114,32 @@
 									layer.close(index);
                                     var formdata = new FormData();
 									formdata.append("id",than.formLabelAlign.id);
-									formdata.append("companyCn",than.formLabelAlign.companyCn);
-									formdata.append("companyEn",than.formLabelAlign.companyEn);
-									formdata.append("addressCn",than.formLabelAlign.addressCn);
-									formdata.append("addressEn",than.formLabelAlign.addressEn);
-                                    formdata.append("nameCn" , than.formLabelAlign.nameCn);
-                                    formdata.append("nameEn" , than.formLabelAlign.nameEn);
-									formdata.append("phoneCn",than.formLabelAlign.phoneCn);
-									formdata.append("phoneEn",than.formLabelAlign.phoneEn);
-									formdata.append("cellPhoneCn",than.formLabelAlign.cellPhoneCn);
-									formdata.append("cellPhoneEn",than.formLabelAlign.cellPhoneEn);
-									formdata.append("faxCn",than.formLabelAlign.faxCn);
-									formdata.append("faxEn",than.formLabelAlign.faxEn);
-									formdata.append("mailboxCn",than.formLabelAlign.mailboxCn);
-									formdata.append("mailboxEn",than.formLabelAlign.mailboxEn);
-                                    formdata.append("urlCn",than.formLabelAlign.urlCn);
-                                    formdata.append("urlEn",than.formLabelAlign.urlEn);
-                                    formdata.append("weChatUrlCn",than.formLabelAlign.weChatUrlCn);
-                                    formdata.append("weChatUrlEn",than.formLabelAlign.weChatUrlEn);
+									formdata.append("titleCn",than.formLabelAlign.titleCn);
+									formdata.append("titleEn",than.formLabelAlign.titleEn);
+									formdata.append("keywordsCn",than.formLabelAlign.keywordsCn);
+									formdata.append("keywordsEn",than.formLabelAlign.keywordsEn);
+                                    formdata.append("descriptionCn" , than.formLabelAlign.descriptionCn);
+                                    formdata.append("descriptionEn" , than.formLabelAlign.descriptionEn);
+                                    var s = {
+                                        "id": than.formLabelAlign.id ,
+                                        "titleCn": than.formLabelAlign.titleCn ,
+                                        "titleEn": than.formLabelAlign.titleEn ,
+                                        "keywordsCn":  than.formLabelAlign.keywordsCn ,
+                                        "keywordsEn":  than.formLabelAlign.keywordsEn ,
+                                        "descriptionCn":  than.formLabelAlign.descriptionCn ,
+                                        "descriptionEn":  than.formLabelAlign.descriptionEn
+                                    };
 									$.ajax({
 										type : "POST",
-										url : "/api/contactUs/modifyContactUsForInformation",
+										url : "/api/seo/updateSeo",
 										processData : false,
 										contentType : false,
 										data : formdata,
 										success : function(data) {
+										    console.log(data)
 											if (data) {
-												sa.ok('修改成功!');
-                                                window.location.reload()
+												sa.ok("修改成功");
+                                                setTimeout("location.reload()",2000);
 											} else {
 												sa.error("修改失败,请稍后重试！")
 											}

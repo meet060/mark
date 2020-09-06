@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author: hanguoli
  * @Date: 2020/8/16 17:25
@@ -29,7 +31,7 @@ public class SeoController {
      */
     @ApiOperation("查询SEO信息")
     @RequestMapping(value = "/findAll", method = RequestMethod.POST)
-    public ResponseEntity<?> findAll() {
+    public ResponseEntity<List<Seo>> findAll() {
         return MvcUtils.ok(seoService.findAll());
     }
 
@@ -40,7 +42,7 @@ public class SeoController {
      */
     @ApiOperation("修改SEO信息")
     @RequestMapping(value = "/updateSeo", method = RequestMethod.POST)
-    public ResponseEntity<?> updateSeo(@RequestBody Seo seo) {
+    public ResponseEntity<Boolean> updateSeo(Seo seo) {
         return MvcUtils.ok(seoService.updateSeo(seo));
     }
 }

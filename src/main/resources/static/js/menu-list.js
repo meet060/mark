@@ -119,6 +119,18 @@ var menuList =	[
             {id: '5-1', name: '联系方式', url: '../html/management/phone.html'}
         ]
     }
+    // ,
+    // {
+    //     id: '6',
+    //     name: '用户管理',
+    //     icon: 'el-icon-edit',
+    //     info: '修改用户信息',
+    //     childList: [
+    //         {id: '6-1', name: '用户列表', url: '/html/user/user-list.html'},
+    //         {id: '6-2', name: '用户添加', url: '/html/user/user-add.html'},
+    //         {id: '6-4', name: '用户修改', url: '/html/user/user-list.html'},
+    //     ]
+    // }
 	/*{
 		id: '3',
 		name: '系统设置',
