@@ -46,12 +46,12 @@ $(function() {
             // _about_title.find("p").html(arrAbout2.title)
         _about1_box.find(".g-about-r img").attr("src", api_url + arrAbout2.info.info1.introduce1)
         _about1_box.find(".g-about-l").append("<p>" + arrAbout2.info.info1.introDescription1 + "</p >")
-            // _about1_box.find(".g-about-l h2").html(arrAbout2.info.info1.introtitle1)
-        _about1_box.find(".g-about-l h2").html('公司介绍')
+            _about1_box.find(".g-about-l h2").html(arrAbout2.info.info1.introtitle1)
+        // _about1_box.find(".g-about-l h2").html('公司介绍')
         _about2_box.find(".g-about-r img").attr("src", api_url + arrAbout2.info.info2.introduce2)
         _about2_box.find(".g-about-l").append("<p>" + arrAbout2.info.info2.introDescription2 + "</p >")
-            // _about2_box.find(".g-about-l h2").html(arrAbout2.info.info1.introtitle2)
-        _about2_box.find(".g-about-l h2").html("因为专注于此，所以持续领先")
+            _about2_box.find(".g-about-l h2").html(arrAbout2.info.info2.introtitle2)
+        // _about2_box.find(".g-about-l h2").html("因为专注集装袋生产，所以产品持续领先")
 
         function fnIndustry() {
             // console.log(arrIndustry.recognized.length)
@@ -434,14 +434,19 @@ function pro_list() {
     var _pro_fangan = $("#pro_fangan")
     var _pro_fangan2 = $("#pro_fangan2")
     var _pro_liucheng = $("#pro_liucheng")
-    console.log(arrProduct.banner)
+    console.log(arrProduct)
     _pro_txt.find("p").html(arrProduct.banner[0].title)
     _pro_txt.find("img").attr("src", api_url + '' + arrProduct.banner[0].titlepic)
 
-    _pro_list.find("p").html('多元化定制集装袋，针对不同市场和应用领域，中润拥有多年累积的专业技术及设计经验。中润拥有超过50人的设计及销售团队，持续为您设计及推荐更合理的产品。') //arrProduct.outerBag[4].outerBagDescription
-    _pro_neidai.find("p").html('中润拥有食品级吹膜车间，自产食品级A型、B型、C型成型内袋及拉筋内袋。') //arrProduct.innerBag[0].nddescription
+    _pro_list.find("h2").html(arrProduct.outerBagTitle[0].outerBagTitle)
+    _pro_list.find("p").html(arrProduct.outerBagTitle[0].outerBagDescription)
+
+    _pro_neidai.find("h2").html(arrProduct.innerBagTitle[0].innerBagTitle)
+    _pro_neidai.find("p").html(arrProduct.innerBagTitle[0].innerBagDescription)
+
     _pro_jzd.find("h2").html(arrProduct.jzdtitle)
     _pro_jzd.find("p").html(arrProduct.jzddescription)
+    _pro_jzd.find("img").attr("src", api_url + '' + arrProduct.jzddpic)
     for (var i = 0; i < 8; i++) {
         // if(i>4){
         //     i=i-1

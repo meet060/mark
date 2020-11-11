@@ -20,14 +20,14 @@ var _index_url = window.location.href
 
 //首页联系我们
 var dongya = {
-    "jiaru": "中润，助你成就每一程",
+    "jiaru": "中润，为您带来美好的包装体验",
     "beian": "邯郸市中润塑料制品有限公司",
     "jiaruEn": "Zhongrun, help you achieve every journey",
     "beianEn": "Handan Zhongrun Plastic Products Co., Ltd."
 }
 var head_foot = {
     "head": {
-        "footTxt": "在您繁复和缜密的运转中，包装不是令您分心的一环，这是中润努力的的方向。<br>我们尽力于，也善于让您的企业在使用包装运输时消除顾忌，甚至无需过多关注包装的存在，同时为您节省资金，我们的任务就是通过不断改进和创新满足您的需求。",
+        "footTxt": "在您的货物繁复的运转中，包装是众位客户最担心的保障，这也是中润努力的的方向。<br>我们善于让您的企业在使用包装运输时消除顾忌，甚至无需过多关注包装的存在，同时为您节省资金，我们的任务就是通过不断改进和创新满足您的需求。",
         "liuyanTieleTxt": "留言内容",
         "liuyanTxt": ["姓名", "电话(必填)", "邮箱", "地址", "请输入您的留言内容"],
         "FootTxtEn": "In your complicated and meticulous operation, packaging is not a distracting part of you. This is the direction of Zhongrun's efforts. <br> We try our best to make your business use packaging and transportation Eliminate scruples without even paying too much attention to the existence of packaging, while saving you money, our task is to meet your needs through continuous improvement and innovation.",
