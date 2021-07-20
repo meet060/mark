@@ -185,22 +185,22 @@ function head_foot_txt(e) {
         var foot_bot;
         if (_index_url.indexOf("hdzrsl.com") > 1) {
             foot_bot = '<div class="g-footer">' +
-                '<div class="g-foot-btn">' + dongya.jiaru + '</div><p>' + dongya.beian + '<a href="http://icp.chinaz.com/home/info?host=hdzrsl.com" style="color: #B2B2B2"> | 冀ICP备14008699号-2</a></p >' +
+                '<div class="g-foot-btn">' + dongya.jiaru + '</div><p>' + dongya.beian + '<a href="https://beian.miit.gov.cn/" style="color: #B2B2B2"> | 冀ICP备14008699号-2</a></p >' +
                 '</div>'
         }
         if (_index_url.indexOf("hdzrsl.cn") > 1) {
             foot_bot = '<div class="g-footer">' +
-                '<div class="g-foot-btn">' + dongya.jiaru + '</div><p>' + dongya.beian + '<a href="http://icp.chinaz.com/home/info?host=hdzrsl.cn" style="color: #B2B2B2"> | 冀ICP备14008699号-2</a></p >' +
+                '<div class="g-foot-btn">' + dongya.jiaru + '</div><p>' + dongya.beian + '<a href="https://beian.miit.gov.cn/" style="color: #B2B2B2"> | 冀ICP备14008699号-2</a></p >' +
                 '</div>'
         }
         if (_index_url.indexOf("hbzrbz.cn") > 1) {
             foot_bot = '<div class="g-footer">' +
-                '<div class="g-foot-btn">' + dongya.jiaru + '</div><p>' + dongya.beian + '<a href="http://icp.chinaz.com/home/info?host=hbzrbz.cn" style="color: #B2B2B2"> | 冀ICP备14008699号-2</a></p >' +
+                '<div class="g-foot-btn">' + dongya.jiaru + '</div><p>' + dongya.beian + '<a href="https://beian.miit.gov.cn/" style="color: #B2B2B2"> | 冀ICP备14008699号-2</a></p >' +
                 '</div>'
         }
         if (_index_url.indexOf("hbzrbz.com") > 1) {
             foot_bot = '<div class="g-footer">' +
-                '<div class="g-foot-btn">' + dongya.jiaru + '</div><p>' + dongya.beian + '<a href="http://icp.chinaz.com/home/info?host=hbzrbz.com" style="color: #B2B2B2"> | 冀ICP备14008699号-2</a></p >' +
+                '<div class="g-foot-btn">' + dongya.jiaru + '</div><p>' + dongya.beian + '<a href="https://beian.miit.gov.cn/" style="color: #B2B2B2"> | 冀ICP备14008699号-2</a></p >' +
                 '</div>'
         }
         // if (_index_url.indexOf("127.0.0.1") > 1) {
